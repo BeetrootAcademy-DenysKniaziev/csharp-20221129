@@ -121,7 +121,7 @@ int X = Convert.ToInt32(Console.ReadLine());
 //Console.WriteLine("how many days passed from New Year");
 //int Y = Convert.ToInt32(Console.ReadLine());
 int Y = 365 - X;
-Console.WriteLine($"{X} - days left to New Year\n{Y} - days passed from New Year");
+Console.WriteLine($"{X} - days left to New Year!\n{Y} - days passed from New Year!");
 
 
 Console.ReadKey();
