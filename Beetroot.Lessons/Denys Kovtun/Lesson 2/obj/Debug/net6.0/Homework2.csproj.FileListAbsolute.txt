@@ -1,0 +1,15 @@
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\bin\Debug\net6.0\Homework2.exe
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\bin\Debug\net6.0\Homework2.deps.json
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\bin\Debug\net6.0\Homework2.runtimeconfig.json
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\bin\Debug\net6.0\Homework2.dll
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\bin\Debug\net6.0\Homework2.pdb
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.csproj.AssemblyReference.cache
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.AssemblyInfoInputs.cache
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.AssemblyInfo.cs
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.csproj.CoreCompileInputs.cache
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.dll
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\refint\Homework2.dll
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.pdb
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\Homework2.genruntimeconfig.cache
+C:\Beetroot\Beetroot.Lessons\Denys Kovtun\Lesson 2\Homework2\Homework2\obj\Debug\net6.0\ref\Homework2.dll
