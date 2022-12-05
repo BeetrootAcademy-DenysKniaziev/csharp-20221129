@@ -67,5 +67,5 @@ Console.WriteLine("MAX VALUE = " + z4);
 DateTime now = DateTime.UtcNow;
 DateTime NewYear = new DateTime(2022, 12, 31, 23, 59, 59);
 int today = now.DayOfYear;
-Console.WriteLine($"{(NewYear.Subtract(now))} days left to New Year");
+Console.WriteLine($"{(NewYear.Subtract(now).Days)} days left to New Year");
 Console.WriteLine($"{today} days passed from New Year");
