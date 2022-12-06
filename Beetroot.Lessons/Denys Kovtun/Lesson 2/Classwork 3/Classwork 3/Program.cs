@@ -107,7 +107,39 @@ if (c == 1 && d == 2 || e == 3)
 */
 #endregion
 
+#region Input
+/*using System.Runtime.CompilerServices;
+
 Console.WriteLine("What is your name???");
 string input = Console.ReadLine();
-Console.WriteLine($"Hello {input}");
+Console.WriteLine($"Hello, {input}");
+Console.WriteLine("Want an apple? (Y/N)");
 
+if (input == "Y")
+    Console.WriteLine("Take it!");
+else
+    Console.WriteLine("Ok, stay hungry");
+*/
+#endregion
+#region Loops
+var a = 0;
+
+while (a < 10)
+{
+    Console.WriteLine(a);
+    a++;    
+}
+
+
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine(i);
+}
+
+do
+{
+    Console.WriteLine(a);
+    a++
+
+} while (a < 10);
+#endregion
