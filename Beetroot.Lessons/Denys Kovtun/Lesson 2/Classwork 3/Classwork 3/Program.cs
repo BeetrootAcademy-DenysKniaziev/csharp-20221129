@@ -139,7 +139,7 @@ for (int i = 0; i < 10; i++)
 do
 {
     Console.WriteLine(a);
-    a++
+    a++;
 
 } while (a < 10);
 #endregion
