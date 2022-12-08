@@ -14,4 +14,4 @@ while(min<=max)
     sum += min;
     min++;
 }
-Console.WriteLine($"X={x}\tY={y}\nSum={sum}");
+Console.WriteLine($"X = {x}\tY = {y}\nSum = {sum}");

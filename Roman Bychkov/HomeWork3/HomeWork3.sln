@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeWork3", "HomeWork3\HomeWork3.csproj", "{46470420-7E17-4203-91D3-469428AAE4C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG", "RPG\RPG.csproj", "{D63C96D3-4C53-4BBF-AA3B-6B39A63F9A89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "RPG\Game.csproj", "{D63C96D3-4C53-4BBF-AA3B-6B39A63F9A89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
