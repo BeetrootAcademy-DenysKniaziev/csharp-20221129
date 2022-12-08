@@ -126,4 +126,24 @@ else
 
 
 
+// HOMEWORK
 
+Console.WriteLine("HOMEWORK");
+Console.Write("write x = ");
+int x = Convert.ToInt32(Console.ReadLine());
+Console.Write("write y = ");
+int y = Convert.ToInt32(Console.ReadLine());
+int sum = 0;
+if (x < y)
+{
+    for (int i = x; i <= y; i++)
+        sum += i;
+}
+else if (x > y)
+{
+    for (int i = y; i <= x; i++)
+        sum += i;
+}
+else
+    sum = x;
+Console.WriteLine(sum);
