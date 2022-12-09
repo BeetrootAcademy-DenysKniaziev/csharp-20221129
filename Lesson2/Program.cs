@@ -41,3 +41,38 @@ decimal dc = 5.3m;
 string str1 = "Beetroot";
 //Console.WriteLine(str1);
 
+int x1 = 5;
+
+//Console.WriteLine(x1++); // виводить 5, потім інкрементує +1 / 5
+//Console.WriteLine(x1); // виводить інкрементоване значення 6
+
+int x2 = 5;
+
+//Console.WriteLine(++x2); // інкрементує а потім виводить 6
+
+//Console.WriteLine(x1--); // виводить 5, потім інкрементує -1 / 4
+//Console.WriteLine(x1); // виводить інкрементоване значення 4
+
+
+//Console.WriteLine(--x2); // інкрементує а потім виводить 4
+
+bool x3 = true;
+//Console.WriteLine(!x3);
+
+//int x4 = -1;
+//Console.WriteLine(!x4);
+
+int x4 = 14;
+int x5 = 3;
+//Console.WriteLine(x4*x5);
+//Console.WriteLine(x4 / x5);
+Console.WriteLine(x4%x5);
+
+//float x6 = 14f;
+//decimal x7 = 3m;
+
+//Console.WriteLine(x6 / x7);
+
+//byte x8 = 14;
+//byte x9 = 3;
+//Console.WriteLine(x8/x9);
