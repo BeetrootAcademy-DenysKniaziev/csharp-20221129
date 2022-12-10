@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51792295-FA62-4398-9A5D-993F5D8B920F}"
+	ProjectSection(SolutionItems) = preProject
+		Lesson2\Homework\Lesson2.csproj = Lesson2\Homework\Lesson2.csproj
+		Lesson3\Homework\L3Program.cs = Lesson3\Homework\L3Program.cs
+		Lesson2\Homework\L2Program.cs = Lesson2\Homework\L2Program.cs
+		Lesson3\Homework\Lesson3.csproj = Lesson3\Homework\Lesson3.csproj
+		Lesson3\RPG\RPG.csproj = Lesson3\RPG\RPG.csproj
+		Lesson3\RPG\RPGProgram.cs = Lesson3\RPG\RPGProgram.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4167CC6E-D95F-417F-A7BC-106E48A1602E}
+	EndGlobalSection
+EndGlobal
