@@ -92,15 +92,15 @@ Console.WriteLine(2*Math.PI *X);
 
 Console.WriteLine($"Max of betwin {X} and {Y} is {Math.Max(X, Y)}");
 
-////
+var date1 = new DateTime (2022, 1, 1, 0, 0, 0);
+var date2 = new DateTime (2023, 1, 1, 0, 0, 0);
 
+var dateN = DateTime.Now;
 
+TimeSpan passed = dateN - date1;
+TimeSpan left = date2 - dateN;
 
-////Double D = 12.286;
-////Double Da = Math.Abs(D);
+Console.WriteLine("{0} days left to New Year", left.Days);
+Console.WriteLine("{0} days left to New Year", passed.Days);
 
-////double x = 2.5;
-
-////Console.WriteLine(D);
-////Console.WriteLine(Da);
 Console.ReadKey();
