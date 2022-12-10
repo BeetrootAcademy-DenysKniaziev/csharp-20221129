@@ -1,30 +1,35 @@
-﻿Console.WriteLine("Enter first value");
-int x = int.Parse(Console.ReadLine());
-Console.WriteLine("Enter second value");
-int y = int.Parse(Console.ReadLine());
+﻿Console.WriteLine("Enter values");
 
-int min, max;
-int sum = 0;
-
-if (x!=y)
+if (!int.TryParse(Console.ReadLine(), out var x) || !int.TryParse(Console.ReadLine(), out var y))
 {
-    if (x > y)
-    {
-        min = y;
-        max = x;
-    }
-    else
-    {
-        min = x;
-        max = y;
-    }
-    for(int i = min; i <= max; i++)
-    {
-        sum += i;
-    }
-    Console.WriteLine("Sum of numbers: " + sum);
+    Console.WriteLine("Invalid input");
 }
 else
 {
-    Console.WriteLine("Sum: " + x);
+
+    int min, max;
+    int sum = 0;
+
+    if (x != y)
+    {
+        if (x > y)
+        {
+            min = y;
+            max = x;
+        }
+        else
+        {
+            min = x;
+            max = y;
+        }
+        for (int i = min; i <= max; i++)
+        {
+            sum += i;
+        }
+        Console.WriteLine("Sum of numbers: " + sum);
+    }
+    else
+    {
+        Console.WriteLine("Sum: " + x);
+    }
 }
