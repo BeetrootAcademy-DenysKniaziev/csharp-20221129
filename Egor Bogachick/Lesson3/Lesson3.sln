@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson3.ClassWork", "Lesson
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson3.HomeWork", "Lesson3.HomeWork\Lesson3.HomeWork.csproj", "{7B58C402-1CEA-4E44-B3A0-99580E769C2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{0556E8B9-AC5B-434E-AD2D-9592328D3089}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson3.Game", "Game\Lesson3.Game.csproj", "{0556E8B9-AC5B-434E-AD2D-9592328D3089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
