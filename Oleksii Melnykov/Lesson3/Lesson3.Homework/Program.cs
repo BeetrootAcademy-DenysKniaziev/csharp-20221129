@@ -264,13 +264,15 @@ using System;
 
 // HOMEWORK
 
-int x = 3;
-int y = 8;
+Console.WriteLine("Choose first number");
+int x = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Choose second number");
+int y = Convert.ToInt32(Console.ReadLine());
 int a = x;
-
 for (int i = x; i < y; i++)
 {
     x++;
     a += x;
 }
-Console.WriteLine(a);
+Console.WriteLine($"The sum of all numbers between them is {a}");
+
