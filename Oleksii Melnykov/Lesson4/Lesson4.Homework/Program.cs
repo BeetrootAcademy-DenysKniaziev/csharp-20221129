@@ -41,30 +41,59 @@ class Program
         return false;
     }
 
+    static int Factorial(int n)
+    {
+        var result = 1;
+        for (int i = 1; i <= n; i++)
+        {
+            result *= i;
+        }
+        return result;
+    }
+
+
+    static int FactorialRec(int n)
+    {
+        if (n <= 1)
+            return 1;
+
+     return n * FactorialRec(n-1);
+    }
+
+
+    static int Fibonachi(int n)
+    {
+        if (n == 0 || n == 1) return n;
+
+        return Fibonachi(n - 1) + Fibonachi(n - 2);
+
+    }
+
+
 
     static void Main()
     {
 
-        PrintHello();
-        PrintHello("Alex");
+        //PrintHello();
+        //PrintHello("Alex");
 
-        var x = 5;
-        var y = Square(x);
+        //var x = 5;
+        //var y = Square(x);
 
-        Console.WriteLine(y);
-        Console.WriteLine(Square(25));
-        Console.WriteLine(Square1(3));
+        //Console.WriteLine(y);
+        //Console.WriteLine(Square(25));
+        //Console.WriteLine(Square1(3));
 
-        var number = 100;
-        DoubleN(ref number);
-        Console.WriteLine(number);
+        //var number = 100;
+        //DoubleN(ref number);
+        //Console.WriteLine(number);
 
         //var input = Console.ReadLine();
         //var intValue = int.Parse(input);
         //Console.WriteLine(intValue);
         //якщо вводимо не число - видає "помилку"
 
-        var input = Console.ReadLine();
+        //var input = Console.ReadLine();
 
         //int intValue;
         //int.TryParse(input, out intValue);
@@ -74,9 +103,27 @@ class Program
         //int.TryParse(input, out var intValue);
         //Console.WriteLine(intValue);
 
-        var isParsed = ParceIntOrDefault(input, out var intValue, -1);
-        Console.WriteLine($"Parsed: {isParsed}, Value: {intValue}");
+        //var isParsed = ParceIntOrDefault(input, out var intValue, -1);
+        //Console.WriteLine($"Parsed: {isParsed}, Value: {intValue}");
 
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine($"Factorial({i}) = {Factorial(i)}");
+        }
+
+        Console.WriteLine();
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine($"Factorial({i}) = {FactorialRec(i)}");
+        }
+        Console.WriteLine();
+
+        for (int i = 0; i < 20; i++)
+        {
+            Console.WriteLine($"Fibonachi({i}) = {Fibonachi(i)}");
+        }
+    }
 
 
 
@@ -84,7 +131,7 @@ class Program
 
     }
 
-}
+
 
 
 
