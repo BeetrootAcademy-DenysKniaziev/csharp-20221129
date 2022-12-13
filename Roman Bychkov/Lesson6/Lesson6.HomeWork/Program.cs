@@ -1,102 +1,10 @@
 ﻿class Program
 {
-    public static void Main(string[] args)
-    {
-        SortAlgorithmType algorithmType = new SortAlgorithmType();
-        int choose = 0;
-        while (true)
-        {
-            Console.WriteLine("SelectionSort - 1\nBubbleSort - 2\nInsertionSort - 3");
-            if (!int.TryParse(Console.ReadLine(), out choose))
-            {
-                Console.WriteLine("Invalid input");
-                continue;
-            }
-            if(Enum.IsDefined(typeof(DayOfWeek), choose))
-            {
-                Console.WriteLine("true");
-            }
-            algorithmType = (SortAlgorithmType)choose;
-
-            Console.WriteLine(algorithmType);
-
-
-            switch (algorithmType)
-            {
-                case SortAlgorithmType.Selection:
-                    break;
-                case SortAlgorithmType.Insertion:
-                    break;
-                case SortAlgorithmType.Bubble:
-                    break;
-            }
-
-        }
-    }
-
-
-    static void SelectionSort(int[] mass)
-    {
-        int min;
-        for (int i = 0; i < mass.Length - 1; i++)
-        {
-            min = i;
-
-            for (int j = i + 1; j < mass.Length; j++)
-            {
-                if (mass[min] > mass[j])
-                    min = j;
-            }
-            (mass[i], mass[min]) = (mass[min], mass[i]);
-        }
-    }
-    static void BubbleSort(int[] mass)
-    {
-        for (int i = 1; i < mass.Length; i++)
-            for (int j = 0; j < mass.Length - i; j++)
-            {
-                if (mass[j] > mass[j + 1])
-                    (mass[j], mass[j + 1]) = (mass[j + 1], mass[j]);
-            }
-    }
-    static void InsertionSort(int[] mass)
-    {
-        for (int i = 1; i < mass.Length; i++)
-        {
-            for (int j = i; j > 0; j--)
-            {
-                if (mass[j - 1] > mass[j])
-                    (mass[j], mass[j - 1]) = (mass[j - 1], mass[j]);
-                else
-                    break;
-            }
-        }
-    }
-
-    static void Sort(int[] mass, SortAlgorithmType type, OrderBy orderBy)
-    {
-        switch (type)
-        {
-            case SortAlgorithmType.Selection:
-                SelectionSort(mass);
-                break;
-            case SortAlgorithmType.Bubble:
-                SelectionSort(mass);
-                break;
-            case SortAlgorithmType.Insertion:
-                SelectionSort(mass);
-                break;
-            default:
-                break;
-        }
-
-    }
-
-    enum SortAlgorithmType : int
+    enum SortAlgorithmType
     {
         Selection = 1,
-        Bubble = 2,
-        Insertion = 3
+        Bubble,
+        Insertion
     }
 
     enum OrderBy
@@ -104,4 +12,130 @@
         Asc = 1,
         Desc
     }
+    public static void Main(string[] args)
+    {
+        SortAlgorithmType algorithmType = new SortAlgorithmType();
+        OrderBy orderBy = new OrderBy();
+        int choice = 0;
+        int[] arr = new int[10];
+
+        while (true)
+        {
+
+            Console.WriteLine("SelectionSort - 1\nBubbleSort - 2\nInsertionSort - 3");
+            if (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(SortAlgorithmType), choice))
+            {
+                Console.WriteLine("Invalid input");
+                continue;
+            }
+
+            algorithmType = (SortAlgorithmType)choice;
+
+
+            Console.WriteLine("\nAsc - 1\nDesc - 2");
+            if (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(SortAlgorithmType), choice))
+            {
+                Console.WriteLine("Invalid input");
+                continue;
+            }
+            orderBy = (OrderBy)choice;
+
+
+            Console.WriteLine("\nBefore:");
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = new Random().Next(1, 15);
+                Console.Write($"{arr[i]} ");
+            }
+            Console.WriteLine();
+            Sort(arr, algorithmType, orderBy);
+
+        }
+    }
+
+
+    static int[] SelectionSort(int[] arr1, OrderBy orderBy)
+    {
+        int[] arr = new int[arr1.Length];
+        arr1.CopyTo(arr, 0);
+
+        int min;
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            min = i;
+
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                if (arr[min] > arr[j])
+                    min = j;
+            }
+            (arr[i], arr[min]) = (arr[min], arr[i]);
+        }
+        if (orderBy == OrderBy.Desc)
+            Array.Reverse(arr);
+        return arr;
+    }
+    static int[] BubbleSort(int[] arr1, OrderBy orderBy)
+    {
+        int[] arr = new int[arr1.Length];
+        arr1.CopyTo(arr, 0);
+
+        for (int i = 1; i < arr.Length; i++)
+            for (int j = 0; j < arr.Length - i; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                    (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
+            }
+        if (orderBy == OrderBy.Desc)
+            Array.Reverse(arr);
+
+        return arr;
+    }
+    static int[] InsertionSort(int[] arr1, OrderBy orderBy)
+    {
+        int[] arr = new int[arr1.Length];
+        arr1.CopyTo(arr, 0);
+
+        for (int i = 1; i < arr.Length; i++)
+        {
+            for (int j = i; j > 0; j--)
+            {
+                if (arr[j - 1] > arr[j])
+                    (arr[j], arr[j - 1]) = (arr[j - 1], arr[j]);
+                else
+                    break;
+            }
+        }
+
+        if (orderBy == OrderBy.Desc)
+            Array.Reverse(arr);
+
+        return arr;
+    }
+
+    static void Sort(int[] arr, SortAlgorithmType type, OrderBy orderBy)
+    {
+        int[] result = new int[arr.Length];
+        switch (type)
+        {
+            case SortAlgorithmType.Selection:
+                result = SelectionSort(arr, orderBy);
+                break;
+            case SortAlgorithmType.Bubble:
+                result = BubbleSort(arr, orderBy);
+                break;
+            case SortAlgorithmType.Insertion:
+                result = InsertionSort(arr, orderBy);
+                break;
+            default:
+                break;
+        }
+        Console.WriteLine("Result:");
+        foreach (int i in result)
+            Console.Write($"{i} ");
+        Console.WriteLine("\n");
+
+    }
+
+
 }
