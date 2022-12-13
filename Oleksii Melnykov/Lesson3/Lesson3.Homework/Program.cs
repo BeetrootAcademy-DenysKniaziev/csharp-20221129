@@ -264,15 +264,51 @@ using System;
 
 // HOMEWORK
 
-Console.WriteLine("Choose first number");
-int x = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Choose second number");
-int y = Convert.ToInt32(Console.ReadLine());
-int a = x;
-for (int i = x; i < y; i++)
+class Program
 {
-    x++;
-    a += x;
-}
-Console.WriteLine($"The sum of all numbers between them is {a}");
+    static bool ParceIntOrDefault(string str, out int value, int defaultValue)
+    {
+        if (int.TryParse(str, out value))
+            return true;
+        value = defaultValue;
+        return false;
+    }
 
+
+    static void Main()
+    {
+        Console.WriteLine("Hello!" +
+            "\nChoose two positive integers, and I will count the sum of all numbers between them." +
+            "\nIf they are equal, then sum will be one of them." +
+            "\nChoose first number!");
+        
+        var input1 = Console.ReadLine();
+        var isParsed = ParceIntOrDefault(input1, out var x, -1);
+
+        if (x == -1)
+        {
+            Console.WriteLine("Invalid input!");
+        }
+        else
+        {
+            Console.WriteLine("Choose second number!");
+            var input2 = Console.ReadLine();
+            var isParsed2 = ParceIntOrDefault(input2, out var y, -1);
+
+            if (y == -1)
+            {
+                Console.WriteLine("Invalid input!");
+            }
+            else
+            {
+                int a = x;
+                for (int i = x; i < y; i++)
+                {
+                    x++;
+                    a += x;
+                }
+                Console.WriteLine($"The sum of all numbers between them is {a}");
+            }
+        }
+    }
+}
