@@ -60,23 +60,23 @@ internal class Program
     }
     private static void Main(string[] args)
     {
-        //Console.Write("Enter the amount of elements: ");
-        //int x = int.Parse(Console.ReadLine());
+        Console.Write("Enter the amount of elements: ");
+        int x = int.Parse(Console.ReadLine());
         var arr = new[] { 33, 12, 4, 44, 8 };
 
-        //for (int i = 0; i < arr.Length; i++)
-        //{
-        //    Console.Write($"Enter {i + 1} element: ");
-        //    arr[i] = int.Parse(Console.ReadLine());
-        //}
+        for (int i = 0; i < arr.Length; i++)
+        {
+            Console.Write($"Enter {i + 1} element: ");
+            arr[i] = int.Parse(Console.ReadLine());
+        }
 
-        //Selection(arr);
-        //Console.WriteLine("\tSORTED ARRAY BY SELLECTION");
-        //PrintArr(arr);
+        Selection(arr);
+        Console.WriteLine("\tSORTED ARRAY BY SELLECTION");
+        PrintArr(arr);
 
-        //Bubble(arr);
-        //Console.WriteLine("\tSORTED ARRAY BY BUBBLE");
-        //PrintArr(arr);
+        Bubble(arr);
+        Console.WriteLine("\tSORTED ARRAY BY BUBBLE");
+        PrintArr(arr);
 
         Insertion(arr);
         Console.WriteLine("\tSORTED ARRAY BY INSERTION");
