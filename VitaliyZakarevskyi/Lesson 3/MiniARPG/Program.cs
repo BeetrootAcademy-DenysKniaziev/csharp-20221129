@@ -33,7 +33,7 @@ while (!gameIsFinished)
         else if(input == "No")
         {
             Console.WriteLine("You continued to sit inside your fridge with no ability to move." +
-                "Suddenly you and feel that something smashed your door. Now it is blocked and you are stuck here forever");
+                "Suddenly you and feel that something smashed your door. Now it is blocked and you are stuck here forever.");
             gameIsFinished = true;
             break;
         }
