@@ -25,7 +25,8 @@ namespace DiachenkoAnatolii_HomeWork6
             PrintSorting(myArray);
             Console.WriteLine($"Selection array is:");
             PrintSorting(SelectionAlgorithm(myArray));
-            //PrintSorting(BubbleAlgorithm(myArray));
+            Console.WriteLine($"Bubble array is:");
+            PrintSorting(BubbleAlgorithm(myArray));
             //PrintSorting(InsertionAlgorithm(myArray));
 
         }
@@ -59,12 +60,30 @@ namespace DiachenkoAnatolii_HomeWork6
 
         public static int[] BubbleAlgorithm(this int[] myArray)
         {
-            return new int[10];
+            for (int i = 0; i < myArray.Length -1; i++)
+            {
+                //for (int j = 0; j < myArray.Length -i; j++)
+                //{
+                    if (myArray[i] > myArray[i + 1])
+                    {
+                        Swap(myArray[i], myArray[i + 1]);
+                    }
+                //}
+            }
+            
+            return myArray;
         }
 
         public static int[] InsertionAlgorithm(this int[] myArray)
         {
             return new int[10];
         }
+
+        public static void Swap(int value, int value1)
+        {
+            var temp = value;
+            value1 = value;
+            value = temp;
+        }     
     }
 }
