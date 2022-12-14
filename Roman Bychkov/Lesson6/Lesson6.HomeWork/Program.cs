@@ -33,7 +33,7 @@
 
 
             Console.WriteLine("\nAsc - 1\nDesc - 2");
-            if (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(SortAlgorithmType), choice))
+            if (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(OrderBy), choice))
             {
                 Console.WriteLine("Invalid input");
                 continue;
@@ -66,13 +66,12 @@
 
             for (int j = i + 1; j < arr.Length; j++)
             {
-                if (arr[min] > arr[j])
+                if ((arr[min] > arr[j] && orderBy == OrderBy.Asc) || (arr[min] < arr[j] && orderBy == OrderBy.Desc))
                     min = j;
             }
             (arr[i], arr[min]) = (arr[min], arr[i]);
         }
-        if (orderBy == OrderBy.Desc)
-            Array.Reverse(arr);
+
         return arr;
     }
     static int[] BubbleSort(int[] arr1, OrderBy orderBy)
@@ -83,11 +82,9 @@
         for (int i = 1; i < arr.Length; i++)
             for (int j = 0; j < arr.Length - i; j++)
             {
-                if (arr[j] > arr[j + 1])
+                if ((arr[j] > arr[j + 1] && orderBy == OrderBy.Asc) || (arr[j] < arr[j + 1] && orderBy == OrderBy.Desc))
                     (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
             }
-        if (orderBy == OrderBy.Desc)
-            Array.Reverse(arr);
 
         return arr;
     }
@@ -100,15 +97,12 @@
         {
             for (int j = i; j > 0; j--)
             {
-                if (arr[j - 1] > arr[j])
+                if (arr[j - 1] > arr[j] && orderBy == OrderBy.Asc || arr[j - 1] < arr[j] && orderBy == OrderBy.Desc)
                     (arr[j], arr[j - 1]) = (arr[j - 1], arr[j]);
                 else
                     break;
             }
         }
-
-        if (orderBy == OrderBy.Desc)
-            Array.Reverse(arr);
 
         return arr;
     }
@@ -127,15 +121,11 @@
             case SortAlgorithmType.Insertion:
                 result = InsertionSort(arr, orderBy);
                 break;
-            default:
-                break;
         }
         Console.WriteLine("Result:");
         foreach (int i in result)
             Console.Write($"{i} ");
         Console.WriteLine("\n");
-
     }
-
 
 }
