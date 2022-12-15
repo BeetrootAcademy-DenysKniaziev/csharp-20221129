@@ -1,2 +1,38 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿class Program
+{
+   
+    
+    void int  GreatestCommonDivisor(int x, int y)
+    {
+
+    return x
+
+
+    }
+
+
+
+
+    static void Main()
+    { 
+    
+    
+    
+    
+    
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
