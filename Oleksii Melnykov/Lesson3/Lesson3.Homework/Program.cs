@@ -291,11 +291,11 @@ class Program
         }
         else
         {
-            Console.WriteLine("Choose second number!");
+            Console.WriteLine("Choose second number! It must be bigger than first.");
             var input2 = Console.ReadLine();
             var isParsed2 = ParceIntOrDefault(input2, out var y, -1);
 
-            if (y == -1)
+            if ((y == -1) || (y < x))
             {
                 Console.WriteLine("Invalid input!");
             }
