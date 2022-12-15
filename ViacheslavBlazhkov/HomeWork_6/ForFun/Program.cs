@@ -1,7 +1,7 @@
 ﻿using System;
 
 // filling the array with numbers
-int[,] array = new int[10, 10];
+int[,] array = new int[11, 11];
 Random rand = new Random();
 for (int i = 0; i < array.GetLength(0); i++)
 {
@@ -40,7 +40,7 @@ void SecondVariant(int[,] array)
 {
     double sum = 0;
     int count = 0;
-    int x = 9;
+    int x = array.GetLength(0) - 1;
     Console.WriteLine("Array: \n");
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -65,7 +65,8 @@ void SecondVariant(int[,] array)
 void ThirdVariant(int[,] array)
 {
     int x1 = 0;
-    int x2 = 9;
+    int x2 = array.GetLength(0) - 1;
+    double max = array.GetLength(0);
 
     double sum = 0;
     int count = 0;
@@ -85,15 +86,14 @@ void ThirdVariant(int[,] array)
             Console.Write($"{array[i, k]}".PadLeft(2, ' ') + "  ");
             Console.ResetColor();
         }
-
-        if (i < 4)
+        if (i < (max/2) - 1)
         {
             x1++; x2--;
         }
-        else if (i > 4) 
+        else if (i > (max / 2) - 1)
         {
             x1--; x2++;
-        }   
+        }
 
         Console.WriteLine();
     }
