@@ -63,6 +63,8 @@ static double Third(int[,] arr)
             count++;
             Console.Write($"{arr[i, j].ToString().PadLeft(1, '0')} ");
         }
+        if (arr.GetLength(1) - i - 1 == i)
+            continue;
         Console.WriteLine();
         for (int j = arr.GetLength(1) - i - 1; j <= i; j++)
         {
@@ -73,3 +75,5 @@ static double Third(int[,] arr)
     }
     return (double)sum / count;
 }
+
+
