@@ -2,11 +2,18 @@
 {
    
     
-    void int  GreatestCommonDivisor(int x, int y)
+    static int GreatestCommonDivisor(int x, int y)
     {
+      
+        if (x % 2 == 0 && y % 2 == 0)
+        {
+           
 
-    return x
+            return 2;
 
+
+        }
+        else return 1;
 
     }
 
