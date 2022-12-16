@@ -49,17 +49,17 @@
         return str5;
     }
 
-    static char[] Duplicate(string str4)
+    static string Duplicate(string str4)
     {
         string res = "";
         for (int i = 0; i < str4.Length; i++)
         {
-            if (!res.Contains(str4[i]) && str4.Substring(str4.IndexOf(str4[i]) + 1).Contains(str4[i]))
+            if (!res.Contains(str4[i]) && str4.Substring(i + 1).Contains(str4[i]))
             {
                 res += str4[i];
             }
         }
-        return res.ToArray();
+        return res;
     }
 
     private static void Main(string[] args)
@@ -83,7 +83,7 @@
 
         Console.WriteLine("\nEnter string:");
         var str5 = Console.ReadLine().ToLower();
-        char[] res4 = Duplicate(str5);
+        char[] res4 = Duplicate(str5).ToCharArray();
 
         Console.Write("Characters that are duplicated: ");
         for (int i = 0; i < res4.Length; i++)
