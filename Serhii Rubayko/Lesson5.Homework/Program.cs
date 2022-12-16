@@ -1,61 +1,80 @@
-﻿class Program
+﻿//using System;
+
+class Program
 {
 
-    static int Factorial(int n)
-    {
-        var result = 1;
-        for (int i = 1; i <= n; i++)
-        {
-            result *= i;
-        }
-        return result;
-    }
+    //static int Factorial(int n)
+    //{
+    //    var result = 1;
+    //    for (int i = 1; i <= n; i++)
+    //    {
+    //        result *= i;
+    //    }
+    //    return result;
+    //}
 
-    static int FactorialRec(int n)
-    {
-        if (n <= 1)
-            return 1;
+    //static int FactorialRec(int n)
+    //{
+    //    if (n <= 1)
+    //        return 1;
 
-        return n * FactorialRec(n - 1);
-    }
+    //    return n * FactorialRec(n - 1);
+    //}
 
-    static int Fibonachi(int n)
-    {
-        if (n == 0 || n == 1) return n;
+    //static int Fibonachi(int n)
+    //{
+    //    if (n == 0 || n == 1) return n;
 
-        return Fibonachi(n - 1) + Fibonachi(n - 2);
-    }
+    //    return Fibonachi(n - 1) + Fibonachi(n - 2);
+    //}
 
-    static int GreatestCommonDivisor(int x, int y)
-    {
+    //static int GreatestCommonDivisor(int x, int y)
+    //{
 
-        for (int i=0; )
-        
-        
-        //if (x == 1 || y == 1) return 1;
-        //else if (x%2==0&&y%2==0)
-        //   return 2; 
+    //    if (y == 0) return x;
+    //    return GreatestCommonDivisor(y, x%y) ;
             
-        //    return 1;
-        //else return 2;
+      
+    //}
+
+    static int PrimeNumSum(int z)
+    {
+        var result = 2;
+        for (int i=3;i<=z;i++)
+        {
+            if (i>3&&(i % 2 == 0||i % 3 == 0)) continue;
+            if (i > 5 && i % 5 == 0) continue;
+            result +=i;
+            Console.WriteLine($"{i} {result}");
+        }
+        
+        return result;
+     
 
     }
-
-
 
 
     static void Main()
     {
 
-        var x = 4;
-        var y = 2;
+        //var n = 10;
+        //var d = Fibonachi(n);
 
-        Console.WriteLine($"Greater common divisor {x} & {y} is {GreatestCommonDivisor(x, y)}");
+        //Console.WriteLine(d);
 
-    
-    
-    
-    
+
+        //var x = 1342;
+        //var y = 56588;
+
+        //Console.WriteLine($"Greater common divisor {x} & {y} is {GreatestCommonDivisor(x, y)}");
+
+        var z = 51;
+
+        Console.WriteLine(PrimeNumSum(z));
+
+
+
+
     }
 
 
