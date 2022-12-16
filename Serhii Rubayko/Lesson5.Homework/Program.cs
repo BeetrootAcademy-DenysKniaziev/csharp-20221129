@@ -28,27 +28,29 @@ class Program
     //    return Fibonachi(n - 1) + Fibonachi(n - 2);
     //}
 
-    //static int GreatestCommonDivisor(int x, int y)
-    //{
+    static int GreatestCommonDivisor(int x, int y)
+    {
 
-    //    if (y == 0) return x;
-    //    return GreatestCommonDivisor(y, x%y) ;
-            
-      
-    //}
+        if (y == 0) return x;
+        return GreatestCommonDivisor(y, x % y);
+
+
+    }
 
     static int PrimeNumSum(int z)
     {
         var result = 2;
         for (int i=3;i<=z;i++)
         {
+            
             if (i>3&&(i % 2 == 0||i % 3 == 0)) continue;
             if (i > 5 && i % 5 == 0) continue;
+            if ((double)i % Math.Sqrt((double)i) == 0) continue;
             result +=i;
             Console.WriteLine($"{i} {result}");
         }
         
-        return result;
+        return (int)result;
      
 
     }
@@ -68,7 +70,7 @@ class Program
 
         //Console.WriteLine($"Greater common divisor {x} & {y} is {GreatestCommonDivisor(x, y)}");
 
-        var z = 51;
+        var z = 100;
 
         Console.WriteLine(PrimeNumSum(z));
 
