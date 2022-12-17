@@ -31,7 +31,7 @@ class Program
         return Math.Min(Math.Min(first, second), Math.Min(third, fourth));
     }
 
-    static void TrySumIfOdd(int first, int second)
+    static bool TrySumIfOdd(int first, int second)
     {
         if ((first + second) % 2 != 0)
         {
