@@ -31,7 +31,7 @@ class Program
         return Math.Min(Math.Min(first, second), Math.Min(third, fourth));
     }
 
-    static bool TrySumIfOdd(int first, int second)
+    static void TrySumIfOdd(int first, int second)
     {
         if ((first + second) % 2 != 0)
         {
@@ -40,14 +40,15 @@ class Program
         return false;
     }
 
-    static void Repeat(int value, string str)
+    static string Repeat(int value, string str)
     {
         string text;
         for (int i = 0; i < value; i++)
         {
 
-            Console.Write(str);
+            text += str;
         }
+        return text;
     }
 
     static void Main()
