@@ -1,7 +1,9 @@
 ﻿
 class Program
 {
+    //Finding Greatest Common Division
 
+    // Common method 
     static int GreComDiv(int x, int y)
     {
         if (x==0) return y;
@@ -22,19 +24,16 @@ class Program
         return x;
 
     }
-
-
-
-
-
-
+    // Recursive method
     static int GreComDivRec(int x, int y)
     {
         if (y == 0) return x;
         return GreComDivRec(y, x % y);
     }
 
+    //Finding Sum of all the primes below or equal to number
 
+    // Is it Prime nuber checking
     static bool IsPrime(int number)
     {
         for (int i = 2; i < number; i++)
@@ -44,67 +43,42 @@ class Program
         return true;
     }
 
-
+    // Common method 
     static int PrimeNumSum(int z)
     {
         int result = 2;
-        /*var tmp = 3*/;
         for (int tmp = 3; tmp <= z; tmp++)
         {
            if (!IsPrime(tmp)) continue;
                result += tmp;
-
-            //Console.WriteLine($"{tmp} {result}");
         }
 
         return result;
     }
-
-
-
-    static int PrimeSumRec(int number)
+    // Recursive method
+    static int PrimeSumRec(int z)
     {
-        if (number<=2) return number;
-        for (int i=2; i<number; i++)
+        if (z<=2) return z;
+        for (int i=2; i<z; i++)
         {
-          if (number % i == 0)
-             return PrimeSumRec(number - 1);
+          if (z % i == 0)
+             return PrimeSumRec(z - 1);
         }
-        return number+PrimeSumRec(number-1);
+        return z+PrimeSumRec(z-1);
     }
-
-
-
-
-
-
-   
-
 
     static void Main()
     {
-
-        Console.WriteLine("Input 2 integers for")
-       
-        var x = 59;
+        var x = 154;
         var y = 81;
+        var z = 100;
 
-        Console.WriteLine($"Greater common divisor {x} & {y} is {GreComDiv(x, y)}  ({GreComDivRec(x, y)})");
+        Console.WriteLine($"Greater common divisor {x} & {y} is " +
+            $"{GreComDiv(x, y)} - from common meth  ({GreComDivRec(x, y)} - from recurs meth)");
 
-        var z = 10;
-
-        Console.WriteLine(PrimeNumSum(z));
-
-        var number = z;
-
-        Console.WriteLine(); 
-
-        Console.WriteLine(PrimeSumRec(number));
-
-
-
+        Console.WriteLine();
+             
+        Console.WriteLine($"Sum of all the primes below or equal {z} is" +
+            $" {PrimeNumSum(z)} - from common meth  ({PrimeSumRec(z)} - from recurs meth)");
     }
-
-
-
 }
