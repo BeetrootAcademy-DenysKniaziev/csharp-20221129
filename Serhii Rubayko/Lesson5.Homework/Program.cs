@@ -1,93 +1,88 @@
-﻿//using System;
-
+﻿
 class Program
 {
 
-    //static int Factorial(int n)
-    //{
-    //    var result = 1;
-    //    for (int i = 1; i <= n; i++)
-    //    {
-    //        result *= i;
-    //    }
-    //    return result;
-    //}
 
-    //static int FactorialRec(int n)
-    //{
-    //    if (n <= 1)
-    //        return 1;
 
-    //    return n * FactorialRec(n - 1);
-    //}
 
-    //static int Fibonachi(int n)
-    //{
-    //    if (n == 0 || n == 1) return n;
 
-    //    return Fibonachi(n - 1) + Fibonachi(n - 2);
-    //}
 
-    static int GreatestCommonDivisor(int x, int y)
+
+    static int GreatestCommonDivisorRec(int x, int y)
     {
-
         if (y == 0) return x;
-        return GreatestCommonDivisor(y, x % y);
-
-
+        return GreatestCommonDivisorRec(y, x % y);
     }
+
+
+    static bool IsPrime(int number)
+    {
+        for (int i = 2; i < number; i++)
+        {
+            if (number % i == 0) return false;
+        }
+        return true;
+    }
+
 
     static int PrimeNumSum(int z)
     {
-        var result = 2;
-        for (int i=3;i<=z;i++)
+        int result = 2;
+        /*var tmp = 3*/;
+        for (int tmp = 3; tmp <= z; tmp++)
         {
-            
-            if (i>3&&(i % 2 == 0||i % 3 == 0)) continue;
-            if (i > 5 && i % 5 == 0) continue;
-            if ((double)i % Math.Sqrt((double)i) == 0) continue;
-            result +=i;
-            Console.WriteLine($"{i} {result}");
-        }
-        
-        return (int)result;
-     
+           if (!IsPrime(tmp)) continue;
+               result += tmp;
 
+            Console.WriteLine($"{tmp} {result}");
+        }
+
+        return result;
     }
+
+
+
+    static int PrimeSumRec(int number)
+    {
+        if (number<=2) return number;
+        for (int i=2; i<number; i++)
+        {
+          if (number % i == 0)
+             return PrimeSumRec(number - 1);
+        }
+        return number+PrimeSumRec(number-1);
+    }
+
+
+
+
+
+
+   
 
 
     static void Main()
     {
 
-        //var n = 10;
-        //var d = Fibonachi(n);
+       
+        var x = 1342;
+        var y = 56588;
 
-        //Console.WriteLine(d);
+        Console.WriteLine($"Greater common divisor {x} & {y} is {GreatestCommonDivisorRec(x, y)}");
 
-
-        //var x = 1342;
-        //var y = 56588;
-
-        //Console.WriteLine($"Greater common divisor {x} & {y} is {GreatestCommonDivisor(x, y)}");
-
-        var z = 100;
+        var z = 1000;
 
         Console.WriteLine(PrimeNumSum(z));
 
+        var number = z;
+
+        Console.WriteLine(); 
+
+        Console.WriteLine(IsPrimeSum(number));
 
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
