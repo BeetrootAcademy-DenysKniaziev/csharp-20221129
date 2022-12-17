@@ -1,19 +1,21 @@
 ﻿using System.Text.RegularExpressions;
 
-const string FileName = "PhoneBook.txt";
 
-Console.WriteLine("Phone Book Application");
-Console.WriteLine("Select Action:");
-Console.WriteLine("1 - Show Phone Book");
-Console.WriteLine("2 - Add Record");
-Console.WriteLine("3 - Update Record");
-Console.WriteLine("4 - Remove Record");
-Console.WriteLine("0 - Exit");
+const string FileName = "PhoneBook.txt";
 
 var records = ReadFromFile();
 
 while (true)
 {
+    Console.WriteLine("\nPhone Book Application");
+    Console.WriteLine("Select Action:");
+    Console.WriteLine("1 - Show Phone Book");
+    Console.WriteLine("2 - Add Record");
+    Console.WriteLine("3 - Update Record");
+    Console.WriteLine("4 - Remove Record");
+    Console.WriteLine("5 - Search");
+    Console.WriteLine("0 - Exit");
+
     var action = Console.ReadKey();
     Console.WriteLine();
 
@@ -29,26 +31,39 @@ while (true)
             break;
         case ConsoleKey.D2:
             Console.WriteLine("Add Record:");
-            AddRecord(records);
-            Environment.Exit(0);
+            AddRecord(ref records);
+            break;
+        case ConsoleKey.D4:
+            Console.WriteLine("Remove:");
+            RemoveRecord(records);
+            break;
+        case ConsoleKey.D5:
+            Console.WriteLine("Search:");
+            Search(records);
             break;
         default:
             Console.WriteLine("Incorrect Input!");
             break;
     }
+
+}
+
+void Search((string firstName, string lastName, string number)[] records)
+{
+    
 }
 
 void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 {
-    foreach (var record in records)
+    foreach (var record in records.Where(x => x.firstName != null))
     {
-        Console.WriteLine($"First Name: {record.firstName}, Last Name: {record.lastName}, Number: {record.number}");
+        Console.WriteLine($"First Name: {record.firstName,10},     Last Name: {record.lastName,10},     Number: {record.number}");
     }
 }
 
-void AddRecord((string firstName, string lastName, string number)[] records)
+void AddRecord(ref (string firstName, string lastName, string number)[] records)
 {
-    string name, phone, surname;
+    string name, phoneNumber, surname;
     while (true)
     {
         Console.Write("Name: ");
@@ -66,36 +81,38 @@ void AddRecord((string firstName, string lastName, string number)[] records)
         surname = Console.ReadLine();
         if (OnlyLetters(surname))
         {
-            Console.WriteLine("Invalid name.");
+            Console.WriteLine("Invalid Surname.");
             continue;
         }
         break;
     }
     while (true)
     {
-        Console.Write("Phone: ");
-        phone = Console.ReadLine();
-        if (!Regex.IsMatch(phone, @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$"))
+        Console.Write("Phone number: ");
+        phoneNumber = Console.ReadLine();
+        if (!Regex.IsMatch(phoneNumber, @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$"))
         {
-            Console.WriteLine("Invalid name.");
+            Console.WriteLine("Invalid phone number.");
             continue;
         }
         break;
     }
-    //Console.WriteLine(name + "|" + surname + "|" + phone);
-
-
-    //if (File.Exists(FileName))
-    //{
-    //    File.AppendAllText(FileName, name + "|" + surname + "|" + phone);
-    //}
-    if (records[records.Length - 1].firstName == "")
+    //Якщо масив повний, то створюємо новий, у якого довжина в 2 рази більше від основного
+    if (records[records.Length - 1].firstName != "")
     {
-        var records2 = new (string firstName, string lastName, string number)[];
-
+        var records2 = new (string firstName, string lastName, string number)[records.Length * 2];
+        Array.Copy(records, records2, records.Length);
+        records = records2;
     }
 
+    //Знаходимо перший не зайнятий елемент масиву
+    int freeCell = Array.IndexOf(records, records.FirstOrDefault(x => x.firstName == null));
 
+    records[freeCell].firstName = name;
+    records[freeCell].lastName = surname;
+    records[freeCell].number = phoneNumber;
+
+    SaveToFile(records.Where(x => x.lastName != null).ToArray());
 
     bool OnlyLetters(string name)
     {
@@ -112,9 +129,9 @@ void UpdateRecord()
 
 }
 
-void RemoveRecord()
+void RemoveRecord((string firstName, string lastName, string number)[] records)
 {
-
+    //records.Del;
 }
 
 void SaveToFile((string firstName, string lastName, string number)[] records)
@@ -143,4 +160,10 @@ void SaveToFile((string firstName, string lastName, string number)[] records)
         return records;
     }
     return Array.Empty<(string, string, string)>();
+}
+enum SearchField
+{
+    FirstName = 1,
+    LastName,
+    PhoneNumber
 }
