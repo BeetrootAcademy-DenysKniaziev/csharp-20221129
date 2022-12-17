@@ -2,16 +2,36 @@
 class Program
 {
 
+    static int GreComDiv(int x, int y)
+    {
+        if (x==0) return y;
+        while (y != 0)
+        {
+            int tmp1;
+            if (x > y)
+            {
+                tmp1 = x % y;
+            }
+            else
+            {
+                tmp1 = y % x;
+            }
+            x = y;
+            y = tmp1;
+        }
+        return x;
+
+    }
 
 
 
 
 
 
-    static int GreatestCommonDivisorRec(int x, int y)
+    static int GreComDivRec(int x, int y)
     {
         if (y == 0) return x;
-        return GreatestCommonDivisorRec(y, x % y);
+        return GreComDivRec(y, x % y);
     }
 
 
@@ -34,7 +54,7 @@ class Program
            if (!IsPrime(tmp)) continue;
                result += tmp;
 
-            Console.WriteLine($"{tmp} {result}");
+            //Console.WriteLine($"{tmp} {result}");
         }
 
         return result;
@@ -64,13 +84,14 @@ class Program
     static void Main()
     {
 
+        Console.WriteLine("Input 2 integers for")
        
-        var x = 1342;
-        var y = 56588;
+        var x = 59;
+        var y = 81;
 
-        Console.WriteLine($"Greater common divisor {x} & {y} is {GreatestCommonDivisorRec(x, y)}");
+        Console.WriteLine($"Greater common divisor {x} & {y} is {GreComDiv(x, y)}  ({GreComDivRec(x, y)})");
 
-        var z = 1000;
+        var z = 10;
 
         Console.WriteLine(PrimeNumSum(z));
 
@@ -78,7 +99,7 @@ class Program
 
         Console.WriteLine(); 
 
-        Console.WriteLine(IsPrimeSum(number));
+        Console.WriteLine(PrimeSumRec(number));
 
 
 
