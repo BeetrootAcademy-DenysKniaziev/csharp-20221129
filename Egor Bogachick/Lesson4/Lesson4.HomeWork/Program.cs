@@ -43,7 +43,7 @@ class Program
 
     static string Repeat(int value, string str)
     {
-        string text;
+        string text = str;
         for (int i = 0; i < value; i++)
         {
 
