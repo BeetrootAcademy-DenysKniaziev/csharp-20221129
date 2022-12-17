@@ -1,18 +1,35 @@
 ﻿const string FileName = "PhoneBook.txt";
 
-Console.WriteLine("Phone Book:");
+Console.WriteLine("Phone Book Application");
+Console.WriteLine("Select Action:");
 Console.WriteLine("1 - Show Phone Book");
 Console.WriteLine("2 - Add Record");
 Console.WriteLine("3 - Update Record");
 Console.WriteLine("4 - Remove Record");
 Console.WriteLine("0 - Exit");
 
-var records = new (string firstName, string lastName, string number)[1000];
-records[0] = ("Denys", "Kniaziev", "565-655-5656");
+var records = ReadFromFile();
 
-SaveToFile(records);
-records = ReadFromFile();
+while (true)
+{
+    var action = Console.ReadKey();
+    Console.WriteLine();
 
+    switch (action.Key)
+    {
+        case ConsoleKey.D1:
+            Console.WriteLine("Phone Book:");
+            ShowPhoneBook(records);
+            break;
+        case ConsoleKey.D0:
+            Console.WriteLine("Exit");
+            Environment.Exit(0);
+            break;
+        default:
+            Console.WriteLine("Incorrect Input!");
+            break;
+    }
+}
 
 void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 {
