@@ -14,6 +14,8 @@ while (true)
     Console.WriteLine("3 - Update Record");
     Console.WriteLine("4 - Remove Record");
     Console.WriteLine("5 - Search");
+    Console.WriteLine("6 - Alphabetical order");
+    Console.WriteLine("7 - Binary Search");
     Console.WriteLine("0 - Exit");
 
     var action = Console.ReadKey();
@@ -33,6 +35,10 @@ while (true)
             Console.WriteLine("Add Record:");
             AddRecord(ref records);
             break;
+        case ConsoleKey.D3:
+            Console.WriteLine("Update Record: ");
+            UpdateRecord(records);
+            break;
         case ConsoleKey.D4:
             Console.WriteLine("Remove:");
             RemoveRecord(records);
@@ -41,6 +47,14 @@ while (true)
             Console.WriteLine("Search:");
             Search(records);
             break;
+        case ConsoleKey.D6:
+            Console.WriteLine("Alphabetical Sort:");
+            AlphabeticalSort(records);
+            break;
+        case ConsoleKey.D7:
+            Console.WriteLine("Binary Search:");
+            SearchId(records);
+            break;
         default:
             Console.WriteLine("Incorrect Input!");
             break;
@@ -48,16 +62,109 @@ while (true)
 
 }
 
+void SearchId((string firstName, string lastName, string number)[] records)
+{
+    string name, lastName, phoneNumber;
+    Console.Write("Name: ");
+    name = Console.ReadLine();
+    Console.Write("LastName: ");
+    lastName = Console.ReadLine();
+    Console.Write("Phone Number: ");
+    phoneNumber = Console.ReadLine();
+    Console.WriteLine("Id in book: " + BinarySearch(records, (firstName: name, lastName: lastName, phoneNumber: phoneNumber)));
+}
+
+void AlphabeticalSort((string firstName, string lastName, string number)[] records)
+{
+    Array.Sort(records);
+    foreach (var record in records)
+        Console.WriteLine($"{record.firstName,10}{record.lastName,15}\t{record.number,10}");
+    SaveToFile(records);
+}
+
+int BinarySearch((string firstName, string lastName, string number)[] records, (string firstName, string lastName, string number) element)
+{
+    string find = element.firstName + element.lastName + element.number;
+    string[] array = new string[records.Length];
+    for (int i = 0; i < records.Length; i++)
+    {
+        array[i] = records[i].firstName + records[i].lastName + records[i].number;
+    }
+
+    int start = 0, end = array.Length;
+    while (start <= end)
+    {
+        if (array[(start + end) / 2] == find)
+            return (start + end) / 2;
+
+        else if (string.Compare(find, array[(end - start) / 2 + start]) == -1)
+            end = (end + start) / 2 - 1;
+
+        else
+            start = (end + start) / 2 + 1;
+    }
+    return -1;
+}
+
 void Search((string firstName, string lastName, string number)[] records)
 {
-    
+    SearchField searchField = new SearchField();
+    int choice = 0;
+
+    while (true)
+    {
+        Console.WriteLine("First Name - 1\nLast Name - 2\nPhone Number - 3\nExit - 0");
+        if (!int.TryParse(Console.ReadLine(), out choice) || !Enum.IsDefined(typeof(SearchField), choice))
+        {
+            Console.WriteLine("Invalid input");
+            continue;
+        }
+        searchField = (SearchField)choice;
+        switch (searchField)
+        {
+            case SearchField.FirstName:
+                SearchPerson(records, searchField);
+                break;
+            case SearchField.LastName:
+                SearchPerson(records, searchField);
+                break;
+            case SearchField.PhoneNumber:
+                SearchPerson(records, searchField);
+                break;
+            case SearchField.Skip:
+                return;
+        }
+    }
 }
+
+
+void SearchPerson((string firstName, string lastName, string number)[] records, SearchField searchField)
+{
+    Console.Write($"Enter a {searchField}: ");
+    string patternNumber = "", pattern = "";
+    if (searchField != SearchField.PhoneNumber)
+        pattern = @"^" + Console.ReadLine() + "[a-z]*$";
+    else
+    {
+        Console.WriteLine("Format AAA-BBB-CCCC");
+        patternNumber = @"^" + Console.ReadLine() + "";
+    }
+
+    foreach (var item in records)
+        if (Regex.IsMatch(item.firstName, pattern, RegexOptions.IgnoreCase) && searchField == SearchField.FirstName || Regex.IsMatch(item.lastName, pattern, RegexOptions.IgnoreCase) && searchField == SearchField.LastName || Regex.IsMatch(item.number, patternNumber) && searchField == SearchField.PhoneNumber)
+        {
+            Console.WriteLine($"First Name: {item.firstName,10},     Last Name: {item.lastName,10},     Number: {item.number}");
+        }
+}
+
+
 
 void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 {
-    foreach (var record in records.Where(x => x.firstName != null))
+    Console.WriteLine($"First Name\tLast Name\tNumber");
+    foreach (var record in records)
     {
-        Console.WriteLine($"First Name: {record.firstName,10},     Last Name: {record.lastName,10},     Number: {record.number}");
+        Console.WriteLine($"{record.firstName,10}{record.lastName,15}\t{record.number,10}");
     }
 }
 
@@ -97,22 +204,19 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
         }
         break;
     }
-    //Якщо масив повний, то створюємо новий, у якого довжина в 2 рази більше від основного
+    //Якщо масив повний, то створюємо новий, у якого довжина на 1 раз більше від основного
     if (records[records.Length - 1].firstName != "")
     {
-        var records2 = new (string firstName, string lastName, string number)[records.Length * 2];
+        var records2 = new (string firstName, string lastName, string number)[records.Length + 1];
         Array.Copy(records, records2, records.Length);
         records = records2;
     }
 
-    //Знаходимо перший не зайнятий елемент масиву
-    int freeCell = Array.IndexOf(records, records.FirstOrDefault(x => x.firstName == null));
+    records[records.Length - 1].firstName = name;
+    records[records.Length - 1].lastName = surname;
+    records[records.Length - 1].number = phoneNumber;
 
-    records[freeCell].firstName = name;
-    records[freeCell].lastName = surname;
-    records[freeCell].number = phoneNumber;
-
-    SaveToFile(records.Where(x => x.lastName != null).ToArray());
+    SaveToFile(records.ToArray());
 
     bool OnlyLetters(string name)
     {
@@ -124,7 +228,7 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     }
 }
 
-void UpdateRecord()
+void UpdateRecord((string firstName, string lastName, string number)[] records)
 {
 
 }
@@ -163,6 +267,7 @@ void SaveToFile((string firstName, string lastName, string number)[] records)
 }
 enum SearchField
 {
+    Skip = 0,
     FirstName = 1,
     LastName,
     PhoneNumber
