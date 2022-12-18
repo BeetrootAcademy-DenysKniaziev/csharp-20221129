@@ -14,7 +14,6 @@ while (true)
     Console.WriteLine("3 - Update Record");
     Console.WriteLine("4 - Remove Record");
     Console.WriteLine("5 - Search");
-    Console.WriteLine("6 - Alphabetical order");
     Console.WriteLine("7 - Binary Search");
     Console.WriteLine("0 - Exit");
 
@@ -41,15 +40,11 @@ while (true)
             break;
         case ConsoleKey.D4:
             Console.WriteLine("Remove:");
-            RemoveRecord(records);
+            RemoveRecord(ref records);
             break;
         case ConsoleKey.D5:
             Console.WriteLine("Search:");
             Search(records);
-            break;
-        case ConsoleKey.D6:
-            Console.WriteLine("Alphabetical Sort:");
-            AlphabeticalSort(records);
             break;
         case ConsoleKey.D7:
             Console.WriteLine("Binary Search:");
@@ -62,8 +57,9 @@ while (true)
 
 }
 
-void SearchId((string firstName, string lastName, string number)[] records)
+int SearchId((string firstName, string lastName, string number)[] records)
 {
+    AlphabeticalSort(records);
     string name, lastName, phoneNumber;
     Console.Write("Name: ");
     name = Console.ReadLine();
@@ -71,7 +67,9 @@ void SearchId((string firstName, string lastName, string number)[] records)
     lastName = Console.ReadLine();
     Console.Write("Phone Number: ");
     phoneNumber = Console.ReadLine();
-    Console.WriteLine("Id in book: " + BinarySearch(records, (firstName: name, lastName: lastName, phoneNumber: phoneNumber)));
+    int id = BinarySearch(records, (firstName: name, lastName: lastName, phoneNumber: phoneNumber));
+    Console.WriteLine("Id in book: " + id);
+    return id;
 }
 
 void AlphabeticalSort((string firstName, string lastName, string number)[] records)
@@ -170,6 +168,24 @@ void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 
 void AddRecord(ref (string firstName, string lastName, string number)[] records)
 {
+
+    //Якщо масив повний, то створюємо новий, у якого довжина на 1 раз більше від основного
+    if (records[records.Length - 1].firstName != "")
+    {
+        var newRecords = new (string firstName, string lastName, string number)[records.Length + 1];
+        Array.Copy(records, newRecords, records.Length);
+        records = newRecords;
+    }
+    var newRecord = CurrentInputData();
+    records[records.Length - 1].firstName = newRecord.firstName;
+    records[records.Length - 1].lastName = newRecord.lastName;
+    records[records.Length - 1].number = newRecord.number;
+
+    SaveToFile(records.ToArray());
+
+}
+(string firstName, string lastName, string number) CurrentInputData()
+{
     string name, phoneNumber, surname;
     while (true)
     {
@@ -197,45 +213,62 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Phone number: ");
         phoneNumber = Console.ReadLine();
-        if (!Regex.IsMatch(phoneNumber, @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$"))
+        if (CurrectPhoneNumber(phoneNumber))
         {
             Console.WriteLine("Invalid phone number.");
             continue;
         }
         break;
     }
-    //Якщо масив повний, то створюємо новий, у якого довжина на 1 раз більше від основного
-    if (records[records.Length - 1].firstName != "")
-    {
-        var records2 = new (string firstName, string lastName, string number)[records.Length + 1];
-        Array.Copy(records, records2, records.Length);
-        records = records2;
-    }
-
-    records[records.Length - 1].firstName = name;
-    records[records.Length - 1].lastName = surname;
-    records[records.Length - 1].number = phoneNumber;
-
-    SaveToFile(records.ToArray());
+    return (name, surname, phoneNumber);
 
     bool OnlyLetters(string name)
     {
         if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$"))
-        {
             return false;
-        }
+        return true;
+    }
+    bool CurrectPhoneNumber(string phoneNumber)
+    {
+        if (Regex.IsMatch(phoneNumber, @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$"))
+            return false;
         return true;
     }
 }
 
 void UpdateRecord((string firstName, string lastName, string number)[] records)
 {
+    Console.WriteLine("Enter the person you want to change the information for: ");
+    int id = SearchId(records);
+    if (id == -1)
+    {
+        Console.WriteLine("Person Not Found");
+        return;
+    }
+    var updateRecord = CurrentInputData();
+
+    records[id].firstName = updateRecord.firstName;
+    records[id].lastName = updateRecord.lastName;
+    records[id].number = updateRecord.number;
+    SaveToFile(records);
 
 }
 
-void RemoveRecord((string firstName, string lastName, string number)[] records)
+void RemoveRecord(ref (string firstName, string lastName, string number)[] records)
 {
-    //records.Del;
+    Console.WriteLine("Enter the person you want to delete the information for: ");
+    int id = SearchId(records);
+    if (id == -1)
+    {
+        Console.WriteLine("Person Not Found");
+        return;
+    }
+    var newRecords = new (string firstName, string lastName, string number)[records.Length - 1];
+    Array.Copy(records, 0, newRecords, 0, id);
+    Array.Copy(records, id + 1, newRecords, id, records.Length - id - 1);
+
+    records = newRecords;
+    SaveToFile(records);
 }
 
 void SaveToFile((string firstName, string lastName, string number)[] records)
