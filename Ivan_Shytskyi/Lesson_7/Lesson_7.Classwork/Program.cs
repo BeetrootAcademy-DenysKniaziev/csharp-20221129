@@ -46,7 +46,7 @@ Console.WriteLine("Classwork");
 //var str4 = $"{4 + 5}";
 //Console.WriteLine(str4);
 
-//Console.WriteLine("abdcd".CompareTo("abc"));
+Console.WriteLine("abdcd".CompareTo("abc"));
 //Console.WriteLine("abcde".Contains("bcd"));
 //Console.WriteLine(new String("abcde".Concat("bcd").ToArray()));
 //Console.WriteLine("abcde" + "bcd");
