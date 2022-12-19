@@ -27,7 +27,8 @@ namespace DiachenkoAnatolii_HomeWork6
             PrintSorting(SelectionAlgorithm(myArray));
             Console.WriteLine($"Bubble array is:");
             PrintSorting(BubbleAlgorithm(myArray));
-            //PrintSorting(InsertionAlgorithm(myArray));
+            Console.WriteLine($"Insertion array is:");
+            PrintSorting(InsertionAlgorithm(myArray));
 
         }
 
@@ -49,9 +50,7 @@ namespace DiachenkoAnatolii_HomeWork6
                 {
                     if (myArray[i] > myArray[j])
                     {
-                        var temp = myArray[j];
-                        myArray[j] = myArray[i];    
-                        myArray[i] = temp;
+                        myArray.Swap(i, j);
                     }
                 }
             }            
@@ -62,28 +61,33 @@ namespace DiachenkoAnatolii_HomeWork6
         {
             for (int i = 0; i < myArray.Length -1; i++)
             {
-                //for (int j = 0; j < myArray.Length -i; j++)
-                //{
                     if (myArray[i] > myArray[i + 1])
                     {
-                        Swap(myArray[i], myArray[i + 1]);
-                    }
-                //}
-            }
-            
-            return myArray;
+                    myArray.Swap(i, i + 1);
+                }
+            }            
+           return myArray;
         }
 
         public static int[] InsertionAlgorithm(this int[] myArray)
         {
-            return new int[10];
+            for (int i = 1; i < myArray.Length; i++)
+            {
+                var j = i;
+
+                while (myArray[i] < myArray[--j] && j > 0)
+                {
+                    myArray.Swap(i, j);
+                }
+            }
+            return myArray;
         }
 
-        public static void Swap(int value, int value1)
+        public static void Swap(this int[] myArray, int index1, int index2)
         {
-            var temp = value;
-            value1 = value;
-            value = temp;
+            var temp = myArray[index1];
+            myArray[index1] = myArray[index2];
+            myArray[index2] = temp;           
         }     
     }
 }
