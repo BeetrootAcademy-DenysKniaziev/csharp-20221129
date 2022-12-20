@@ -6,22 +6,30 @@ namespace Lesson_5.Homework
     {
         static int GCD (int x, int y)
         {
-            while (y != 0)
+            int a = 0;
+
+           
+            if (x > y)
             {
-                if (x > y)
+                while (y != 0)
                 {
                     int c = x % y;
                     x = y;
                     y = c;
-                }
-                else
-                {
-                    int c = y % x;
-                    x = x;
-                    y = c;
+                    a = x;
                 }
             }
-            return x;
+            else
+            {
+                while (x != 0)
+                {
+                    int c = y % x;
+                    y = x;
+                    x = c; ;
+                    a = y;
+                }
+            }
+           return a;
         }
         static int Suma(int n)
         {
@@ -49,11 +57,11 @@ namespace Lesson_5.Homework
 
             //Task 2
 
-            Console.WriteLine(" The sum of the primes below or equal to 10 is 2 + 3 + 5 + 7 = 17. Find the sum of all the primes below or equal to the number passed in.");
-            Console.Write("Enter number\nn = ");
-            int n = int.Parse(Console.ReadLine());
-            int sum = Suma(n);
-            Console.WriteLine($"Suma = {sum}");
+            //Console.WriteLine(" The sum of the primes below or equal to 10 is 2 + 3 + 5 + 7 = 17. Find the sum of all the primes below or equal to the number passed in.");
+            //Console.Write("Enter number\nn = ");
+            //int n = int.Parse(Console.ReadLine());
+            //int sum = Suma(n);
+            //Console.WriteLine($"Suma = {sum}");
         }
     }
 }
