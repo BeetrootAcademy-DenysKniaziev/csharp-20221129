@@ -1,4 +1,6 @@
-﻿Console.WriteLine($"MyEquals\nPass == Login {MyEquals("Pass", "Login"),5}");
+﻿using System.Text;
+
+Console.WriteLine($"MyEquals\nPass == Login {MyEquals("Pass", "Login"),5}");
 Console.WriteLine($"Pass == Logi {MyEquals("Pass", "Logi"),5}");
 Console.WriteLine($"Pass == Pass {MyEquals("Pass", "Pass"),5}\n");
 
@@ -60,12 +62,12 @@ static string Sort(string arr = "")
 }
 static char[] Duplicate(string str)
 {
-    string arr = "";
+    var ans = new StringBuilder();
     str = str.ToLower();
     for (int i = 0; i < str.Length; i++)
     {
-        if (!arr.Contains(str[i]) && str.Substring(str.IndexOf(str[i]) + 1).Contains(str[i], StringComparison.InvariantCultureIgnoreCase) == true)
-            arr += str[i];
+        if (!ans.ToString().Contains(str[i]) && str.Substring(str.IndexOf(str[i]) + 1).Contains(str[i], StringComparison.InvariantCultureIgnoreCase) == true)
+            ans.Append(str[i]);
     }
-    return arr.ToArray();
+    return ans.ToString().ToArray();
 }
