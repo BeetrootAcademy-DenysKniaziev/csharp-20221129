@@ -1,55 +1,59 @@
-﻿// Selection Sort Algorithm
-
-void selectionSort(int[] arr)
+﻿void sort(int[] arr, SortType sortType)
 {
-    for (int i = 0; i < arr.Length - 1; i++)
+    // Selection Sort Algorithm
+    if (sortType == SortType.Selection)
     {
-        int index = i;
-        for (int j = i + 1; j < arr.Length; j++)
+        for (int i = 0; i < arr.Length - 1; i++)
         {
-            if (arr[j] < arr[index])
+            int index = i;
+            for (int j = i + 1; j < arr.Length; j++)
             {
-                index = j; 
+                if (arr[j] < arr[index])
+                {
+                    index = j;
+                }
+
+            }
+            int temp = arr[index];
+            arr[index] = arr[i];
+            arr[i] = temp;
+        }
+    }
+    //Bubble Sort Algorithm
+    else if (sortType == SortType.Buble)
+    {
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            for (int j = 0; j < arr.Length - i - 1; j++)
+            {
+                if (arr[j] > arr[j + 1])
+                {
+
+                    (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
+                }
             }
 
         }
-        int temp = arr[index];
-        arr[index] = arr[i];
-        arr[i] = temp;
     }
-}
-
-//Bubble Sort Algorithm
-void bubbleSort(int[] arr)
-{
-    for (int i = 0; i < arr.Length - 1; i++)
+    //Insertion Sort
+    else if (sortType == SortType.Insertion)
     {
-        for (int j = 0; j < arr.Length - i - 1; j++)
+        for (int i = 1; i < arr.Length; i++)
         {
-            if (arr[j] > arr[j + 1])
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key)
             {
-
-                (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
+                arr[j + 1] = arr[j];
+                j = j - 1;
             }
+            arr[j + 1] = key;
         }
-           
     }
-}
-
-//Insertion Sort
-void insertionSort(int[] arr)
-{
-    for (int i = 1; i < arr.Length; i++)
+    else
     {
-        int key = arr[i];
-        int j = i - 1;
-
-        while (j >= 0 && arr[j] > key)
-        {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
+        Console.WriteLine("\nSort type is incorrect\n");
     }
 }
 
@@ -63,7 +67,16 @@ static void printArray(int[] arr)
 }
 
 int[] arr = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
-//selectionSort(arr);
-//bubbleSort(arr);
-insertionSort(arr);
 printArray(arr);
+sort(arr, SortType.Buble);
+//sort(arr, SortType.Insertion);
+//sort(arr, SortType.Selection);
+printArray(arr);
+
+enum SortType
+{
+    Selection,
+    Buble,
+    Insertion
+}
+
