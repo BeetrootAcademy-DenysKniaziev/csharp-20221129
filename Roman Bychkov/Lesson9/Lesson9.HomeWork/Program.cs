@@ -60,7 +60,11 @@ while (true)
     catch (Exception ex)
     {
         Console.WriteLine(ex.ToString() + "\nINNER EXCEPITON:\n" + ex.InnerException);
-        Console.WriteLine("Failed");
+        Console.WriteLine("Failed.");
+    }
+    finally
+    {
+        Console.WriteLine("Repeat.");
     }
 
 }
@@ -130,7 +134,6 @@ void Search((string firstName, string lastName, string number)[] records)
         Console.WriteLine("First Name - 1\nLast Name - 2\nPhone Number - 3\nExit - 0");
         try
         {
-
             choice = int.Parse(Console.ReadLine());
         }
         catch (FormatException ex)
@@ -139,11 +142,11 @@ void Search((string firstName, string lastName, string number)[] records)
             throw;
         }
         catch (OverflowException ex)
-        { 
+        {
             Console.WriteLine(ex.Message);
             throw;
         }
-        catch(ArgumentNullException ex)
+        catch (ArgumentNullException ex)
         {
             Console.WriteLine(ex.Message);
             throw;
@@ -151,7 +154,7 @@ void Search((string firstName, string lastName, string number)[] records)
 
         if (!Enum.IsDefined(typeof(SearchField), choice))
         {
-           throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException();
         }
         searchField = (SearchField)choice;
         switch (searchField)
@@ -281,20 +284,26 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
 
 void UpdateRecord((string firstName, string lastName, string number)[] records)
 {
-    Console.WriteLine("Enter the person you want to change the information for: ");
-    int id = SearchId(records);
-    if (id == -1)
+    try
     {
-        Console.WriteLine("Person Not Found");
-        return;
+        Console.WriteLine("Enter the person you want to change the information for: ");
+        int id = SearchId(records);
+        if (id == -1)
+        {
+            throw new IndexOutOfRangeException();
+        }
+        var updateRecord = CurrentInputData();
+
+        records[id].firstName = updateRecord.firstName;
+        records[id].lastName = updateRecord.lastName;
+        records[id].number = updateRecord.number;
+
+        SaveToFile(records);
     }
-    var updateRecord = CurrentInputData();
-
-    records[id].firstName = updateRecord.firstName;
-    records[id].lastName = updateRecord.lastName;
-    records[id].number = updateRecord.number;
-
-    SaveToFile(records);
+    finally
+    {
+        Console.WriteLine("End of method UpdateRecord()");
+    }
 
 }
 
@@ -306,8 +315,7 @@ void RemoveRecord(ref (string firstName, string lastName, string number)[] recor
         int id = SearchId(records);
         if (id == -1)
         {
-            Console.WriteLine("Person Not Found");
-            return;
+            throw new IndexOutOfRangeException();
         }
         var newRecords = new (string firstName, string lastName, string number)[records.Length - 1];
         Array.Copy(records, 0, newRecords, 0, id);
