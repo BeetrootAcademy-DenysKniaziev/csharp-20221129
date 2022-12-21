@@ -227,7 +227,7 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
         Console.WriteLine(ex.Message);
         throw new ArgumentException(ex.Message, ex);
     }
-    catch (IndexOutOfRangeException ex)
+    catch (IndexOutOfRangeException ex) when (records.Length == 0)
     {
         Console.WriteLine(ex.Message);
         throw new IndexOutOfRangeException(ex.Message, ex);
