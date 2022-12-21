@@ -22,28 +22,30 @@ namespace DiachenkoAnatolii_HomeWork6
 
         public static void RunSorting(this int[] myArray)
         {
-            //Console.WriteLine($"Original array is:");
-            //PrintSorting(myArray);
+            Console.WriteLine($"Original array is:");
+            PrintSorting(myArray);
 
-            //Console.WriteLine($"Selection array is:");
-            //PrintSorting(SelectionAlgorithm(myArray));
+            Console.WriteLine($"Selection array is:");
+            PrintSorting(SelectionAlgorithm(myArray));
 
-            //myArray = myArray.InputData();
+            myArray = myArray.InputData();
 
-            //Console.WriteLine($"Original array is:");
-            //PrintSorting(myArray);
+            Console.WriteLine($"Original array is:");
+            PrintSorting(myArray);
 
-            //Console.WriteLine($"Bubble array is:");
-            //PrintSorting(BubbleAlgorithm(myArray));
+            Console.WriteLine($"Bubble array is:");
+            PrintSorting(BubbleAlgorithm(myArray));
 
-            //myArray = myArray.InputData();
+            myArray = myArray.InputData();
 
-            //Console.WriteLine($"Original array is:");
-            //PrintSorting(myArray);
+            Console.WriteLine($"Original array is:");
+            PrintSorting(myArray);
 
-            //Console.WriteLine($"Insertion array is:");
-            //PrintSorting(InsertionAlgorithm(myArray));
+            Console.WriteLine($"Insertion array is:");
+            PrintSorting(InsertionAlgorithm(myArray));
+            Console.WriteLine();
 
+            Console.WriteLine("Extra task");
             myArray = myArray.InputData();
             Console.WriteLine($"Original array is:");
             PrintSorting(myArray);
@@ -121,12 +123,19 @@ namespace DiachenkoAnatolii_HomeWork6
         {
             for (int i = 1; i < myArray.Length; i++)
             {
-                var j = i;
+                var val = myArray[i];
+                var flag = 0;
 
-                while (myArray[i] < myArray[--j] && j > 0)
+                for (int j = i - 1; j >= 0 && flag != 1;)
                 {
-                    myArray.Swap(i, j);
-                }
+                    if (val < myArray[j])
+                    {
+                        myArray[j + 1] = myArray[j];
+                        j--;
+                        myArray[j + 1] = val;
+                    }
+                    else flag = 1;
+                }                
             }
             return myArray;
         }
