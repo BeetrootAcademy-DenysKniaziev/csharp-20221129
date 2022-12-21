@@ -2,8 +2,8 @@
 
 
 const string FileName = "PhoneBook.txt";
-var records = ReadFromFile();
 
+var records = ReadFromFile();
 
 while (true)
 {
@@ -59,13 +59,14 @@ while (true)
     }
     catch (Exception ex)
     {
+        Console.WriteLine(ex.ToString() + "\nINNER EXCEPITON:\n" + ex.InnerException);
+        Console.WriteLine("Failed");
     }
 
 }
 
 int SearchId((string firstName, string lastName, string number)[] records)
 {
-    AlphabeticalSort(records);
     string name, lastName, phoneNumber;
     Console.Write("Name: ");
     name = Console.ReadLine();
@@ -78,48 +79,79 @@ int SearchId((string firstName, string lastName, string number)[] records)
     return id;
 }
 
-void AlphabeticalSort((string firstName, string lastName, string number)[] records)
-{
-    Array.Sort(records);
-    SaveToFile(records);
-}
 
 int BinarySearch((string firstName, string lastName, string number)[] records, (string firstName, string lastName, string number) element)
 {
-    AlphabeticalSort(records);
-    string find = element.firstName + element.lastName + element.number;
-    string[] array = new string[records.Length];
-    for (int i = 0; i < records.Length; i++)
+    Array.Sort(records);
+    try
     {
-        array[i] = records[i].firstName + records[i].lastName + records[i].number;
+
+        string find = element.firstName + element.lastName + element.number;
+        string[] array = new string[records.Length];
+        for (int i = 0; i < records.Length; i++)
+        {
+            array[i] = records[i].firstName + records[i].lastName + records[i].number;
+        }
+
+        int start = 0, end = array.Length;
+        while (start <= end)
+        {
+            if (array[(start + end) / 2] == find)
+                return (start + end) / 2;
+
+            else if (string.Compare(find, array[(end - start) / 2 + start]) == -1)
+                end = (end + start) / 2 - 1;
+
+            else
+                start = (end + start) / 2 + 1;
+        }
+
     }
-    
-    int start = 0, end = array.Length;
-    while (start <= end)
+    catch (IndexOutOfRangeException)
     {
-        if (array[(start + end) / 2] == find)
-            return (start + end) / 2;
-
-        else if (string.Compare(find, array[(end - start) / 2 + start]) == -1)
-            end = (end + start) / 2 - 1;
-
-        else
-            start = (end + start) / 2 + 1;
+        throw;
     }
+    catch (ArgumentOutOfRangeException) { }
+    finally
+    {
+        Console.WriteLine("End of Binary Search");
+    }
+
     return -1;
 }
 
 void Search((string firstName, string lastName, string number)[] records)
 {
     SearchField searchField = new SearchField();
+    int choice = 0;
 
     while (true)
     {
         Console.WriteLine("First Name - 1\nLast Name - 2\nPhone Number - 3\nExit - 0");
-        if (!int.TryParse(Console.ReadLine(), out int choice) || !Enum.IsDefined(typeof(SearchField), choice))
+        try
         {
-            Console.WriteLine("Invalid input");
-            continue;
+
+            choice = int.Parse(Console.ReadLine());
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
+        catch (OverflowException ex)
+        { 
+            Console.WriteLine(ex.Message);
+            throw;
+        }
+        catch(ArgumentNullException ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
+
+        if (!Enum.IsDefined(typeof(SearchField), choice))
+        {
+           throw new ArgumentOutOfRangeException();
         }
         searchField = (SearchField)choice;
         switch (searchField)
@@ -171,19 +203,32 @@ void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 
 void AddRecord(ref (string firstName, string lastName, string number)[] records)
 {
-    //Якщо масив повний, то створюємо новий, у якого довжина на 1 більше від основного
-    if (records[records.Length - 1].firstName != "")
+    try
     {
-        var newRecords = new (string firstName, string lastName, string number)[records.Length + 1];
-        Array.Copy(records, newRecords, records.Length);
-        records = newRecords;
-    }
-    var newRecord = CurrentInputData();
-    records[records.Length - 1].firstName = newRecord.firstName;
-    records[records.Length - 1].lastName = newRecord.lastName;
-    records[records.Length - 1].number = newRecord.number;
+        //Якщо масив повний, то створюємо новий, у якого довжина на 1 більше від основного
+        if (records[records.Length - 1].firstName != "")
+        {
+            var newRecords = new (string firstName, string lastName, string number)[records.Length + 1];
+            Array.Copy(records, newRecords, records.Length);
+            records = newRecords;
+        }
 
-    File.AppendAllText(FileName, $"{newRecord.firstName}|{newRecord.lastName}|{newRecord.number}");
+        var newRecord = CurrentInputData();
+        records[records.Length - 1].firstName = newRecord.firstName;
+        records[records.Length - 1].lastName = newRecord.lastName;
+        records[records.Length - 1].number = newRecord.number;
+        SaveToFile(records);
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine(ex.Message);
+        throw new ArgumentException(ex.Message, ex);
+    }
+    catch (IndexOutOfRangeException ex)
+    {
+        Console.WriteLine(ex.Message);
+        throw new IndexOutOfRangeException(ex.Message, ex);
+    }
 }
 (string firstName, string lastName, string number) CurrentInputData()
 {
@@ -192,9 +237,9 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Name: ");
         name = Console.ReadLine();
-        if (OnlyLetters(name))
+        if (!OnlyLetters(name))
         {
-            throw new ArgumentException("Invalid Name.");
+            throw new ArgumentException("Invalid Name");
         }
         break;
     }
@@ -202,9 +247,9 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Surname: ");
         surname = Console.ReadLine();
-        if (OnlyLetters(surname))
+        if (!OnlyLetters(surname))
         {
-            throw new ArgumentException("Invalid Surname.");
+            throw new ArgumentException("Invalid Surname");
         }
         break;
     }
@@ -212,9 +257,9 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Phone number: ");
         phoneNumber = Console.ReadLine();
-        if (CurrectPhoneNumber(phoneNumber))
+        if (!CurrectPhoneNumber(phoneNumber))
         {
-            throw new ArgumentException("Invalid Phone number.");
+            throw new ArgumentException("Invalid Phone number");
         }
         break;
     }
@@ -223,83 +268,78 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     bool OnlyLetters(string name)
     {
         if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$"))
-            return false;
-        return true;
+            return true;
+        return false;
     }
     bool CurrectPhoneNumber(string phoneNumber)
     {
         if (Regex.IsMatch(phoneNumber, @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$"))
-            return false;
-        return true;
+            return true;
+        return false;
     }
 }
 
 void UpdateRecord((string firstName, string lastName, string number)[] records)
 {
-    try
-    {
-        Console.WriteLine("Enter the person you want to change the information for: ");
-        int id = SearchId(records);
-        if (id == -1)
-        {
-            throw new IndexOutOfRangeException("Person Not Found.");
-        }
-        var updateRecord = CurrentInputData();
-        records[id].firstName = updateRecord.firstName;
-        records[id].lastName = updateRecord.lastName;
-        records[id].number = updateRecord.number;
-        SaveToFile(records);
-    }
-    catch (ArgumentException ex)
-    {
-        Console.WriteLine(ex.Message);
-        
-    }
-    catch(IndexOutOfRangeException ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-    catch(NullReferenceException ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
-    finally
-    {
-        Console.WriteLine("UpdateRecord: failed.");
-    }
-}
-
-void RemoveRecord(ref (string firstName, string lastName, string number)[] records)
-{
-    Console.WriteLine("Enter the person you want to delete the information for: ");
+    Console.WriteLine("Enter the person you want to change the information for: ");
     int id = SearchId(records);
     if (id == -1)
     {
         Console.WriteLine("Person Not Found");
         return;
     }
-    var newRecords = new (string firstName, string lastName, string number)[records.Length - 1];
-    Array.Copy(records, 0, newRecords, 0, id);
-    Array.Copy(records, id + 1, newRecords, id, records.Length - id - 1);
+    var updateRecord = CurrentInputData();
 
-    records = newRecords;
+    records[id].firstName = updateRecord.firstName;
+    records[id].lastName = updateRecord.lastName;
+    records[id].number = updateRecord.number;
+
     SaveToFile(records);
+
+}
+
+void RemoveRecord(ref (string firstName, string lastName, string number)[] records)
+{
+    try
+    {
+        Console.WriteLine("Enter the person you want to delete the information for: ");
+        int id = SearchId(records);
+        if (id == -1)
+        {
+            Console.WriteLine("Person Not Found");
+            return;
+        }
+        var newRecords = new (string firstName, string lastName, string number)[records.Length - 1];
+        Array.Copy(records, 0, newRecords, 0, id);
+        Array.Copy(records, id + 1, newRecords, id, records.Length - id - 1);
+
+        records = newRecords;
+        Console.WriteLine("Deleted");
+        SaveToFile(records);
+    }
+    finally
+    {
+        Console.WriteLine("End of method RemoveRecord()");
+    }
 }
 
 void SaveToFile((string firstName, string lastName, string number)[] records)
 {
+    Array.Sort(records);
     var data = new string[records.Length];
     for (int i = 0; i < records.Length; i++)
     {
         var record = records[i];
         data[i] = $"{record.firstName}|{record.lastName}|{record.number}";
     }
-
-    File.WriteAllLines(FileName, data);
+    try
+    {
+        File.WriteAllLines(FileName, data);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Cannot write in file.\n" + ex.Message);
+    }
 }
 
 (string firstName, string lastName, string number)[] ReadFromFile()
