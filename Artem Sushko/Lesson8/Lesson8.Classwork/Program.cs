@@ -2,19 +2,11 @@
 
 const string FileName = "PhoneBook.txt";
 
-Console.Write("Enter the amount of strings in your PhoneBook: ");
-var length = int.Parse(Console.ReadLine());
-var records = new (string firstname, string lastname, string number)[length];
-for (int i = 0; i < records.Length; i++)
-{
-    Console.WriteLine($"\nEnter {i + 1} string in your PhoneBook: ");
-    Console.Write("First Name: ");
-    records[i].firstname = Console.ReadLine();
-    Console.Write("Last Name: ");
-    records[i].lastname = Console.ReadLine();
-    Console.Write("Phone Number(xxx-xxx-xxxx): ");
-    records[i].number = Console.ReadLine();
-}
+var records = new (string firstname, string lastname, string number)[100];
+
+records[0].firstname = "Artem";
+records[0].lastname = "Sushko";
+records[0].number = "111-111-1111";
 SaveToFile(records);
 
 while (true)
@@ -66,7 +58,7 @@ void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 {
     for (int i = 0; i < records.Length; i++)
     {
-        if (records[i].firstName != "")
+        if (records[i].firstName != "" || records[i].lastName != "" || records[i].number != "")
         {
             Console.WriteLine($"First Name: {records[i].firstName}, Last Name: {records[i].lastName}, Number: {records[i].number}");
         }
@@ -103,53 +95,53 @@ void UpdateRecord((string firstName, string lastName, string number)[] records)
     {
         Console.Clear();
         Console.WriteLine("What do you want to update?\nSellect: 1-First Name\n\t 2-Last Name\n\t 3-Phone Number");
-        var select = Console.ReadLine();
-        Console.Write("Enter your Phone Number(xxx-xxx-xxxx): ");
-        var number = Console.ReadLine();
-
-        switch (select)
+        var select = int.Parse(Console.ReadLine());
+        if (select > 0 && select < 4)
         {
-            case "1":
-                for (int i = 0; i < records.Length; i++)
-                {
-                    if (Regex.IsMatch(records[i].number, number))
+            Console.Write("Enter your Phone Number(xxx-xxx-xxxx): ");
+            var number = Console.ReadLine();
+
+            switch (select)
+            {
+                case 1:
+                    for (int i = 0; i < records.Length; i++)
                     {
-                        Console.Write("Enter a NEW First Name: ");
-                        records[i].firstName = Console.ReadLine();
-                        finish = true;
-                        break;
+                        if (Regex.IsMatch(records[i].number, number))
+                        {
+                            Console.Write("Enter a NEW First Name: ");
+                            records[i].firstName = Console.ReadLine();
+                            finish = true;
+                            break;
+                        }
                     }
-                }
-                break;
-            case "2":
-                for (int i = 0; i < records.Length; i++)
-                {
-                    if (Regex.IsMatch(records[i].number, number))
+                    break;
+                case 2:
+                    for (int i = 0; i < records.Length; i++)
                     {
-                        Console.Write("Enter a NEW Last Name: ");
-                        records[i].lastName = Console.ReadLine();
-                        finish = true;
-                        break;
+                        if (Regex.IsMatch(records[i].number, number))
+                        {
+                            Console.Write("Enter a NEW Last Name: ");
+                            records[i].lastName = Console.ReadLine();
+                            finish = true;
+                            break;
+                        }
                     }
-                }
-                break;
-            case "3":
-                for (int i = 0; i < records.Length; i++)
-                {
-                    if (Regex.IsMatch(records[i].number, number))
+                    break;
+                case 3:
+                    for (int i = 0; i < records.Length; i++)
                     {
-                        Console.Write("Enter a NEW Phone Number: ");
-                        records[i].number = Console.ReadLine();
-                        finish = true;
-                        break;
+                        if (Regex.IsMatch(records[i].number, number))
+                        {
+                            Console.Write("Enter a NEW Phone Number: ");
+                            records[i].number = Console.ReadLine();
+                            finish = true;
+                            break;
+                        }
                     }
-                }
-                break;
-            default:
-                Console.WriteLine("Incorrect Input!");
-                break;
+                    break;
+            }
         }
-        break;
+        else Console.WriteLine("Incorrect Input!");
     }
     SaveToFile(records);
     Console.WriteLine("Your Record has updated!");
@@ -164,23 +156,16 @@ void RemoveRecord((string firstName, string lastName, string number)[] records)
 
         Console.WriteLine("Enter the Phone Number that you want to delete:");
         var numbers = Console.ReadLine();
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < records.Length; i++)
         {
             if (Regex.IsMatch(records[i].number, numbers))
             {
-                for (int k = 0; k < records.Length; i++)
-                {
-                    if (Regex.IsMatch(records[i].number, numbers))
-                    {
-                        records[i].number = null;
-                        records[i].lastName = null;
-                        records[i].firstName = null;
-                        SaveToFile(records);
-                        Console.WriteLine("Your Phone number has deleted");
-                        finish = true;
-                        break;
-                    }
-                }
+                records[i].number = null;
+                records[i].lastName = null;
+                records[i].firstName = null;
+                SaveToFile(records);
+                Console.WriteLine("Your Phone number has deleted");
+                finish = true;
                 break;
             }
         }
@@ -192,8 +177,7 @@ void SaveToFile((string firstName, string lastName, string number)[] records)
     var data = new string[records.Length];
     for (int i = 0; i < records.Length; i++)
     {
-        var record = records[i];
-        data[i] = $"{record.firstName}|{record.lastName}|{record.number}";
+        data[i] = $"{records[i].firstName}|{records[i].lastName}|{records[i].number}";
     }
 
     File.WriteAllLines(FileName, data);
