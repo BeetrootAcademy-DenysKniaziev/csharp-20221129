@@ -32,7 +32,7 @@ class Sort
     {
 
         for (int i = 0; i < arr.Length; i++)
-            for (int j = i + 1; j < arr.Length-1; j++)
+            for (int j = 0; j < arr.Length-i-1; j++)
                 if (arr[j] > arr[j+1])
                 { 
                     int tmp = arr[j+1];
