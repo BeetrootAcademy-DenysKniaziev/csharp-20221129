@@ -59,7 +59,6 @@ while (true)
 
 int SearchId((string firstName, string lastName, string number)[] records)
 {
-    AlphabeticalSort(records);
     string name, lastName, phoneNumber;
     Console.Write("Name: ");
     name = Console.ReadLine();
@@ -72,15 +71,10 @@ int SearchId((string firstName, string lastName, string number)[] records)
     return id;
 }
 
-void AlphabeticalSort((string firstName, string lastName, string number)[] records)
-{
-    Array.Sort(records);
-    SaveToFile(records);
-}
 
 int BinarySearch((string firstName, string lastName, string number)[] records, (string firstName, string lastName, string number) element)
 {
-    AlphabeticalSort(records);
+    Array.Sort(records);
     string find = element.firstName + element.lastName + element.number;
     string[] array = new string[records.Length];
     for (int i = 0; i < records.Length; i++)
@@ -176,8 +170,7 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     records[records.Length - 1].firstName = newRecord.firstName;
     records[records.Length - 1].lastName = newRecord.lastName;
     records[records.Length - 1].number = newRecord.number;
-       
-    File.AppendAllText(FileName, $"{newRecord.firstName}|{newRecord.lastName}|{newRecord.number}");
+    SaveToFile(records);
 }
 (string firstName, string lastName, string number) CurrentInputData()
 {
@@ -186,7 +179,7 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Name: ");
         name = Console.ReadLine();
-        if (OnlyLetters(name))
+        if (!OnlyLetters(name))
         {
             Console.WriteLine("Invalid name.");
             continue;
@@ -197,7 +190,7 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Surname: ");
         surname = Console.ReadLine();
-        if (OnlyLetters(surname))
+        if (!OnlyLetters(surname))
         {
             Console.WriteLine("Invalid Surname.");
             continue;
@@ -208,7 +201,7 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     {
         Console.Write("Phone number: ");
         phoneNumber = Console.ReadLine();
-        if (CurrectPhoneNumber(phoneNumber))
+        if (!CurrectPhoneNumber(phoneNumber))
         {
             Console.WriteLine("Invalid phone number.");
             continue;
@@ -220,14 +213,14 @@ void AddRecord(ref (string firstName, string lastName, string number)[] records)
     bool OnlyLetters(string name)
     {
         if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$"))
-            return false;
-        return true;
+            return true;
+        return false;
     }
     bool CurrectPhoneNumber(string phoneNumber)
     {
         if (Regex.IsMatch(phoneNumber, @"^[0-9]{3}-[0-9]{3}-[0-9]{4}$"))
-            return false;
-        return true;
+            return true;
+        return false;
     }
 }
 
@@ -245,6 +238,7 @@ void UpdateRecord((string firstName, string lastName, string number)[] records)
     records[id].firstName = updateRecord.firstName;
     records[id].lastName = updateRecord.lastName;
     records[id].number = updateRecord.number;
+
     SaveToFile(records);
 
 }
@@ -263,11 +257,13 @@ void RemoveRecord(ref (string firstName, string lastName, string number)[] recor
     Array.Copy(records, id + 1, newRecords, id, records.Length - id - 1);
 
     records = newRecords;
+    Console.WriteLine("Deleted");
     SaveToFile(records);
 }
 
 void SaveToFile((string firstName, string lastName, string number)[] records)
 {
+    Array.Sort(records);
     var data = new string[records.Length];
     for (int i = 0; i < records.Length; i++)
     {
