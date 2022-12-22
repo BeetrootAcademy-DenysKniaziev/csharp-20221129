@@ -184,16 +184,19 @@ void RemoveRecord((string FirstName, string LastName, string number)[] records)
     {
         if (Regex.IsMatch(records[i].number, num, RegexOptions.IgnoreCase))
         {
-            count = i; 
+            count = i;
             break;
-        } 
+        }
     }
     var records2 = new (string FirstName, string LastName, string number)[records.Length - 1];
-    for (int i = 0; i < records.Length; i++)
-    {
-        if (i < count || i > count)
-        records2[i] = records[i];
+        for (int i = 0; i < records.Length; i++)
+        {
+            if (i < count)
+                records2[i] = records[i];
+            else if (i > count)
+                records2[i-1] = records[i];
     }
+    
     SaveToFile(records2);
 }
 void SaveToFile((string FirstName, string LastName, string number)[] records)
