@@ -1,4 +1,5 @@
-﻿Console.WriteLine("Task 1");
+﻿
+Console.WriteLine("Task 1");
 
 var firstNum = 0;
 var secondNum = 0;
@@ -48,24 +49,24 @@ Console.Write($"{res}");
 
 for (int i = 2; i <= value; i++)
 {
-	for (int j = 2; j < i; j++)
-	{
-		if (i % j != 0)
-		{
-			primeNum = i;
-		}
-		else
-		{
-			primeNum = 0;
-			break;
-		}
-	}
-	if (primeNum != 0)
-	{
+    for (int j = 2; j < i; j++)
+    {
+        if (i % j != 0)
+        {
+            primeNum = i;
+        }
+        else
+        {
+            primeNum = 0;
+            break;
+        }
+    }
+    if (primeNum != 0)
+    {
         Console.Write($",{primeNum}");
     }
-	
-	res += primeNum;
+
+    res += primeNum;
 }
 
 Console.WriteLine($"\nYour sum of prime numbers from the number {value} = [{res}] ");
