@@ -73,7 +73,7 @@ char[] Duplicate(string str)
 }
 
 
-//перревірка
+//перевірка
 Console.WriteLine("Завдання 1:");
 string str1 = "Hello";
 string str2 = "Hello";
