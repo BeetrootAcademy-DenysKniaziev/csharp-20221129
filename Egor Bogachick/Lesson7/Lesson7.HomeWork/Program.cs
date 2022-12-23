@@ -56,8 +56,17 @@ string Sort(string str)
 
 char[] Duplicate(string str)
 {
-    foreach (char word in str)
+    string temp = "";
+    for (int i = 0; i < str.Length - 1; i++)
     {
-
+        for (int j = i; j < str.Length - 1; j++)
+        {
+            if (str[j] != ' ' && str[i] == str[j])
+            {
+                temp += str[i];
+            }
+        }
     }
+    char[] arr = temp.ToCharArray();
+    return arr;
 }
