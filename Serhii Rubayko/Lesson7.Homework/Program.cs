@@ -1,0 +1,16 @@
+﻿class String
+{
+
+
+
+
+
+
+}
+
+static  Main()
+{
+
+
+
+}
