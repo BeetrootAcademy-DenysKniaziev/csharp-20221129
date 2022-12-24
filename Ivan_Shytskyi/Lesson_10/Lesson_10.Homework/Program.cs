@@ -69,10 +69,6 @@ class Author
 }
 class Book
 {
-    //private string _name;
-    //private Author _author;
-    //private int _year;
-    //private int _numberOfBooks;
     public string Name { get; set; }
     public Author Author { get; set; }
     public int Year { get; set; }
