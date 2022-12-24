@@ -22,29 +22,24 @@ class Libraries
         get { return _libraryNumber; } 
         set { _libraryNumber = value; } 
     }
-    public int NumberOfBooks
+    public int NumberOfAllBooks
     {
         get { return _numberOfAllBooks; }
         set { _numberOfAllBooks = value; }
     }
-    public int BooksAvailable
-    {
-        get { return _booksAvailable; }
-        set { _booksAvailable = value; }
-    }
+
     
-    public Libraries (string Country, string City, string Street, string NumberOfHouse, int libraryNumber, int numberOfAllBooks, int booksAvailable)
+    public Libraries (string Country, string City, string Street, string NumberOfHouse, int libraryNumber, int numberOfAllBooks)
     {
         Location a = new Location(Country, City, Street, NumberOfHouse);
         Location = a._address;
         LibraryNumber = libraryNumber;
-        NumberOfBooks = numberOfAllBooks;
-        BooksAvailable = booksAvailable;
+        NumberOfAllBooks = numberOfAllBooks;
     }
     public void Info()
     {
-       Console.WriteLine($"Location library: {_location}" +
-           $"\nLibrary number - {_libraryNumber}\nNumber Of books - {_numberOfAllBooks}\nBooks available - {_booksAvailable}"); 
+       Console.WriteLine($"Location library: {Location}" +
+           $"\nLibrary number - {LibraryNumber}\nNumber Of all books - {NumberOfAllBooks}"); 
     }
     public void OpenClose()
     {
@@ -63,14 +58,21 @@ class Libraries
 }
 class Author
 {
-
+    private string _dateOfBorn;
+    private string _dateOfDie;
+    public string LastName { get; set; }
+    public string FirstName { get; set; }
+    public string DateOfBorn { get; set; }
+    public string DateOfDie { get; set; }
+    public string FullName => LastName + " " + FirstName;
+    public string DateOfBornAndDie => DateOfBorn + "-" + DateOfDie;
 }
 class Book
 {
-    private string _name;
-    private Author _author;
-    private int _year;
-    private int _numberOfBooks;
+    //private string _name;
+    //private Author _author;
+    //private int _year;
+    //private int _numberOfBooks;
     public string Name { get; set; }
     public Author Author { get; set; }
     public int Year { get; set; }
@@ -89,22 +91,30 @@ class Book
         else
             Console.WriteLine($"{Name} is not available");
     }
+    public void BookInfo()
+    {
+        Console.WriteLine($"Information of book: {Name}" +
+            $"\nAuthor - {Author.FullName}\nNumber Of books - {NumberOfBooks}\nYear - {Year}");
+    }
 }
-
-class User
-{
-
-}
-
 class Program
 {
     public static void Main()
     {
-        var l1= new Libraries("uk", "london", "streat_1", "12", 1, 100, 55);
-        Console.WriteLine(l1.LibraryNumber);
+        Author author1 = new Author
+        {
+            LastName = "King",
+            FirstName = "Stephen",
+            DateOfBorn = "21.09.1947",
+            DateOfDie = " "
+        };
+        Book book1 = new Book("The Green Mile", author1, 1996, 47);
+        //Console.WriteLine($"{book1.Author.FirstName} {book1.Author.LastName}");
+        var l1 = new Libraries("uk", "london", "streat_1", "12", 1, 100);
         l1.OpenClose();
         l1.Info();
-
+        book1.BookInfo();
+        book1.Available();
     }
 }
 
