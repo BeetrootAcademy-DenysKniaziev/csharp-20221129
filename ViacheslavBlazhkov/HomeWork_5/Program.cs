@@ -1,19 +1,19 @@
-﻿// Task 1 -------------------------------------------------------
-//static int LargestMultiple(int firstValue, int secondValue)
-//{
-//    if (firstValue < 1 || secondValue < 1)
-//    { 
-//        Console.Write("Incorect input, ");
-//        return -1;
-//    }
+﻿Task 1------------------------------------------------------ -
+static int LargestMultiple(int firstValue, int secondValue)
+{
+	if (firstValue < 1 || secondValue < 1)
+	{
+		Console.Write("Incorect input, ");
+		return -1;
+	}
 
-//    int min = Math.Min(firstValue, secondValue);
-//    for (int i = min; ; i--)
-//    {
-//        if (firstValue % i == 0 && secondValue % i == 0) return i;
-//    }
-//}
-//Console.WriteLine(LargestMultiple(0, 15));
+	int min = Math.Min(firstValue, secondValue);
+	for (int i = min; ; i--)
+	{
+		if (firstValue % i == 0 && secondValue % i == 0) return i;
+	}
+}
+Console.WriteLine(LargestMultiple(0, 15));
 
 // Task 2 -------------------------------------------------------
 static bool PrimesSum(int number)
