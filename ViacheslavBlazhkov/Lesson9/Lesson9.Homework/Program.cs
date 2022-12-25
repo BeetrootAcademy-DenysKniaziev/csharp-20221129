@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 const string FileName = "PhoneBook.txt";
 
@@ -11,7 +12,7 @@ Console.WriteLine("5 - Search Record");
 Console.WriteLine("6 - Sort Records");
 Console.WriteLine("0 - Exit");
 
-while (true) 
+while (true)
 {
     Console.Write("\nSelect Action: ");
     var records = ReadFromFile();
@@ -67,18 +68,36 @@ void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 {
     foreach (var record in records)
     {
-        Console.WriteLine($"First Name: {record.firstName}, Last Name: {record.lastName}, Number: {record.number}");        
+        Console.WriteLine($"First Name: {record.firstName}, Last Name: {record.lastName}, Number: {record.number}");
     }
 }
 
 void AddRecord((string firstName, string lastName, string number)[] records)
 {
-    Console.Write("Enter First Name: "); 
+    Console.Write("Enter First Name: ");
     string firstName = Console.ReadLine();
-    Console.Write("Enter Last Name: "); 
+    Console.Write("Enter Last Name: ");
     string lastName = Console.ReadLine();
-    Console.Write("Enter Number: "); 
+    Console.Write("Enter Number: ");
     string number = Console.ReadLine();
+
+    if (number == "" || firstName == "" || lastName == "")
+    {
+        Console.WriteLine("All of fields must be filled!");
+        return;
+    }
+
+    Regex numberRegex = new Regex(@"\d{3}-\d{3}-\d{4}");
+    MatchCollection matches = numberRegex.Matches(number);
+    if (matches.Count > 0)
+    {
+        foreach (Match match in matches) Console.WriteLine("Correct number!");
+    }
+    else
+    { 
+        Console.WriteLine("Invalid number!"); 
+        return; 
+    }
 
     var record = (firstName, lastName, number);
 
@@ -93,7 +112,8 @@ void AddRecord((string firstName, string lastName, string number)[] records)
 void UpdateRecord((string firstName, string lastName, string number)[] records)
 {
     Console.WriteLine("Enter Last Name: "); string edit = Console.ReadLine();
-
+    string matchS = "";
+    
     for (int item = 0; item < records.Length; item++)
     {
         if (records[item].lastName == edit)
@@ -102,6 +122,7 @@ void UpdateRecord((string firstName, string lastName, string number)[] records)
             Console.WriteLine($"First Name: {records[item].firstName}, Last Name: {records[item].lastName}, Number: {records[item].number}");
             int index = item;
             var input = Console.ReadLine();
+            matchS = "S";
 
             if (input.ToUpper() == "Y")
             {
@@ -111,6 +132,24 @@ void UpdateRecord((string firstName, string lastName, string number)[] records)
                 string lastName = Console.ReadLine();
                 Console.Write("Enter Number: ");
                 string number = Console.ReadLine();
+
+                if (number == "" || firstName == "" || lastName == "")
+                {
+                    Console.WriteLine("All of fields must be filled!");
+                    return;
+                }
+
+                Regex numberRegex = new Regex(@"\d{3}-\d{3}-\d{4}");
+                MatchCollection matches = numberRegex.Matches(number);
+                if (matches.Count > 0)
+                {
+                    foreach (Match match in matches) Console.WriteLine("Correct number!");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid number!");
+                    return;
+                }
 
                 records[item].firstName = firstName; records[item].lastName = lastName; records[item].number = number;
                 Console.WriteLine("Number was updated!");
@@ -122,17 +161,15 @@ void UpdateRecord((string firstName, string lastName, string number)[] records)
                 continue;
             }
         }
-        else
-        {
-            Console.WriteLine("Incorrect input");
-        }
     }
+    if (matchS == "") Console.WriteLine("Record doesn't exists!");
 }
 
 void RemoveRecord((string firstName, string lastName, string number)[] records)
 {
     Console.Write("Enter Last Name: ");
     string delete = Console.ReadLine();
+    string matchS = "";
 
     for (int item = 0; item < records.Length; item++)
     {
@@ -142,6 +179,7 @@ void RemoveRecord((string firstName, string lastName, string number)[] records)
             Console.WriteLine($"First Name: {records[item].firstName}, Last Name: {records[item].lastName}, Number: {records[item].number}");
             int index = item;
             var input = Console.ReadLine();
+            matchS = "S";
 
             if (input.ToUpper() == "Y")
             {
@@ -152,7 +190,7 @@ void RemoveRecord((string firstName, string lastName, string number)[] records)
                     {
                         newRecords[i] = records[i];
                     }
-                    else if(i > index)
+                    else if (i > index)
                     {
                         newRecords[i - 1] = records[i];
                     }
@@ -165,11 +203,8 @@ void RemoveRecord((string firstName, string lastName, string number)[] records)
                 continue;
             }
         }
-        else
-        {
-            Console.WriteLine("Incorrect input");
-        }
     }
+    if (matchS == "") Console.WriteLine("Record doesn't exists!");
 }
 
 void SearchRecord((string firstName, string lastName, string number)[] records)
@@ -238,6 +273,9 @@ void SearchRecord((string firstName, string lastName, string number)[] records)
             }
             Console.WriteLine("Incorrect input or Record doesn't exist");
             break;
+         default:
+            Console.WriteLine("Incorrect input!");
+            break;
     }
 }
 
@@ -245,21 +283,32 @@ void SortRecords((string firstName, string lastName, string number)[] records)
 {
     Console.WriteLine("Choose parameter to sort records: (1 - First Name, 2 - Last Name, 3 - Number)");
     var param = Console.ReadKey();
+    if (param.Key != ConsoleKey.D1 && param.Key != ConsoleKey.D2 && param.Key != ConsoleKey.D3)
+    {
+        Console.WriteLine("\nIncorrect input!");
+        return;
+    }
+
     Console.WriteLine("\nChoose sort direction: (1 - Ascending, 2 - Descending)");
     var dir = Console.ReadKey(); Console.WriteLine();
+    if (dir.Key != ConsoleKey.D1 && dir.Key != ConsoleKey.D2)
+    {
+        Console.WriteLine("\nIncorrect input!");
+        return;
+    }
 
     var sorted = records;
 
-    switch(param.Key)
+    switch (param.Key)
     {
         case ConsoleKey.D1:
             switch (dir.Key)
             {
-                case ConsoleKey.D1: 
-                    sorted = records.OrderBy(x => x.firstName).ToArray(); 
+                case ConsoleKey.D1:
+                    sorted = records.OrderBy(x => x.firstName).ToArray();
                     break;
                 case ConsoleKey.D2:
-                    sorted = records.OrderByDescending(x => x.firstName).ToArray(); 
+                    sorted = records.OrderByDescending(x => x.firstName).ToArray();
                     break;
             }
             break;
@@ -306,7 +355,7 @@ void SaveToFile((string firstName, string lastName, string number)[] records)
 
 (string firstName, string lastName, string number)[] ReadFromFile()
 {
-    if(File.Exists(FileName))
+    if (File.Exists(FileName))
     {
         var data = File.ReadAllLines(FileName);
         var records = new (string firstName, string lastName, string number)[data.Length];
