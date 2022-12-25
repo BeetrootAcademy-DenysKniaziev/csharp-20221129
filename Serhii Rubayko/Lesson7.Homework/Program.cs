@@ -1,4 +1,4 @@
-﻿class Sring
+﻿class String
 {
     static bool SringEqual(string word1, string word2)
     {
@@ -7,6 +7,16 @@
         return false;
     }
 
+    static int NumberofChars(string sentence)
+    {
+        //int tmp = 0;
+
+        //sentence = "to be or not to be";
+              
+        
+        return sentence.Length;
+
+    }
       
 
 
@@ -17,6 +27,12 @@
 
         Console.WriteLine(SringEqual(c, d));
 
+        var sentence1 = "one two three - rat on the tree";
+
+        //int A = NumberofChars(sentence1);
+
+        Console.WriteLine($"Sentence {sentence1} contain {NumberofChars(sentence1)} chars" );
+        
 
     }
 }
