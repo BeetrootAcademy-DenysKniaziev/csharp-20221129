@@ -1,9 +1,11 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 class Program
 {
     static void Main()
     {
+
         var pup = new Pupil()
         {
             Name = "Vladislav",
@@ -17,12 +19,54 @@ class Program
 }
 class Pupil
 {
-    public string Name { get; set; }
-    public string LastName { get; set; }
+    public string Name
+    {
+        get => Name;
+        set
+        {
+            if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
+                Name = value;
+            else
+                throw new ArgumentException("Invalid Name");
+        }
 
-    public long PhoneNumber { get; set; }
+    }
+    public string LastName
+    {
+        get => LastName;
+        set
+        {
+            if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
+                LastName = value;
+            else
+                throw new ArgumentException("Invalid LastName");
+        }
+    }
 
-    public DateTime DateOfBorn { get; set; }
+    public long PhoneNumber
+    {
+        get => PhoneNumber;
+        set
+        {
+            if (Regex.IsMatch(value.ToString(), @"^[0-9]{9}$"))
+                PhoneNumber = value;
+            else
+                throw new ArgumentException("Invalid PhoneNumber");
+        }
+    }
+
+    public DateTime DateOfBorn
+    {
+        get => DateOfBorn;
+
+        set
+        {
+            if (DateOfBorn < DateTime.Now.AddYears(-4))
+                throw new ArgumentException("The child is too small");
+            else
+                DateOfBorn = value;
+        }
+    }
 
     public override string ToString()
     {
@@ -32,9 +76,41 @@ class Pupil
 }
 class Teacher
 {
-    public string Name { get; set; }
-    public string LastName { get; set; }
-    public long PhoneNumber { get; set; }
+    public string Name
+    {
+        get => Name;
+        set
+        {
+            if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
+                Name = value;
+            else
+                throw new ArgumentException("Invalid Name");
+        }
+
+    }
+    public string LastName
+    {
+        get => LastName;
+        set
+        {
+            if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
+                LastName = value;
+            else
+                throw new ArgumentException("Invalid LastName");
+        }
+
+    }
+    public long PhoneNumber
+    {
+        get => PhoneNumber;
+        set
+        {
+            if (Regex.IsMatch(value.ToString(), @"^[0-9]{9}$"))
+                PhoneNumber = value;
+            else
+                throw new ArgumentException("Invalid PhoneNumber");
+        }
+    }
 
     public Subject[] Subjects { get; }
 
