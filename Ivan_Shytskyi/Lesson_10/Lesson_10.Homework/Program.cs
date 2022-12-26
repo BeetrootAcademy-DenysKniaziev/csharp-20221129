@@ -10,7 +10,6 @@ class Libraries
 {
     public int _libraryNumber;
     private int _numberOfAllBooks;
-    private int _booksAvailable;
     private string _location;
     public string Location
     {
@@ -44,13 +43,14 @@ class Libraries
     public void OpenClose()
     {
         DateTime dt = new DateTime();
-        DateTime dt1 = new DateTime();
-        DateTime dt2 = new DateTime();
         dt = DateTime.Now;
-        dt1 = dt1.AddHours(9);
-        dt2 = dt2.AddHours(17);
-        Console.WriteLine($"Time work librarie: {dt1.ToString("HH:mm")} - {dt2.ToString("HH:mm")}");
-        if (dt > dt1 && dt < dt2)
+        TimeOnly t = new TimeOnly(9, 0);
+        TimeOnly t1 = new TimeOnly(17, 0);
+        TimeOnly t0 = new TimeOnly();
+        t0 = TimeOnly.FromDateTime(dt);
+
+        Console.WriteLine($"Time work librarie: {t} - {t1}");
+        if (t0 > t && t0 < t1)
             Console.WriteLine("Libraries is open");
         else
             Console.WriteLine("Libraries is close");
@@ -58,14 +58,12 @@ class Libraries
 }
 class Author
 {
-    private string _dateOfBorn;
-    private string _dateOfDie;
     public string LastName { get; set; }
     public string FirstName { get; set; }
     public string DateOfBorn { get; set; }
     public string DateOfDie { get; set; }
     public string FullName => LastName + " " + FirstName;
-    public string DateOfBornAndDie => DateOfBorn + "-" + DateOfDie;
+    public string DateOfBornAndDie => DateOfBorn + " - " + DateOfDie;
 }
 class Book
 {
@@ -90,7 +88,7 @@ class Book
     public void BookInfo()
     {
         Console.WriteLine($"Information of book: {Name}" +
-            $"\nAuthor - {Author.FullName}\nNumber Of books - {NumberOfBooks}\nYear - {Year}");
+            $"\nAuthor - {Author.FullName} ({Author.DateOfBornAndDie})\nNumber Of books - {NumberOfBooks}\nYear - {Year}");
     }
 }
 class Program
@@ -102,15 +100,18 @@ class Program
             LastName = "King",
             FirstName = "Stephen",
             DateOfBorn = "21.09.1947",
-            DateOfDie = " "
+            DateOfDie = "_"
         };
-        Book book1 = new Book("The Green Mile", author1, 1996, 47);
-        //Console.WriteLine($"{book1.Author.FirstName} {book1.Author.LastName}");
+        Book book1 = new Book("The Green Mile", author1, 1996, 0);
         var l1 = new Libraries("uk", "london", "streat_1", "12", 1, 100);
         l1.OpenClose();
+        Console.WriteLine(new string ('*',20));
         l1.Info();
+        Console.WriteLine(new string('*', 20));
         book1.BookInfo();
+        Console.WriteLine(new string('*', 20));
         book1.Available();
+        Console.WriteLine(new string('*', 20));
     }
 }
 
