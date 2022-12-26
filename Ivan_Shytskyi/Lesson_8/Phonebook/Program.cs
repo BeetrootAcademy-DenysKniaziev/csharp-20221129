@@ -46,7 +46,7 @@ while (true)
         case ConsoleKey.D3:
             Console.WriteLine("UpdateRecord:");
             Console.WriteLine();
-            UpdateRecord();
+            UpdateRecord(records);
             Console.WriteLine(new string('*', 30));
             break;
         case ConsoleKey.D4:
@@ -114,7 +114,7 @@ void AddRecord((string FirstName, string LastName, string number)[] records)
 }
 void SearchRecord((string firstName, string lastName, string number)[] records)
 {
-    Console.WriteLine("Enter number and find a person:\n1. First name\n2. Last name\n3. number");
+    Console.WriteLine("Enter number to find a person:\n1. First name\n2. Last name\n3. number");
     var actions = Console.ReadKey();
     switch (actions.Key)
     {
@@ -171,9 +171,56 @@ void SearchRecord((string firstName, string lastName, string number)[] records)
             break;
     }
 }
-void UpdateRecord()
+void UpdateRecord((string FirstName, string LastName, string number)[] records)
 {
+    Console.WriteLine("Find the person: ");
+    Console.Write("Enter First name:");
+    string FirstName = Console.ReadLine();
+    Console.Write("Enter Last name:");
+    string LastName = Console.ReadLine();
+    Console.Write("Enter number:");
+    string number = Console.ReadLine();
 
+    var record = (FirstName, LastName, number);
+    Console.WriteLine(record);
+
+    int count;
+    Console.WriteLine("What do you want to change:\n1 - Firstname\n2 - Lastname\n3 - number");
+    count = Convert.ToInt32(Console.ReadLine());
+    if (count == 1)
+    {
+        for (int i = 0; i < records.Length; i++)
+        {
+            if (Regex.IsMatch(records[i].FirstName, FirstName, RegexOptions.IgnoreCase))
+            {
+                Console.WriteLine("Enter a new Firstname");
+                records[i].FirstName = Console.ReadLine();
+            }
+        }
+    }
+    else if (count == 2)
+    {
+        for (int i = 0; i < records.Length; i++)
+        {
+            if (Regex.IsMatch(records[i].LastName, LastName, RegexOptions.IgnoreCase))
+            {
+                Console.WriteLine("Enter a new Lastname");
+                records[i].LastName = Console.ReadLine();
+            }
+        }
+    }
+    else
+    {
+        for (int i = 0; i < records.Length; i++)
+        {
+            if (Regex.IsMatch(records[i].number, number, RegexOptions.IgnoreCase))
+            {
+                Console.WriteLine("Enter a new number");
+                records[i].number = Console.ReadLine();
+            }
+        }
+    }
+    SaveToFile(records);
 }
 void RemoveRecord((string FirstName, string LastName, string number)[] records)
 {
@@ -195,8 +242,7 @@ void RemoveRecord((string FirstName, string LastName, string number)[] records)
                 records2[i] = records[i];
             else if (i > count)
                 records2[i-1] = records[i];
-    }
-    
+        }
     SaveToFile(records2);
 }
 void SaveToFile((string FirstName, string LastName, string number)[] records)
