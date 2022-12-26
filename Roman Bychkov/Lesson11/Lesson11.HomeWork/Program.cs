@@ -13,8 +13,14 @@ class Program
             PhoneNumber = 999222331,
             DateOfBorn = DateTime.Now.AddYears(-6)
         };
-
         Console.WriteLine(pup);
+
+        //var schedule = new Schedule.Lesson(DayOfWeek.Monday,3,3,3,new Teacher("s","s",321),new Subject("math"),new Class("5b"));
+        //Schedule.Add(schedule);
+        //foreach(var item in Schedule.Records)
+        //    Console.WriteLine(item);
+
+
     }
 }
 class Pupil
@@ -268,6 +274,7 @@ static class Schedule
     {
         Records = new Lesson[0];
     }
+
     public static void Add(Lesson lesson)
     {
 
@@ -292,7 +299,7 @@ static class Schedule
         return false;
     }
 
-    static void ClearSchedule()
+    public static void ClearSchedule()
     {
         Records = null;
     }
