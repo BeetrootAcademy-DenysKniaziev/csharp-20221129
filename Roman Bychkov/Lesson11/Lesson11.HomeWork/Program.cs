@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using System.Text.RegularExpressions;
 
 class Program
 {
@@ -12,6 +11,7 @@ class Program
             PhoneNumber = 9992223311,
             DateOfBorn = DateTime.Now
         };
+
         Console.WriteLine(pup);
     }
 }
@@ -62,10 +62,10 @@ class Teacher
     }
     public void AddSubject(Subject newSubject)
     {
-        if (Subjects.Contains(null))
+        if (Subjects.Contains(null) || Subjects.Contains(newSubject))
             Subjects[Array.IndexOf(Subjects, null)] = newSubject;
         else
-            Console.WriteLine("The teacher has a complete list of subjects.");
+            Console.WriteLine("This teacher already has a maximum number of subjects or this subject has been added before.");
 
     }
     public void RemoveSubject(Subject oldSubject)
@@ -155,27 +155,69 @@ class Subject
 
 static class Schedule
 {
-    public static (DayOfWeek day, int hour, int minute, int classroom, Teacher Teacher, Subject Subject, Class myClass)[] Records { get; private set; }
+    public static Lesson[] Records { get; private set; }
     static Schedule()
     {
-        Records = new (DayOfWeek day, int hour, int minute, int classroom, Teacher Teacher, Subject Subject, Class myClass)[0];
+        Records = new Lesson[0];
     }
-    public static bool Add(DayOfWeek day, int hour, int minute, int classroom, Teacher teacher, Subject subject, Class myClass)
+    public static void Add(Lesson lesson)
     {
-        if (!teacher.Subjects.Contains(subject))
-        {
-            Console.WriteLine("This teacher does not teach the given subject.");
-            return false;
-        }
-        var newRecords = new (DayOfWeek day, int hour, int minute, int classroom, Teacher Teacher, Subject Subject, Class myClass)[Records.Length + 1];
+
+        var newRecords = new Lesson[Records.Length + 1];
         Array.Copy(Records, newRecords, Records.Length);
         Records = newRecords;
-        Records[Records.Length - 1] = (day, hour, minute, classroom, teacher, subject, myClass);
-        return true;
+        Records[Records.Length - 1] = lesson;
+
+    }
+    public static bool Remove(Lesson lesson)
+    {
+        if (Records.Contains(lesson))
+        {
+            int id = Array.IndexOf(Records, lesson);
+            var newRecords = new Lesson[Records.Length - 1];
+            Array.Copy(Records, 0, newRecords, 0, id);
+            Array.Copy(Records, id + 1, newRecords, id, Records.Length - id - 1);
+
+            Records = newRecords;
+            return true;
+        }
+        return false;
     }
 
     static void ClearSchedule()
     {
         Records = null;
+    }
+    public class Lesson
+    {
+        DayOfWeek Day { get; set; }
+        int Hour { get; set; }
+        int Minute { get; set; }
+        int Classroom { get; set; }
+        Teacher Teacher
+        {
+            get => Teacher;
+            set
+            {
+                if (!value.Subjects.Contains(Subject))
+                    throw new ArgumentException("This teacher does not teach the given subject.");
+                else
+                    Teacher = value;
+            }
+        }
+        Subject Subject { get; set; }
+        Class MyClass { get; set; }
+
+        public Lesson(DayOfWeek day, int hour, int minute, int classroom, Teacher teacher, Subject subject, Class myClass)
+        {
+            Day = day;
+            Hour = hour;
+            Minute = minute;
+            Classroom = classroom;
+            Subject = subject;
+            Teacher = teacher;
+            MyClass = myClass;
+
+        }
     }
 }
