@@ -10,8 +10,8 @@ class Program
         {
             Name = "Vladislav",
             LastName = "Noname",
-            PhoneNumber = 9992223311,
-            DateOfBorn = DateTime.Now
+            PhoneNumber = 999222331,
+            DateOfBorn = DateTime.Now.AddYears(-6)
         };
 
         Console.WriteLine(pup);
@@ -19,13 +19,17 @@ class Program
 }
 class Pupil
 {
+    string _name;
+    string _lastName;
+    long _phoneNumber;
+    DateTime _dateOfBirth;
     public string Name
     {
-        get => Name;
+        get => _name;
         set
         {
             if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
-                Name = value;
+                _name = value;
             else
                 throw new ArgumentException("Invalid Name");
         }
@@ -33,11 +37,11 @@ class Pupil
     }
     public string LastName
     {
-        get => LastName;
+        get => _lastName;
         set
         {
             if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
-                LastName = value;
+                _lastName = value;
             else
                 throw new ArgumentException("Invalid LastName");
         }
@@ -45,11 +49,11 @@ class Pupil
 
     public long PhoneNumber
     {
-        get => PhoneNumber;
+        get => _phoneNumber;
         set
         {
             if (Regex.IsMatch(value.ToString(), @"^[0-9]{9}$"))
-                PhoneNumber = value;
+                _phoneNumber = value;
             else
                 throw new ArgumentException("Invalid PhoneNumber");
         }
@@ -57,14 +61,14 @@ class Pupil
 
     public DateTime DateOfBorn
     {
-        get => DateOfBorn;
+        get => _dateOfBirth;
 
         set
         {
-            if (DateOfBorn < DateTime.Now.AddYears(-4))
+            if (DateOfBorn > DateTime.Now.AddYears(-4))
                 throw new ArgumentException("The child is too small");
             else
-                DateOfBorn = value;
+                _dateOfBirth = value;
         }
     }
 
@@ -76,13 +80,17 @@ class Pupil
 }
 class Teacher
 {
+    string _name;
+    string _lastName;
+    long _phoneNumber;
+
     public string Name
     {
-        get => Name;
+        get => _name;
         set
         {
             if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
-                Name = value;
+                _name = value;
             else
                 throw new ArgumentException("Invalid Name");
         }
@@ -90,11 +98,11 @@ class Teacher
     }
     public string LastName
     {
-        get => LastName;
+        get => _lastName;
         set
         {
             if (Regex.IsMatch(value, @"^[A-Z]{1}[a-z]+$"))
-                LastName = value;
+                _lastName = value;
             else
                 throw new ArgumentException("Invalid LastName");
         }
@@ -102,11 +110,11 @@ class Teacher
     }
     public long PhoneNumber
     {
-        get => PhoneNumber;
+        get => _phoneNumber;
         set
         {
             if (Regex.IsMatch(value.ToString(), @"^[0-9]{9}$"))
-                PhoneNumber = value;
+                _phoneNumber = value;
             else
                 throw new ArgumentException("Invalid PhoneNumber");
         }
@@ -163,7 +171,19 @@ class Teacher
 
 class Class
 {
-    public string Name { get; set; }
+    string _name;
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            if (Regex.IsMatch(value, @"^\w*$"))
+                _name = value;
+            else
+                throw new ArgumentException("Invalid Name");
+        }
+
+    }
 
     public int CountOfPupils
     {
@@ -209,7 +229,19 @@ class Class
 
 class Subject
 {
-    public string Name { get; set; }
+    string _name;
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            if (Regex.IsMatch(value, @"^\w*$"))
+                _name = value;
+            else
+                throw new ArgumentException("Invalid Name");
+        }
+
+    }
 
     public StringBuilder Plan { get; }
 
@@ -266,25 +298,67 @@ static class Schedule
     }
     public class Lesson
     {
+        byte _hour;
+        byte _minute;
+        int _classRoom;
+        Teacher _teacher;
+        Subject _subject;
+        Class _myClass;
         DayOfWeek Day { get; set; }
-        int Hour { get; set; }
-        int Minute { get; set; }
+        byte Hour
+        {
+            get => _hour;
+            set
+            {
+                if (value > 24 || value < 0)
+                    throw new ArgumentOutOfRangeException("Invalid Hour");
+                _hour = value;
+            }
+        }
+        byte Minute
+        {
+            get => _minute;
+            set
+            {
+                if (value > 60 || value < 0)
+                    throw new ArgumentOutOfRangeException("Invalid Minute");
+                _minute = value;
+            }
+        }
         int Classroom { get; set; }
         Teacher Teacher
         {
-            get => Teacher;
+            get => _teacher;
             set
             {
                 if (!value.Subjects.Contains(Subject))
                     throw new ArgumentException("This teacher does not teach the given subject.");
                 else
-                    Teacher = value;
+                    _teacher = value;
             }
         }
-        Subject Subject { get; set; }
-        Class MyClass { get; set; }
+        Subject Subject
+        {
+            get => _subject;
+            set
+            {
+                if(value is null)
+                    throw new ArgumentNullException("Subject can't be null");
+                _subject = value;
+            }
+        }
+        Class MyClass
+        {
+            get => _myClass;
+            set
+            {
+                if (value is null)
+                    throw new ArgumentNullException("MyClass can't be null");
+                _myClass = value;
+            }
+        }
 
-        public Lesson(DayOfWeek day, int hour, int minute, int classroom, Teacher teacher, Subject subject, Class myClass)
+        public Lesson(DayOfWeek day, byte hour, byte minute, int classroom, Teacher teacher, Subject subject, Class myClass)
         {
             Day = day;
             Hour = hour;
