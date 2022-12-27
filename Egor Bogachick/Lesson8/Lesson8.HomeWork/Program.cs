@@ -2,13 +2,11 @@
 
 const string FileName = "PhoneBook.txt";
 
-
-
 var records = new(string firstName, string lastName, string number)[1];
 records[0] = ("Egor", "Bogachik", "546-634-4564");
 SaveToFile(records);
-records = ReadFromFile();
-ShowPhoneBook(records);
+//records = ReadFromFile();
+//ShowPhoneBook(records);
 
 while (true)
 {
@@ -44,7 +42,7 @@ while (true)
             break;
         case ConsoleKey.D5:
             Console.WriteLine("Remove:");
-            RemoveRecord(records);
+            RemoveRecord(ref records);
             break;
         case ConsoleKey.D0:
             Console.WriteLine("Exit");
@@ -217,7 +215,7 @@ void UpdateRecord((string firstName, string lastName, string number)[] records)
 }
 
 
-void RemoveRecord((string firstName, string lastName, string number)[] records)
+void RemoveRecord(ref (string firstName, string lastName, string number)[] records)
 {
     string number = "";
     string firstName = "";
@@ -241,8 +239,17 @@ void RemoveRecord((string firstName, string lastName, string number)[] records)
     }
     else
     {
-        Array.Clear(records, temp, 1);
+        //Array.Clear(records, temp, 1);
         //records[temp] = ("", "", "");
+        if (temp != records.Length - 1)
+        {
+            records[temp] = records[^1];
+            Array.Resize(ref records, records.Length - 1);
+        }
+        else
+        {
+            Array.Resize(ref records, records.Length - 1);
+        }
         Console.WriteLine("\nContact removed");
     }
     SaveToFile(records);
