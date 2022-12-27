@@ -11,7 +11,7 @@ class Libraries
     public int _libraryNumber;
     private int _numberOfAllBooks;
     private string _location;
-    public string Location
+    public string Location1
     {
         get { return _location; }
         set { _location = value; }
@@ -31,13 +31,13 @@ class Libraries
     public Libraries (string Country, string City, string Street, string NumberOfHouse, int libraryNumber, int numberOfAllBooks)
     {
         Location a = new Location(Country, City, Street, NumberOfHouse);
-        Location = a._address;
+        Location1 = a._address;
         LibraryNumber = libraryNumber;
         NumberOfAllBooks = numberOfAllBooks;
     }
     public void Info()
     {
-       Console.WriteLine($"Location library: {Location}" +
+       Console.WriteLine($"Location library: {Location1}" +
            $"\nLibrary number - {LibraryNumber}\nNumber Of all books - {NumberOfAllBooks}"); 
     }
     public void OpenClose()
@@ -67,16 +67,18 @@ class Author
 }
 class Book
 {
+    public string BookLocation { get; set; }
     public string Name { get; set; }
     public Author Author { get; set; }
     public int Year { get; set; }
     public int NumberOfBooks { get; set; }
-    public Book (string name, Author author, int year, int numberOfBooks)
+    public Book (string name, Author author, int year, int numberOfBooks, string location)
     {
         Name = name;
         Author = author;
         Year = year;
         NumberOfBooks = numberOfBooks;
+        BookLocation = location;
     }
     public void Available()
     {
@@ -88,13 +90,15 @@ class Book
     public void BookInfo()
     {
         Console.WriteLine($"Information of book: {Name}" +
-            $"\nAuthor - {Author.FullName} ({Author.DateOfBornAndDie})\nNumber Of books - {NumberOfBooks}\nYear - {Year}");
+            $"\nAuthor - {Author.FullName} ({Author.DateOfBornAndDie})\nNumber Of books - {NumberOfBooks}\nYear - {Year}\n" +
+            $"Book location: {BookLocation}");
     }
 }
 class Program
 {
     public static void Main()
     {
+        var l1 = new Libraries("uk", "london", "streat_1", "12", 1, 100);
         Author author1 = new Author
         {
             LastName = "King",
@@ -102,8 +106,7 @@ class Program
             DateOfBorn = "21.09.1947",
             DateOfDie = "_"
         };
-        Book book1 = new Book("The Green Mile", author1, 1996, 0);
-        var l1 = new Libraries("uk", "london", "streat_1", "12", 1, 100);
+        Book book1 = new Book("The Green Mile", author1, 1996, 0, l1.Location1);
         l1.OpenClose();
         Console.WriteLine(new string ('*',20));
         l1.Info();
