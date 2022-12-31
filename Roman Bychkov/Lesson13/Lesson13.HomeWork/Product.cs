@@ -4,7 +4,10 @@
 
     public string Name { get; set; }
     public string Color { get; set; }
-
+    public abstract ushort Count(byte size = 1);
+    protected abstract Dictionary<byte, ushort> Items { get; }
+    public abstract bool AddCountToSize(ushort count, byte size);
+    public abstract bool DeleteCountFromSize(ushort count, byte size);
     public decimal Price
     {
         get => _price;
@@ -20,5 +23,9 @@
         Name = name;
         Price = price;
         Color = color;
+    }
+    public override string ToString()
+    {
+        return $"{Name} | {Color}";
     }
 }

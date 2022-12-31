@@ -2,73 +2,75 @@
 {
     static void Main()
     {
-        Console.WriteLine(float.MaxValue);
+        Product product = new Accessory("Glases", 25m, "Black");
+        Console.WriteLine(product.GetType());
+        List<Customer> Customers = new List<Customer>();
+        List<Product> Products = new List<Product>();
+        while (true)
+        {
+            try
+            {
+                Console.WriteLine("1 - Register customer");
+                Console.WriteLine("2 - Register product");
+
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.D1:
+                        Customers.Add(RegistrationCustomer());
+                    break;
+                    case ConsoleKey.D2:
+                        Products.Add(RegistrationProduct());
+                    break;
+                }
+                
+
+            }
+
+            catch (Exception ex)
+            { Console.WriteLine(ex.ToString()); }
+
+
+        }
+    }
+    static Customer RegistrationCustomer()
+    {
+        string Name, LastName, PhoneNumber;
+        DateTime DayOfBorn;
+        Console.Write("Name: ");
+        Name = Console.ReadLine();
+        Console.Write("LastName: ");
+        LastName = Console.ReadLine();
+        Console.WriteLine("Phone Number format AAA-BBB-CCCC: ");
+        PhoneNumber = Console.ReadLine();
+        Console.Write("Day of born: ");
+        DayOfBorn = Convert.ToDateTime(Console.ReadLine());
+
+        return new Customer(Name,LastName,DayOfBorn,PhoneNumber);
+    }
+    static Product RegistrationProduct()
+    {
+        string Name, Color;
+        decimal Price;
+        Console.Write("Name: ");
+        Name = Console.ReadLine();
+        Console.Write("Color: ");
+         = Console.ReadLine();
+        Console.WriteLine("1 - Accesory");
+        Console.WriteLine("2 - Clothing");
+        switch(Console.ReadKey().Key)
+        {
+            case ConsoleKey.D1:
+
+                break;
+            case ConsoleKey.D2:
+
+                break;
+        }
+
     }
 }
 
-class Clothing : Product
-{
-    Dictionary<float, uint> _items;
 
-    Season Season { get; set; }
-
-    public Clothing(string name, decimal price, Season season, string color) : base(name, price, color)
-    {
-        _items = new Dictionary<float, uint>();
-        Season = season;
-    }
-    public void AddSize(float size, uint count = 0)
-    {
-        if (count < 0)
-            throw new ArgumentOutOfRangeException(nameof(count), "Count can't be less then 0.");
-        if (!_items.TryAdd(size, count))
-            throw new InvalidOperationException("This size contains in the list.");
-    }
-    public bool RemoveSize(float size)
-    {
-        if (_items.ContainsKey(size))
-        {
-            _items.Remove(size);
-            return true;
-        }
-        return false;
-    }
-    public bool AddCountToSize(float size, uint count)
-    {
-        if (_items.ContainsKey(size))
-        {
-            _items[size] += count;
-            return true;
-        }
-        else
-            throw new InvalidOperationException("This size contains in the list.");
-        return false;
-    }
-    public bool DeleteCountFromSize(float size, uint count)
-    {
-        if (_items.ContainsKey(size))
-        {
-            _items[size] -= count;
-            return true;
-        }
-        else
-            throw new InvalidOperationException("This size contains in the list.");
-        return false;
-    }
-}
-abstract class Bag : Product
-{
-
-    public uint Count { get; set; }
-    public float Volume { get; set; }
-    public Bag(string name, decimal price, float volume, uint count, string color) : base(name, price, color)
-    {
-        Count = count;
-        if (volume < 0)
-            throw new ArgumentOutOfRangeException(nameof(volume), "Volume can't be less then 0");
-        Volume = volume;
-    }
-}
 enum Season : short
 {
     Winter = 1,
