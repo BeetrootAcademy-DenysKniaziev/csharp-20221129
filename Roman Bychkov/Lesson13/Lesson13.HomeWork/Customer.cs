@@ -64,7 +64,7 @@ public class Customer
     }
     public override string ToString()
     {
-        return $"{Name}|{LastName}|{PhoneNumber}|{DateOfBorn}";
+        return $"{Name}|{LastName}|{DateOfBorn:D}|{PhoneNumber}";
     }
 }
 

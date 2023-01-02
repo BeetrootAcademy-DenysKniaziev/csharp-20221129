@@ -42,7 +42,7 @@
     }
     public override bool DeleteCountFromSize(ushort count, byte size)
     {
-        if (Items.ContainsKey(size) && Items[size] - count > 0)
+        if (Items.ContainsKey(size) && Items[size] - count >= 0)
         {
             Items[size] -= count;
             return true;

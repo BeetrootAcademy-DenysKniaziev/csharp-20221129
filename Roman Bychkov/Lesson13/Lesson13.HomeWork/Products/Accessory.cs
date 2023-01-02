@@ -18,9 +18,9 @@
     }
     public override bool DeleteCountFromSize(ushort count, byte size = 1)
     {
-        if (Items[1] - count > 0)
+        if (Items[1] - count >= 0)
         {
-            Items[size] -= count;
+            Items[1] -= count;
             return true;
         }
         else
