@@ -30,12 +30,12 @@
 
 using System.IO;
 
-foreach (var drive in DriveInfo.GetDrives())
-{
-    Console.WriteLine(drive.Name);
-    Console.WriteLine(drive.TotalSize);
-    Console.WriteLine(drive.AvailableFreeSpace);
-}
+//foreach (var drive in DriveInfo.GetDrives())
+//{
+//    Console.WriteLine(drive.Name);
+//    Console.WriteLine(drive.TotalSize);
+//    Console.WriteLine(drive.AvailableFreeSpace);
+//}
 
 //string root = @"D:\";
 //if(Directory.Exists(root+"BeetRoot"))
@@ -50,14 +50,37 @@ foreach (var drive in DriveInfo.GetDrives())
 //        Console.WriteLine(files);
 //    }
 //}
-    var dir = new DirectoryInfo(@"D:\BeetRoot");
-    if (dir.Exists)
-    {
-    foreach (var subDir in dir.GetDirectories())
-        {
-            Console.WriteLine(subDir);
-        }
+//    var dir = new DirectoryInfo(@"D:\Навчання");
+//if (dir.Exists)
+//{
+//    foreach (var subDir in dir.GetDirectories())
+//    {
+//        Console.WriteLine(subDir);
+//    }
+//    foreach (var file in dir.GetFiles())
+//    {
+//        Console.WriteLine(file);
+//    }
+//}
 
-    }
+var fileName = "testfile.txt";
+if(File.Exists(fileName))
+{
+    Console.WriteLine(File.ReadAllText(fileName));
+    File.AppendAllText(fileName, "\nsome more text");
+}
+else
+{
+    File.WriteAllText(fileName, "some else");
+}
 
-
+//var file = new FileInfo("testfile.txt");
+//if (File.Exists(fileName))
+//{
+//    Console.WriteLine(File.OpenText().ReadToEnd());
+//    File.AppendAllText(fileName, "\nsome more text");
+//}
+//else
+//{
+//    File.WriteAllText(fileName, "some else");
+//}
