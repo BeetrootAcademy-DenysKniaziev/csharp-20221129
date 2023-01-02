@@ -1,6 +1,6 @@
 ﻿class Accessory : Product
 {
-    protected override Dictionary<byte, ushort> Items { get; } = new Dictionary<byte, ushort>(1);
+    public override Dictionary<byte, ushort> Items { get; } = new Dictionary<byte, ushort>(1);
 
     public Accessory(string name, decimal price, string color, ushort count = 0) : base(name, price, color)
     {

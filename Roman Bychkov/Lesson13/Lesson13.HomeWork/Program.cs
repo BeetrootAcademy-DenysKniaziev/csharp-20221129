@@ -2,13 +2,14 @@
 {
     static void Main()
     {
-        Product product = new Accessory("Glases", 25m, "Black");
-        Console.WriteLine(product.GetType());
+        IDataCustomer customer = new CustomerJSON("customer.json");
+        IDataProduct products = new ProductJSON("clothing.json");
         List<Customer> Customers = new List<Customer>();
         List<Product> Products = new List<Product>();
         List<Check> Checks = new List<Check>();
-        IDataCustomer dataCustomer = new CustomerJSON("customer.json");
-        dataCustomer.LoadCustomer(ref Customers);
+        UploadData(ref Products, ref Customers, customer, products);
+
+        
 
         while (true)
         {
@@ -28,23 +29,26 @@
 
                     case ConsoleKey.D1:
                         Customers.Add(RegistrationCustomer());
-                        dataCustomer.SaveCustomer(Customers);
+                        customer.SaveCustomer(Customers);
                         break;
                     case ConsoleKey.D2:
                         Products.Add(RegistrationProduct());
+                        products.Save(Products);
                         break;
                     case ConsoleKey.D3:
                         AddProduct(Products);
+                        products.Save(Products);
                         break;
                     case ConsoleKey.D4:
                         AddSize(Products);
+                        products.Save(Products);
                         break;
                     case ConsoleKey.D5:
                         ShowProducts(Products);
                         break;
                     case ConsoleKey.D6:
-                        foreach (Customer customer in Customers)
-                            Console.WriteLine(customer);
+                        foreach (Customer item in Customers)
+                            Console.WriteLine(item);
                         break;
                     case ConsoleKey.D7:
                         Sale(Products,Customers,Checks);
@@ -59,6 +63,12 @@
 
 
         }
+    }
+    public static void UploadData(ref List<Product> products, ref List<Customer> customers, IDataCustomer customer, IDataProduct clothing)
+    {
+        customer.LoadCustomer(ref customers);
+        var clothings = new List<Product>();
+        clothing.Load(ref clothings);
     }
     static Customer RegistrationCustomer()
     {
@@ -89,13 +99,7 @@
                     Count = Convert.ToUInt16(Console.ReadLine());
                     return new Accessory(Name, Price, Color, Count);
                 case ConsoleKey.D2:
-                    Season Season;
-                    Console.WriteLine("Season: ");
-                    Console.WriteLine("1 - Winter\n2 - Spring\n3-Summer\n4-Autumn");
-                    byte choice = Convert.ToByte(Console.ReadLine());
-                    if (!Enum.IsDefined(typeof(Season), choice))
-                        throw new ArgumentException("Invalid Season");
-                    return new Clothing(Name, Price, (Season)choice, Color);
+                    return new Clothing(Name, Price, Color);
             }
         }
     }
@@ -231,7 +235,7 @@ enum Season : byte
     Winter = 1,
     Spring,
     Summer,
-    Autumn
+    Autumn,
 }
 
 

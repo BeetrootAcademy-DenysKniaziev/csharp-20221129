@@ -1,29 +1,29 @@
-﻿using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 
-internal class CustomerJSON : IDataCustomer
+internal class ProductJSON : IDataProduct
 {
     public readonly string FileName;
 
-    public void LoadCustomer(ref List<Customer> Customers)
+    public void Load(ref List<Product> Clothings)
     {
         using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
         {
-            Customers = JsonSerializer.Deserialize<List<Customer>>(fs);
-        }  
+            Clothings = JsonSerializer.Deserialize<List<Product>>(fs);
+        }
     }
 
-    public void SaveCustomer(List<Customer> Customers)
+    public void Save(List<Product> Clothings)
     {
         using (FileStream fs = new FileStream(FileName, FileMode.OpenOrCreate))
         {
-            JsonSerializer.Serialize<List<Customer>>(fs, Customers);
+
+            JsonSerializer.Serialize(fs, Clothings);
             Console.WriteLine("Data has been saved to file");
         }
     }
 
-    public CustomerJSON(string file)
+    public ProductJSON(string file)
     {
         if (Regex.IsMatch(file, @"^\w{1,15}\.json$"))
         {
@@ -31,7 +31,7 @@ internal class CustomerJSON : IDataCustomer
         }
         else
         {
-            throw new ArgumentException(nameof(file), "Invalid txt file.");
+            throw new ArgumentException(nameof(file), "Invalid JSON file.");
         }
     }
 

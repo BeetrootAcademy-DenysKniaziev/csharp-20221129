@@ -1,12 +1,11 @@
 ﻿class Clothing : Product
 {
-    protected override Dictionary<byte, ushort> Items { get; } = new Dictionary<byte, ushort>();
+    public override Dictionary<byte, ushort> Items { get; } = new Dictionary<byte, ushort>();
 
-    Season Season { get; set; }
-
-    public Clothing(string name, decimal price, Season season, string color) : base(name, price, color)
+   
+    public Clothing(string name, decimal price, string color) : base(name, price, color)
     {
-        Season = season;
+       
     }
     public override ushort Count(byte size)
     {
