@@ -1,5 +1,5 @@
 ﻿
-abstract class Product:ISizeCount
+abstract class Product : ISizeCount
 {
     protected decimal _price;
 
@@ -23,12 +23,12 @@ abstract class Product:ISizeCount
         Name = name;
         Price = price;
         Color = color;
-       
+
     }
 
     public override string ToString()
     {
-        return $"{Name} | {Color}";
+        return $"{Name,10}  {Color,12} {Price,5:C2}";
     }
 
     public abstract ushort Count(byte size = 1);

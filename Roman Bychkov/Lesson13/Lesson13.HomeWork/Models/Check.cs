@@ -26,7 +26,7 @@ class Check
             }
         }
         
-        _items.Item2.Add((prod, count, count * ((Product)product).Price));
+        _items.Item2.Add((prod, count, count * product.Price));
         return true;
     }
     public void CancelPruduct(Product product, ushort count, byte size)
@@ -42,7 +42,7 @@ class Check
         StringBuilder print = new StringBuilder();
         print.AppendLine(_items.customer);
         foreach (var item in _items.Item2)
-            print.AppendLine($"{item.name} | {item.count} | {item.sum}");
+            print.AppendLine($"{item.name,10} | {item.count,10} | {item.sum,10:C2}");
         return print;
     }
 

@@ -1,15 +1,17 @@
-﻿class Program
+﻿using System.Text.RegularExpressions;
+
+class Program
 {
     static void Main()
     {
         IDataCustomer customer = new CustomerJSON("customer.json");
-        IDataProduct products = new ProductJSON("accessory.json","clothing.json");
+        IDataProduct products = new ProductJSON("accessory.json", "clothing.json");
         List<Customer> Customers = new List<Customer>();
         List<Product> Products = new List<Product>();
         List<Check> Checks = new List<Check>();
         UploadData(ref Products, ref Customers, customer, products);
 
-        
+
 
         while (true)
         {
@@ -47,21 +49,24 @@
                         ShowProducts(Products);
                         break;
                     case ConsoleKey.D6:
+
+                        Console.WriteLine($"{new string("Name"),10}\t{new string("LastName"),10}\t{new string("DateOfBorn"),19:D}\t{new string("PhoneNumber"),9}\n");
                         foreach (Customer item in Customers)
                             Console.WriteLine(item);
                         break;
                     case ConsoleKey.D7:
-                        Sale(Products,Customers,Checks);
-                        products.Save(Products);
+                        if (Sale(Products, Customers, Checks))
+                            products.Save(Products);
+                        break;
+                    case ConsoleKey.D8:
+
                         break;
                 }
-
-
             }
 
             catch (Exception ex)
             { Console.WriteLine(ex.ToString()); }
-
+            Console.WriteLine();
 
         }
     }
@@ -69,10 +74,11 @@
     {
         customer.LoadCustomer(ref customers);
         clothing.Load(ref products);
+
     }
     static Customer RegistrationCustomer()
     {
-        var temp = WriteCustomer();
+        var temp = InputCustomer();
 
         return new Customer(temp.Name, temp.LastName, temp.DateOfBorn, temp.PhoneNumber);
     }
@@ -105,7 +111,7 @@
     }
     static bool AddProduct(List<Product> Products)
     {
-       
+
         var product = FindProduct(Products);
         if (product != null)
         {
@@ -144,7 +150,7 @@
         Name = Console.ReadLine();
         Console.Write("Color: ");
         Color = Console.ReadLine();
-       
+
         Product product = Products.FirstOrDefault(x => x.Name == Name && x.Color == Color);
         if (product is Clothing clothing)
         {
@@ -158,33 +164,34 @@
     }
     public static void ShowProducts(List<Product> Products)
     {
-        Console.WriteLine("Accesory:");
+        Console.WriteLine("\t===ACCESORY===");
         foreach (var item in Products.Where(x => x is Accessory))
         {
             Console.WriteLine(item.ToString());
-            
+
             foreach (var size in item?.Items)
-                Console.WriteLine($"{size.Key} | {size.Value}");
+                Console.WriteLine($"SIZE: {size.Key,3}  COUNT: {size.Value,3}");
         }
-        Console.WriteLine("Clothing:");
+        Console.WriteLine("\n\t===CLOTHING===");
         foreach (var item in Products.Where(x => x is Clothing))
         {
             Console.WriteLine(item.ToString());
-            
+
             foreach (var size in item.Items)
-                Console.WriteLine($"{size.Key}| {size.Value}");
+                Console.WriteLine($"SIZE: {size.Key,3}  COUNT: {size.Value,3}");
         }
 
     }
 
-    static void Sale(List<Product> Products, List<Customer> Customers, List<Check> Checks)
+    static bool Sale(List<Product> Products, List<Customer> Customers, List<Check> Checks)
     {
-        var temp = WriteCustomer();
+        Console.WriteLine("Customer Information: ");
+        var temp = InputCustomer();
         var customer = Customers.FirstOrDefault(x => x.Name == temp.Name && x.LastName == temp.LastName && x.PhoneNumber == temp.PhoneNumber && x.DateOfBorn == temp.DateOfBorn);
-        if (customer!=null)
+        if (customer != null)
         {
             Checks.Add(new Check(customer));
-            while(true)
+            while (true)
             {
                 Console.WriteLine("1 - Sell accesory");
                 Console.WriteLine("2 - Sell clothing");
@@ -218,12 +225,13 @@
                         break;
                     case ConsoleKey.D0:
                         Console.WriteLine(Checks[Checks.Count - 1].Print());
-                        return;
+                        return true;
 
                 }
             }
         }
-       
+        return false;
+
     }
     public static Product? FindProduct(List<Product> Products)
     {
@@ -233,22 +241,71 @@
         Name = Console.ReadLine();
         Console.Write("Color: ");
         Color = Console.ReadLine();
-        
-        return Products.FirstOrDefault(x => x.Name == Name &&   x.Color == Color);
+
+        return Products.FirstOrDefault(x => x.Name == Name && x.Color == Color);
     }
-    public static (string Name, string LastName, string PhoneNumber, DateTime DateOfBorn) WriteCustomer()
+    public static (string Name, string LastName, string PhoneNumber, DateTime DateOfBorn) InputCustomer()
     {
-        string Name, LastName, PhoneNumber;
+
         DateTime DayOfBorn;
-        Console.Write("Name: ");
-        Name = Console.ReadLine();
-        Console.Write("LastName: ");
-        LastName = Console.ReadLine();
-        Console.Write("Phone Number format [0-9]{9}: ");
-        PhoneNumber = Console.ReadLine();
-        Console.Write("Day of born: ");
-        DayOfBorn = Convert.ToDateTime(Console.ReadLine());
-        return(Name, LastName, PhoneNumber, DayOfBorn);
+        string name, phoneNumber, lastname;
+        while (true)
+        {
+            Console.Write("Name: ");
+            name = Console.ReadLine();
+            if (!OnlyLetters(name))
+            {
+                Console.WriteLine("Invalid name.");
+                continue;
+            }
+            break;
+        }
+        while (true)
+        {
+            Console.Write("LastName: ");
+            lastname = Console.ReadLine();
+            if (!OnlyLetters(lastname))
+            {
+                Console.WriteLine("Invalid LastName.");
+                continue;
+            }
+            break;
+        }
+        while (true)
+        {
+            Console.Write("Phone number: ");
+            phoneNumber = Console.ReadLine();
+            if (!CurrectPhoneNumber(phoneNumber))
+            {
+                Console.WriteLine("Invalid phone number.");
+                continue;
+            }
+            break;
+        }
+        while (true)
+        {
+            Console.Write("Day of born: ");
+            if (!DateTime.TryParse(Console.ReadLine(), out DayOfBorn) || DayOfBorn == DateTime.MinValue)
+            {
+                Console.WriteLine("Invalid Date.");
+                continue;
+            }
+            break;
+        }
+
+        return (name, lastname, phoneNumber, DayOfBorn);
+        bool OnlyLetters(string name)
+        {
+            if (Regex.IsMatch(name, @"^[A-Z]{1}[a-z]+$"))
+                return true;
+            return false;
+        }
+        bool CurrectPhoneNumber(string phoneNumber)
+        {
+            if (Regex.IsMatch(phoneNumber, @"^[0-9]{9}$"))
+                return true;
+            return false;
+        }
     }
 }
 

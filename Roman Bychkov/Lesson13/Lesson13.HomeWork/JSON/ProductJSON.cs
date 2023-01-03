@@ -17,9 +17,9 @@ internal class ProductJSON : IDataProduct
                 clothing = JsonSerializer.Deserialize<List<Clothing>>(fs);
             }
         }
-        catch(System.Text.Json.JsonException)
+        catch (System.Text.Json.JsonException)
         {
-            Console.WriteLine(ClothingFile+" does't contain JSON");
+            Console.WriteLine(ClothingFile + " does't contain JSON");
         }
         try
         {
@@ -44,23 +44,24 @@ internal class ProductJSON : IDataProduct
         List<Clothing> clothing = new List<Clothing>();
         foreach (Product product in Clothings)
         {
-            if(product is Accessory)
+            if (product is Accessory)
                 accessories.Add((Accessory)product);
             else
                 clothing.Add((Clothing)product);
         }
         using (FileStream fs = new FileStream(AccessoryFile, FileMode.OpenOrCreate))
         {
-            
+
             JsonSerializer.Serialize(fs, accessories);
-            Console.WriteLine("Data has been saved to file");
+
         }
         using (FileStream fs = new FileStream(ClothingFile, FileMode.OpenOrCreate))
         {
 
             JsonSerializer.Serialize(fs, clothing);
-            Console.WriteLine("Data has been saved to file");
+
         }
+        Console.WriteLine("Data has been saved to file");
     }
 
     public ProductJSON(string file1, string file2)
@@ -75,7 +76,7 @@ internal class ProductJSON : IDataProduct
         }
         if (Regex.IsMatch(file2, @"^\w{1,15}\.json$"))
         {
-           ClothingFile = file2;
+            ClothingFile = file2;
         }
         else
         {

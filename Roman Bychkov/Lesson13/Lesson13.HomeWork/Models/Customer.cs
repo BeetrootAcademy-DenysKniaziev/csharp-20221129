@@ -49,7 +49,7 @@ public class Customer
 
         set
         {
-            if (DateOfBorn > DateTime.Now.AddYears(-18))
+            if (value.Year > DateTime.Now.AddYears(-18).Year)
                 throw new ArgumentException("This person is incomplete.");
             else
                 _dateOfBirth = value;
@@ -64,7 +64,7 @@ public class Customer
     }
     public override string ToString()
     {
-        return $"{Name}|{LastName}|{DateOfBorn:D}|{PhoneNumber}";
+        return $"{Name,10}\t{LastName, 10}\t{DateOfBorn,19:D}\t{PhoneNumber,9}";
     }
 }
 
