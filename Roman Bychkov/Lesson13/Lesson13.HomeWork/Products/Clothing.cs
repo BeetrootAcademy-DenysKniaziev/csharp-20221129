@@ -1,12 +1,12 @@
 ﻿class Clothing : Product
 {
-    public override Dictionary<byte, ushort> Items { get; } = new Dictionary<byte, ushort>();
+    public override Dictionary<byte, ushort> Items { get; }
 
-   
-    public Clothing(string name, decimal price, string color) : base(name, price, color)
+    public Clothing(string name, decimal price, string color, Dictionary<byte, ushort> items) : base(name, price, color)
     {
-       
+       Items = items ?? new Dictionary<byte, ushort>();
     }
+
     public override ushort Count(byte size)
     {
         if (!Items.ContainsKey(size))
@@ -19,15 +19,15 @@
             return false;
         return true;
     }
-    public bool RemoveSize(byte size)
-    {
-        if (Items.ContainsKey(size))
-        {
-            Items.Remove(size);
-            return true;
-        }
-        return false;
-    }
+    //public bool RemoveSize(byte size)
+    //{
+    //    if (Items.ContainsKey(size))
+    //    {
+    //        Items.Remove(size);
+    //        return true;
+    //    }
+    //    return false;
+    //}
     public override bool AddCountToSize(ushort count, byte size)
     {
         if (Items.ContainsKey(size))

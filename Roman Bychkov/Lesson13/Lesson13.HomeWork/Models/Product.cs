@@ -1,17 +1,13 @@
 ﻿
-abstract class Product
+abstract class Product:ISizeCount
 {
     protected decimal _price;
 
     public string Name { get; set; }
     public string Color { get; set; }
-   
-    public abstract ushort Count(byte size = 1);
 
-    
     public abstract Dictionary<byte, ushort> Items { get; }
-    public abstract bool AddCountToSize(ushort count, byte size = 1);
-    public abstract bool DeleteCountFromSize(ushort count, byte size = 1);
+
     public decimal Price
     {
         get => _price;
@@ -27,11 +23,16 @@ abstract class Product
         Name = name;
         Price = price;
         Color = color;
+       
     }
-    public Product()
-    { }
+
     public override string ToString()
     {
         return $"{Name} | {Color}";
     }
+
+    public abstract ushort Count(byte size = 1);
+    public abstract bool AddCountToSize(ushort count, byte size = 1);
+
+    public abstract bool DeleteCountFromSize(ushort count, byte size = 1);
 }

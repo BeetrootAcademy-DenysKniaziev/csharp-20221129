@@ -2,10 +2,16 @@
 {
     public override Dictionary<byte, ushort> Items { get; } = new Dictionary<byte, ushort>(1);
 
-    public Accessory(string name, decimal price, string color, ushort count = 0) : base(name, price, color)
+    public Accessory(string name, decimal price, string color, Dictionary<byte, ushort> items) : base(name, price, color)
     {
-        Items.Add(1, count);
+        if (items != null)
+            Items.Add(1, items[1]);
     }
+
+    //public Accessory(string name, decimal price, string color) : base(name, price, color)
+    //{
+
+    //}
 
     public override ushort Count(byte size = 1)
     {

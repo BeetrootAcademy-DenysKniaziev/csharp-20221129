@@ -13,33 +13,27 @@ class Check
         _items = (customer.ToString(), new List<(string name, ushort count, decimal sum)>());
 
     }
-    public void AddPruduct(Product product, ushort count, byte size = 1)
+    public bool AddPruduct(Product product, ushort count, byte size = 1)
     {
         string prod = product.ToString();
-        if (product is Clothing clothing)
+        if (product!=null)
         {
-            prod = clothing.ToString() + " |" + size;
-            if (!clothing.DeleteCountFromSize(count, size))
+            prod = product.ToString() + " | " + size;
+            if (!product.DeleteCountFromSize(count, size))
             {
                 Console.WriteLine("Not enough products.");
-                throw new ArgumentOutOfRangeException("count");
+                return false;
             }
         }
-        else
-            if (!product.DeleteCountFromSize(count))
-        {
-            Console.WriteLine("Not enough products.");
-            throw new ArgumentOutOfRangeException("count");
-        }
-
-
-        _items.Item2.Add((prod, count, count * product.Price));
+        
+        _items.Item2.Add((prod, count, count * ((Product)product).Price));
+        return true;
     }
     public void CancelPruduct(Product product, ushort count, byte size)
     {
         string prod = product.ToString();
 
-        prod = product is Clothing ? (product.ToString() + " |" + size) : prod;
+        prod = product is Clothing ? (product.ToString() + " | " + size) : prod;
 
         _items.Item2.Remove((prod, count, count * product.Price));
     }

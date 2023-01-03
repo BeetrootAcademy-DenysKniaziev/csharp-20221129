@@ -3,7 +3,7 @@
     static void Main()
     {
         IDataCustomer customer = new CustomerJSON("customer.json");
-        IDataProduct products = new ProductJSON("clothing.json");
+        IDataProduct products = new ProductJSON("accessory.json","clothing.json");
         List<Customer> Customers = new List<Customer>();
         List<Product> Products = new List<Product>();
         List<Check> Checks = new List<Check>();
@@ -52,6 +52,7 @@
                         break;
                     case ConsoleKey.D7:
                         Sale(Products,Customers,Checks);
+                        products.Save(Products);
                         break;
                 }
 
@@ -67,8 +68,7 @@
     public static void UploadData(ref List<Product> products, ref List<Customer> customers, IDataCustomer customer, IDataProduct clothing)
     {
         customer.LoadCustomer(ref customers);
-        var clothings = new List<Product>();
-        clothing.Load(ref clothings);
+        clothing.Load(ref products);
     }
     static Customer RegistrationCustomer()
     {
@@ -97,9 +97,9 @@
                     ushort Count;
                     Console.Write("Count: ");
                     Count = Convert.ToUInt16(Console.ReadLine());
-                    return new Accessory(Name, Price, Color, Count);
+                    return new Accessory(Name, Price, Color, null);
                 case ConsoleKey.D2:
-                    return new Clothing(Name, Price, Color);
+                    return new Clothing(Name, Price, Color, null);
             }
         }
     }
@@ -160,10 +160,20 @@
     {
         Console.WriteLine("Accesory:");
         foreach (var item in Products.Where(x => x is Accessory))
+        {
             Console.WriteLine(item.ToString());
+            
+            foreach (var size in item?.Items)
+                Console.WriteLine($"{size.Key} | {size.Value}");
+        }
         Console.WriteLine("Clothing:");
         foreach (var item in Products.Where(x => x is Clothing))
+        {
             Console.WriteLine(item.ToString());
+            
+            foreach (var size in item.Items)
+                Console.WriteLine($"{size.Key}| {size.Value}");
+        }
 
     }
 
@@ -190,7 +200,20 @@
                         {
                             Console.Write("Count of product: ");
                             ushort count = Convert.ToUInt16(Console.ReadLine());
-                            Checks[Checks.Count - 1].AddPruduct(product,count);
+                            if (Checks[Checks.Count - 1].AddPruduct(product, count))
+                                continue;
+                        }
+                        break;
+                    case ConsoleKey.D2:
+                        var product2 = FindProduct(Products);
+                        if (product2 != null)
+                        {
+                            Console.Write("Size of product: ");
+                            byte size = Convert.ToByte(Console.ReadLine());
+                            Console.Write("Count of product: ");
+                            ushort count = Convert.ToUInt16(Console.ReadLine());
+                            if (Checks[Checks.Count - 1].AddPruduct(product2, count, size))
+                                continue;
                         }
                         break;
                     case ConsoleKey.D0:
