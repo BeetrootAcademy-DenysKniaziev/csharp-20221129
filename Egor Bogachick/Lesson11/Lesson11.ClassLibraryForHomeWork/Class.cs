@@ -20,10 +20,18 @@ namespace Lesson11.ClassLibraryForHomeWork
         {
             this.Name = name;   
             Students = Array.Empty<Student>();   
-        }  
+        }
 
-        public void AddStudent(Student[] Students) 
+        public Class(string name, Student[] students)
         {
+            this.Name = name;
+            this.Students = students;
+        }
+
+        public void AddNewStudent(ref Student[] Students) 
+        {
+            Student student = new Student();
+            student.AddStudent();
             Array.Resize(ref Students, Students.Length + 1);
             Students[^1] = (student);
         }

@@ -24,10 +24,11 @@ namespace Lesson11.ClassLibraryForHomeWork
             this.Class = Class;
         }
 
-        public void ChangeTeacher(string firstName, string lastName)
+        public void ChangeTeacherInfo(string firstName, string lastName, Class Class)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.Class = Class;
             Console.WriteLine("Teacher has been changed");
         }
     

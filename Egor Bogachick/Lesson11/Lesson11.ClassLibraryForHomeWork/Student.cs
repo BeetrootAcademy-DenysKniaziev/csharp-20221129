@@ -7,6 +7,12 @@ namespace Lesson11.ClassLibraryForHomeWork
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Age { get; set; }
+        public Student()
+        {
+            this.FirstName = "";
+            this.LastName = "";
+            this.Age = "";
+        }
         public Student(string firstName, string lastName, string age)
         {
             this.FirstName = firstName;
@@ -38,7 +44,20 @@ namespace Lesson11.ClassLibraryForHomeWork
                 LastName = Console.ReadLine()!;
                 reg++;
             } while (!Regex.IsMatch(LastName, @"[A-Za-z]"));
-            //\d{ 5}
+
+            reg = 0;
+            Console.WriteLine("Enter age:");
+            do
+            {
+                if (reg > 0)
+                {
+                    Console.WriteLine("\nIncorrect input, try again:");
+                }
+                Age = Console.ReadLine()!;
+                reg++;
+            } while (!Regex.IsMatch(Age, @"\d{2}"));
+
+            return new Student(FirstName, LastName, Age);
         }
     }
 }
