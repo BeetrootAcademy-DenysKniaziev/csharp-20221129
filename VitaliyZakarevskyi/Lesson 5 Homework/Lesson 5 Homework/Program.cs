@@ -22,8 +22,7 @@ internal class Program
                 temp = i;
                 break;
                 
-            }
-            
+            } 
         }
         return temp;
 
