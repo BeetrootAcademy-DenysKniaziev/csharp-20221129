@@ -40,14 +40,15 @@ class Program
         return false;
     }
 
-    static void Repeat(int value, string str)
+    static string Repeat(int value, string str)
     {
-        string text;
+        string text = str;
         for (int i = 0; i < value; i++)
         {
 
-            Console.Write(str);
+            text += str;
         }
+        return text;
     }
 
     static void Main()
