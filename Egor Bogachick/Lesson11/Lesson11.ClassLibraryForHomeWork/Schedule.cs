@@ -3,36 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Lesson11.ClassLibraryForHomeWork
 {
-    internal class Schedule
+    public class Schedule
     {
         public string Day { get; set; }
-        public Lesson[] Lessons { get; set; } = Array.Empty<Lesson>();
+        public Subject[] Subjects { get; set; } = Array.Empty<Subject>();
 
         public Schedule()
         {
-            Lessons = Array.Empty<Lesson>();
+            Subjects = Array.Empty<Subject>();
         }
 
         public Schedule(string day)
         {
             this.Day = day;
-            Lessons = Array.Empty<Lesson>();
+            Subjects = Array.Empty<Subject>();
         }
-        public Schedule(string day, Lesson[] lessons)
+        public Schedule(string day, Subject[] subjects)
         {
             this.Day = day;
-            this.Lessons = lessons;
+            this.Subjects = subjects;
         }
 
-        public void AddNewLesson(ref Lesson[] Lessons)
+        public void AddNewSubject()
         {
-            Lesson student = new Lesson();
-            student.AddLesson();
-            Array.Resize(ref Lessons, Lessons.Length + 1);
-            Lessons[^1] = (student);
+            Subject subject = new Subject();
+            subject.AddSubject();
+            var newSubjects = new Subject[Subjects.Length + 1];
+            Array.Copy(Subjects, newSubjects, Subjects.Length);
+            Subjects = newSubjects;
+            Subjects[^1] = (subject); ;
+        }
+
+        public override string ToString()
+        {
+            foreach (var subject in Subjects)
+            {
+                Console.WriteLine("Day: " + Day + ", Subject: " + subject + "\n");
+            }
+            return "\n";
         }
     }
 }

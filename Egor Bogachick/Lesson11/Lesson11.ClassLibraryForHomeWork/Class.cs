@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Lesson11.ClassLibraryForHomeWork
 {
-    internal class Class
+    public class Class
     {
         public string Name { get; set; }
         public Student[] Students { get; set; }
+        public Schedule Schedule { get; set; }
+        public Teacher Teacher { get; set; }
 
         public Class()
         {
@@ -28,12 +30,31 @@ namespace Lesson11.ClassLibraryForHomeWork
             this.Students = students;
         }
 
-        public void AddNewStudent(ref Student[] Students) 
+        public Class(string name, Student[] students, Schedule schedule)
+        {
+            this.Name = name;
+            this.Students = students;
+            this.Schedule = schedule;   
+        }
+
+        public void AddNewStudent() 
         {
             Student student = new Student();
             student.AddStudent();
-            Array.Resize(ref Students, Students.Length + 1);
-            Students[^1] = (student);
+            var newStudents = new Student[Students.Length + 1];
+            Array.Copy(Students, newStudents, Students.Length);
+            Students = newStudents;
+            Students[^1] = (student); ;
+        }
+
+        public override string ToString()
+        {
+            Console.WriteLine("Class name: " + Name + ", Teacher: " + Teacher);
+            foreach (var student in Students)
+            {
+                Console.WriteLine( "Class name: " + Name + ", Student: " + student);
+            }
+            return "\n";
         }
     }
 

@@ -7,38 +7,39 @@ using System.Threading.Tasks;
 
 namespace Lesson11.ClassLibraryForHomeWork
 {
-    internal class Lesson
+    public class Subject
     {
-        public string LessonName { get; set; }
+        public string SubjectName { get; set; }
         public string TimeSpan { get; set; }
-        public Lesson() 
+        public Subject() 
         {
-            this.LessonName = "";
+            this.SubjectName = "";
             this.TimeSpan = "";
         } 
 
-        public Lesson(string lessonName, string timeSpan)
+        public Subject(string subjectName, string timeSpan)
         {
-            this.LessonName = lessonName;
+            this.SubjectName = subjectName;
             this.TimeSpan = timeSpan;
         }
 
-        public Lesson AddLesson()
+        public Subject AddSubject()
         {
+            Console.WriteLine("Add new subject:");
             int reg = 0;
-            Console.WriteLine("Enter first name:");
+            Console.WriteLine("Enter subject name:");
             do
             {
                 if (reg > 0)
                 {
                     Console.WriteLine("\nIncorrect input, try again:");
                 }
-                LessonName = Console.ReadLine()!;
+                SubjectName = Console.ReadLine()!;
                 reg++;
-            } while (!Regex.IsMatch(LessonName, @"[A-Za-z]"));
+            } while (!Regex.IsMatch(SubjectName, @"[A-Za-z]"));
 
             reg = 0;
-            Console.WriteLine("Enter last name:");
+            Console.WriteLine("Enter time span:");
             do
             {
                 if (reg > 0)
@@ -49,7 +50,12 @@ namespace Lesson11.ClassLibraryForHomeWork
                 reg++;
             } while (!Regex.IsMatch(TimeSpan, @"^[0-2][0-3]:[0-5][0-9]$"));
 
-            return new Lesson(LessonName, TimeSpan);
+            return new Subject(SubjectName, TimeSpan);
+        }
+
+        public override string ToString()
+        {
+            return "SubjectName: " + SubjectName + ", TimeSpan: " + TimeSpan;
         }
 
     }

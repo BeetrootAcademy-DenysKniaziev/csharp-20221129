@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Lesson11.ClassLibraryForHomeWork
 {
@@ -6,14 +7,14 @@ namespace Lesson11.ClassLibraryForHomeWork
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Age { get; set; }
+        public int Age { get; set; }
         public Student()
         {
             this.FirstName = "";
             this.LastName = "";
-            this.Age = "";
+            this.Age = 0;
         }
-        public Student(string firstName, string lastName, string age)
+        public Student(string firstName, string lastName, int age)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -21,6 +22,7 @@ namespace Lesson11.ClassLibraryForHomeWork
         }
         public Student AddStudent()
         {
+            Console.WriteLine("Add new student\n");
             int reg = 0;
             Console.WriteLine("Enter first name:");
             do
@@ -47,17 +49,14 @@ namespace Lesson11.ClassLibraryForHomeWork
 
             reg = 0;
             Console.WriteLine("Enter age:");
-            do
-            {
-                if (reg > 0)
-                {
-                    Console.WriteLine("\nIncorrect input, try again:");
-                }
-                Age = Console.ReadLine()!;
-                reg++;
-            } while (!Regex.IsMatch(Age, @"\d{2}"));
+            Age = int.Parse(Console.ReadLine()!);
 
             return new Student(FirstName, LastName, Age);
+        }
+
+        public override string ToString()
+        {
+            return "FirstName: " + FirstName + ", LastName: " + LastName + ", Age: " + Age;
         }
     }
 }
