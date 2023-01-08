@@ -17,10 +17,7 @@ void StartProgram()
     Console.WriteLine("5 - Search Name");
     Console.WriteLine("0 - Exit");
 }
-    //var records = new(string firstName, string lastName, string number)[1000];
-    //records[0] = ("Serhii", "Rubayko", "343-958-4231");
-    //SaveToFile(records);
-
+    
     var records = ReadFromFile();
 
 
@@ -84,7 +81,7 @@ void ShowPhoneBook((string firstName, string lastName, string number)[] records)
 
 void Search((string firstName, string lastName, string number)[] records)
 {
-    Console.WriteLine("Input search type: \n 1 - Search by FirstName \n 2 - Search by LastName \n 3 - Search by Number");
+    Console.WriteLine("Input search type: \n1 - Search by FirstName \n2 - Search by LastName \n3 - Search by Number");
 
     var type= Console.ReadKey();
 
@@ -314,7 +311,6 @@ void UpdateRecord()
         StartProgram();
     }
 }
-
 
 void RemoveRecord()
 {
