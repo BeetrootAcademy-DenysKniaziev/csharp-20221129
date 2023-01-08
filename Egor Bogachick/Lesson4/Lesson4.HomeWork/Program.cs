@@ -33,7 +33,6 @@ class Program
 
     static bool TrySumIfOdd(int first, int second)
     {
-        
         if ((first + second) % 2 != 0)
         {
             return true;
