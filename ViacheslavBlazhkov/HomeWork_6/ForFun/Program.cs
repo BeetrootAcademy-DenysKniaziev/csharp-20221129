@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 // filling the array with numbers
 int[,] array = new int[11, 11];

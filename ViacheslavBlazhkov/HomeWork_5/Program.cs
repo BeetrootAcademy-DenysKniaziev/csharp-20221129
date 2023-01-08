@@ -1,4 +1,4 @@
-﻿//Task 1------------------------------------------------------ -
+//Task 1------------------------------------------------------ -
 static int LargestMultiple(int firstValue, int secondValue)
 {
     if (firstValue < 1 || secondValue < 1)
