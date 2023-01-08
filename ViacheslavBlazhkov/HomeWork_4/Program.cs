@@ -1,4 +1,4 @@
-﻿class HomeWork4
+class HomeWork4
 {
     // Task 1 ------------------------------------------
     static int MaxValue(params int[] numbers)
@@ -30,7 +30,8 @@
         else return false;
     }
 
-// Task 4 ------------------------------------------
+
+    // Task 4 ------------------------------------------
     static int MaxValue(int first, int second, int third)
     {
         int max = first;
