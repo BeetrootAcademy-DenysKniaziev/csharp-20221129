@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 // filling the array with numbers
 int[,] array = new int[11, 11];
@@ -54,7 +54,7 @@ void SecondVariant(int[,] array)
             }
             Console.Write($"{array[i, k]}".PadLeft(2, ' ') + "  ");
             Console.ResetColor();
-            
+
         }
         x--;
         Console.WriteLine();
@@ -74,9 +74,9 @@ void ThirdVariant(int[,] array)
     Console.WriteLine("Array: \n");
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int k = 0; k < array.GetLength(1); k++) 
+        for (int k = 0; k < array.GetLength(1); k++)
         {
-            if (k <= x2 && k >= x1) 
+            if (k <= x2 && k >= x1)
             {
                 sum += array[i, k];
                 count++;
@@ -86,7 +86,7 @@ void ThirdVariant(int[,] array)
             Console.Write($"{array[i, k]}".PadLeft(2, ' ') + "  ");
             Console.ResetColor();
         }
-        if (i < (max/2) - 1)
+        if (i < (max / 2) - 1)
         {
             x1++; x2--;
         }

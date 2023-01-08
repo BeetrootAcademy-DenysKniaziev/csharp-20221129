@@ -30,6 +30,8 @@ class HomeWork4
         else return false;
     }
 
+
+    // Task 4 ------------------------------------------
     static int MaxValue(int first, int second, int third)
     {
         int max = first;
