@@ -4,17 +4,19 @@ class Program
 {
     static ConsoleKey Direction = ConsoleKey.RightArrow;
     static string[] map;
+    static short Width, Length, Score = 0;
+
     static void Main()
     {
-        map = MapCreate();
-
+        (Width, Length) = MapCreate();
         MoveAsync();
+      
         while (true)
         {
             var key = Console.ReadKey().Key;
             switch (key)
             {
-                case ConsoleKey.LeftArrow when Direction!=ConsoleKey.RightArrow:
+                case ConsoleKey.LeftArrow when Direction != ConsoleKey.RightArrow:
                     Direction = key;
                     break;
                 case ConsoleKey.RightArrow when Direction != ConsoleKey.LeftArrow:
@@ -29,17 +31,21 @@ class Program
 
             }
         }
-           
+
         Console.ReadLine();
     }
     static async Task MoveAsync()
     {
         await Task.Run(() => Move());
     }
+  
     static void Move()
     {
 
-        short x = 10, y= 10;
+        Food();
+        short x = (short)new Random().Next(2, Width), y = (short)new Random().Next(2, Length);
+        Thread.Sleep(500);
+
         while (true)
         {
 
@@ -61,16 +67,19 @@ class Program
                     break;
 
             }
+
             Console.SetCursorPosition(x, y);
-            CheckCord(x, y);
+            if (CheckCord(x, y) == true)
+                Food();
+            Console.SetCursorPosition(x, y);
             Console.Write("@");
             Thread.Sleep(100);
-           
+
 
 
         }
     }
-    static string[] MapCreate()
+    static (short Width, short Length) MapCreate()
     {
 
         string[] map;
@@ -80,9 +89,34 @@ class Program
             throw new Exception("Need map for start");
         foreach (string s in map)
             Console.WriteLine(s);
-        return map;
+        char[] readBuffer = new char[1];
+        int readCount;
+        short x = 0, y = 0;
+
+        //Get width and length of the map
+        while (true)
+        {
+            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
+            if (readBuffer[0] != '#')
+            {
+                x--;
+                break;
+            }
+            x++;
+        }
+        while (true)
+        {
+            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
+            if (readBuffer[0] != '#')
+            {
+                y--;
+                break;
+            }
+            y++;
+        }
+        return (x, y);
     }
-    static void CheckCord(short x, short y)
+    static bool CheckCord(short x, short y)
     {
         char[] readBuffer = new char[1];
         int readCount;
@@ -100,19 +134,35 @@ class Program
             }
             else
                 Console.WriteLine("Game is over!");
-            
+            Console.WriteLine($"Your score: {Score}");
             Environment.Exit(0);
         }
+        if (readBuffer[0] == '$')
+        {
+            Score++;
+            return true;
+        }
+        return false;
     }
     /// <summary>
     /// Random generate food 1 per 5 seconds
     /// </summary>
-    static void Food(short x, short y)
+    static void Food()
     {
-        while(true)
+        while (true)
         {
-            Thread.Sleep(4000);
-            
+            short x = (short)new Random().Next(2, Width), y = (short)new Random().Next(2, Length);
+
+            char[] readBuffer = new char[1];
+            int readCount;
+            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
+
+            if (readBuffer[0] != '#' && readBuffer[0] != '@')
+            {
+                Console.SetCursorPosition(x, y);
+                Console.Write("$");
+                return;
+            }
         }
     }
 
@@ -141,4 +191,4 @@ class Program
     static extern IntPtr GetStdHandle(
         int nStdHandle
         );
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+}
