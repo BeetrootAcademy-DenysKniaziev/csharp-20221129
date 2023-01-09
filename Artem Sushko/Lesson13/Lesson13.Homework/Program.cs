@@ -7,41 +7,55 @@ using System.Xml.Linq;
 
 namespace Lesson13.Homework
 {
-    class Product
+    abstract class Succses
     {
-        public string Name;
-        public float Price;
-        public int Amount;
+        public abstract void Succsesful();
+    }
+    interface IShowing
+    {
+        void ShowInfo();
+    }
+
+    class Product : Succses, IShowing
+    {
+        private string _name;
+        private float _price;
+        private int _amount;
 
         public Product(string name, float price, int amount)
         {
-            Name = name;
-            Price = price;
-            Amount = amount;
+            _name = name;
+            _price = price;
+            _amount = amount;
         }
 
-        public void GetProductInfo()
+        public void ShowInfo()
         {
-            Console.WriteLine($"Product's name: {Name}" +
-                              $"\nProduct's Price: {Price} gruvni" +
-                              $"\nAmount Of Product: {Amount} pieces");
+            Console.WriteLine($"Product's name: {_name}" +
+                              $"\nProduct's Price: {_price} gruvni" +
+                              $"\nAmount Of Product: {_amount} pieces");
         }
 
         public void AddProduct(int addItems)
         {
-            Amount += addItems;
+            _amount += addItems;
         }
 
         public void SellProduct(int sellItems)
         {
-            if (Amount >= sellItems)
+            if (_amount >= sellItems)
             {
-                Amount -= sellItems;
+                _amount -= sellItems;
             }
             else
             {
-                Console.WriteLine($"We dont have that amout of {Name}");
+                Console.WriteLine($"We dont have that amout of {_name}");
             }
+        }
+
+        public override void Succsesful()
+        {
+            Console.WriteLine("\n\tYour opperation with Product was Succsesful!");
         }
     }
 
@@ -53,16 +67,16 @@ namespace Lesson13.Homework
         public int Flat;
     }
 
-    class Customer
+    class Customer : Succses, IShowing
     {
-        public string FirstName;
-        public string LastName;
-        public Adresse Adresse;
+        private string _firstName;
+        private string _lastName;
+        private Adresse _adresse;
         public Customer(string firstName, string lastName, string city, string street, int house, int flat)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Adresse = new Adresse
+            _firstName = firstName;
+            _lastName = lastName;
+            _adresse = new Adresse
             {
                 City = city,
                 Street = street,
@@ -71,26 +85,27 @@ namespace Lesson13.Homework
             };
         }
 
-        public void GetCustomerInfo()
+        public void ShowInfo()
         {
-
-            Console.WriteLine($"Customer's name: {FirstName} {LastName}" +
+            Console.WriteLine($"Customer's name: {_firstName} {_lastName}" +
                               $"\n\nCustomer's Adresse" +
-                              $"\nCity: {Adresse.City}" +
-                              $"\nStreet: {Adresse.Street}" +
-                              $"\nHouse: {Adresse.House}" +
-                              $"\nFlat: {Adresse.Flat}");
+                              $"\nCity: {_adresse.City}" +
+                              $"\nStreet: {_adresse.Street}" +
+                              $"\nHouse: {_adresse.House}" +
+                              $"\nFlat: {_adresse.Flat}");
+        }
+
+        public override void Succsesful()
+        {
+            Console.WriteLine("Your opperation with Customer was Succsesful!");
         }
     }
 
     internal class Program
     {
+        private 
         static void Main(string[] args)
         {
-
-
-            Console.Clear();
-
             List<Product> products = new List<Product>();
             List<Customer> customers = new List<Customer>();
             bool IsOpen = true;
@@ -101,7 +116,7 @@ namespace Lesson13.Homework
                 for (int i = 0; i < products.Count; i++)
                 {
                     Console.Write($"\n {i + 1} - ");
-                    products[i].GetProductInfo();
+                    products[i].ShowInfo();
                 }
                 Console.WriteLine(new string('*', 30));
 
@@ -111,7 +126,7 @@ namespace Lesson13.Homework
                 for (int i = 0; i < customers.Count; i++)
                 {
                     Console.Write($"\n {i + 1} - ");
-                    customers[i].GetCustomerInfo();
+                    customers[i].ShowInfo();
                 }
                 Console.WriteLine(new string('*', 30));
 
@@ -123,7 +138,7 @@ namespace Lesson13.Homework
                                                    "\n5 - Remove Customer" +
                                                    "\n6 - Remove Product" +
                                                    "\n0 - Exit");
-
+                string userInput;
                 var select = Console.ReadKey();
                 switch (select.Key)
                 {
@@ -137,49 +152,158 @@ namespace Lesson13.Homework
                         Console.Write("Enter the Name of Your Street: ");
                         string streetName = Console.ReadLine();
                         Console.Write("Enter the Number of Your House: ");
-                        int housNumber = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int housNumber))
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         Console.Write("Enter the Number of Your Flat: ");
-                        int flatNumber = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int flatNumber))
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         customers.Add(new Customer(newCustomerFirst, newCustomerLast,
                                                    cityName, streetName, housNumber, flatNumber));
+                        customers[0].Succsesful();
                         break;
 
                     case ConsoleKey.D2:
+                        
                         Console.Write("\nEnter the Name of NEW product: ");
                         string newProductName = Console.ReadLine();
                         Console.Write("Enter the Price of NEW product:(!use \".\" as a seperator!) ");
-                        float newProductPrice = Convert.ToSingle(Console.ReadLine(), CultureInfo.InvariantCulture);
+                        userInput= Console.ReadLine();
+                        if (float.TryParse(userInput, out float newProductPrice))
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         Console.Write("Enter the Amount of NEW product: ");
-                        int newProductAmount = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int newProductAmount))
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         products.Add(new Product(newProductName, newProductPrice, newProductAmount));
+                        products[0].Succsesful();
                         break;
 
                     case ConsoleKey.D3:
                         Console.Write("\nEnter the number of poduct: ");
-                        int productNumber = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int productNumber))
+                        {
+                            if (productNumber>products.Count)
+                            {
+                                Console.WriteLine("We don't have Product by this number! Try Again!");
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         Console.Write("How many items do you want to add?: ");
-                        int AddItems = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int AddItems))
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         products[productNumber - 1].AddProduct(AddItems);
+                        products[0].Succsesful();
+
                         break;
 
                     case ConsoleKey.D4:
                         Console.Write("\nWhat would you like to buy(Enter the Number of Product)?:");
-                        int wishProduct = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int wishProduct))
+                        {
+                            if (wishProduct > products.Count)
+                            {
+                                Console.WriteLine("We don't have Product by this number! Try Again!");
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         Console.Write("How many items do you want to buy?: ");
-                        int SellItems = Convert.ToInt32(Console.ReadLine());
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int SellItems))
+                        {
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         products[wishProduct].SellProduct(SellItems);
+                        products[0].Succsesful();
+
                         break;
 
                     case ConsoleKey.D5:
-                        Console.Write("Enter the Number of Customer to Remove: ");
-                        int customerRemove = Convert.ToInt32(Console.ReadLine()) - 1;
+                        Console.Write("\nEnter the Number of Customer to Remove: ");
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int customerRemove))
+                        {
+                            customerRemove -= 1;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         customers.RemoveAt(customerRemove);
+                        products[0].Succsesful();
+
                         break;
 
                     case ConsoleKey.D6:
-                        Console.Write("Enter the Number of Product to Remove: ");
-                        int productRemove = Convert.ToInt32(Console.ReadLine()) - 1;
+                        Console.Write("\nEnter the Number of Product to Remove: ");
+                        userInput = Console.ReadLine();
+                        if (int.TryParse(userInput, out int productRemove))
+                        {
+                            productRemove -= 1;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input! Try again!");
+                            break;
+                        }
                         products.RemoveAt(productRemove);
+                        products[0].Succsesful();
+
                         break;
 
                     case ConsoleKey.D0:
