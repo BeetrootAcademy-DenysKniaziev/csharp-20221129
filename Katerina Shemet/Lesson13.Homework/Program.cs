@@ -73,7 +73,7 @@ public class Product
     }
 }
 
-public class Order
+public class Order : IOrderStatus
 {
     public string OrderId;
     public DateTime Date;
@@ -83,6 +83,31 @@ public class Order
     public void Validate()
     {
         Console.WriteLine("Validated");
+    }
+
+    void IOrderStatus.New()
+    {
+        Console.WriteLine("Order was created");
+    }
+
+    void IOrderStatus.Hold()
+    {
+        Console.WriteLine("Order on hold now");
+    }
+
+    void IOrderStatus.Pay()
+    {
+        Console.WriteLine("Order was payed");
+    }
+
+    void IOrderStatus.Deliver()
+    {
+        Console.WriteLine("Order was delivered");
+    }
+
+    void IOrderStatus.Close()
+    {
+        Console.WriteLine("Order was closed");
     }
 }
 
