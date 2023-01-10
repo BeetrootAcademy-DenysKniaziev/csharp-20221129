@@ -1,8 +1,9 @@
-using System.Drawing;
+﻿using System.Drawing;
 using System.Runtime.InteropServices;
 
 class Program
 {
+    
     static ConsoleKey Direction = ConsoleKey.RightArrow;
     static List<Point> Tail = new List<Point>();
     static string[] map;
@@ -10,6 +11,8 @@ class Program
 
     static void Main()
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.CursorVisible = false;
         map = MapCreate();
         MoveAsync();
 
@@ -43,13 +46,30 @@ class Program
 
     static void Move()
     {
+            
+        short x, y;
+        while (true)
+        {
+            x = (short)new Random().Next(1, map[0].Length - 3);
+            y = (short)new Random().Next(1, map.Count() - 3);
 
+            char[] readBuffer = new char[1];
+            int readCount;
+            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
+
+            if (readBuffer[0] != '#')
+            {
+                Console.SetCursorPosition(x, y);
+                Console.Write("☺");
+                break;
+            }
+        }
         Food();
-        short x = (short)new Random().Next(1, map[0].Length - 3);
-        short y = (short)new Random().Next(1, map.Count() - 3);
+
+
+
+
         Tail.Add(new Point(x, y));
-        Console.SetCursorPosition(x, y);
-        Console.Write("@");
         Thread.Sleep(2000);
 
         while (true)
@@ -81,7 +101,7 @@ class Program
             CheckCord(x, y, Direction);
 
             Console.SetCursorPosition(x, y);
-            Console.Write("@");
+            Console.Write("☺");
             ChangeTail();
 
             Point temp = Tail[0];
@@ -129,7 +149,7 @@ class Program
         int readCount;
         ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
-        if (readBuffer[0] == '#' || readBuffer[0] == '@')
+        if (readBuffer[0] == '#' || readBuffer[0] == '☺')
         {
             Console.Clear();
             string[] end;
@@ -218,7 +238,7 @@ class Program
             int readCount;
             ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
-            if (readBuffer[0] != '#' && readBuffer[0] != '@')
+            if (readBuffer[0] != '#' && readBuffer[0] != '☺')
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write("$");
