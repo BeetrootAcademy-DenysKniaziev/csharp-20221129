@@ -3,16 +3,17 @@ using System.Runtime.InteropServices;
 
 class Program
 {
-    
+
     static ConsoleKey Direction = ConsoleKey.RightArrow;
     static List<Point> Tail = new List<Point>();
     static string[] map;
     static short Score = 0;
+    static Random random = new Random();
 
     static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        Console.CursorVisible = false;
+        //Console.CursorVisible = false;
         map = MapCreate();
         MoveAsync();
 
@@ -37,7 +38,7 @@ class Program
             }
         }
         Console.ReadLine();
-        
+
     }
     static async Task MoveAsync()
     {
@@ -46,12 +47,12 @@ class Program
 
     static void Move()
     {
-            
+
         short x, y;
         while (true)
         {
-            x = (short)new Random().Next(1, map[0].Length - 3);
-            y = (short)new Random().Next(1, map.Count() - 3);
+            x = (short)random.Next(1, map[0].Length - 3);
+            y = (short)random.Next(1, map.Count() - 3);
 
             char[] readBuffer = new char[1];
             int readCount;
@@ -60,7 +61,7 @@ class Program
             if (readBuffer[0] != '#')
             {
                 Console.SetCursorPosition(x, y);
-                Console.Write("☺");
+                Console.Write("@");
                 break;
             }
         }
@@ -98,17 +99,18 @@ class Program
 
 
 
-            CheckCord(x, y, Direction);
+            CheckCord(ref x, ref y, Direction);
 
             Console.SetCursorPosition(x, y);
-            Console.Write("☺");
+            Console.Write("@");
+
             ChangeTail();
 
             Point temp = Tail[0];
             (temp.X, temp.Y) = (x, y);
             Tail[0] = temp;
-            
-          
+
+
 
 
             Thread.Sleep(150);
@@ -118,7 +120,7 @@ class Program
     {
         for (int i = Tail.Count - 1; i > 0; i--)
         {
-            Point temp = Tail[i-1];
+            Point temp = Tail[i - 1];
             Tail[i] = temp;
         }
         return;
@@ -143,13 +145,14 @@ class Program
 
         return map;
     }
-    static void CheckCord(short x, short y, ConsoleKey key)
+    static void CheckCord(ref short X, ref short Y, ConsoleKey key)
     {
         char[] readBuffer = new char[1];
         int readCount;
+        short x = X, y = Y;
         ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
-        if (readBuffer[0] == '#' || readBuffer[0] == '☺')
+        if (readBuffer[0] == '#' || readBuffer[0] == '@')
         {
             Console.Clear();
             string[] end;
@@ -164,6 +167,28 @@ class Program
             Console.WriteLine($"Your score: {Score}");
             Thread.Sleep(25000);
             Environment.Exit(0);
+        }
+        if (readBuffer[0] == '|')
+        {
+
+            if (Y == 0)
+            {
+                Y = (short)(map.Count() - 2);
+            }
+            if (Y == map.Count() - 1)
+            {
+                Y = 1;
+            }
+            if (X == 0)
+            {
+                X = (short)(map[0].Count() - 2);
+            }
+            if (X == map[0].Count() - 1)
+            {
+                X = 1;
+            }
+
+
         }
         if (readBuffer[0] == '$')
         {
@@ -231,14 +256,14 @@ class Program
     {
         while (true)
         {
-            short x = (short)new Random().Next(1, map[0].Length - 3);
-            short y = (short)new Random().Next(1, map.Count() - 3);
+            short x = (short)random.Next(1, map[0].Length - 3);
+            short y = (short)random.Next(1, map.Count() - 3);
 
             char[] readBuffer = new char[1];
             int readCount;
             ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
-            if (readBuffer[0] != '#' && readBuffer[0] != '☺')
+            if (readBuffer[0] != '#' && readBuffer[0] != '@')
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write("$");
