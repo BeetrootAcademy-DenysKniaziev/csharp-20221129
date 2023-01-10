@@ -1,16 +1,18 @@
+using System.Drawing;
 using System.Runtime.InteropServices;
 
 class Program
 {
     static ConsoleKey Direction = ConsoleKey.RightArrow;
+    static List<Point> Tail = new List<Point>();
     static string[] map;
-    static short Width, Length, Score = 0;
+    static short Score = 0;
 
     static void Main()
     {
-        (Width, Length) = MapCreate();
+        map = MapCreate();
         MoveAsync();
-      
+
         while (true)
         {
             var key = Console.ReadKey().Key;
@@ -31,26 +33,28 @@ class Program
 
             }
         }
-
         Console.ReadLine();
     }
     static async Task MoveAsync()
     {
         await Task.Run(() => Move());
     }
-  
+
     static void Move()
     {
 
         Food();
-        short x = (short)new Random().Next(2, Width), y = (short)new Random().Next(2, Length);
-        Thread.Sleep(500);
+        short x = (short)new Random().Next(1, map[0].Length - 3);
+        short y = (short)new Random().Next(1, map.Count() - 3);
+        Tail.Add(new Point(x, y));
+        Console.SetCursorPosition(x, y);
+        Console.Write("@");
+        Thread.Sleep(2000);
 
         while (true)
         {
 
-            Console.SetCursorPosition(x, y);
-            Console.Write(" ");
+            
             switch (Direction)
             {
                 case ConsoleKey.LeftArrow:
@@ -67,56 +71,51 @@ class Program
                     break;
 
             }
+            Console.SetCursorPosition(Tail[Tail.Count-1].X, Tail[Tail.Count - 1].Y);
+            Console.Write(" ");
 
-            Console.SetCursorPosition(x, y);
-            if (CheckCord(x, y) == true)
-                Food();
+
+            
+
+            CheckCord(x, y, Direction);
+
             Console.SetCursorPosition(x, y);
             Console.Write("@");
-            Thread.Sleep(100);
+
+           
+            Point temp = Tail[Tail.Count - 1];
+            (temp.X, temp.Y) = (x, y);
+            Tail[Tail.Count - 1] = temp;
 
 
 
+            Thread.Sleep(150);
         }
     }
-    static (short Width, short Length) MapCreate()
+    void ChangeTail()
     {
 
-        string[] map;
+    }
+    static string[] MapCreate()
+    {
+
+        string[] map = new string[0];
         if (File.Exists("map.txt"))
             map = File.ReadAllLines("map.txt");
         else
-            throw new Exception("Need map for start");
+        {
+            Console.WriteLine("Need map for start. Download: https://drive.google.com/drive/folders/1ahSweS9oAEXnJmbTU7F0NLZ-lebJ7LRF?usp=share_link");
+            Environment.Exit(1);
+        }
         foreach (string s in map)
             Console.WriteLine(s);
         char[] readBuffer = new char[1];
         int readCount;
         short x = 0, y = 0;
 
-        //Get width and length of the map
-        while (true)
-        {
-            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
-            if (readBuffer[0] != '#')
-            {
-                x--;
-                break;
-            }
-            x++;
-        }
-        while (true)
-        {
-            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
-            if (readBuffer[0] != '#')
-            {
-                y--;
-                break;
-            }
-            y++;
-        }
-        return (x, y);
+        return map;
     }
-    static bool CheckCord(short x, short y)
+    static void CheckCord(short x, short y, ConsoleKey key)
     {
         char[] readBuffer = new char[1];
         int readCount;
@@ -139,19 +138,43 @@ class Program
         }
         if (readBuffer[0] == '$')
         {
+           
+
+            if (Tail.Count == 1)
+            {
+                switch (key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        x++;
+                        break;
+                    case ConsoleKey.RightArrow:
+                        x--;
+                        break;
+                    case ConsoleKey.UpArrow:
+                        y++;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        y--;
+                        break;
+                }
+                Point point = new Point(x, y);
+                Tail.Add(point);
+            }
             Score++;
-            return true;
+            Food();
+           
         }
-        return false;
+
     }
     /// <summary>
-    /// Random generate food 1 per 5 seconds
+    /// Random generate food
     /// </summary>
     static void Food()
     {
         while (true)
         {
-            short x = (short)new Random().Next(2, Width), y = (short)new Random().Next(2, Length);
+            short x = (short)new Random().Next(1, map[0].Length - 3);
+            short y = (short)new Random().Next(1, map.Count() - 3);
 
             char[] readBuffer = new char[1];
             int readCount;
@@ -165,9 +188,6 @@ class Program
             }
         }
     }
-
-
-
 
     [StructLayout(LayoutKind.Sequential)]
     struct COORD
