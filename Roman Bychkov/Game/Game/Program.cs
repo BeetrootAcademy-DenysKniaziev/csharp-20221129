@@ -34,6 +34,7 @@ class Program
             }
         }
         Console.ReadLine();
+        
     }
     static async Task MoveAsync()
     {
@@ -54,7 +55,7 @@ class Program
         while (true)
         {
 
-            
+
             switch (Direction)
             {
                 case ConsoleKey.LeftArrow:
@@ -71,29 +72,36 @@ class Program
                     break;
 
             }
-            Console.SetCursorPosition(Tail[Tail.Count-1].X, Tail[Tail.Count - 1].Y);
+            Console.SetCursorPosition(Tail[Tail.Count - 1].X, Tail[Tail.Count - 1].Y);
             Console.Write(" ");
 
 
-            
+
 
             CheckCord(x, y, Direction);
 
             Console.SetCursorPosition(x, y);
             Console.Write("@");
+            ChangeTail();
 
-           
-            Point temp = Tail[Tail.Count - 1];
+            Point temp = Tail[0];
             (temp.X, temp.Y) = (x, y);
-            Tail[Tail.Count - 1] = temp;
-
+            Tail[0] = temp;
+            
+          
 
 
             Thread.Sleep(150);
         }
     }
-    void ChangeTail()
+    static void ChangeTail()
     {
+        for (int i = Tail.Count - 1; i > 0; i--)
+        {
+            Point temp = Tail[i-1];
+            Tail[i] = temp;
+        }
+        return;
 
     }
     static string[] MapCreate()
@@ -121,7 +129,7 @@ class Program
         int readCount;
         ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
-        if (readBuffer[0] == '#')
+        if (readBuffer[0] == '#' || readBuffer[0] == '@')
         {
             Console.Clear();
             string[] end;
@@ -134,11 +142,12 @@ class Program
             else
                 Console.WriteLine("Game is over!");
             Console.WriteLine($"Your score: {Score}");
+            Thread.Sleep(25000);
             Environment.Exit(0);
         }
         if (readBuffer[0] == '$')
         {
-           
+
 
             if (Tail.Count == 1)
             {
@@ -160,9 +169,38 @@ class Program
                 Point point = new Point(x, y);
                 Tail.Add(point);
             }
+            else
+            {
+                int i = Tail.Count - 2;
+                if (Tail[i].X > Tail[i + 1].X)
+                {
+                    Point temp = Tail[i + 1];
+                    (temp.X, temp.Y) = (temp.X - 1, temp.Y);
+                    Tail.Add(temp);
+                }
+                if (Tail[i].X < Tail[i + 1].X)
+                {
+                    Point temp = Tail[i + 1];
+                    (temp.X, temp.Y) = (temp.X + 1, temp.Y);
+                    Tail.Add(temp);
+                }
+
+                if (Tail[i].Y > Tail[i + 1].Y)
+                {
+                    Point temp = Tail[i + 1];
+                    (temp.X, temp.Y) = (temp.X, temp.Y - 1);
+                    Tail.Add(temp);
+                }
+                if (Tail[i].Y < Tail[i + 1].Y)
+                {
+                    Point temp = Tail[i + 1];
+                    (temp.X, temp.Y) = (temp.X, temp.Y + 1);
+                    Tail.Add(temp);
+                }
+            }
             Score++;
             Food();
-           
+
         }
 
     }
