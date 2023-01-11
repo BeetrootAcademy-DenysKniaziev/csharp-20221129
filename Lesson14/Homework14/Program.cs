@@ -55,10 +55,10 @@ internal class Program
 
         Console.SetWindowSize(200, 60);
         Picture Pic1 = new(), Pic2 = new(), Pic3 = new();
-        Pic1.LoadBitmap("sword1s.jfif");
+        Pic1.LoadBitmap(AppDomain.CurrentDomain.BaseDirectory + "sword1s.jfif");
         Console.WriteLine(Pic1.ToString());
 
-        Pic2.LoadBitmap("bow2.jfif");
+        Pic2.LoadBitmap(AppDomain.CurrentDomain.BaseDirectory + "bow2.jfif");
         Console.WriteLine(Pic2.ToString());
 
         Pic3.LoadBitmap("drag3.jfif");
