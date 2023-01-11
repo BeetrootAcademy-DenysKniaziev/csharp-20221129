@@ -13,9 +13,9 @@ class Program
     static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
-        //Console.CursorVisible = false;
+        Console.CursorVisible = false;
         map = MapCreate();
-        MoveAsync();
+        RunAsync();
 
         while (true)
         {
@@ -36,18 +36,18 @@ class Program
                     break;
 
             }
+            Thread.Sleep(150);
         }
         Console.ReadLine();
 
     }
-    static async Task MoveAsync()
+    static async Task RunAsync()
     {
-        await Task.Run(() => Move());
+        await Task.Run(() => Run());
     }
 
-    static void Move()
+    static void Run()
     {
-
         short x, y;
         while (true)
         {
@@ -66,17 +66,12 @@ class Program
             }
         }
         Food();
-
-
-
-
         Tail.Add(new Point(x, y));
+
         Thread.Sleep(2000);
 
         while (true)
         {
-
-
             switch (Direction)
             {
                 case ConsoleKey.LeftArrow:
@@ -96,22 +91,15 @@ class Program
             Console.SetCursorPosition(Tail[Tail.Count - 1].X, Tail[Tail.Count - 1].Y);
             Console.Write(" ");
 
-
-
-
             CheckCord(ref x, ref y, Direction);
 
             Console.SetCursorPosition(x, y);
             Console.Write("@");
-
             ChangeTail();
 
             Point temp = Tail[0];
             (temp.X, temp.Y) = (x, y);
             Tail[0] = temp;
-
-
-
 
             Thread.Sleep(150);
         }
@@ -154,6 +142,9 @@ class Program
 
         if (readBuffer[0] == '#' || readBuffer[0] == '@')
         {
+            Console.SetCursorPosition(x, y);
+            Console.Write("█");
+            Thread.Sleep(2000);
             Console.Clear();
             string[] end;
             if (File.Exists("end.txt"))
@@ -165,8 +156,9 @@ class Program
             else
                 Console.WriteLine("Game is over!");
             Console.WriteLine($"Your score: {Score}");
-            Thread.Sleep(25000);
+            Thread.Sleep(10000);
             Environment.Exit(0);
+            
         }
         if (readBuffer[0] == '|')
         {
@@ -187,7 +179,7 @@ class Program
             {
                 X = 1;
             }
-
+           
 
         }
         if (readBuffer[0] == '$')
@@ -245,8 +237,9 @@ class Program
             }
             Score++;
             Food();
-
+          
         }
+      
 
     }
     /// <summary>
