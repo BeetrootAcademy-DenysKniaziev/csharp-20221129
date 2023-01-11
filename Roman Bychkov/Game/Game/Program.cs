@@ -5,6 +5,7 @@ class Program
 {
 
     static ConsoleKey Direction = ConsoleKey.RightArrow;
+    static ConsoleKey PreviousDirection = ConsoleKey.LeftArrow;
     static List<Point> Tail = new List<Point>();
     static string[] map;
     static short Score = 0;
@@ -22,21 +23,20 @@ class Program
             var key = Console.ReadKey().Key;
             switch (key)
             {
-                case ConsoleKey.LeftArrow when Direction != ConsoleKey.RightArrow:
+                case ConsoleKey.LeftArrow when PreviousDirection != ConsoleKey.RightArrow:
                     Direction = key;
                     break;
-                case ConsoleKey.RightArrow when Direction != ConsoleKey.LeftArrow:
+                case ConsoleKey.RightArrow when PreviousDirection != ConsoleKey.LeftArrow:
                     Direction = key;
                     break;
-                case ConsoleKey.UpArrow when Direction != ConsoleKey.DownArrow:
+                case ConsoleKey.UpArrow when PreviousDirection != ConsoleKey.DownArrow:
                     Direction = key;
                     break;
-                case ConsoleKey.DownArrow when Direction != ConsoleKey.UpArrow:
+                case ConsoleKey.DownArrow when PreviousDirection != ConsoleKey.UpArrow:
                     Direction = key;
                     break;
 
             }
-            Thread.Sleep(150);
         }
         Console.ReadLine();
 
@@ -72,6 +72,7 @@ class Program
 
         while (true)
         {
+            
             switch (Direction)
             {
                 case ConsoleKey.LeftArrow:
@@ -88,6 +89,7 @@ class Program
                     break;
 
             }
+            PreviousDirection = Direction;
             Console.SetCursorPosition(Tail[Tail.Count - 1].X, Tail[Tail.Count - 1].Y);
             Console.Write(" ");
 
