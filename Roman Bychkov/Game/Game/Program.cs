@@ -48,6 +48,8 @@ class Program
 
     static void Run()
     {
+        Console.SetCursorPosition(1, 14);
+        Console.Write("$");
         short x, y;
         while (true)
         {
@@ -72,7 +74,7 @@ class Program
 
         while (true)
         {
-            
+
             switch (Direction)
             {
                 case ConsoleKey.LeftArrow:
@@ -90,10 +92,9 @@ class Program
 
             }
             PreviousDirection = Direction;
-            Console.SetCursorPosition(Tail[Tail.Count - 1].X, Tail[Tail.Count - 1].Y);
-            Console.Write(" ");
 
-            CheckCord(ref x, ref y, Direction);
+
+            CheckCord(ref x, ref y);
 
             Console.SetCursorPosition(x, y);
             Console.Write("@");
@@ -135,11 +136,11 @@ class Program
 
         return map;
     }
-    static void CheckCord(ref short X, ref short Y, ConsoleKey key)
+    static void CheckCord(ref short x, ref short y)
     {
         char[] readBuffer = new char[1];
         int readCount;
-        short x = X, y = Y;
+       
         ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
         if (readBuffer[0] == '#' || readBuffer[0] == '@')
@@ -160,88 +161,42 @@ class Program
             Console.WriteLine($"Your score: {Score}");
             Thread.Sleep(10000);
             Environment.Exit(0);
-            
+
         }
         if (readBuffer[0] == '|')
         {
 
-            if (Y == 0)
+            if (y == 0)
             {
-                Y = (short)(map.Count() - 2);
+                y = (short)(map.Count() - 2);
             }
-            if (Y == map.Count() - 1)
+            if (y == map.Count() - 1)
             {
-                Y = 1;
+                y = 1;
             }
-            if (X == 0)
+            if (x == 0)
             {
-                X = (short)(map[0].Count() - 2);
+                x = (short)(map[0].Count() - 2);
             }
-            if (X == map[0].Count() - 1)
+            if (x == map[0].Count() - 1)
             {
-                X = 1;
+                x = 1;
             }
-           
+            CheckCord(ref x, ref y);
 
         }
         if (readBuffer[0] == '$')
         {
-
-
-            if (Tail.Count == 1)
-            {
-                switch (key)
-                {
-                    case ConsoleKey.LeftArrow:
-                        x++;
-                        break;
-                    case ConsoleKey.RightArrow:
-                        x--;
-                        break;
-                    case ConsoleKey.UpArrow:
-                        y++;
-                        break;
-                    case ConsoleKey.DownArrow:
-                        y--;
-                        break;
-                }
-                Point point = new Point(x, y);
-                Tail.Add(point);
-            }
-            else
-            {
-                int i = Tail.Count - 2;
-                if (Tail[i].X > Tail[i + 1].X)
-                {
-                    Point temp = Tail[i + 1];
-                    (temp.X, temp.Y) = (temp.X - 1, temp.Y);
-                    Tail.Add(temp);
-                }
-                if (Tail[i].X < Tail[i + 1].X)
-                {
-                    Point temp = Tail[i + 1];
-                    (temp.X, temp.Y) = (temp.X + 1, temp.Y);
-                    Tail.Add(temp);
-                }
-
-                if (Tail[i].Y > Tail[i + 1].Y)
-                {
-                    Point temp = Tail[i + 1];
-                    (temp.X, temp.Y) = (temp.X, temp.Y - 1);
-                    Tail.Add(temp);
-                }
-                if (Tail[i].Y < Tail[i + 1].Y)
-                {
-                    Point temp = Tail[i + 1];
-                    (temp.X, temp.Y) = (temp.X, temp.Y + 1);
-                    Tail.Add(temp);
-                }
-            }
+            Tail.Add(new Point());
             Score++;
             Food();
-          
         }
-      
+        else
+        {
+            Console.SetCursorPosition(Tail[Tail.Count - 1].X, Tail[Tail.Count - 1].Y);
+            Console.Write(" ");
+        }
+
 
     }
     /// <summary>
