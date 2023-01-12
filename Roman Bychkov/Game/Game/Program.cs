@@ -48,8 +48,7 @@ class Program
 
     static void Run()
     {
-        Console.SetCursorPosition(1, 14);
-        Console.Write("$");
+      
         short x, y;
         while (true)
         {
