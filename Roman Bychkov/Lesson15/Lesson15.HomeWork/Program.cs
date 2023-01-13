@@ -59,12 +59,14 @@ class Stack<T>
     }
     public T Peek()
     {
+        if (_count == 0)
+            throw new IndexOutOfRangeException();
         return _array[_count - 1];
     }
     public void CopyTo(T[] array)
     {
 
-        for (int i = 0; i < (_count < array.Length ? _count : array.Length); i++)
+        for (int i = 0; i < Math.Min(_count, array.Length); i++)
         {
             array[i] = _array[i];
         }
