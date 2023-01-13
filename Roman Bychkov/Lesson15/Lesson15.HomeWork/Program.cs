@@ -11,7 +11,7 @@
         stack.Push(25);
 
 
-        int[] a = new int[stack.Count()];
+        int[] a = new int[stack.Count() - 3];
         stack.CopyTo(a);
 
         Console.WriteLine("Stack A:");
@@ -65,10 +65,9 @@ class Stack<T>
     }
     public void CopyTo(T[] array)
     {
-
-        for (int i = 0; i < Math.Min(_count, array.Length); i++)
+        for (int j = 0; j < Math.Min(_count, array.Length); j++)
         {
-            array[i] = _array[i];
+            array[j] = _array[_count - j - 1];
         }
     }
 
