@@ -8,14 +8,18 @@
         stack.Push(6);
         stack.Push(10);
         stack.Push(8);
-        Console.WriteLine(stack.Peek());
-        Console.WriteLine(stack.Pop());
-        Console.WriteLine(stack.Peek());
-        Console.WriteLine(stack.Count());
         stack.Push(25);
-        Console.WriteLine(stack.Count());
-        Console.WriteLine(stack.Peek());
 
+
+        int[] a = new int[stack.Count()];
+        stack.CopyTo(a);
+
+        Console.WriteLine("Stack A:");
+        foreach (var item in a)
+            Console.WriteLine(item);
+        Console.WriteLine("Pops");
+        while (stack.Count() > 0)
+            Console.WriteLine(stack.Pop());
     }
 }
 class Stack<T>
@@ -33,10 +37,10 @@ class Stack<T>
 
     public void Push(T item)
     {
-        if(_array.Length == _count)
+        if (_array.Length == _count)
         {
             T[] array = _array[0..^0];
-            _array = new T[_count*2];
+            _array = new T[_count * 2];
             array.CopyTo(_array, 0);
         }
         _array[_count] = item;
@@ -44,7 +48,7 @@ class Stack<T>
     }
     public T Pop()
     {
-        if( _count == 0 )
+        if (_count == 0)
             throw new IndexOutOfRangeException();
         _count--;
         return _array[_count];
@@ -57,9 +61,13 @@ class Stack<T>
     {
         return _array[_count - 1];
     }
-    public T[] CopyTo(T array)
+    public void CopyTo(T[] array)
     {
-        return _array[0..(_count+1)];
+
+        for (int i = 0; i < (_count < array.Length ? _count : array.Length); i++)
+        {
+            array[i] = _array[i];
+        }
     }
 
 }
