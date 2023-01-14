@@ -50,6 +50,11 @@ class Program
 
                 case ConsoleKey.D2:
 
+                    if (voteTopics.Count == 0)
+                    {
+                        Console.WriteLine("\nYour voiting list is empty! Add some vote topics first!");
+                        break;
+                    }
                     Console.WriteLine("\nEnter vote topic:");
                     topic = Console.ReadLine();
 
