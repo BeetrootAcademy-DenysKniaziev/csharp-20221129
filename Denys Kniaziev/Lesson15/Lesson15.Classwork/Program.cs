@@ -149,16 +149,16 @@
         Console.WriteLine(x);
 
         var emr1 = new EmailMessageReciever();
-        IMessageReciever<Message> mr5 = emr1;
-
-
-        Tuple<int, string> t1 = new Tuple<int, string>(1, "abc");
+        IMessageReciever<Message> mr5 = emr1;        
+        
+        ValueTuple<int, string> t1 = new ValueTuple<int, string>(1, "abc");
         (int, string) t2 = (1, "ewe");
 
         M1(t1);
+        M1(t2);
     }
 
-    static void M1 (Tuple<int, string> t)
+    static void M1 (ValueTuple<int, string> t)
     {
     }
 }
