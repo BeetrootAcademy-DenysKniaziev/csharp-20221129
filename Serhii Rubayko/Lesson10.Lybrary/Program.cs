@@ -20,14 +20,11 @@ class Program
          public override string ToString()
         {
             return "Cyty:"+City+" "+ Street+"street"+$" {HouseNumber} ";
-
         }
-
     }
 
     class Person 
     {
-
         public string FirstName { get; set; }
       
         public string LastName { get; set; }
@@ -42,7 +39,6 @@ class Program
         public int Age
         {
             get { return DateTime.Now.Year- YearOfBirth; }
-
         }
 
         public Person(string firstName, string lastName, int yearOfBirth)
@@ -51,7 +47,6 @@ class Program
             LastName = lastName;
             YearOfBirth = yearOfBirth;
         }
-
 
         public Person()
         {
@@ -82,7 +77,6 @@ class Program
 
         public Author()
         {
-
         }
 
         public Author (string firstName, string lastName)
@@ -96,28 +90,18 @@ class Program
     {
               
         public Author author = new Author();
-        public string Title { get; set; }
-       
-
-        //public string Author
-        //{
-        //    //get { return Author.FullName; }
-        //    //set { Autor = new Author(); }
-        //}
+        public string Title { get; set; }                    
 
         public Book(string firstName, string lastName, string title)
         {
            author = new Author(firstName, lastName);
             Title = title;
         }
-
-        //public Book(string title) => _title = title;
-
+        
         public override string ToString()
         {
             return
                 "Author:" + author.FullName + "\n" + "Title:" + this.Title;
-
         }
     }
 
@@ -144,26 +128,20 @@ class Program
             Adresess= adresess;
             _listOfBooks=new List<Book> { ab };
         }
-
-        
+                
         public override string ToString()
         {
-
             return "Lybrary:" + Title+"\n" + Adresess + "\n"+"Number of Books:"+$"{NumberOfBook}";
         }   
-
     }
 
     static void Main()
     {
-
-        Person A = new Author();
-               
+        Person A = new Author();              
 
         A.FirstName = "Ivan";
         A.LastName = "Nechuy-Levytskiy";
         A.YearOfBirth = 1838;
-
 
         var d = new Book("Jules", "Verne", "Journey to the Center of the Earth");
 
@@ -184,9 +162,6 @@ class Program
         foreach (var book in l._listOfBooks) 
         {
             Console.WriteLine(book);
-        }
-
-     
+        }     
     }
-
 }
