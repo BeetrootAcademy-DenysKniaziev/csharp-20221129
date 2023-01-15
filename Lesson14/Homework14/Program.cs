@@ -18,7 +18,7 @@ public struct Point : IEquatable<Point>
         rDiv = Math.Abs(p1[0] - p2[0]);
         gDiv = Math.Abs(p1[1] - p2[1]);
         bDiv = Math.Abs(p1[2] - p2[2]);
-        if (rDiv + gDiv + bDiv > 60) return false;
+        if (rDiv + gDiv + bDiv > 75) return false;
         return true;
     }
     public static bool operator !=(Point p1, Point p2)
