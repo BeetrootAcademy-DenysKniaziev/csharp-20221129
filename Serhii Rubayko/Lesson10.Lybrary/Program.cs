@@ -1,30 +1,39 @@
-﻿using System.Xml.Linq;
+﻿using Microsoft.VisualBasic;
+using System.Xml.Linq;
 
 class Program
 {
+    class Adresess
+    {
+        public string City { get; set; }
+
+        public string Street { get; set; }
+
+        public int HouseNumber { get; set; }
+
+        public Adresess(string city, string street, int houseNumber)
+        {
+            City = city;
+            Street = street;
+            HouseNumber = houseNumber;
+        }
+         public override string ToString()
+        {
+            return "Cyty:"+City+" "+ Street+"street"+$" {HouseNumber} ";
+
+        }
+
+    }
+
     class Person 
     {
-        protected string _firstName ="_";
-        protected string _lastName ="_";
-        protected int _yearOfBirth=1950;
 
-        public string FirstName
-        { 
-            get { return _firstName; }
-            set { _firstName = value; }               
-        }
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
-
-        public int YearOfBirth
-        {
-            get { return _yearOfBirth; }
-            set { _yearOfBirth = value; }
-        }
-
+        public string FirstName { get; set; }
+      
+        public string LastName { get; set; }
+        
+        public int YearOfBirth { get; set; }
+     
         public string FullName
         {
             get {return FirstName + " " + LastName; }
@@ -32,15 +41,15 @@ class Program
 
         public int Age
         {
-            get { return DateTime.Now.Year- _yearOfBirth; }
+            get { return DateTime.Now.Year- YearOfBirth; }
 
         }
 
         public Person(string firstName, string lastName, int yearOfBirth)
         {
-            _firstName = firstName;
-            _lastName = lastName;
-            _yearOfBirth = yearOfBirth;
+            FirstName = firstName;
+            LastName = lastName;
+            YearOfBirth = yearOfBirth;
         }
 
 
@@ -51,16 +60,16 @@ class Program
         
         public override string ToString()
         {
-            return
-                $"Fullname:{this.FullName}\nYears of birth:{this.YearOfBirth}";
+            if (YearOfBirth!=0)
+                return  $"Author:{this.FullName}\nYears of birth:{this.YearOfBirth}";
 
+            return $"Author:{this.FullName}";
         }
     }
 
     class Author:Person
     {
-        public List<Book>[] books;
-
+        
         public int YearsFromBirth
         {
             get { return base.Age; }
@@ -78,71 +87,106 @@ class Program
 
         public Author (string firstName, string lastName)
         {
-            _firstName = firstName;
-            _lastName = lastName;
-
+            FirstName = firstName;
+            LastName = lastName;
         }
 
     }
     class Book
     {
-        
-        public Author _author = new Author();
-        string _title = "_";
+              
+        public Author author = new Author();
+        public string Title { get; set; }
+       
 
-        public string Title
-        {
-            get { return _title; }
-            set { _title = value; }
-        }
+        //public string Author
+        //{
+        //    //get { return Author.FullName; }
+        //    //set { Autor = new Author(); }
+        //}
 
-        public string Author
-        {
-            get { return _author.FullName; }
-            set { _author = new Author(); }
-        }
-        
         public Book(string firstName, string lastName, string title)
         {
-            _author = new Author(firstName, lastName);
-            _title = title;
+           author = new Author(firstName, lastName);
+            Title = title;
         }
 
-        public Book(string title) => _title = title;
-        
+        //public Book(string title) => _title = title;
+
         public override string ToString()
         {
             return
-                "Author:"+_author.FullName+"\n"+"Title:"+this.Title;
+                "Author:" + author.FullName + "\n" + "Title:" + this.Title;
 
         }
     }
 
+    class Lybrary
+    {
 
+        public List<Book> _listOfBooks;
 
-        static void Main()
+        public string Title { get; set; }
+
+        public Adresess Adresess { get; set; }
+      
+
+        Book ab = new Book("Beck", "Feiner", "Alfabet book");
+         
+        public int NumberOfBook 
+        { 
+            get {return _listOfBooks.Count; }
+        }
+
+        public Lybrary(string title, Adresess adresess)
+        {
+            Title = title;
+            Adresess= adresess;
+            _listOfBooks=new List<Book> { ab };
+        }
+
+        
+        public override string ToString()
+        {
+
+            return "Lybrary:" + Title+"\n" + Adresess + "\n"+"Number of Books:"+$"{NumberOfBook}";
+        }   
+
+    }
+
+    static void Main()
     {
 
         Person A = new Author();
-
-        var a = A.ToString;
+               
 
         A.FirstName = "Ivan";
         A.LastName = "Nechuy-Levytskiy";
         A.YearOfBirth = 1838;
 
-        var d = new Book("Jules","Verne","Journey to the Center of the Earth");
 
+        var d = new Book("Jules", "Verne", "Journey to the Center of the Earth");
 
+        var a1 = d.author;
 
-        Console.WriteLine(d);
+        Console.WriteLine(a1);
 
-        //A.GetYearsFromBirth();
+        var adr = new Adresess("Kharkiv","Sumska",15);
 
-        //Console.WriteLine(A.FirstName+A.LastName+$"{A.YearOfBirth}");
+        var l = new Lybrary("Child Lybrary",adr);
 
-        //Console.WriteLine($"{A.Age}");
+        Console.WriteLine(l);
 
+        l._listOfBooks.Add(d);
+
+        Console.WriteLine(l);
+
+        foreach (var book in l._listOfBooks) 
+        {
+            Console.WriteLine(book);
+        }
+
+     
     }
 
 }
