@@ -36,10 +36,12 @@
 
     private static void MakeVote(HashSet<Voting> votings)
     {
-        var ob = votings.FirstOrDefault(x => x.Name == ValidationName("voting") && x.DateOfCreate == DateValidation());
+        string name = ValidationName("voting");
+        DateTime date = DateValidation();
+        var ob = votings.FirstOrDefault(x => x.Name == name && x.DateOfCreate == date);
         if (ob == null)
         {
-            Console.WriteLine("This vote not exist.");
+            Console.WriteLine("This voting not exist.");
             return;
         }
 
@@ -56,7 +58,7 @@
             foreach (var option in options)
                 Console.WriteLine("\t" + option.Key + " — " + option.Value);
 
-            
+
             Console.WriteLine();
 
             if (!int.TryParse(Console.ReadLine(), out numberOf) && !options.ContainsKey(numberOf))
@@ -77,19 +79,19 @@
         var ob = votings.FirstOrDefault(x => x.Name == name && x.DateOfCreate == dateTime);
         if (ob == null)
         {
-            Console.WriteLine("This vote not exist.");
+            Console.WriteLine("This voting not exist.");
             return;
         }
         while (true)
         {
-            Console.WriteLine("1 - Add operation.");
+            Console.WriteLine("1 - Add option.");
             Console.WriteLine("0 - Exit.");
             var key = Console.ReadKey().Key;
             Console.WriteLine();
             switch (key)
             {
                 case ConsoleKey.D1:
-                    ob.AddOption(ValidationName("operation"));
+                    ob.AddOption(ValidationName("option"));
                     break;
                 case ConsoleKey.D0:
                     return;

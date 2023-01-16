@@ -13,8 +13,9 @@ internal class Voting : IVote, IEnumerable<KeyValuePair<Option, int>>
     }
     public void AddOption(string name)
     {
-        if (!_options.ContainsKey(new Option(name)))
-            _options.Add(new Option(name), 0);
+        var newObj = new Option(name);
+        if (!_options.ContainsKey(newObj))
+            _options.Add(newObj, 0);
         else
             Console.WriteLine("This option already exist.");
     }
