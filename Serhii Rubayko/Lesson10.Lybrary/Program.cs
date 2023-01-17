@@ -36,9 +36,9 @@ class Program
             get {return FirstName + " " + LastName; }
         }
 
-        public int Age
+        public int Age()
         {
-            get { return DateTime.Now.Year- YearOfBirth; }
+             return DateTime.Now.Year- YearOfBirth;
         }
 
         public Person(string firstName, string lastName, int yearOfBirth)
@@ -56,23 +56,23 @@ class Program
         public override string ToString()
         {
             if (YearOfBirth!=0)
-                return  $"Author:{this.FullName}\nYears of birth:{this.YearOfBirth}";
+                return  $"Person:{this.FullName}\nAge:{this.Age()}";
 
-            return $"Author:{this.FullName}";
+            return $"Person:{this.FullName}";
         }
     }
 
     class Author:Person
     {
         
-        public int YearsFromBirth
+        public int YearsFromBirth()
         {
-            get { return base.Age; }
+            return DateTime.Now.Year - YearOfBirth;
         }
 
         public string GetYearsFromBirth()
         {
-           return $"Years from birh {this.FullName} - {this.YearsFromBirth}";
+           return $"Years from birh {this.FullName} - {this.YearsFromBirth()}";
         }
 
         public Author()
@@ -108,30 +108,27 @@ class Program
     class Lybrary
     {
 
-        public List<Book> _listOfBooks;
+        public List<Book> ListOfBooks { get; set; }
 
         public string Title { get; set; }
 
         public Adresess Adresess { get; set; }
-      
-
-        Book ab = new Book("Beck", "Feiner", "Alfabet book");
-         
-        public int NumberOfBook 
+                              
+        public int NumberOfBook ()
         { 
-            get {return _listOfBooks.Count; }
+            return ListOfBooks.Count;
         }
 
         public Lybrary(string title, Adresess adresess)
         {
             Title = title;
             Adresess= adresess;
-            _listOfBooks=new List<Book> { ab };
+            ListOfBooks=new List<Book> { new Book("Beck", "Feiner", "Alfabet book") };
         }
                 
         public override string ToString()
         {
-            return "Lybrary:" + Title+"\n" + Adresess + "\n"+"Number of Books:"+$"{NumberOfBook}";
+            return "Lybrary:" + Title+"\n" + Adresess + "\n"+"Number of Books:"+$"{NumberOfBook()}";
         }   
     }
 
@@ -147,21 +144,21 @@ class Program
 
         var a1 = d.author;
 
-        Console.WriteLine(a1);
+        Console.WriteLine(a1+"\n");
 
         var adr = new Adresess("Kharkiv","Sumska",15);
 
         var l = new Lybrary("Child Lybrary",adr);
 
-        Console.WriteLine(l);
+        Console.WriteLine(l+"\n");
 
-        l._listOfBooks.Add(d);
+        l.ListOfBooks.Add(d);
 
-        Console.WriteLine(l);
+        Console.WriteLine(l+"\n");
 
-        foreach (var book in l._listOfBooks) 
+        foreach (var book in l.ListOfBooks) 
         {
-            Console.WriteLine(book);
+            Console.WriteLine(book + "\n");
         }     
     }
 }
