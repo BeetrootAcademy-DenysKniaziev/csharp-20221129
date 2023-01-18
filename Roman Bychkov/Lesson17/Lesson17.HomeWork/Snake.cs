@@ -7,9 +7,12 @@ class Snake
     ConsoleKey _previousDirection = ConsoleKey.LeftArrow;
 
     public event Action ReadyToStart;
+    public event Action<Snake> EndGame;
+
     List<Point> _tail, _freeSpace, _portal;
     Point _foodPoint, _nextPoint;
-    string[] _map;
+    public Point NextPoint => _nextPoint;
+    public string[] _map { get; private set; }
     short _score = 0;
     Timer _stateTimer;
     Random _random;
@@ -25,7 +28,7 @@ class Snake
         _foodPoint = new Point();
         _nextPoint = new Point();
         _random = new Random();
-       
+
 
     }
 
@@ -76,7 +79,6 @@ class Snake
 
         }
 
-
         _previousDirection = _direction;
         CheckCord();
 
@@ -124,6 +126,7 @@ class Snake
 
 
         }
+        Console.SetWindowSize(_map[0].Length + 2, _map.Length + 2);
         _nextPoint = _freeSpace[_random.Next(0, _freeSpace.Count)];
 
         Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
@@ -156,22 +159,26 @@ class Snake
         }
         if (!_freeSpace.Contains(_nextPoint) || _tail.Contains(_nextPoint))
         {
-            Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
-            Console.Write("█");
-            Thread.Sleep(2000);
-            Console.Clear();
-            string[] end;
-            if (File.Exists("end.txt"))
-            {
-                end = File.ReadAllLines("end.txt");
-                foreach (string s in end)
-                    Console.WriteLine(s);
-            }
-            else
-                Console.WriteLine("Game is over!");
-            Console.WriteLine($"Your score: {_score}");
+            EndGame?.Invoke(this);
             _stateTimer.Dispose();
-            Environment.Exit(0);
+            return;
+
+            //Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
+            //Console.Write("█");
+
+            //Console.Clear();
+            //string[] end;
+            //if (File.Exists("end.txt"))
+            //{
+            //    end = File.ReadAllLines("end.txt");
+            //    foreach (string s in end)
+            //        Console.WriteLine(s);
+            //}
+            //else
+            //    Console.WriteLine("Game is over!");
+            //Console.WriteLine($"Your score: {_score}");
+
+            //Environment.Exit(0);
 
         }
 
