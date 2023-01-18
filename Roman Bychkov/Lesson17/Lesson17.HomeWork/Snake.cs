@@ -1,170 +1,162 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-using System.Runtime.InteropServices;
+﻿using System.Drawing;
 
-static class Snake
+class Snake
 {
 
-    static ConsoleKey Direction = ConsoleKey.RightArrow;
-    static ConsoleKey PreviousDirection = ConsoleKey.LeftArrow;
-    static List<Point> Tail = new List<Point>();
-    static List<Point> FreeSpace = new List<Point>();
-    static List<Point> Portal = new List<Point>();
-    static string[] map;
-    static short Score = 0;
+    ConsoleKey _direction = ConsoleKey.RightArrow;
+    ConsoleKey _previousDirection = ConsoleKey.LeftArrow;
 
-    static short x, y;
-    static Point FoodPoint = new Point();
-    static Point NextPoint = new Point();
-
-    static Timer stateTimer;
-    static Random random = new Random();
+    public event Action ReadyToStart;
+    List<Point> _tail, _freeSpace, _portal;
+    Point _foodPoint, _nextPoint;
+    string[] _map;
+    short _score = 0;
+    Timer _stateTimer;
+    Random _random;
+    ConsoleColor _color;
 
 
-    static void Main()
+    public Snake(ConsoleColor color = ConsoleColor.White)
     {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
-        Console.CursorVisible = false;
+        _color = color;
+        _tail = new List<Point>();
+        _freeSpace = new List<Point>();
+        _portal = new List<Point>();
+        _foodPoint = new Point();
+        _nextPoint = new Point();
+        _random = new Random();
+       
+
+    }
+
+    public void Control()
+    {
+        ReadyToStart?.Invoke();
         MapCreate();
         Thread.Sleep(1000);
-        stateTimer = new Timer(Run, null, 0, 100);
 
+        _stateTimer = new Timer(Run, null, 0, 100);
         while (true)
         {
             var key = Console.ReadKey().Key;
             switch (key)
             {
-                case ConsoleKey.LeftArrow when PreviousDirection != ConsoleKey.RightArrow:
-                    Direction = key;
+                case ConsoleKey.LeftArrow when _previousDirection != ConsoleKey.RightArrow:
+                    _direction = key;
                     break;
-                case ConsoleKey.RightArrow when PreviousDirection != ConsoleKey.LeftArrow:
-                    Direction = key;
+                case ConsoleKey.RightArrow when _previousDirection != ConsoleKey.LeftArrow:
+                    _direction = key;
                     break;
-                case ConsoleKey.UpArrow when PreviousDirection != ConsoleKey.DownArrow:
-                    Direction = key;
+                case ConsoleKey.UpArrow when _previousDirection != ConsoleKey.DownArrow:
+                    _direction = key;
                     break;
-                case ConsoleKey.DownArrow when PreviousDirection != ConsoleKey.UpArrow:
-                    Direction = key;
+                case ConsoleKey.DownArrow when _previousDirection != ConsoleKey.UpArrow:
+                    _direction = key;
                     break;
 
             }
         }
-        Console.ReadLine();
-
     }
-
-
-    static void Run(object ob)
+    void Run(object ob)
     {
-
-
-        switch (Direction)
+        switch (_direction)
         {
             case ConsoleKey.LeftArrow:
-                x--;
+                _nextPoint.X--;
                 break;
             case ConsoleKey.RightArrow:
-                x++;
+                _nextPoint.X++;
                 break;
             case ConsoleKey.UpArrow:
-                y--;
+                _nextPoint.Y--;
                 break;
             case ConsoleKey.DownArrow:
-                y++;
+                _nextPoint.Y++;
                 break;
 
         }
 
 
-        PreviousDirection = Direction;
-        CheckCord(ref x, ref y);
+        _previousDirection = _direction;
+        CheckCord();
 
-        Console.SetCursorPosition(x, y);
+        Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
         Console.Write("@");
         ChangeTail();
 
-        Point temp = Tail[0];
-        (temp.X, temp.Y) = (x, y);
-        Tail[0] = temp;
+        _tail[0] = _nextPoint;
     }
-    static void ChangeTail()
+    void ChangeTail()
     {
-        for (int i = Tail.Count - 1; i > 0; i--)
+        for (int i = _tail.Count - 1; i > 0; i--)
         {
-            Point temp = Tail[i - 1];
-            Tail[i] = temp;
+            Point temp = _tail[i - 1];
+            _tail[i] = temp;
         }
         return;
 
     }
-    static void MapCreate()
+    void MapCreate()
     {
-
-        map = new string[0];
+        Console.SetCursorPosition(0, 0);
+        _map = new string[0];
         if (File.Exists("map.txt"))
-            map = File.ReadAllLines("map.txt");
+            _map = File.ReadAllLines("map.txt");
         else
         {
             Console.WriteLine("Need map for start. Download: https://drive.google.com/drive/folders/1ahSweS9oAEXnJmbTU7F0NLZ-lebJ7LRF?usp=share_link");
             Environment.Exit(1);
         }
-        for (int i = 0; i < map.Length; i++)
+        for (int i = 0; i < _map.Length; i++)
         {
-            Console.WriteLine(map[i]);
-            for (int j = 0; j < map[i].Length; j++)
+            Console.WriteLine(_map[i]);
+            for (int j = 0; j < _map[i].Length; j++)
             {
-                if ((map[i])[j] != '#' && (map[i])[j] != '|')
+                if ((_map[i])[j] != '#' && (_map[i])[j] != '|')
                 {
-                    FreeSpace.Add(new Point((short)j, (short)i));
+                    _freeSpace.Add(new Point((short)j, (short)i));
                 }
-                if ((map[i])[j] == '|')
+                if ((_map[i])[j] == '|')
                 {
-                    Portal.Add(new Point((short)j, (short)i));
+                    _portal.Add(new Point((short)j, (short)i));
                 }
             }
 
 
         }
-        var freeField = FreeSpace[random.Next(0, FreeSpace.Count)];
-        x = (short)freeField.X;
-        y = (short)freeField.Y;
+        _nextPoint = _freeSpace[_random.Next(0, _freeSpace.Count)];
 
-        Console.SetCursorPosition(freeField.X, freeField.Y);
+        Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
         Console.Write("@");
         Food();
-        Tail.Add(freeField);
-        Thread.Sleep(1000);
-
-
+        _tail.Add(_nextPoint);
     }
-    static void CheckCord(ref short x, ref short y)
+    void CheckCord()
     {
-        Point currentPoint = new Point(x, y);
-
-        if (Portal.Contains(currentPoint))
+        if (_portal.Contains(_nextPoint))
         {
 
-            if (y == 0)
+            if (_nextPoint.Y == 0)
             {
-                y = (short)(map.Count() - 2);
+                _nextPoint.Y = (short)(_map.Count() - 2);
             }
-            if (y == map.Count() - 1)
+            if (_nextPoint.Y == _map.Count() - 1)
             {
-                y = 1;
+                _nextPoint.Y = 1;
             }
-            if (x == 0)
+            if (_nextPoint.X == 0)
             {
-                x = (short)(map[0].Count() - 2);
+                _nextPoint.X = (short)(_map[0].Count() - 2);
             }
-            if (x == map[0].Count() - 1)
+            if (_nextPoint.X == _map[0].Count() - 1)
             {
-                x = 1;
+                _nextPoint.X = 1;
             }
-            currentPoint = new Point(x, y);
+
         }
-        if (!FreeSpace.Contains(currentPoint) || Tail.Contains(currentPoint))
+        if (!_freeSpace.Contains(_nextPoint) || _tail.Contains(_nextPoint))
         {
-            Console.SetCursorPosition(currentPoint.X, currentPoint.Y);
+            Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
             Console.Write("█");
             Thread.Sleep(2000);
             Console.Clear();
@@ -177,34 +169,32 @@ static class Snake
             }
             else
                 Console.WriteLine("Game is over!");
-            Console.WriteLine($"Your score: {Score}");
-            stateTimer.Dispose();
+            Console.WriteLine($"Your score: {_score}");
+            _stateTimer.Dispose();
             Environment.Exit(0);
 
         }
 
-        if (FoodPoint.X == x && FoodPoint.Y == y)
+        if (_foodPoint == _nextPoint)
         {
-            Tail.Add(new Point());
-            Score++;
+            _tail.Add(new Point());
+            _score++;
             Food();
         }
         else
         {
-            Console.SetCursorPosition(Tail[Tail.Count - 1].X, Tail[Tail.Count - 1].Y);
+            Console.SetCursorPosition(_tail[_tail.Count - 1].X, _tail[_tail.Count - 1].Y);
             Console.Write(" ");
         }
 
 
     }
-    static void Food()
+    void Food()
     {
-        var list = FreeSpace.Where(x => Tail.Contains(x) == false).ToList();
-        list.Remove(new Point(x, y));
-        var freePoint = list[random.Next(0, list.Count)];
-        FoodPoint.X = (short)freePoint.X;
-        FoodPoint.Y = (short)freePoint.Y;
-        Console.SetCursorPosition(FoodPoint.X, FoodPoint.Y);
+        var list = _freeSpace.Where(x => _tail.Contains(x) == false).ToList();
+        list.Remove(_nextPoint);
+        _foodPoint = list[_random.Next(0, list.Count)];
+        Console.SetCursorPosition(_foodPoint.X, _foodPoint.Y);
         Console.Write("$");
     }
 
