@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Lesson13.Homework
 {
+    // class User is not divided into seller and buyer because each user can sell and buy
     internal class User : IHasInfo
     {
         public int UserID { get; private set; }
