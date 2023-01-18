@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using System.Runtime.InteropServices;
 
 class Program
@@ -6,18 +7,20 @@ class Program
 
     static ConsoleKey Direction = ConsoleKey.RightArrow;
     static ConsoleKey PreviousDirection = ConsoleKey.LeftArrow;
-    static List<Point> Tail = new List<Point>();
+    static List<COORD> Tail = new List<COORD>();
+    static List<COORD> FreeSpace = new List<COORD>();
     static string[] map;
     static short Score = 0;
     static Random random = new Random();
-    static short x, y, xF,yF;
+    static short x, y, xF, yF;
+    static Timer stateTimer;
     static void Main()
     {
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.CursorVisible = false;
         MapCreate();
         Thread.Sleep(1000);
-        var stateTimer = new Timer(Run, null, 0, 100);
+        stateTimer = new Timer(Run, null, 0, 150);
 
         while (true)
         {
@@ -46,46 +49,40 @@ class Program
 
     static void Run(object ob)
     {
+        switch (Direction)
+        {
+            case ConsoleKey.LeftArrow:
+                x--;
+                break;
+            case ConsoleKey.RightArrow:
+                x++;
+                break;
+            case ConsoleKey.UpArrow:
+                y--;
+                break;
+            case ConsoleKey.DownArrow:
+                y++;
+                break;
+
+        }
+        PreviousDirection = Direction;
 
 
-            
+        CheckCord(ref x, ref y);
 
-            switch (Direction)
-            {
-                case ConsoleKey.LeftArrow:
-                    x--;
-                    break;
-                case ConsoleKey.RightArrow:
-                    x++;
-                    break;
-                case ConsoleKey.UpArrow:
-                    y--;
-                    break;
-                case ConsoleKey.DownArrow:
-                    y++;
-                    break;
+        Console.SetCursorPosition(x, y);
+        Console.Write("@");
+        ChangeTail();
 
-            }
-            PreviousDirection = Direction;
-
-
-            CheckCord(ref x, ref y);
-
-            Console.SetCursorPosition(x, y);
-            Console.Write("@");
-            ChangeTail();
-
-            Point temp = Tail[0];
-            (temp.X, temp.Y) = (x, y);
-            Tail[0] = temp;
-
-        
+        COORD temp = Tail[0];
+        (temp.X, temp.Y) = (x, y);
+        Tail[0] = temp;
     }
     static void ChangeTail()
     {
         for (int i = Tail.Count - 1; i > 0; i--)
         {
-            Point temp = Tail[i - 1];
+            COORD temp = Tail[i - 1];
             Tail[i] = temp;
         }
         return;
@@ -102,59 +99,41 @@ class Program
             Console.WriteLine("Need map for start. Download: https://drive.google.com/drive/folders/1ahSweS9oAEXnJmbTU7F0NLZ-lebJ7LRF?usp=share_link");
             Environment.Exit(1);
         }
-        foreach (string s in map)
-            Console.WriteLine(s);
-
-
-        while (true)
+        for (int i = 0; i < map.Length; i++)
         {
-            x = (short)random.Next(1, map[0].Length - 3);
-            y = (short)random.Next(1, map.Count() - 3);
+            Console.WriteLine(map[i]);
+            for (int j = 0; j < map[i].Length; j++)
+                if ((map[i])[j] != '#' && (map[i])[j] != '|')
+                {
+                    FreeSpace.Add(new COORD((short)j, (short)i));
+                }
 
-            char[] readBuffer = new char[1];
-            int readCount;
-            ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
-
-            if (readBuffer[0] != '#')
-            {
-                Console.SetCursorPosition(x, y);
-                Console.Write("@");
-                break;
-            }
         }
+        var freeField = FreeSpace[random.Next(0, FreeSpace.Count)];
+        x = freeField.X;
+        y = freeField.Y;
+
+        Console.SetCursorPosition(freeField.X, freeField.Y);
+        Console.Write("@");
         Food();
-        Tail.Add(new Point(x, y));
+        Tail.Add(freeField);
+        Thread.Sleep(1000);
 
 
-        
+    }
+    static COORD FreeField()
+    {
+
+        return new COORD(x, y);
     }
     static void CheckCord(ref short x, ref short y)
     {
+        COORD currentPoint = new COORD(x, y);
         char[] readBuffer = new char[1];
         int readCount;
 
         ReadConsoleOutputCharacter(GetStdHandle(-11), readBuffer, 1, new COORD() { X = x, Y = y }, out readCount);
 
-        if (readBuffer[0] == '#' || readBuffer[0] == '@')
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write("█");
-            Thread.Sleep(2000);
-            Console.Clear();
-            string[] end;
-            if (File.Exists("end.txt"))
-            {
-                end = File.ReadAllLines("end.txt");
-                foreach (string s in end)
-                    Console.WriteLine(s);
-            }
-            else
-                Console.WriteLine("Game is over!");
-            Console.WriteLine($"Your score: {Score}");
-            Thread.Sleep(10000);
-            Environment.Exit(0);
-
-        }
         if (readBuffer[0] == '|')
         {
 
@@ -177,9 +156,31 @@ class Program
             CheckCord(ref x, ref y);
 
         }
+        if (!FreeSpace.Contains(currentPoint) || Tail.Contains(currentPoint))
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write("█");
+            Thread.Sleep(2000);
+            Console.Clear();
+            string[] end;
+            if (File.Exists("end.txt"))
+            {
+                end = File.ReadAllLines("end.txt");
+                foreach (string s in end)
+                    Console.WriteLine(s);
+            }
+            else
+                Console.WriteLine("Game is over!");
+            Console.WriteLine($"Your score: {Score}");
+            stateTimer.Dispose();
+            Thread.Sleep(10000);
+            Environment.Exit(0);
+
+        }
+        
         if (xF == x && yF == y)
         {
-            Tail.Add(new Point());
+            Tail.Add(new COORD());
             Score++;
             Food();
         }
@@ -219,6 +220,21 @@ class Program
     {
         public short X;
         public short Y;
+        public COORD(short x, short y)
+        {
+            X = x;
+            Y = y;
+        }
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
+        public override bool Equals([NotNullWhen(true)] object? obj)
+        {
+            if (obj is COORD ob)
+                return ob.X == X && ob.Y == Y;
+            return false;
+        }
     }
 
     // http://pinvoke.net/default.aspx/kernel32/ReadConsoleOutputCharacter.html
