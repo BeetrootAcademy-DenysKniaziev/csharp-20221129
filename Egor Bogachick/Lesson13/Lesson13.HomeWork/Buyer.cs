@@ -8,7 +8,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace Lesson13.HomeWork
 {
-    public class Buyer : Person, IShowable
+    public class Buyer : Person
     {
         public Buyer() { }
 
