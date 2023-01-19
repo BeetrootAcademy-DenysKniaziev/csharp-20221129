@@ -1,13 +1,84 @@
 ﻿class SchoolDomain
 {
-    enum Subjects { Chemistry = 0, Physics = 1, Biology = 2, Algebra = 3 };
+
 
     class School
     {
         public int NumderOfClasses { get; set; }
 
-        public int Grades { get; set; }
+        public int Grade { get; set; }
+
+        //enum Subjects { Chemistry = 0, Physics = 1, Biology = 2, Algebra = 3, Language = 4 };
     }
+        class Schedule
+        {
+
+            //public int Grade 
+            public List<string> Subjects { get; set; }
+            public List<string> Days { get; set; }
+
+            public string [,] Routine {get;set; }
+
+              //public 
+                              
+                //= List<string> { "Chemistry", "Physics", "Biology", "Algebra", "Language" };
+
+                public  Schedule(int numberOfLess)
+                {
+                    Subjects= new List<string> { "Chemistry", "Physics", "Biology", "Algebra", "Language" };
+                    Days= new List<string> { "Monday", "Tuesday", "Wensday", "Thaturday", "Friday" };
+                    
+                    for ( int i = 0; i < numberOfLess;i++ )
+                    {
+                        for (int j=0; j<5; j++)
+                        {
+                            if (i + j < 5)
+                            {
+                            Routine[i, j] = Subjects[j + i];
+                            }
+                            else
+                            { 
+                            Routine[i, j] = Subjects[j + i - 5];
+                            }
+
+                        }
+                    }
+
+                }
+
+            public void PrintSchedule()
+            {
+                for (int i=0; i<Routine.GetLength(0); i++)
+                {
+                    Console.Write(Routine[0, i]);
+                }
+
+
+            }
+
+             //class Day
+            //{
+            //    public List<string> WeakDays 
+            //     {
+            //        get 
+            //        { return new List<string> 
+            //            { "Monday", "Tuesday", "Wensday", "Tuesday", "Friday", "Saturday", "Suday"};
+            //        }
+            //}
+
+
+            //public List<Day> days { get; set; }
+
+            //public Schedule(int Grade)
+            //{
+            //    Grade5=new 
+
+            //}
+        }
+
+    
+
+    
 
     class Person
     {
@@ -109,11 +180,13 @@
     static void Main()
     {
 
-        var p = new Pupil("Jonh", "Smith", 2010);
+        //var p = new Pupil("Jonh", "Smith", 2010);
 
-        Console.WriteLine(p);
+        //Console.WriteLine(p);
 
+        var s = new Schedule(5);
 
+        s.PrintSchedule();
 
 
 
