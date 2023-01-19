@@ -12,10 +12,11 @@
             snake.ReadyToStart += Ready;
             snake.EndGame += End;
             snake.Start();
+            while (Console.ReadKey().Key != ConsoleKey.Enter) ;
             Console.Clear();
         }
-       
-        
+
+
     }
 
     private static void End(Snake snake)
@@ -26,8 +27,9 @@
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Clear();
         Console.SetCursorPosition(snake.Map[0].Length / 2, snake.Map.Length / 2);
-        Console.WriteLine($"You score: {snake.Score}. Press any key to play again.");
-        Thread.Sleep(1500);
+        Console.WriteLine($"You score: {snake.Score}. Press Enter to play again.");
+      
+
     }
 
     public static void Ready(Snake snake)
