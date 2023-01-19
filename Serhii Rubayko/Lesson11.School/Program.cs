@@ -173,5 +173,9 @@ public class Program
         k.AddPupil(p2);
         k.PrintClass();
 
+        t.LastName = "Klinton";
+
+        k.PrintClass();
+
     }
 }
