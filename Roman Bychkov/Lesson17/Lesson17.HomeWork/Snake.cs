@@ -6,17 +6,18 @@ class Snake
     ConsoleKey _direction = ConsoleKey.RightArrow;
     ConsoleKey _previousDirection = ConsoleKey.LeftArrow;
 
-    public event Action ReadyToStart;
-    public event Action<Snake> EndGame;
+    
+    public event Action<Snake> EndGame, ReadyToStart;
 
     List<Point> _tail, _freeSpace, _portal;
     Point _foodPoint, _nextPoint;
     public Point NextPoint => _nextPoint;
-    public string[] _map { get; private set; }
-    short _score = 0;
+    public string[] Map { get; private set; }
+    public short Score { get; private set; } = 0;
     Timer _stateTimer;
     Random _random;
     ConsoleColor _color;
+    bool _flag = true;
 
 
     public Snake(ConsoleColor color = ConsoleColor.White)
@@ -29,17 +30,25 @@ class Snake
         _nextPoint = new Point();
         _random = new Random();
 
-
+        Map = new string[0];
+        if (File.Exists("map.txt"))
+            Map = File.ReadAllLines("map.txt");
+        else
+        {
+            Console.WriteLine("Need map for start. Download: https://drive.google.com/drive/folders/137hROhQ4ymiy7wVu9EAMYV0CBLPp9o53?usp=share_link");
+            Environment.Exit(1);
+        }
+        Console.SetWindowSize(Map[0].Length + 2, Map.Length + 2);
     }
 
-    public void Control()
+    public void Start()
     {
-        ReadyToStart?.Invoke();
-        MapCreate();
+        ReadyToStart?.Invoke(this);
+        CreateMap();
         Thread.Sleep(1000);
 
-        _stateTimer = new Timer(Run, null, 0, 100);
-        while (true)
+        _stateTimer = new Timer(Run, this, 0, 100);
+        while (_flag)
         {
             var key = Console.ReadKey().Key;
             switch (key)
@@ -56,9 +65,9 @@ class Snake
                 case ConsoleKey.DownArrow when _previousDirection != ConsoleKey.UpArrow:
                     _direction = key;
                     break;
-
             }
         }
+
     }
     void Run(object ob)
     {
@@ -76,16 +85,18 @@ class Snake
             case ConsoleKey.DownArrow:
                 _nextPoint.Y++;
                 break;
-
         }
 
         _previousDirection = _direction;
         CheckCord();
-
+        if (_flag == false)
+            return;
         Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
-        Console.Write("@");
-        ChangeTail();
 
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write("@");
+        Console.ForegroundColor = _color;
+        ChangeTail();
         _tail[0] = _nextPoint;
     }
     void ChangeTail()
@@ -98,27 +109,20 @@ class Snake
         return;
 
     }
-    void MapCreate()
+    void CreateMap()
     {
         Console.SetCursorPosition(0, 0);
-        _map = new string[0];
-        if (File.Exists("map.txt"))
-            _map = File.ReadAllLines("map.txt");
-        else
+       
+        for (int i = 0; i < Map.Length; i++)
         {
-            Console.WriteLine("Need map for start. Download: https://drive.google.com/drive/folders/1ahSweS9oAEXnJmbTU7F0NLZ-lebJ7LRF?usp=share_link");
-            Environment.Exit(1);
-        }
-        for (int i = 0; i < _map.Length; i++)
-        {
-            Console.WriteLine(_map[i]);
-            for (int j = 0; j < _map[i].Length; j++)
+            Console.WriteLine(Map[i]);
+            for (int j = 0; j < Map[i].Length; j++)
             {
-                if ((_map[i])[j] != '#' && (_map[i])[j] != '|')
+                if ((Map[i])[j] != '#' && (Map[i])[j] != '|')
                 {
                     _freeSpace.Add(new Point((short)j, (short)i));
                 }
-                if ((_map[i])[j] == '|')
+                if ((Map[i])[j] == '|')
                 {
                     _portal.Add(new Point((short)j, (short)i));
                 }
@@ -126,11 +130,15 @@ class Snake
 
 
         }
-        Console.SetWindowSize(_map[0].Length + 2, _map.Length + 2);
+       
         _nextPoint = _freeSpace[_random.Next(0, _freeSpace.Count)];
 
         Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
+
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("@");
+        Console.ForegroundColor = _color;
+
         Food();
         _tail.Add(_nextPoint);
     }
@@ -141,57 +149,39 @@ class Snake
 
             if (_nextPoint.Y == 0)
             {
-                _nextPoint.Y = (short)(_map.Count() - 2);
+                _nextPoint.Y = (short)(Map.Count() - 2);
             }
-            if (_nextPoint.Y == _map.Count() - 1)
+            if (_nextPoint.Y == Map.Count() - 1)
             {
                 _nextPoint.Y = 1;
             }
             if (_nextPoint.X == 0)
             {
-                _nextPoint.X = (short)(_map[0].Count() - 2);
+                _nextPoint.X = (short)(Map[0].Count() - 2);
             }
-            if (_nextPoint.X == _map[0].Count() - 1)
+            if (_nextPoint.X == Map[0].Count() - 1)
             {
                 _nextPoint.X = 1;
             }
 
         }
-        if (!_freeSpace.Contains(_nextPoint) || _tail.Contains(_nextPoint))
-        {
-            EndGame?.Invoke(this);
-            _stateTimer.Dispose();
-            return;
-
-            //Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
-            //Console.Write("█");
-
-            //Console.Clear();
-            //string[] end;
-            //if (File.Exists("end.txt"))
-            //{
-            //    end = File.ReadAllLines("end.txt");
-            //    foreach (string s in end)
-            //        Console.WriteLine(s);
-            //}
-            //else
-            //    Console.WriteLine("Game is over!");
-            //Console.WriteLine($"Your score: {_score}");
-
-            //Environment.Exit(0);
-
-        }
-
         if (_foodPoint == _nextPoint)
         {
             _tail.Add(new Point());
-            _score++;
+            Score++;
             Food();
         }
         else
         {
             Console.SetCursorPosition(_tail[_tail.Count - 1].X, _tail[_tail.Count - 1].Y);
             Console.Write(" ");
+            _tail[_tail.Count - 1] = new Point(0, 0);
+        }
+        if (!_freeSpace.Contains(_nextPoint) || _tail.Contains(_nextPoint))
+        {
+            _flag = false;
+            _stateTimer.Dispose();
+            EndGame?.Invoke(this);
         }
 
 
@@ -202,7 +192,11 @@ class Snake
         list.Remove(_nextPoint);
         _foodPoint = list[_random.Next(0, list.Count)];
         Console.SetCursorPosition(_foodPoint.X, _foodPoint.Y);
+
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.Write("$");
+        Console.ForegroundColor = _color;
+       
     }
 
 }
