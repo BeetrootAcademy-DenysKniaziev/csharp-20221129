@@ -1,200 +1,177 @@
-﻿class SchoolDomain
+﻿using System;
+using static Program;
+using static Program.Class;
+
+public class Program
 {
-
-
     class School
     {
-        public int NumderOfClasses { get; set; }
+        public string Title { get; set; }
 
-        public int Grade { get; set; }
+        public List<Class> Classes = new List<Class>();
 
-        //enum Subjects { Chemistry = 0, Physics = 1, Biology = 2, Algebra = 3, Language = 4 };
-    }
-        class Schedule
+        public School(string title)
         {
+            Title = title;
+        }
+        public void AddClass(Class klas)
+        {
+            Classes.Add(klas);
+        }
 
-            //public int Grade 
-            public List<string> Subjects { get; set; }
-            public List<string> Days { get; set; }
+        public void RemoveClass(Class klas)
+        {
+            Classes.Remove(klas);
+        }
+        public void ReplaceClass(Class klas1, Class klas2)
+        {
+            Classes.Remove(klas1);
+            Classes.Add(klas2);
+        }
 
-            public string [,] Routine {get;set; }
-
-              //public 
-                              
-                //= List<string> { "Chemistry", "Physics", "Biology", "Algebra", "Language" };
-
-                public  Schedule(int numberOfLess)
-                {
-                    Subjects= new List<string> { "Chemistry", "Physics", "Biology", "Algebra", "Language" };
-                    Days= new List<string> { "Monday", "Tuesday", "Wensday", "Thaturday", "Friday" };
-                    
-                    for ( int i = 0; i < numberOfLess;i++ )
-                    {
-                        for (int j=0; j<5; j++)
-                        {
-                            if (i + j < 5)
-                            {
-                            Routine[i, j] = Subjects[j + i];
-                            }
-                            else
-                            { 
-                            Routine[i, j] = Subjects[j + i - 5];
-                            }
-
-                        }
-                    }
-
-                }
-
-            public void PrintSchedule()
+        public void PrintSchedule()
+        {
+            foreach (var klas in Classes)
             {
-                for (int i=0; i<Routine.GetLength(0); i++)
-                {
-                    Console.Write(Routine[0, i]);
-                }
+                Console.WriteLine(klas);
+            }
+        }
+    }
+    public class Class
+    {
+        public string ClassName { get; set; }
+        public List<Subject> Subjects = new List<Subject>();
+        public List<Pupil> Pupils = new List<Pupil>();
+        public List<Teacher> Teachers = new List<Teacher>();
+        public int Days { get; set; }
 
+        public class Subject
+        {
+            public string Title { get; set; }
 
+            int Hours { get; set; }
+
+            public Subject(string title, int hours)
+            {
+                Title = title;
+                Hours = hours;
             }
 
-             //class Day
-            //{
-            //    public List<string> WeakDays 
-            //     {
-            //        get 
-            //        { return new List<string> 
-            //            { "Monday", "Tuesday", "Wensday", "Tuesday", "Friday", "Saturday", "Suday"};
-            //        }
-            //}
+            public override string ToString()
+            {
+                return Title + $"\tHours per week: {Hours} ";
+            }
 
-
-            //public List<Day> days { get; set; }
-
-            //public Schedule(int Grade)
-            //{
-            //    Grade5=new 
-
-            //}
         }
 
-    
+        public Class(string className, int days)
+        {
+            ClassName = className;
+            Days = days;
+        }
+        public void AddSubject(Subject subject)
+        {
+            Subjects.Add(subject);
+        }
+        public void RemoveSubject(Subject subject)
+        {
+            Subjects.Remove(subject);
+        }
+        public void ReplaceSubject(Subject subject)
+        {
+            Subjects.Remove(subject);
+            Subjects.Add(subject);
+        }
+        public void AddPupil(Pupil pupil)
+        {
+            if (pupil.Klass == this.ClassName)
+            {
+                Pupils.Add(pupil);                
+            }
+        }
+        public void AddTeacher(Teacher teacher)
+        {
+            foreach (var subj in Subjects)
+            {
+                if (subj.Title == teacher.Subj)
+                {
+                    Teachers.Add(teacher);
+                }
+            }
+        }
+        public void PrintClass()
+        {
+            Console.WriteLine("Class:\t" + ClassName + $"\tSchool days per week: {Days}\n");
 
-    
-
-    class Person
+            Console.Write("Subjects:\t");
+            for (int i = 0; i < Subjects.Count; i++)
+            {
+                Console.Write($"{i + 1}) " + Subjects[i] + "; ");
+            }
+            Console.Write("\n\nTeachers:\t");
+            for (int i = 0; i < Teachers.Count; i++)
+            {
+                Console.Write($"{i + 1}) " + Teachers[i] + "; ");
+            }
+            Console.WriteLine("\nPupils:");
+            for (int i = 0; i < Pupils.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}) " + Pupils[i].FirstName+ " "+Pupils[i].LastName + "; ");
+            }
+        }
+    }
+    public class Pupil
     {
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
-
-        public int YearOfBirth { get; set; }
-
-        public string FullName
-        {
-            get { return FirstName + " " + LastName; }
-        }
-
-        public int Age
-        {
-            get { return DateTime.Now.Year - YearOfBirth; }
-        }
-
-        public Person(string firstName, string lastName, int yearOfBirth)
+        public string Klass { get; set; }
+        public Pupil(string firstName, string lastName, string klass)
         {
             FirstName = firstName;
             LastName = lastName;
-            YearOfBirth = yearOfBirth;
-        }
-
-        public Person()
-        {
-
-        }
-
-        public override string ToString()
-        {
-            if (YearOfBirth != 0)
-                return $"Person:{this.FullName}\nYears of birth:{this.YearOfBirth}";
-
-            return $"Person:{this.FullName}";
-        }
-
-    }
-
-    class Pupil : Person
-    {
-        public int GradeOfScholl
-        {
-            get
-            {
-                switch (Age)
-                {
-                    case 11:
-                        return 5;
-                    case 12:
-                        return 6;
-                    case 13:
-                        return 7;
-                    case 14:
-                        return 8;
-                    case 15:
-                        return 9;
-                    default:
-                        return 0;
-                }
-
-            }
-        }
-
-        public Pupil(string firstName, string lastName, int yearOfBirth) : base(firstName, lastName, yearOfBirth)
-        {
+            Klass = klass;
         }
         public override string ToString()
         {
-            return $"Pupil: {this.FullName}\nAge: {this.Age}\nGrade: {this.GradeOfScholl}";
+            return $"Pupil: {this.FirstName + " " + LastName}   Class: {this.Klass}";
         }
     }
-    class Teacher : Person
+    public class Teacher
     {
-        private string Subject { get; set; }
-
-        public Teacher(string firstName, string lastName, int yearOfBirth) : base(firstName, lastName, yearOfBirth)
+        public string FirstName { get; set; }       
+        public string LastName { get; set; }
+        public string Subj { get; set; }
+        public Teacher(string firstName, string lastName, string subject) 
         {
+            FirstName = firstName;
+            LastName = lastName;
+            Subj = subject;
         }
-
-    }
-    class Class
-    {
-        public string Grade { get; set; }
-
-        public Class(string grade)
+        public override string ToString()
         {
-            Grade = grade;
-            new List<Pupil>();
+            return $"Teacher: {this.FirstName + " " + this.LastName}   Subject: {this.Subj}";
         }
     }
-    //class Subject
-    //{
-    //   enum Subjects { Chemistry=0, Physics=1, Biology=2, Algebra=0 }; 
-
-    //}
     static void Main()
     {
 
-        //var p = new Pupil("Jonh", "Smith", 2010);
+        var k = new Class("7B", 5);
 
-        //Console.WriteLine(p);
+        
+        var s = new Subject("Eanglish", 3);
 
-        var s = new Schedule(5);
+        k.AddSubject(s);
 
-        s.PrintSchedule();
+        var t = new Teacher("Gwen", "Stefany", "Eanglish");
 
+        k.AddTeacher(t);
 
+        var p1 = new Pupil("Petryk", "Pyatochkin", "7B");
+        var p2 = new Pupil("Natochka", "Kosa", "7B");
+
+        k.AddPupil(p1);
+        k.AddPupil(p2);
+        k.PrintClass();
 
     }
-
-
-
-
-
-
 }
