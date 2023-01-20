@@ -16,10 +16,28 @@ static class Proram
             snake.PrintSymbol += PrintSymbol;
             snake.BuildMap += CreateMap;
             snake.Start();
-            while (Console.ReadKey().Key != ConsoleKey.Home) ;
-            Thread.Sleep(1000);
+            while (snake.IsAlive)
+            {
+                var key = Console.ReadKey(true).Key;
+                switch (key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        snake.DirectionSet(Snake.Direction.Left);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        snake.DirectionSet(Snake.Direction.Right);
+                        break;
+                    case ConsoleKey.UpArrow:
+                        snake.DirectionSet(Snake.Direction.Up);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        snake.DirectionSet(Snake.Direction.Down);
+                        break;
+                }
+            }
+            while (Console.ReadKey(true).Key != ConsoleKey.Home) ;
             Console.Clear();
-            
+
         }
 
 
@@ -35,8 +53,6 @@ static class Proram
         Console.Clear();
         Console.SetCursorPosition(snake.Map[0].Length / 2, snake.Map.Length / 2);
         Console.WriteLine($"You score: {snake.Score}. Press Home to play again.");
-
-
     }
 
     public static void Ready(Snake snake)

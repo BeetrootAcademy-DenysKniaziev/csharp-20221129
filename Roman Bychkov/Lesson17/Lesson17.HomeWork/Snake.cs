@@ -2,13 +2,9 @@
 
 class Snake
 {
-    public string[] Map { get; private set; }
-    public short Score { get; private set; } = 0;
-    public ConsoleColor Color { get; private set; }
-    public Point NextPoint => _nextPoint;
 
-    ConsoleKey _direction = ConsoleKey.RightArrow;
-    ConsoleKey _previousDirection = ConsoleKey.LeftArrow;
+    Direction _direction = Direction.Right;
+    Direction _previousDirection = Direction.Left;
 
     public event Action<Snake> EndGame, ReadyToStart;
     public event Action<Point, char, ConsoleColor> PrintSymbol;
@@ -16,12 +12,27 @@ class Snake
 
     List<Point> _tail, _freeSpace, _portal;
     Point _foodPoint, _nextPoint;
-
-
     Timer _stateTimer;
     Random _random;
 
-    bool _flag = true;
+    public Point NextPoint => _nextPoint;
+    public bool IsAlive { get; private set; } = true;
+
+    public string[] Map { get; private set; }
+    public short Score { get; private set; } = 0;
+    public ConsoleColor Color { get; private set; }
+    public void DirectionSet(Direction direction)
+    {
+        if (direction == Direction.Right && _previousDirection == Direction.Left)
+            return;
+        if (direction == Direction.Left && _previousDirection == Direction.Right)
+            return;
+        if (direction == Direction.Up && _previousDirection == Direction.Down)
+            return;
+        if (direction == Direction.Down && _previousDirection == Direction.Up)
+            return;
+        _direction = direction;
+    }
 
 
     public Snake(string mapDirection, ConsoleColor color = ConsoleColor.White)
@@ -49,50 +60,29 @@ class Snake
         ReadyToStart?.Invoke(this);
         CreateMap();
         Thread.Sleep(1000);
-
         _stateTimer = new Timer(Run, this, 0, 100);
-        while (_flag)
-        {
-            var key = Console.ReadKey().Key;
-            switch (key)
-            {
-                case ConsoleKey.LeftArrow when _previousDirection != ConsoleKey.RightArrow:
-                    _direction = key;
-                    break;
-                case ConsoleKey.RightArrow when _previousDirection != ConsoleKey.LeftArrow:
-                    _direction = key;
-                    break;
-                case ConsoleKey.UpArrow when _previousDirection != ConsoleKey.DownArrow:
-                    _direction = key;
-                    break;
-                case ConsoleKey.DownArrow when _previousDirection != ConsoleKey.UpArrow:
-                    _direction = key;
-                    break;
-            }
-        }
-
     }
     void Run(object ob)
     {
         switch (_direction)
         {
-            case ConsoleKey.LeftArrow:
+            case Direction.Left:
                 _nextPoint.X--;
                 break;
-            case ConsoleKey.RightArrow:
+            case Direction.Right:
                 _nextPoint.X++;
                 break;
-            case ConsoleKey.UpArrow:
+            case Direction.Up:
                 _nextPoint.Y--;
                 break;
-            case ConsoleKey.DownArrow:
+            case Direction.Down:
                 _nextPoint.Y++;
                 break;
         }
 
         _previousDirection = _direction;
         CheckCord();
-        if (_flag == false)
+        if (IsAlive == false)
             return;
         PrintSymbol?.Invoke(NextPoint, '@', ConsoleColor.Red);
         ChangeTail();
@@ -168,7 +158,7 @@ class Snake
         }
         if (!_freeSpace.Contains(_nextPoint) || _tail.Contains(_nextPoint))
         {
-            _flag = false;
+            IsAlive = false;
             _stateTimer.Dispose();
             EndGame?.Invoke(this);
         }
@@ -182,6 +172,13 @@ class Snake
         _foodPoint = list[_random.Next(0, list.Count)];
         PrintSymbol?.Invoke(_foodPoint, '$', ConsoleColor.Green);
 
+    }
+    public enum Direction
+    {
+        Left = 0,
+        Right,
+        Up,
+        Down
     }
 
 }
