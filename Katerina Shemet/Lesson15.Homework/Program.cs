@@ -1,4 +1,66 @@
-﻿class Stack
+﻿class Stack<T>
+{
+    public T[] arr = new T[10];
+
+    private int amount = 0;
+
+    public void Push(T value)
+    {
+        if (amount == arr.Length)
+        {
+            T[] tmp = new T[arr.Length * 2];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                tmp[i] = arr[i];
+            }
+            arr = tmp;
+
+        }
+        arr[amount] = value;
+        amount++;
+    }
+
+    public T Pop()
+    {
+        if (amount < 0)
+        {
+            Console.WriteLine("Empty");
+        }
+
+        amount--;
+        return arr[amount];
+    }
+
+    public T Peek()
+    {
+        if (amount < 0)
+        {
+            Console.WriteLine("Empty");
+        }
+
+        return arr[amount - 1];
+    }
+
+    public int Amount()
+    {
+        return amount;
+    }
+
+    public void Clear()
+    {
+        amount = 0;
+    }
+
+    public void CopyTo(T[] newArr)
+    {
+        for (int i = 0; i < Math.Min(amount, newArr.Length); i++)
+        {
+            newArr[i] = arr[i];
+        }
+    }
+}
+
+internal class Program
 {
     public static void Main()
     {
@@ -9,43 +71,24 @@
         numbers.Push(4);
         numbers.Push(5);
 
-        foreach (int number in numbers)
+        Console.WriteLine($"Amount:{numbers.Amount()}");
+
+
+        Console.WriteLine($"Peek: {numbers.Peek()}\n");
+
+        int[] newArray = new int[5];
+        numbers.CopyTo(newArray);
+
+        foreach (var item in newArray)
         {
-            Console.WriteLine(number);
+            Console.WriteLine(item);
         }
 
-        Console.WriteLine("\nPop '{0}'", numbers.Pop());
-        Console.WriteLine("Peek next item: {0}",
-            numbers.Peek());
-        Console.WriteLine("Pop '{0}'", numbers.Pop());
+        numbers.Pop();
 
-       
-        Stack<int> stack2 = new Stack<int>(numbers.ToArray());
+        Console.WriteLine($"Peek: {numbers.Peek()}\n");
 
-        Console.WriteLine("\nFirst copy:");
-        foreach (int number in stack2)
-        {
-            Console.WriteLine(number);
-        }
-
-
-        int[] array2 = new int[numbers.Count * 2];
-        numbers.CopyTo(array2, numbers.Count);
-
-        Stack<int> stack3 = new Stack<int>(array2);
-
-        Console.WriteLine("\nSecond copy, with duplicates and nulls:");
-        foreach (int number in stack3)
-        {
-            Console.WriteLine(number);
-        }
-
-        Console.WriteLine("\nstack2.Contains(\"2\") = {0}",
-            stack2.Contains(2));
-
-        Console.WriteLine("\nstack2.Clear()");
-        stack2.Clear();
-        Console.WriteLine("\nstack2.Count = {0}", stack2.Count);
+        numbers.Clear();
     }
-}
 
+}
