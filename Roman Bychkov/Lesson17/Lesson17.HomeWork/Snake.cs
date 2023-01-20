@@ -23,13 +23,10 @@ class Snake
     public ConsoleColor Color { get; private set; }
     public void DirectionSet(Direction direction)
     {
-        if (direction == Direction.Right && _previousDirection == Direction.Left)
-            return;
-        if (direction == Direction.Left && _previousDirection == Direction.Right)
-            return;
-        if (direction == Direction.Up && _previousDirection == Direction.Down)
-            return;
-        if (direction == Direction.Down && _previousDirection == Direction.Up)
+        if (direction == Direction.Right && _previousDirection == Direction.Left
+            || direction == Direction.Left && _previousDirection == Direction.Right
+            || direction == Direction.Up && _previousDirection == Direction.Down
+            || direction == Direction.Down && _previousDirection == Direction.Up)
             return;
         _direction = direction;
     }
