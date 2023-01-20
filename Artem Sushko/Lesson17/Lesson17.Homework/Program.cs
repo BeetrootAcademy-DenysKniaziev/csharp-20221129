@@ -13,7 +13,6 @@ class Program
         int Height = 16;
         Random rand = new Random();
         int Score = 0;
-        int gameover = 0;
         Pixel Pixel = new Pixel();
         Pixel.X = Width / 2;
         Pixel.Y = Height / 2;
@@ -21,22 +20,18 @@ class Program
         string movement = "RIGHT";
         List<int> Xpos = new List<int>();
         List<int> Ypos = new List<int>();
-        int targetX = rand.Next(1, Width - 1);
-        int targetY = rand.Next(1, Height - 1);
+        int targetX = rand.Next(1, Width);
+        int targetY = rand.Next(1, Height);
 
 
         while (true)
         {
-            Console.SetCursorPosition(0, Height + 1);
-            Console.Write("Current Score: " + Score);
-            Console.SetCursorPosition(0, Height + 3);
-            Console.Write("Use WASD or ⃗");
 
             Console.ForegroundColor = ConsoleColor.White;
             DrawBorder(Width, Height);
 
             Console.ForegroundColor = ConsoleColor.Green;
-            if (Pixel.X == Width - 2 || Pixel.X == 0 || Pixel.Y == Height - 2 || Pixel.Y == 0)
+            if (Pixel.X == Width - 1 || Pixel.X == 0 || Pixel.Y == Height - 1 || Pixel.Y == 0)
             {
                 Event(Width, Height, Score);
             }
@@ -45,8 +40,8 @@ class Program
             if (targetX == Pixel.X && targetY == Pixel.Y)
             {
                 Score++;
-                targetX = rand.Next(1, Width - 2);
-                targetY = rand.Next(1, Height - 2);
+                targetX = rand.Next(1, Width);
+                targetY = rand.Next(1, Height);
             }
             for (int i = 0; i < Xpos.Count(); i++)
             {
@@ -134,15 +129,15 @@ class Program
     private static void DrawBorder(int width, int height)
     {
         Console.SetCursorPosition(0, 0);
-        Console.Write(new string('■', width - 1));
-        Console.SetCursorPosition(0, height - 2);
-        Console.Write(new string('■', width - 1));
+        Console.Write(new string('■', width));
+        Console.SetCursorPosition(0, height - 1);
+        Console.Write(new string('■', width));
 
-        for (int i = 1; i < height - 2; i++)
+        for (int i = 1; i < height - 1; i++)
         {
             Console.SetCursorPosition(0, i);
             Console.Write('■');
-            Console.SetCursorPosition(width - 2, i);
+            Console.SetCursorPosition(width - 1, i);
             Console.Write('■');
         }
     }
