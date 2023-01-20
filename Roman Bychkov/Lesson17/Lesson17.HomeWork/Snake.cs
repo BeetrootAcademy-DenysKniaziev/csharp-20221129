@@ -79,10 +79,14 @@ class Snake
 
         _previousDirection = _direction;
         CheckCord();
+
         if (IsAlive == false)
             return;
-        PrintSymbol?.Invoke(NextPoint, '@', ConsoleColor.Red);
+
+        PrintSymbol?.Invoke(_nextPoint, '@', ConsoleColor.Red);
         ChangeTail();
+        if (_tail.Count > 1)
+            PrintSymbol?.Invoke(_tail[1], '0', ConsoleColor.DarkYellow);
         _tail[0] = _nextPoint;
     }
     void ChangeTail()
@@ -115,7 +119,7 @@ class Snake
         }
 
         _nextPoint = _freeSpace[_random.Next(0, _freeSpace.Count)];
-        PrintSymbol?.Invoke(NextPoint, '@', ConsoleColor.Red);
+        PrintSymbol?.Invoke(_nextPoint, '@', ConsoleColor.Red);
         Food();
         _tail.Add(_nextPoint);
     }
@@ -147,6 +151,7 @@ class Snake
             _tail.Add(new Point());
             Score++;
             Food();
+
         }
         else
         {
@@ -157,6 +162,7 @@ class Snake
         {
             IsAlive = false;
             _stateTimer.Dispose();
+            PrintSymbol?.Invoke(_tail[0], '0', ConsoleColor.DarkYellow);
             EndGame?.Invoke(this);
         }
 
