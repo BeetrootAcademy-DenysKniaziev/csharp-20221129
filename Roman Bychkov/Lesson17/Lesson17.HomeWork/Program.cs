@@ -1,4 +1,6 @@
-﻿static class Proram
+﻿using System.Drawing;
+
+static class Proram
 {
     static ConsoleColor color;
     public static void Main()
@@ -8,12 +10,16 @@
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.CursorVisible = false;
             color = ConsoleColor.Yellow;
-            var snake = new Snake(color);
+            var snake = new Snake("map.txt", color);
             snake.ReadyToStart += Ready;
             snake.EndGame += End;
+            snake.PrintSymbol += PrintSymbol;
+            snake.BuildMap += CreateMap;
             snake.Start();
-            while (Console.ReadKey().Key != ConsoleKey.Enter) ;
+            while (Console.ReadKey().Key != ConsoleKey.Home) ;
+            Thread.Sleep(1000);
             Console.Clear();
+            
         }
 
 
@@ -21,14 +27,15 @@
 
     private static void End(Snake snake)
     {
+        Console.ForegroundColor = snake.Color;
         Console.SetCursorPosition(snake.NextPoint.X, snake.NextPoint.Y);
         Console.Write("█");
         Thread.Sleep(2500);
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.Clear();
         Console.SetCursorPosition(snake.Map[0].Length / 2, snake.Map.Length / 2);
-        Console.WriteLine($"You score: {snake.Score}. Press Enter to play again.");
-      
+        Console.WriteLine($"You score: {snake.Score}. Press Home to play again.");
+
 
     }
 
@@ -68,6 +75,18 @@
         }
         Console.ForegroundColor = color;
     }
-
+    public static void PrintSymbol(Point point, char symbol, ConsoleColor color)
+    {
+        Console.SetCursorPosition(point.X, point.Y);
+        Console.ForegroundColor = color;
+        Console.Write(symbol);
+    }
+    public static void CreateMap(string[] Map)
+    {
+        Console.SetCursorPosition(0, 0);
+        Console.SetWindowSize(Map[0].Length + 1, Map.Length + 1);
+        foreach (string s in Map)
+            Console.WriteLine(s);
+    }
 
 }

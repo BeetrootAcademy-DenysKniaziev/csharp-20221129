@@ -2,27 +2,31 @@
 
 class Snake
 {
+    public string[] Map { get; private set; }
+    public short Score { get; private set; } = 0;
+    public ConsoleColor Color { get; private set; }
+    public Point NextPoint => _nextPoint;
 
     ConsoleKey _direction = ConsoleKey.RightArrow;
     ConsoleKey _previousDirection = ConsoleKey.LeftArrow;
 
-    
     public event Action<Snake> EndGame, ReadyToStart;
+    public event Action<Point, char, ConsoleColor> PrintSymbol;
+    public event Action<string[]> BuildMap;
 
     List<Point> _tail, _freeSpace, _portal;
     Point _foodPoint, _nextPoint;
-    public Point NextPoint => _nextPoint;
-    public string[] Map { get; private set; }
-    public short Score { get; private set; } = 0;
+
+
     Timer _stateTimer;
     Random _random;
-    ConsoleColor _color;
+
     bool _flag = true;
 
 
-    public Snake(ConsoleColor color = ConsoleColor.White)
+    public Snake(string mapDirection, ConsoleColor color = ConsoleColor.White)
     {
-        _color = color;
+        Color = color;
         _tail = new List<Point>();
         _freeSpace = new List<Point>();
         _portal = new List<Point>();
@@ -31,14 +35,13 @@ class Snake
         _random = new Random();
 
         Map = new string[0];
-        if (File.Exists("map.txt"))
-            Map = File.ReadAllLines("map.txt");
+        if (File.Exists(mapDirection))
+            Map = File.ReadAllLines(mapDirection);
         else
         {
-            Console.WriteLine("Need map for start. Download: https://drive.google.com/drive/folders/137hROhQ4ymiy7wVu9EAMYV0CBLPp9o53?usp=share_link");
-            Environment.Exit(1);
+            throw new Exception("Need map for start. Download: https://drive.google.com/drive/folders/137hROhQ4ymiy7wVu9EAMYV0CBLPp9o53?usp=share_link");
         }
-        Console.SetWindowSize(Map[0].Length + 2, Map.Length + 2);
+
     }
 
     public void Start()
@@ -91,11 +94,7 @@ class Snake
         CheckCord();
         if (_flag == false)
             return;
-        Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
-
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("@");
-        Console.ForegroundColor = _color;
+        PrintSymbol?.Invoke(NextPoint, '@', ConsoleColor.Red);
         ChangeTail();
         _tail[0] = _nextPoint;
     }
@@ -111,11 +110,10 @@ class Snake
     }
     void CreateMap()
     {
-        Console.SetCursorPosition(0, 0);
-       
+        BuildMap?.Invoke(Map);
         for (int i = 0; i < Map.Length; i++)
         {
-            Console.WriteLine(Map[i]);
+
             for (int j = 0; j < Map[i].Length; j++)
             {
                 if ((Map[i])[j] != '#' && (Map[i])[j] != '|')
@@ -127,18 +125,10 @@ class Snake
                     _portal.Add(new Point((short)j, (short)i));
                 }
             }
-
-
         }
-       
+
         _nextPoint = _freeSpace[_random.Next(0, _freeSpace.Count)];
-
-        Console.SetCursorPosition(_nextPoint.X, _nextPoint.Y);
-
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("@");
-        Console.ForegroundColor = _color;
-
+        PrintSymbol?.Invoke(NextPoint, '@', ConsoleColor.Red);
         Food();
         _tail.Add(_nextPoint);
     }
@@ -173,8 +163,7 @@ class Snake
         }
         else
         {
-            Console.SetCursorPosition(_tail[_tail.Count - 1].X, _tail[_tail.Count - 1].Y);
-            Console.Write(" ");
+            PrintSymbol?.Invoke(_tail[_tail.Count - 1], ' ', Color);
             _tail[_tail.Count - 1] = new Point(0, 0);
         }
         if (!_freeSpace.Contains(_nextPoint) || _tail.Contains(_nextPoint))
@@ -191,12 +180,8 @@ class Snake
         var list = _freeSpace.Where(x => _tail.Contains(x) == false).ToList();
         list.Remove(_nextPoint);
         _foodPoint = list[_random.Next(0, list.Count)];
-        Console.SetCursorPosition(_foodPoint.X, _foodPoint.Y);
+        PrintSymbol?.Invoke(_foodPoint, '$', ConsoleColor.Green);
 
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.Write("$");
-        Console.ForegroundColor = _color;
-       
     }
 
 }
