@@ -1,0 +1,4 @@
+Do I need more votings?
+Not really|0
+Maybe|0
+Strongly Yes|1
