@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lesson_16.Homework
 {
-    internal class Voter
+    internal class Voter : Person
     {
+        public Voter(string firstName, string lastName, int age)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+        }
     }
 }

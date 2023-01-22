@@ -8,5 +8,12 @@ namespace Lesson_16.Homework
 {
     internal class Candidate
     {
+        public string Name { get; set; }
+        public int Count { get; set; } = 0;
+        public Candidate() { }
+        public Candidate(string name)
+        {
+            Name = name;
+        }
     }
 }

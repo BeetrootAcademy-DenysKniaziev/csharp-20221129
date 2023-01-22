@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lesson_16.Homework
 {
-    internal class Person
+    public abstract class Person
     {
+        protected string FirstName { get; set; }
+        protected string LastName { get; set; }
+        protected int Age { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
     }
 }
