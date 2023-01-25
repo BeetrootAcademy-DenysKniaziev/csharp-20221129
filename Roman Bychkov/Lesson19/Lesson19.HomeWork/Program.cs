@@ -165,8 +165,8 @@ public class Program
                           distance = FindDistance(p1.Longitude, p1.Latitude, p2.Longitude, p2.Latitude)
                       };
 
-        Console.WriteLine($"Result Max dist:{resulst.Max(p => p.distance)} ");
-        Console.WriteLine($"Result Min dist:{resulst.Min(p => p.distance)} ");
+        Console.WriteLine($"Result Max dist: {resulst.Max(p => p.distance)} ");
+        Console.WriteLine($"Result Min dist: {resulst.Min(p => p.distance)} ");
         //find 2 persons whos ‘about’ have the most same words
 
         var result3 = (from p1 in persons
@@ -186,6 +186,7 @@ public class Program
 
         //find persons with same friends(compare by friend’s name)
         //LINQ
+        Console.WriteLine("Linq");
         var result4 = from p1 in persons
                       from p2 in persons.SkipWhile(p => p != p1).Skip(1)
                       let countOfFriends = p1.Friends.Intersect(p2.Friends, new FriendComparer()).Count()
@@ -200,6 +201,7 @@ public class Program
             Console.WriteLine($"{f.Person1.Name} has same friends with {f.Person2.Name}");
 
         //EXTENSION
+        Console.WriteLine("Extension");
         var result41 = persons.Select(p => persons.SkipWhile(p1 => p1 != p).Skip(1)
         .Where(p1 => p1.Friends.Intersect(p.Friends, new FriendComparer()).Count() > 0)
         .Select(p1 => new
