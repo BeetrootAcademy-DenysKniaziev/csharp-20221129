@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 public class Program
 {
@@ -156,37 +157,79 @@ public class Program
         var west = persons.FirstOrDefault(p => p.Longitude == persons.Max(p => p.Longitude));
         Console.WriteLine($"North: {north.Name}, South: {south.Name}, East: {east.Name}, West: {west.Name}");
         //find max and min distance between 2 persons
-        var listDistance = new List<double>();
-        persons.ToList().ForEach((p) =>
-        {
-            persons.ToList().ForEach(p2 =>
-            {
-                if (p != p2)
-                    listDistance.Add(FindDistance(p.Longitude, p.Latitude, p2.Longitude, p2.Latitude));
-            });
-        });
-        Console.WriteLine("Max distance: " + listDistance.Max());
-        Console.WriteLine("Min distance: " + listDistance.Min());
+
+        var resulst = from p1 in persons
+                      from p2 in persons.SkipWhile(p => p != p1).Skip(1)
+                      select new
+                      {
+                          distance = FindDistance(p1.Longitude, p1.Latitude, p2.Longitude, p2.Latitude)
+                      };
+
+        Console.WriteLine($"Result Max dist:{resulst.Max(p => p.distance)} ");
+        Console.WriteLine($"Result Min dist:{resulst.Min(p => p.distance)} ");
         //find 2 persons whos ‘about’ have the most same words
-        var samepersons = persons.Select(p => new
-        {
-            Person = p,
-            Words = p.About.ToLower().Split(new char[] { ' ', '.', ',' })
-        }).Select(p2 => 5);
 
-        //.Max(p => p.Words.Intersect(persons.Select(p2 => p2.About.ToLower().Split(new char[] { ' ', '.', ',' }))).Count);
-        foreach (var person in samepersons)
-        {
-           Console.WriteLine(person);
-        }
+        var result3 = (from p1 in persons
+                       from p2 in persons.SkipWhile(p => p != p1).Skip(1)
+                       select new
+                       {
+                           Person1 = p1,
+                           Person2 = p2,
+                           CountOfWords = p1.About.ToLower().Replace(".", String.Empty).Split(new char[] { ' ' })
+                           .Intersect
+                           (p2.About.ToLower().Replace(".", String.Empty).Split(new char[] { ' ' })).Count()
 
-        //find persons with same friends(compare by friend’s name)            
+                       }).OrderByDescending(p => p.CountOfWords).FirstOrDefault();
+
+
+        Console.WriteLine($"{result3.Person1.Name} has the {result3.CountOfWords} same words with {result3.Person2.Name}");
+
+        //find persons with same friends(compare by friend’s name)
+        //LINQ
+        var result4 = from p1 in persons
+                      from p2 in persons.SkipWhile(p => p != p1).Skip(1)
+                      let countOfFriends = p1.Friends.Intersect(p2.Friends, new FriendComparer()).Count()
+                      where countOfFriends > 0
+                      select new
+                      {
+                          Person1 = p1,
+                          Person2 = p2,
+                          CountOfFriends = countOfFriends
+                      };
+        foreach (var f in result4)
+            Console.WriteLine($"{f.Person1.Name} has same friends with {f.Person2.Name}");
+
+        //EXTENSION
+        var result41 = persons.Select(p => persons.SkipWhile(p1 => p1 != p).Skip(1)
+        .Where(p1 => p1.Friends.Intersect(p.Friends, new FriendComparer()).Count() > 0)
+        .Select(p1 => new
+        {
+            Person1 = p,
+            Person2 = p1,
+            CountOfFriends = p1.Friends.Intersect(p.Friends, new FriendComparer()).Count()
+        }));
+        foreach (var f in result41)
+            foreach(var p in f)
+            Console.WriteLine($"{p.Person1.Name} has same friends with {p.Person2.Name}");
+
 
         #endregion
         double FindDistance(double x1, double y1, double x2, double y2) => Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
 
     }
+    public class FriendComparer : IEqualityComparer<Friend>
+    {
+        public bool Equals(Friend? p1, Friend? p2)
+        {
+            if (p1 is null || p2 is null) return false;
+            return p1.Name == p2.Name;
+        }
 
+        public int GetHashCode([DisallowNull] Friend obj)
+        {
+            return obj.Name.GetHashCode();
+        }
+    }
     record class Customer(string Name, DateTime Birthday, List<string> PhoneNumbers);
 
 
