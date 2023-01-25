@@ -41,7 +41,7 @@ namespace LinqLesson
             //foreach (var na in namesAges) 
             //        Console.WriteLine($"{na.Name} - {na.Age} years");
 
-            
+
             //Console.WriteLine("\nExtension\n");
 
             //var namesAges1 = customers.Select(c => new { c.Name, Age = (int)((DateTime.Today - c.Birthday).TotalDays / 365.242199)});
@@ -49,7 +49,7 @@ namespace LinqLesson
             //foreach (var na in namesAges1)
             //    Console.WriteLine($"{na.Name} - {na.Age} years");
 
-           
+
 
             ////Завдання 1.2:
 
@@ -58,7 +58,7 @@ namespace LinqLesson
             //var numbers = from c in customers
             //              select c.PhoneNumbers;
 
-            
+
             //foreach (var n in numbers)
             //{               
             //    foreach (var item in n)
@@ -119,6 +119,7 @@ namespace LinqLesson
 
             #region WERE
 
+            //Завдання 2.1:
             var selectedMonth = from customer in customers
                                 where customer.Birthday.Month==1
                                 select customer;
@@ -130,6 +131,7 @@ namespace LinqLesson
                     "   birth date: "+ customer.Birthday.ToShortDateString() +
                     " Phone number: +380"+ customer.PhoneNumbers[0]);
 
+            //Завдання 2.2:
 
             var selectedOddNameLength = from customer in customers
                                         where customer.Name.Length%2!=0
@@ -151,12 +153,14 @@ namespace LinqLesson
 
             Console.WriteLine();
 
+            //Завдання 2.2:
 
             var selected = from customer in customers
                            from numb in customer.PhoneNumbers
-                           where customer.Birthday.Month%2==0
+                           where customer.Birthday.Month % 2 == 0
                            where Regex.IsMatch(numb, "671")
                            select customer;
+                       
 
             Console.WriteLine("Even mounth and \"671\" in number has: ") ;
 
@@ -170,6 +174,27 @@ namespace LinqLesson
                 }
                 Console.WriteLine();
             }
+
+            Console.WriteLine("Extension");
+
+
+            var selected1 = customers.SelectMany(c => c.PhoneNumbers,
+                                         (c, n) => new { Customer = c, Number = n })
+                                         .Where(u => Regex.IsMatch(u.Number, "671") && u.Customer.Birthday.Month % 2 == 0)
+                                         .Select(u => u.Customer);
+
+
+            foreach (var customer in selected1)
+            {
+                Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
+                    " Phone number:");
+                foreach (var numb in customer.PhoneNumbers)
+                {
+                    Console.Write($" +380" + numb);
+                }
+                Console.WriteLine();
+            }
+
 
             #endregion
 
