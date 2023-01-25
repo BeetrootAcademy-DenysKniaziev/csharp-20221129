@@ -55,7 +55,7 @@
         {
             return $"X: {X}, Y: {Y}, Z: {Z}, lenght: {Math.Round((double)this, 2)}";
         }
-    }
+    } 
 
     internal class Program
     {
