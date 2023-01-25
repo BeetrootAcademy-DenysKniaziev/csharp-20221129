@@ -87,6 +87,6 @@
             Console.WriteLine(v1.ToString());
 
             Console.WriteLine(Vector.IsAdjacent(v1, v2));
-        }
+        } 
     }
 }
