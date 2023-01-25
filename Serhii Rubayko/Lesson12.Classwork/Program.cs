@@ -1,9 +1,22 @@
 ﻿
+enum Season { summer = 0, winter = 1};
+
 public class Tyre
 {
     int _diameter = 15;
     int _sectionWidth = 195;
     int _aspectRatio = 60;
+    public Season _season = 0;
+
+    public string Season 
+    {
+        get { return _season; }
+        set { switch
+             { case W
+                    
+            }   
+            }
+    }
         
     int Diameter
     {   
@@ -44,20 +57,27 @@ public class Tyre
 class Auto
 {
     public string Brand { get; set; }
-
+    Engine _engine;
     public Tyre[] tyres;
-    public double OilVolume { get; set; }
+    
 
-    Auto(string brand, Tyre tyre, double oilVolume)
+    Auto(string brand, Tyre tyre, Engine engine)
     {
         Brand= brand;
         tyres = new Tyre [] { tyre, tyre, tyre, tyre};
-        OilVolume = oilVolume;
+        _engine = oilVolume;
 
     }
 
+}
 
-
+class Engine
+{
+    int _power;
+    int _oilVolume = 5;
+    int _numberOfCylindres=4;
+    int _oilLifetime = 10000;
+    int _sparkplugLifeTime = 60000;
 
 }
 
