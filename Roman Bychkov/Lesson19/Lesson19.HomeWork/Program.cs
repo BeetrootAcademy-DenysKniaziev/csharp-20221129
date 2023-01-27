@@ -202,7 +202,7 @@ public class Program
 
         //EXTENSION
         Console.WriteLine("Extension");
-        var result41 = persons.Select(p => persons.SkipWhile(p1 => p1 != p).Skip(1)
+        var result41 = persons.SelectMany(p => persons.SkipWhile(p1 => p1 != p).Skip(1)
         .Where(p1 => p1.Friends.Intersect(p.Friends, new FriendComparer()).Count() > 0)
         .Select(p1 => new
         {
@@ -211,8 +211,7 @@ public class Program
             CountOfFriends = p1.Friends.Intersect(p.Friends, new FriendComparer()).Count()
         }));
         foreach (var f in result41)
-            foreach(var p in f)
-            Console.WriteLine($"{p.Person1.Name} has same friends with {p.Person2.Name}");
+            Console.WriteLine($"{f.Person1.Name} has same friends with {f.Person2.Name}");
 
 
         #endregion
