@@ -59,7 +59,7 @@ class Snake
         Thread.Sleep(1000);
         _stateTimer = new Timer(Run, this, 0, 100);
     }
-    void Run(object ob)
+    void Run(object ob = null)
     {
         switch (_direction)
         {
