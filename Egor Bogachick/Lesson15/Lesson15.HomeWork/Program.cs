@@ -3,48 +3,66 @@
     public class Stack<T>
     {
         private const int Value = 10;
-        public int Count { get; private set; }
+        public int Item { get; private set; }
         public T[] Arr { get; private set; }    
 
         public Stack() 
         {
             Arr = new T[Value];
-            Count = 0;
+            Item = 0;
         }
         public Stack(int lenth)
         {
             Arr = new T[lenth];
-            Count = 0;
+            Item = 0;
         }
 
         public bool IsEmpty()
         {
-            return Count == 0;
+            return Item == 0;
         }
 
         public T Pop()
         {
-            if (IsEmpty())
+            if (IsEmpty() || Item < 0)
             {
                 Console.WriteLine("Array is empty");
+                throw new IndexOutOfRangeException("Array is empty");
             }
+            Item--;
+            return Arr[Item];
         }
         public void Push(T item)
         {
-            if (Count == Arr.Length)
+            if (Item == Arr.Length)
             {
                 T[] tempArr = new T[Arr.Length*2];
                 Array.Copy(Arr, tempArr, Arr.Length);
                 Arr = tempArr;
             }
 
-            Arr[Count] = item;
-            Count++;
+            Arr[Item] = item;
+            Item++;
+        }
+
+        public T Peek()
+        {
+            if (IsEmpty() || Item < 0)
+            {
+                Console.WriteLine("Array is empty");
+                throw new IndexOutOfRangeException("Array is empty");
+            }
+            return Arr[Item - 1];
+        }
+
+        public int Count()
+        {
+            return Item;
         }
 
         public void Clear()
         {
-
+            Item = 0;
         }
     }
     internal class Program
