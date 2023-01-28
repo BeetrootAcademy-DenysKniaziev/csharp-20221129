@@ -119,81 +119,81 @@ namespace LinqLesson
 
             #region WERE
 
-            //Завдання 2.1:
-            var selectedMonth = from customer in customers
-                                where customer.Birthday.Month==1
-                                select customer;
+            ////Завдання 2.1:
+            //var selectedMonth = from customer in customers
+            //                    where customer.Birthday.Month==1
+            //                    select customer;
 
-            Console.WriteLine("In January birth:");
+            //Console.WriteLine("In January birth:");
 
-            foreach (var customer in selectedMonth)
-                Console.WriteLine(customer.Name +
-                    "   birth date: "+ customer.Birthday.ToShortDateString() +
-                    " Phone number: +380"+ customer.PhoneNumbers[0]);
+            //foreach (var customer in selectedMonth)
+            //    Console.WriteLine(customer.Name +
+            //        "   birth date: "+ customer.Birthday.ToShortDateString() +
+            //        " Phone number: +380"+ customer.PhoneNumbers[0]);
 
-            //Завдання 2.2:
+            ////Завдання 2.2:
 
-            var selectedOddNameLength = from customer in customers
-                                        where customer.Name.Length%2!=0
-                                        select customer;
+            //var selectedOddNameLength = from customer in customers
+            //                            where customer.Name.Length%2!=0
+            //                            select customer;
 
-            Console.WriteLine("Odd name length has: ");
+            //Console.WriteLine("Odd name length has: ");
 
-            foreach (var customer in selectedOddNameLength)
-            {
-                Console.Write(customer.Name + $"  name length = {customer.Name.Length} characters" +
-                    "   birth date: " + customer.Birthday.ToShortDateString() +
-                    " Phone number:");
-                foreach (var numb in customer.PhoneNumbers)
-                {
-                    Console.Write($" +380" + numb);
-                }
-                Console.WriteLine();
-            }
+            //foreach (var customer in selectedOddNameLength)
+            //{
+            //    Console.Write(customer.Name + $"  name length = {customer.Name.Length} characters" +
+            //        "   birth date: " + customer.Birthday.ToShortDateString() +
+            //        " Phone number:");
+            //    foreach (var numb in customer.PhoneNumbers)
+            //    {
+            //        Console.Write($" +380" + numb);
+            //    }
+            //    Console.WriteLine();
+            //}
 
-            Console.WriteLine();
+            //Console.WriteLine();
 
-            //Завдання 2.2:
+            ////Завдання 2.2:
 
-            var selected = from customer in customers
-                           from numb in customer.PhoneNumbers
-                           where customer.Birthday.Month % 2 == 0
-                           where Regex.IsMatch(numb, "671")
-                           select customer;
+            //var selected = from customer in customers
+            //               from numb in customer.PhoneNumbers
+            //               where customer.Birthday.Month % 2 == 0
+            //               where Regex.IsMatch(numb, "671")
+            //               select customer;
                        
 
-            Console.WriteLine("Even mounth and \"671\" in number has: ") ;
+            //Console.WriteLine("Even mounth and \"671\" in number has: ") ;
 
-            foreach (var customer in selected)
-            {
-                Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
-                    " Phone number:");
-                foreach (var numb in customer.PhoneNumbers)
-                {
-                    Console.Write($" +380" + numb);
-                }
-                Console.WriteLine();
-            }
+            //foreach (var customer in selected)
+            //{
+            //    Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
+            //        " Phone number:");
+            //    foreach (var numb in customer.PhoneNumbers)
+            //    {
+            //        Console.Write($" +380" + numb);
+            //    }
+            //    Console.WriteLine();
+            //}
 
-            Console.WriteLine("Extension");
-
-
-            var selected1 = customers.SelectMany(c => c.PhoneNumbers,
-                                         (c, n) => new { Customer = c, Number = n })
-                                         .Where(u => Regex.IsMatch(u.Number, "671") && u.Customer.Birthday.Month % 2 == 0)
-                                         .Select(u => u.Customer);
+            //Console.WriteLine("Extension");
 
 
-            foreach (var customer in selected1)
-            {
-                Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
-                    " Phone number:");
-                foreach (var numb in customer.PhoneNumbers)
-                {
-                    Console.Write($" +380" + numb);
-                }
-                Console.WriteLine();
-            }
+            //var selected1 = customers.SelectMany(c => c.PhoneNumbers,
+            //                             (c, n) => new { Customer = c, Number = n })
+            //                             .Where(u => Regex.IsMatch(u.Number, "671") && u.Customer.Birthday.Month % 2 == 0)
+            //                             .Select(u => u.Customer);
+
+
+            //foreach (var customer in selected1)
+            //{
+            //    Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
+            //        " Phone number:");
+            //    foreach (var numb in customer.PhoneNumbers)
+            //    {
+            //        Console.Write($" +380" + numb);
+            //    }
+            //    Console.WriteLine();
+            //}
 
 
             #endregion
@@ -201,6 +201,16 @@ namespace LinqLesson
 
 
             var persons = JsonConvert.DeserializeObject<IEnumerable<Person>>(File.ReadAllText("data.json"));
+
+            var names = from p in persons
+                        select p.Name;
+
+            Console.WriteLine($"{names.Count()}");
+
+            foreach(var n in names)
+            {
+                Console.WriteLine(n);
+            }
 
             //find out who is located farthest north/south/west/east using latitude/longitude data
             //find max and min distance between 2 persons
