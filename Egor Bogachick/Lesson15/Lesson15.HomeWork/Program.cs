@@ -1,4 +1,6 @@
-﻿namespace Lesson15.HomeWork
+﻿using System.Collections;
+
+namespace Lesson15.HomeWork
 {
     public class Stack<T>
     {
@@ -63,6 +65,14 @@
         public void Clear()
         {
             Item = 0;
+        }
+
+        public void CopyTo(T[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = Arr[i];
+            }
         }
     }
     internal class Program
