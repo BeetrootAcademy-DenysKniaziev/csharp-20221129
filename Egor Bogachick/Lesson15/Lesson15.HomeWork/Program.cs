@@ -79,7 +79,32 @@ namespace Lesson15.HomeWork
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Stack<int> stack1 = new Stack<int>(); 
+            stack1.Push(1);
+            stack1.Push(2);
+            stack1.Push(3);
+            stack1.Push(4);
+            stack1.Push(5);
+
+            Console.WriteLine(stack1.Pop());
+            Console.WriteLine(stack1.Peek());
+
+            int[] arr = new int[5];
+            stack1.CopyTo(arr);
+            foreach (int i in arr)
+            {
+                Console.Write($"{i}, ");
+            }
+            stack1.Clear();
+            Console.WriteLine(stack1.IsEmpty());
+
+            Stack<string> stack2 = new Stack<string>(20);
+            stack2.Push("first");
+            stack2.Push("second");
+            stack2.Push("third");
+            Console.WriteLine(stack2.Pop());
+            Console.WriteLine(stack2.Peek());
+
         }
     }
 }
