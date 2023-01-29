@@ -6,11 +6,11 @@ using static System.Console;
 
 namespace CalendarApp.Console.Presenters
 {
-    internal class MainMenuPresenter : IPresenter
+    internal class MainMenuPresenter<T> : IPresenter where T : class
     {
-        private readonly IService<Meeting> _meetingsService;
+        private readonly IService<T> _meetingsService;
 
-        public MainMenuPresenter(IService<Meeting> meetingsService)
+        public MainMenuPresenter(IService<T> service)
         {
             _meetingsService = meetingsService;
         }
