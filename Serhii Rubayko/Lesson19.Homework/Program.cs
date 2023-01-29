@@ -31,169 +31,169 @@ namespace LinqLesson
             //Завдання 3: Вивести інформацією про клієнтів, хто народилися у парному місяці року та хоча б один номер яких починається з "671"
 
             #region SELECT
-            ////Завдання 1.1:
+            //Завдання 1.1:
 
-            //Console.WriteLine("Query\n");
+            Console.WriteLine("Query\n");
 
-            //var namesAges = from c in customers
-            //                select new { c.Name, Age = (int)((DateTime.Today - c.Birthday).TotalDays / 365.242199)};                      
+            var namesAges = from c in customers
+                            select new { c.Name, Age = (int)((DateTime.Today - c.Birthday).TotalDays / 365.242199) };
 
-            //foreach (var na in namesAges) 
-            //        Console.WriteLine($"{na.Name} - {na.Age} years");
-
-
-            //Console.WriteLine("\nExtension\n");
-
-            //var namesAges1 = customers.Select(c => new { c.Name, Age = (int)((DateTime.Today - c.Birthday).TotalDays / 365.242199)});
-
-            //foreach (var na in namesAges1)
-            //    Console.WriteLine($"{na.Name} - {na.Age} years");
+            foreach (var na in namesAges)
+                Console.WriteLine($"{na.Name} - {na.Age} years");
 
 
+            Console.WriteLine("\nExtension\n");
 
-            ////Завдання 1.2:
+            var namesAges1 = customers.Select(c => new { c.Name, Age = (int)((DateTime.Today - c.Birthday).TotalDays / 365.242199) });
 
-            //Console.WriteLine("\nQuery\n");
-
-            //var numbers = from c in customers
-            //              select c.PhoneNumbers;
-
-
-            //foreach (var n in numbers)
-            //{               
-            //    foreach (var item in n)
-            //        Console.Write("+380"+item+"  ");
-            //    Console.WriteLine();
-            //}
-
-            //Console.WriteLine("\nExtension\n");
-
-            //var numbers1 = customers.Select(c => c.PhoneNumbers);
-
-            //foreach (var n in numbers1)
-            //{               
-            //    foreach (var item in n)
-            //        Console.Write("+380" + item + " ");
-            //    Console.WriteLine();
-            //}
-
-            //Console.WriteLine("\n");
+            foreach (var na in namesAges1)
+                Console.WriteLine($"{na.Name} - {na.Age} years");
 
 
-            ////Завдання 1.3:
-            //Console.WriteLine("\nQuery\n");
 
-            //var numbersInfo = from c in customers
-            //                  select new
-            //                  {
-            //                      c.PhoneNumbers,
-            //                      name = c.Name,
-            //                      birthday =c.Birthday.ToShortDateString()
-            //                  };
+            //Завдання 1.2:
 
-            //foreach (var ni in numbersInfo)
-            //{                
-            //    foreach (var item in ni.PhoneNumbers)
-            //        Console.Write("+380" + item + ", ");
-            //    Console.Write($"Name: {ni.name},  Birthday: {ni.birthday} \n\n");                
-            //}
+            Console.WriteLine("\nQuery\n");
 
-            //Console.WriteLine("\nExtension\n");
+            var numbers = from c in customers
+                          select c.PhoneNumbers;
 
-            //var numbersInfo1 = customers.Select(c=> new
-            //                  {
-            //                      c.PhoneNumbers,
-            //                      name = c.Name,
-            //                      birthday = c.Birthday.ToShortDateString()
-            //                  });
 
-            //foreach (var ni in numbersInfo1)
-            //{
-            //    foreach (var item in ni.PhoneNumbers)
-            //        Console.Write("+380" + item + ", ");
-            //    Console.Write($"Name: {ni.name},  Birthday: {ni.birthday} \n\n");
-            //}
+            foreach (var n in numbers)
+            {
+                foreach (var item in n)
+                    Console.Write("+380" + item + "  ");
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nExtension\n");
+
+            var numbers1 = customers.Select(c => c.PhoneNumbers);
+
+            foreach (var n in numbers1)
+            {
+                foreach (var item in n)
+                    Console.Write("+380" + item + " ");
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\n");
+
+
+            //Завдання 1.3:
+            Console.WriteLine("\nQuery\n");
+
+            var numbersInfo = from c in customers
+                              select new
+                              {
+                                  c.PhoneNumbers,
+                                  name = c.Name,
+                                  birthday = c.Birthday.ToShortDateString()
+                              };
+
+            foreach (var ni in numbersInfo)
+            {
+                foreach (var item in ni.PhoneNumbers)
+                    Console.Write("+380" + item + ", ");
+                Console.Write($"Name: {ni.name},  Birthday: {ni.birthday} \n\n");
+            }
+
+            Console.WriteLine("\nExtension\n");
+
+            var numbersInfo1 = customers.Select(c => new
+            {
+                c.PhoneNumbers,
+                name = c.Name,
+                birthday = c.Birthday.ToShortDateString()
+            });
+
+            foreach (var ni in numbersInfo1)
+            {
+                foreach (var item in ni.PhoneNumbers)
+                    Console.Write("+380" + item + ", ");
+                Console.Write($"Name: {ni.name},  Birthday: {ni.birthday} \n\n");
+            }
 
             #endregion
 
 
             #region WERE
 
-            ////Завдання 2.1:
-            //var selectedMonth = from customer in customers
-            //                    where customer.Birthday.Month==1
-            //                    select customer;
+            //Завдання 2.1:
+            var selectedMonth = from customer in customers
+                                where customer.Birthday.Month == 1
+                                select customer;
 
-            //Console.WriteLine("In January birth:");
+            Console.WriteLine("In January birth:");
 
-            //foreach (var customer in selectedMonth)
-            //    Console.WriteLine(customer.Name +
-            //        "   birth date: "+ customer.Birthday.ToShortDateString() +
-            //        " Phone number: +380"+ customer.PhoneNumbers[0]);
+            foreach (var customer in selectedMonth)
+                Console.WriteLine(customer.Name +
+                    "   birth date: " + customer.Birthday.ToShortDateString() +
+                    " Phone number: +380" + customer.PhoneNumbers[0]);
 
-            ////Завдання 2.2:
+            //Завдання 2.2:
 
-            //var selectedOddNameLength = from customer in customers
-            //                            where customer.Name.Length%2!=0
-            //                            select customer;
+            var selectedOddNameLength = from customer in customers
+                                        where customer.Name.Length % 2 != 0
+                                        select customer;
 
-            //Console.WriteLine("Odd name length has: ");
+            Console.WriteLine("Odd name length has: ");
 
-            //foreach (var customer in selectedOddNameLength)
-            //{
-            //    Console.Write(customer.Name + $"  name length = {customer.Name.Length} characters" +
-            //        "   birth date: " + customer.Birthday.ToShortDateString() +
-            //        " Phone number:");
-            //    foreach (var numb in customer.PhoneNumbers)
-            //    {
-            //        Console.Write($" +380" + numb);
-            //    }
-            //    Console.WriteLine();
-            //}
+            foreach (var customer in selectedOddNameLength)
+            {
+                Console.Write(customer.Name + $"  name length = {customer.Name.Length} characters" +
+                    "   birth date: " + customer.Birthday.ToShortDateString() +
+                    " Phone number:");
+                foreach (var numb in customer.PhoneNumbers)
+                {
+                    Console.Write($" +380" + numb);
+                }
+                Console.WriteLine();
+            }
 
-            //Console.WriteLine();
+            Console.WriteLine();
 
-            ////Завдання 2.2:
+            //Завдання 2.2:
 
-            //var selected = from customer in customers
-            //               from numb in customer.PhoneNumbers
-            //               where customer.Birthday.Month % 2 == 0
-            //               where Regex.IsMatch(numb, "671")
-            //               select customer;
-                       
-
-            //Console.WriteLine("Even mounth and \"671\" in number has: ") ;
-
-            //foreach (var customer in selected)
-            //{
-            //    Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
-            //        " Phone number:");
-            //    foreach (var numb in customer.PhoneNumbers)
-            //    {
-            //        Console.Write($" +380" + numb);
-            //    }
-            //    Console.WriteLine();
-            //}
-
-            //Console.WriteLine("Extension");
+            var selected = from customer in customers
+                           from numb in customer.PhoneNumbers
+                           where customer.Birthday.Month % 2 == 0
+                           where Regex.IsMatch(numb, "671")
+                           select customer;
 
 
-            //var selected1 = customers.SelectMany(c => c.PhoneNumbers,
-            //                             (c, n) => new { Customer = c, Number = n })
-            //                             .Where(u => Regex.IsMatch(u.Number, "671") && u.Customer.Birthday.Month % 2 == 0)
-            //                             .Select(u => u.Customer);
+            Console.WriteLine("Even mounth and \"671\" in number has: ");
+
+            foreach (var customer in selected)
+            {
+                Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
+                    " Phone number:");
+                foreach (var numb in customer.PhoneNumbers)
+                {
+                    Console.Write($" +380" + numb);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Extension");
 
 
-            //foreach (var customer in selected1)
-            //{
-            //    Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
-            //        " Phone number:");
-            //    foreach (var numb in customer.PhoneNumbers)
-            //    {
-            //        Console.Write($" +380" + numb);
-            //    }
-            //    Console.WriteLine();
-            //}
+            var selected1 = customers.SelectMany(c => c.PhoneNumbers,
+                                         (c, n) => new { Customer = c, Number = n })
+                                         .Where(u => Regex.IsMatch(u.Number, "671") && u.Customer.Birthday.Month % 2 == 0)
+                                         .Select(u => u.Customer);
+
+
+            foreach (var customer in selected1)
+            {
+                Console.Write(customer.Name + "   birth date: " + customer.Birthday.ToShortDateString() +
+                    " Phone number:");
+                foreach (var numb in customer.PhoneNumbers)
+                {
+                    Console.Write($" +380" + numb);
+                }
+                Console.WriteLine();
+            }
 
 
             #endregion
