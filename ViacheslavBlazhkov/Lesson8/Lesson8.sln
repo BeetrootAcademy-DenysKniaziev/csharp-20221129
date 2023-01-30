@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson8.Classwork", "Lesson8.Classwork\Lesson8.Classwork.csproj", "{F53617E5-0EA9-4D3E-9D94-E18BBE6A4906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson8.PhoneBook", "Lesson8.PhoneBook\Lesson8.PhoneBook.csproj", "{41CAA47C-8AE6-4DF6-B9D8-DD1DAC102FD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F53617E5-0EA9-4D3E-9D94-E18BBE6A4906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53617E5-0EA9-4D3E-9D94-E18BBE6A4906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53617E5-0EA9-4D3E-9D94-E18BBE6A4906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53617E5-0EA9-4D3E-9D94-E18BBE6A4906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41CAA47C-8AE6-4DF6-B9D8-DD1DAC102FD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CAA47C-8AE6-4DF6-B9D8-DD1DAC102FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CAA47C-8AE6-4DF6-B9D8-DD1DAC102FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CAA47C-8AE6-4DF6-B9D8-DD1DAC102FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E8F856AD-A72F-4DD7-8D4C-7A44958010FD}
+	EndGlobalSection
+EndGlobal

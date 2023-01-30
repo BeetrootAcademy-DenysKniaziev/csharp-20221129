@@ -36,7 +36,6 @@ namespace Lesson16.Homework
 
         private static void ShowOptions(Pull pull)
         {
-
             Console.WriteLine($"\n----- {pull.Title} OPTIONS -----");
             int indexOpt = 1;
             foreach (var item in pull.Options)
@@ -53,7 +52,6 @@ namespace Lesson16.Homework
                 if(index == number) pull.Options[key]++;
                 index++;
             }
-
 
             ShowResults(pull);
         }
