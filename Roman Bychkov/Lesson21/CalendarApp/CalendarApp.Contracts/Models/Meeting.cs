@@ -10,8 +10,6 @@ namespace CalendarApp.Contracts.Models
 
         public DateTime EndTime { get; set; }
 
-        public string RoomName { get; set; }
-
         public Room Room { get; set; }
     }
 }

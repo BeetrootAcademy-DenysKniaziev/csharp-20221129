@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CalendarApp.Contracts.Models
+﻿namespace CalendarApp.Contracts.Models
 {
-    internal class Room
+    public class Room
     {
+        private static int ID = 0;
+
+        public Room()
+        {
+            Id = ID;
+            ID++;
+        }
+        public int Id { get; }
+
+        public int Capacity { get; set; }
+        public bool IsFree { get; set; } = true;
+
     }
 }

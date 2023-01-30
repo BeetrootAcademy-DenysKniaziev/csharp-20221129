@@ -9,7 +9,7 @@ namespace CalendarApp.Console
     {
         static void Main(string[] args)
         {
-            IPresenter presenter = new MainMenuPresenter(BLLFactory.MeetingsService);
+            IPresenter presenter = new MainMenuPresenter();
 
             while (presenter != null)
             {

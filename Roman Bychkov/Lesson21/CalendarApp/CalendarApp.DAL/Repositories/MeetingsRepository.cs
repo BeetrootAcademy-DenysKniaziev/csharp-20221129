@@ -1,7 +1,7 @@
-﻿using CalendarApp.DAL.Repositories.Interfaces;
-using CalendarApp.Contracts.Models;
-using System.Collections.Generic;
+﻿using CalendarApp.Contracts.Models;
+using CalendarApp.DAL.Repositories.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace CalendarApp.DAL.Repositories
 {
@@ -15,7 +15,6 @@ namespace CalendarApp.DAL.Repositories
                 Name = "Test Meeting",
                 StartTime = DateTime.UtcNow,
                 EndTime = DateTime.UtcNow.AddHours(1),
-                RoomName = "Green Room"
             }
         };
 

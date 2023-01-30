@@ -19,17 +19,17 @@ namespace CalendarApp.Console.Presenters.Meetings
         {
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new MainMenuPresenter(_service);
+            return new MainMenuPresenter();
         }
 
         public void Show()
         {
             Clear();
 
-            WriteLine("{0,-25}{1,-25}{2,-25}{3,-25}", "Name", "Start Time", "End Time", "Room Name");
+            WriteLine("{0,-25}{1,-25}{2,-25}{3,-25}", "Name", "Start Time", "End Time", "Room Id");
             foreach (var meeting in _service.GetAll())
             {
-                WriteLine("{0,-25}{1,-25}{2,-25}{3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.RoomName);
+                WriteLine("{0,-25}{1,-25}{2,-25}{3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.Room?.Id);
             }
         }
     }
