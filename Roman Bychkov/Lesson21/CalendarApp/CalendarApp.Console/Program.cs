@@ -1,7 +1,6 @@
 ﻿using CalendarApp.Console.Presenters;
-using CalendarApp.Console.Presenters.Interfaces;
 
-using BLLFactory = CalendarApp.BLL.Factory;
+
 
 namespace CalendarApp.Console
 {

@@ -1,4 +1,7 @@
-﻿namespace CalendarApp.Contracts.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace CalendarApp.Contracts.Models
 {
     public class Room
     {
@@ -8,11 +11,15 @@
         {
             Id = ID;
             ID++;
+            Schedule = new Dictionary<DateTime, DateTime>();
+            {
+                Schedule.Add(DateTime.Now, DateTime.Now.AddHours(2));
+            }
         }
         public int Id { get; }
 
         public int Capacity { get; set; }
-        public bool IsFree { get; set; } = true;
+        public Dictionary<DateTime, DateTime> Schedule { get; set; }
 
     }
 }

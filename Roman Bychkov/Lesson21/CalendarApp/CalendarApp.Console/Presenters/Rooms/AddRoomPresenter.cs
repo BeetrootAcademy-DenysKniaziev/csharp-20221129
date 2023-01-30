@@ -1,10 +1,4 @@
-﻿using CalendarApp.BLL.Services.Interfaces;
-using CalendarApp.Console.Presenters.Interfaces;
-using CalendarApp.Contracts.Models;
-
-using static System.Console;
-
-namespace CalendarApp.Console.Presenters.Meetings
+﻿namespace CalendarApp.Console.Presenters.Meetings
 {
     internal class AddRoomPresenter : IPresenter
     {

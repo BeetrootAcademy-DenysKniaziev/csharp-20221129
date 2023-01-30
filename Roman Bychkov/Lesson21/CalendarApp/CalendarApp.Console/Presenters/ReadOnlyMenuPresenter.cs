@@ -1,11 +1,4 @@
-﻿using CalendarApp.BLL.Services.Interfaces;
-using CalendarApp.Console.Presenters.Interfaces;
-using CalendarApp.Console.Presenters.Meetings;
-using CalendarApp.Contracts.Models;
-using static System.Console;
-using BLLFactory = CalendarApp.BLL;
-
-namespace CalendarApp.Console.Presenters
+﻿namespace CalendarApp.Console.Presenters
 {
     internal class MainMenuPresenter : IPresenter
     {
@@ -27,6 +20,8 @@ namespace CalendarApp.Console.Presenters
                     return new GetAllRoomsPresenter(_roomService);
                 case ConsoleKey.D4:
                     return new AddRoomPresenter(_roomService);
+                case ConsoleKey.D5:
+                    return new GetMeetingInSelectedRoomPresenter(_meetingsService);
                 case ConsoleKey.D0:
                     return null;
                 default:
@@ -43,6 +38,7 @@ namespace CalendarApp.Console.Presenters
             WriteLine("2 - Add Meeting");
             WriteLine("3 - Get All Rooms");
             WriteLine("4 - Add Room");
+            WriteLine("5 - See booked meetings in selected room");
             WriteLine("0 - Exit");
         }
     }

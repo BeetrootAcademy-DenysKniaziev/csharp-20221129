@@ -1,9 +1,4 @@
-﻿using CalendarApp.BLL.Services.Interfaces;
-using CalendarApp.Console.Presenters.Interfaces;
-using CalendarApp.Contracts.Models;
-
-using static System.Console;
-
+﻿
 namespace CalendarApp.Console.Presenters.Meetings
 {
     internal class GetAllRoomsPresenter : IPresenter
@@ -26,11 +21,15 @@ namespace CalendarApp.Console.Presenters.Meetings
         {
             Clear();
 
-            WriteLine("{0,-25}{1,-25}{2,-25}", "Id", "Capacity", "Status");
             foreach (var room in _service.GetAll())
             {
-                WriteLine("{0,-25}{1,-25}{2,-25}", room.Id, room.Capacity, room.IsFree);
+                WriteLine("{0,-25}{1,-25}{2,-25}", "Id", "Capacity", "Taken");
+                Write("{0,-25}{1,-25}{2,-25}", room.Id, room.Capacity, "");
+                WriteLine();
+                foreach (var item in room.Schedule)
+                    Write($"{item.Key,70} - {item.Value}\n");
             }
+            WriteLine();
         }
     }
 }

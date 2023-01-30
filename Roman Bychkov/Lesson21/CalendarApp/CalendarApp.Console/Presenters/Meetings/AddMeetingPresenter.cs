@@ -1,9 +1,4 @@
-﻿using CalendarApp.BLL.Services.Interfaces;
-using CalendarApp.Console.Presenters.Interfaces;
-using CalendarApp.Contracts.Models;
-
-using static System.Console;
-
+﻿
 namespace CalendarApp.Console.Presenters.Meetings
 {
     internal class AddMeetingPresenter : IPresenter
@@ -76,38 +71,47 @@ namespace CalendarApp.Console.Presenters.Meetings
             }
             while (true)
             {
-                if (_rooms.GetAll().Count(x => x.IsFree) == 0)
+
+                var freeRooms = (from r in _rooms.GetAll()
+                                 from s in r.Schedule
+                                 where (start < s.Key || s.Value < start) && r.Schedule.All(x => x.Key > end || x.Value < start)
+                                 select r).Distinct();
+
+
+                if (freeRooms.Count() == 0)
                 {
-                    WriteLine("Free room not exist. Wait until some room is free or go back to the main menu? y/n");
+                    WriteLine("Free room is not exist. Wait until some room is free or go back to the main menu? y/n");
                     while (true)
                     {
-                        if (ReadKey().Key == ConsoleKey.N)
+                        var key = ReadKey().Key;
+                        if (key == ConsoleKey.N)
                             return null;
-                        if (ReadKey().Key == ConsoleKey.Y)
-                            continue;
+                        if (key == ConsoleKey.Y)
+                            break;
                     }
 
                 }
                 else
                 {
                     WriteLine("Free rooms:");
-                    foreach (var r in _rooms.GetAll().Where(r => r.IsFree))
-                        WriteLine("\t Id: " + r.Id);
+                    foreach (var r in freeRooms)
+                        WriteLine("\t Id: " + r.Id + " Capacity: " + r.Capacity);
                     WriteLine();
                     Write("Pick: ");
-                    if (int.TryParse(ReadLine(), out id) || _rooms.GetAll().FirstOrDefault(r => r.Id == id && r.IsFree) != null)
+                    if (int.TryParse(ReadLine(), out id) || freeRooms.FirstOrDefault(r => r.Id == id) != null)
                     {
-                        room = _rooms.GetAll().FirstOrDefault(r => r.Id == id && r.IsFree);
-                        room.IsFree = false;
+                        room = freeRooms.FirstOrDefault(r => r.Id == id);
+                        room.Schedule.Add(start, end);
                     }
+                    return new Meeting()
+                    {
+                        Name = name,
+                        StartTime = start,
+                        EndTime = end,
+                        Room = room
+                    };
                 }
-                return new Meeting()
-                {
-                    Name = name,
-                    StartTime = start,
-                    EndTime = end,
-                    Room = room
-                };
+
             }
         }
     }
