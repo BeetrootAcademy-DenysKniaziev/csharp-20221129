@@ -14,7 +14,7 @@ namespace CalendarApp.Console.Presenters.Meetings
         {
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new MainMenuPresenter();
+            return new ReadOnlyMenuPresenter();
         }
 
         public void Show()

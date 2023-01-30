@@ -29,7 +29,7 @@
             }
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new MainMenuPresenter();
+            return new ReadOnlyMenuPresenter();
         }
 
         public void Show()
@@ -43,7 +43,7 @@
             while (true)
             {
                 if (int.TryParse(ReadLine(), out int id) || id < 0)
-                    return _service.GetAll().Where(m => m.Room?.Id == id);
+                    return _service.GetAll().Where(m => m.Room.Id == id);
                 else
                     WriteLine("Invalid id.");
             }

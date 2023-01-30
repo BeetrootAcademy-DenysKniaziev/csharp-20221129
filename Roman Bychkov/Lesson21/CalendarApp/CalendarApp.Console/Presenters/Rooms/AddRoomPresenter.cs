@@ -11,10 +11,10 @@
 
         public IPresenter Action()
         {
-            _service.Add(new Room { Capacity = ValidCapacity() });
+            _service.Add(new Room(ValidCapacity()));
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new MainMenuPresenter();
+            return new RWMainMenuPresenter();
         }
 
         public void Show()

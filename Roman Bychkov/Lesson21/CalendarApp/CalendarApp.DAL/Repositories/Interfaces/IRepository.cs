@@ -7,5 +7,7 @@ namespace CalendarApp.DAL.Repositories.Interfaces
         IEnumerable<TEntity> GetAll();
 
         void Add(TEntity entity);
+
+        void Update(TEntity entity);
     }
 }

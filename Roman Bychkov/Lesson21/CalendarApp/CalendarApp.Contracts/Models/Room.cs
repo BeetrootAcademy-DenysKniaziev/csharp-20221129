@@ -7,19 +7,42 @@ namespace CalendarApp.Contracts.Models
     {
         private static int ID = 0;
 
-        public Room()
+        //public Room()
+        //{
+        //    Id = ID;
+        //    ID++;
+        //    Schedule = new Dictionary<DateTime, DateTime>();
+
+        //}
+        public Room(int capacity, Dictionary<DateTime, DateTime> schedule = null, int id = -1)
         {
-            Id = ID;
-            ID++;
-            Schedule = new Dictionary<DateTime, DateTime>();
+            if (id == -1)
             {
-                Schedule.Add(DateTime.Now, DateTime.Now.AddHours(2));
+                this.Id = ID;
+                ID++;
+                Schedule = new Dictionary<DateTime, DateTime>();
+                
             }
+            else
+            {
+                this.Id = id;
+                Schedule = schedule;
+            }
+
+            Capacity = capacity;
+
+
         }
         public int Id { get; }
 
         public int Capacity { get; set; }
         public Dictionary<DateTime, DateTime> Schedule { get; set; }
+        public override bool Equals(object obj)
+        {
+            if (obj is Room room)
+                return room.Id == this.Id;
+            return false;
+        }
 
     }
 }

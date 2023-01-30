@@ -6,6 +6,6 @@ namespace CalendarApp.DAL
 {
     public static class FactoryRoom
     {
-        public static IRepository<Room> RoomsRepository { get; } = new RoomRepository();
+        public static IRepository<Room> RoomsRepository { get; } = new JSONRoomRepository();
     }
 }

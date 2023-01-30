@@ -1,6 +1,6 @@
 ﻿namespace CalendarApp.Console.Presenters
 {
-    internal class MainMenuPresenter : IPresenter
+    internal class ReadOnlyMenuPresenter : IPresenter
     {
 
         private readonly IService<Meeting> _meetingsService = BLLFactory.Factory.MeetingsService;
@@ -15,13 +15,11 @@
                 case ConsoleKey.D1:
                     return new GetAllMeetingsPresenter(_meetingsService);
                 case ConsoleKey.D2:
-                    return new AddMeetingPresenter(_meetingsService, _roomService);
-                case ConsoleKey.D3:
                     return new GetAllRoomsPresenter(_roomService);
-                case ConsoleKey.D4:
-                    return new AddRoomPresenter(_roomService);
-                case ConsoleKey.D5:
+                case ConsoleKey.D3:
                     return new GetMeetingInSelectedRoomPresenter(_meetingsService);
+                case ConsoleKey.D4:
+                    return new RWMainMenuPresenter();
                 case ConsoleKey.D0:
                     return null;
                 default:
@@ -35,11 +33,11 @@
 
             WriteLine("Select Action:");
             WriteLine("1 - Get All Meetings");
-            WriteLine("2 - Add Meeting");
-            WriteLine("3 - Get All Rooms");
-            WriteLine("4 - Add Room");
-            WriteLine("5 - See booked meetings in selected room");
+            WriteLine("2 - Get All Rooms");
+            WriteLine("3 - See booked meetings in selected room");
+            WriteLine("4 - Switch on RW Menu");
             WriteLine("0 - Exit");
+
         }
     }
 }

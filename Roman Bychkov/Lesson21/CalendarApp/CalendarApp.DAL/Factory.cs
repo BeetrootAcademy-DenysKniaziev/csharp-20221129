@@ -6,6 +6,6 @@ namespace CalendarApp.DAL
 {
     public static class Factory
     {
-        public static IRepository<Meeting> MeetingsRepository { get; } = new MeetingsRepository();
+        public static IRepository<Meeting> MeetingsRepository { get; } = new JSONMeetingsRepository();
     }
 }

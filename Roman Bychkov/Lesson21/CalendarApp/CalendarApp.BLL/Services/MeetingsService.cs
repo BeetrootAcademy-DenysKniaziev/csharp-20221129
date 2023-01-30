@@ -17,5 +17,7 @@ namespace CalendarApp.BLL.Services
         public IEnumerable<Meeting> GetAll() => _repository.GetAll();
 
         public void Add(Meeting meeting) => _repository.Add(meeting);
+
+        public void Update(Meeting entity) => _repository.Update(entity);
     }
 }

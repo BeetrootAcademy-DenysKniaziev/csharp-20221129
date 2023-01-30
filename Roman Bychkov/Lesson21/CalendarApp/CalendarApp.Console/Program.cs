@@ -8,7 +8,7 @@ namespace CalendarApp.Console
     {
         static void Main(string[] args)
         {
-            IPresenter presenter = new MainMenuPresenter();
+            IPresenter presenter = new ReadOnlyMenuPresenter();
 
             while (presenter != null)
             {

@@ -7,5 +7,6 @@ namespace CalendarApp.BLL.Services.Interfaces
         IEnumerable<TEntity> GetAll();
 
         void Add(TEntity entity);
+        void Update(TEntity entity);
     }
 }

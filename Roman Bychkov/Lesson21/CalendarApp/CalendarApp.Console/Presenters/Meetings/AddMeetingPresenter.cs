@@ -3,13 +3,13 @@ namespace CalendarApp.Console.Presenters.Meetings
 {
     internal class AddMeetingPresenter : IPresenter
     {
-        private readonly IService<Meeting> _service;
-        private readonly IService<Room> _rooms;
+        private readonly IService<Meeting> _metingservice;
+        private readonly IService<Room> _roomsservice;
 
         public AddMeetingPresenter(IService<Meeting> service, IService<Room> rooms)
         {
-            _service = service;
-            _rooms = rooms;
+            _metingservice = service;
+            _roomsservice = rooms;
         }
 
         public IPresenter Action()
@@ -17,12 +17,12 @@ namespace CalendarApp.Console.Presenters.Meetings
             Meeting meeting = CreateMeeting();
             if (meeting != null)
             {
-                _service.Add(meeting);
+                _metingservice.Add(meeting);
                 WriteLine("Success!");
             }
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new MainMenuPresenter();
+            return new RWMainMenuPresenter();
         }
 
         public void Show()
@@ -72,10 +72,10 @@ namespace CalendarApp.Console.Presenters.Meetings
             while (true)
             {
 
-                var freeRooms = (from r in _rooms.GetAll()
+                var freeRooms = (from r in _roomsservice.GetAll()
                                  from s in r.Schedule
-                                 where (start < s.Key || s.Value < start) && r.Schedule.All(x => x.Key > end || x.Value < start)
-                                 select r).Distinct();
+                                 where (start < s.Key || s.Value < start) && r.Schedule.All(x => x.Key > end || x.Value < start) || r.Schedule.Count() == 0
+                                 select r).Distinct().Union(_roomsservice.GetAll().Where(r => r.Schedule.Count == 0));
 
 
                 if (freeRooms.Count() == 0)
@@ -102,6 +102,7 @@ namespace CalendarApp.Console.Presenters.Meetings
                     {
                         room = freeRooms.FirstOrDefault(r => r.Id == id);
                         room.Schedule.Add(start, end);
+                        _roomsservice.Update(room);
                     }
                     return new Meeting()
                     {

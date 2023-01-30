@@ -17,5 +17,7 @@ namespace CalendarApp.BLL.Services
         public IEnumerable<Room> GetAll() => _rooms.GetAll();
 
         public void Add(Room room) => _rooms.Add(room);
+
+        public void Update(Room entity) => _rooms.Update(entity);
     }
 }
