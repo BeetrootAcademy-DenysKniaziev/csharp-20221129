@@ -4,10 +4,12 @@
     {
 
         private readonly IService<Meeting> _service;
+        private readonly IPresenter _presenter;
 
-        public GetMeetingInSelectedRoomPresenter(IService<Meeting> service)
+        public GetMeetingInSelectedRoomPresenter(IService<Meeting> service, IPresenter sender)
         {
             _service = service;
+            _presenter = sender;
         }
 
         public IPresenter Action()
@@ -29,7 +31,7 @@
             }
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new ReadOnlyMenuPresenter();
+            return _presenter;
         }
 
         public void Show()

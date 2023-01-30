@@ -21,11 +21,11 @@
             switch (key.Key)
             {
                 case ConsoleKey.D1:
-                    return new GetAllMeetingsPresenter(_meetingsService);
+                    return new GetAllMeetingsPresenter(_meetingsService, this);
                 case ConsoleKey.D2:
-                    return new GetAllRoomsPresenter(_roomService);
+                    return new GetAllRoomsPresenter(_roomService, this);
                 case ConsoleKey.D3:
-                    return new GetMeetingInSelectedRoomPresenter(_meetingsService);
+                    return new GetMeetingInSelectedRoomPresenter(_meetingsService, this);
                 case ConsoleKey.D4:
                     return new RWMainMenuPresenter(_meetingsService, _roomService);
                 case ConsoleKey.D0:

@@ -4,17 +4,19 @@ namespace CalendarApp.Console.Presenters.Meetings
     internal class GetAllRoomsPresenter : IPresenter
     {
         private readonly IService<Room> _service;
+        private readonly IPresenter _presenter;
 
-        public GetAllRoomsPresenter(IService<Room> service)
+        public GetAllRoomsPresenter(IService<Room> service, IPresenter sender)
         {
             _service = service;
+            _presenter = sender;
         }
 
         public IPresenter Action()
         {
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new ReadOnlyMenuPresenter();
+            return _presenter;
         }
 
         public void Show()
