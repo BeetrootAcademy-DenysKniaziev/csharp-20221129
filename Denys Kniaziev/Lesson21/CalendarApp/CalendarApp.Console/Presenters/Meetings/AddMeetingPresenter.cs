@@ -18,7 +18,7 @@ namespace CalendarApp.Console.Presenters.Meetings
         public IPresenter Action()
         {
             //TODO: Add logic
-            _service.Add(new Meeting { Name = "Dummy Meeting" });
+            _service.Add(new Meeting { Name = "Dummy Meeting", RoomName = @"Green,  ""Room""" });
 
             WriteLine("Press any key to continue...");
             ReadKey();
