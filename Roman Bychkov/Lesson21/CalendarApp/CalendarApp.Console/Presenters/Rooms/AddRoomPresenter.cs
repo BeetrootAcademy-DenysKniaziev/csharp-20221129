@@ -8,7 +8,6 @@
         {
             _service = service;
         }
-
         public IPresenter Action()
         {
             _service.Add(new Room(ValidCapacity()));
@@ -24,6 +23,7 @@
         }
         public int ValidCapacity()
         {
+            _service.GetAll(); // This is to get the id to accept the current value
             while (true)
             {
                 if (int.TryParse(ReadLine(), out int capacity) && capacity > 0)

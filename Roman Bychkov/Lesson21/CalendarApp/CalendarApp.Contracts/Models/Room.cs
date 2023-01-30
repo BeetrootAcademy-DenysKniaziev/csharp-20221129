@@ -1,32 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace CalendarApp.Contracts.Models
 {
     public class Room
     {
         private static int ID = 0;
 
-        //public Room()
-        //{
-        //    Id = ID;
-        //    ID++;
-        //    Schedule = new Dictionary<DateTime, DateTime>();
-
-        //}
         public Room(int capacity, Dictionary<DateTime, DateTime> schedule = null, int id = -1)
         {
             if (id == -1)
             {
                 this.Id = ID;
-                ID++;
                 Schedule = new Dictionary<DateTime, DateTime>();
-                
+                ID++;
             }
             else
             {
                 this.Id = id;
                 Schedule = schedule;
+                ID = id + 1;
             }
 
             Capacity = capacity;
@@ -42,6 +36,10 @@ namespace CalendarApp.Contracts.Models
             if (obj is Room room)
                 return room.Id == this.Id;
             return false;
+        }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
         }
 
     }

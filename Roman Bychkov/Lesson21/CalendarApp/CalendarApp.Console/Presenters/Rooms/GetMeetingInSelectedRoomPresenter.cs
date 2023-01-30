@@ -18,7 +18,7 @@
                 Clear();
 
                 WriteLine("{0,-25}{1,-25}{2,-25}{3,-25}", "Name", "Start Time", "End Time", "Room Id");
-                foreach (var meeting in _service.GetAll())
+                foreach (var meeting in meetings)
                 {
                     WriteLine("{0,-25}{1,-25}{2,-25}{3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.Room?.Id);
                 }
@@ -36,7 +36,6 @@
         {
             Clear();
             WriteLine("Enter the room's ID");
-            WriteLine();
         }
         public IEnumerable<Meeting> SearchRoom()
         {

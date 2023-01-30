@@ -29,7 +29,7 @@ namespace CalendarApp.Console.Presenters.Meetings
                 foreach (var item in room.Schedule)
                     Write($"{item.Key,70} - {item.Value}\n");
             }
-            WriteLine();
+          
         }
     }
 }

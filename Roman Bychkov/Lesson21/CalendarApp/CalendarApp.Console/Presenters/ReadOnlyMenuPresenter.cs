@@ -2,10 +2,18 @@
 {
     internal class ReadOnlyMenuPresenter : IPresenter
     {
+        private static IService<Meeting> _meetingsService;
+        private static IService<Room> _roomService;
 
-        private readonly IService<Meeting> _meetingsService = BLLFactory.Factory.MeetingsService;
-        private readonly IService<Room> _roomService = BLLFactory.FactoryRoom.RoomService;
+        public ReadOnlyMenuPresenter()
+        {
 
+        }
+        public ReadOnlyMenuPresenter(IService<Meeting> meetingsService, IService<Room> roomService)
+        {
+            _meetingsService = meetingsService;
+            _roomService = roomService;
+        }
         public IPresenter Action()
         {
             var key = ReadKey();
@@ -19,7 +27,7 @@
                 case ConsoleKey.D3:
                     return new GetMeetingInSelectedRoomPresenter(_meetingsService);
                 case ConsoleKey.D4:
-                    return new RWMainMenuPresenter();
+                    return new RWMainMenuPresenter(_meetingsService, _roomService);
                 case ConsoleKey.D0:
                     return null;
                 default:

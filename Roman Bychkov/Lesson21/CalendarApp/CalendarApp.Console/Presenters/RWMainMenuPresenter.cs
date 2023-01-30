@@ -3,8 +3,18 @@ namespace CalendarApp.Console.Presenters
 {
     internal class RWMainMenuPresenter : IPresenter
     {
-        private readonly IService<Meeting> _meetingsService = BLLFactory.Factory.MeetingsService;
-        private readonly IService<Room> _roomService = BLLFactory.FactoryRoom.RoomService;
+        private static IService<Meeting> _meetingsService;
+        private static IService<Room> _roomService;
+
+        public RWMainMenuPresenter()
+        {
+
+        }
+        public RWMainMenuPresenter(IService<Meeting> meetingsService, IService<Room> roomService)
+        {
+            _meetingsService = meetingsService;
+            _roomService = roomService;
+        }
 
         public IPresenter Action()
         {
@@ -18,7 +28,7 @@ namespace CalendarApp.Console.Presenters
                 case ConsoleKey.D2:
                     return new AddRoomPresenter(_roomService);
                 case ConsoleKey.D3:
-                    return new ReadOnlyMenuPresenter();
+                    return new ReadOnlyMenuPresenter(_meetingsService, _roomService);
                 case ConsoleKey.D0:
                     return null;
                 default:
