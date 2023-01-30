@@ -6,19 +6,19 @@ namespace Lesson16.Homework
     {
         static void Main(string[] args)
         {
-            Pull autoPull = new Pull("Cars", new List<(string, int)>
+            Pull autoPull = new Pull("Cars", new Dictionary<string, int>
             {
-                { ("Audi", 26)},
-                { ("Porsche", 28)},
-                { ("Morgan", 15)},
-                { ("Jeep", 17)}
+                { "Audi", 26},
+                { "Porsche", 28},
+                { "Morgan", 15},
+                { "Jeep", 17}
             });
-            Pull laptopsPull = new Pull("Laptops", new List<(string, int)>
+            Pull laptopsPull = new Pull("Laptops", new Dictionary<string, int>
             {
-                { ("MacBook", 27)},
-                { ("ASUS", 28)},
-                { ("Lenovo", 29)},
-                { ("HP", 25)}
+                { "MacBook", 27},
+                { "ASUS", 28},
+                { "Lenovo", 29},
+                { "HP", 25}
             });
 
             List<Pull> pulls = new List<Pull> {autoPull, laptopsPull };
