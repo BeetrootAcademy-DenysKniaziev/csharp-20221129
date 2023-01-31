@@ -3,13 +3,10 @@ namespace CalendarApp.Console.Presenters
 {
     internal class RWMainMenuPresenter : IPresenter
     {
-        private static IService<Meeting> _meetingsService;
-        private static IService<Room> _roomService;
+        private IService<Meeting> _meetingsService;
+        private IService<Room> _roomService;
 
-        public RWMainMenuPresenter()
-        {
 
-        }
         public RWMainMenuPresenter(IService<Meeting> meetingsService, IService<Room> roomService)
         {
             _meetingsService = meetingsService;
@@ -24,9 +21,9 @@ namespace CalendarApp.Console.Presenters
             {
 
                 case ConsoleKey.D1:
-                    return new AddMeetingPresenter(_meetingsService, _roomService);
+                    return new AddMeetingPresenter(_meetingsService, _roomService, this);
                 case ConsoleKey.D2:
-                    return new AddRoomPresenter(_roomService);
+                    return new AddRoomPresenter(_roomService, this);
                 case ConsoleKey.D3:
                     return new GetAllMeetingsPresenter(_meetingsService, this);
                 case ConsoleKey.D4:

@@ -2,13 +2,9 @@
 {
     internal class ReadOnlyMenuPresenter : IPresenter
     {
-        private static IService<Meeting> _meetingsService;
-        private static IService<Room> _roomService;
+        private IService<Meeting> _meetingsService;
+        private IService<Room> _roomService;
 
-        public ReadOnlyMenuPresenter()
-        {
-
-        }
         public ReadOnlyMenuPresenter(IService<Meeting> meetingsService, IService<Room> roomService)
         {
             _meetingsService = meetingsService;

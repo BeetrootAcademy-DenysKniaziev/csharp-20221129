@@ -5,11 +5,13 @@ namespace CalendarApp.Console.Presenters.Meetings
     {
         private readonly IService<Meeting> _metingservice;
         private readonly IService<Room> _roomsservice;
+        private readonly IPresenter _presenter;
 
-        public AddMeetingPresenter(IService<Meeting> service, IService<Room> rooms)
+        public AddMeetingPresenter(IService<Meeting> service, IService<Room> rooms, IPresenter sender)
         {
             _metingservice = service;
             _roomsservice = rooms;
+            _presenter = sender;
         }
 
         public IPresenter Action()
@@ -22,7 +24,7 @@ namespace CalendarApp.Console.Presenters.Meetings
             }
             WriteLine("Press any key to continue...");
             ReadKey();
-            return new RWMainMenuPresenter();
+            return _presenter;
         }
 
         public void Show()
