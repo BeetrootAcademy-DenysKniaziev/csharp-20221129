@@ -140,12 +140,12 @@ namespace Lesson16.ClassWork
 
             //Console.WriteLine(l1.Contains(2));
 
-            var l2 = new List<Person>
-            {
-                new Person { FirstName = "A", LastName = "A" },
-                new Person { FirstName = "B", LastName = "B" },
-                new Person { FirstName = "C", LastName = "C" }
-            };
+            //var l2 = new List<Person>
+            //{
+            //    new Person { FirstName = "A", LastName = "A" },
+            //    new Person { FirstName = "B", LastName = "B" },
+            //    new Person { FirstName = "C", LastName = "C" }
+            //};
 
             //var hs1 = new HashSet<Person>(l2);
 
@@ -153,12 +153,12 @@ namespace Lesson16.ClassWork
 
             //hs1.Contains(new Person { FirstName = "B", LastName = "B" }); 
 
-            //var d1 = new Dictionary<int, Person>
-            //{
-            //    { 1, new Person { FirstName = "A", LastName = "A" } },
-            //    { 2, new Person { FirstName = "B", LastName = "B" } },
-            //    { 3, new Person { FirstName = "C", LastName = "C" } },
-            //};
+            var d1 = new Dictionary<int, Person>
+            {
+                { 1, new Person { FirstName = "A", LastName = "A" } },
+                { 2, new Person { FirstName = "B", LastName = "B" } },
+                { 3, new Person { FirstName = "C", LastName = "C" } },
+            };
 
             //PrintEnumerable(d1);
 
@@ -177,14 +177,14 @@ namespace Lesson16.ClassWork
             //    d1[1] = new Person();
             //}
 
-            //Console.WriteLine(d1[1]);
+            Console.WriteLine(d1[1]);
 
             //PrintEnumerable(d1.Keys);
             //PrintEnumerable(d1.Values);
 
             //var d2 = new Dictionary<Person, List<string>>();
 
-            var pc1 = new PersonCollection(l2);
+            //var pc1 = new PersonCollection(l2);
 
             //var enumerator = pc1.GetEnumerator();
             //while (enumerator.MoveNext())
@@ -193,10 +193,10 @@ namespace Lesson16.ClassWork
             //}
             //enumerator.Reset();
 
-            foreach (var item in pc1.Power(2, 10))
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in pc1.Power(2, 10))
+            //{
+            //    Console.WriteLine(item);
+            //}
 
         }
     }
