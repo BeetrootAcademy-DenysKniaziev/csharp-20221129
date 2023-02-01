@@ -76,7 +76,7 @@ namespace CalendarApp.Console.Presenters.Meetings
 
                 var freeRooms = (from r in _roomsservice.GetAll()
                                  from s in r.Schedule
-                                 where (start < s.Key || s.Value < start) && r.Schedule.All(x => x.Key > end || x.Value < start) || r.Schedule.Count() == 0
+                                 where (start < s.Start || s.End < start) && r.Schedule.All(x => x.Start > end || x.End < start) || r.Schedule.Count() == 0
                                  select r).Distinct().Union(_roomsservice.GetAll().Where(r => r.Schedule.Count == 0));
 
 
@@ -103,7 +103,7 @@ namespace CalendarApp.Console.Presenters.Meetings
                     if (int.TryParse(ReadLine(), out id) || freeRooms.FirstOrDefault(r => r.Id == id) != null)
                     {
                         room = freeRooms.FirstOrDefault(r => r.Id == id);
-                        room.Schedule.Add(start, end);
+                        room.Schedule.Add(new TimeRange(start, end));
                         _roomsservice.Update(room);
                     }
                     return new Meeting()

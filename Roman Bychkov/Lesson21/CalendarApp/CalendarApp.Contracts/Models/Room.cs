@@ -7,13 +7,16 @@ namespace CalendarApp.Contracts.Models
     public class Room
     {
         private static int ID = 0;
+        public int Id { get; }
 
-        public Room(int capacity, Dictionary<DateTime, DateTime> schedule = null, int id = -1)
+        public int Capacity { get; set; }
+        public List<TimeRange> Schedule { get; set; }
+        public Room(int capacity, List<TimeRange> schedule = null, int id = -1)
         {
             if (id == -1)
             {
                 this.Id = ID;
-                Schedule = new Dictionary<DateTime, DateTime>();
+                Schedule = new List<TimeRange>();
                 ID++;
             }
             else
@@ -27,10 +30,7 @@ namespace CalendarApp.Contracts.Models
 
 
         }
-        public int Id { get; }
-
-        public int Capacity { get; set; }
-        public Dictionary<DateTime, DateTime> Schedule { get; set; }
+       
         public override bool Equals(object obj)
         {
             if (obj is Room room)

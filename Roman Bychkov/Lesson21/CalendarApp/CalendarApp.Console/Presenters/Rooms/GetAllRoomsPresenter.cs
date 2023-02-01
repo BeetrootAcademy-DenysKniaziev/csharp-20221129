@@ -29,7 +29,7 @@ namespace CalendarApp.Console.Presenters.Meetings
                 Write("{0,-25}{1,-25}{2,-25}", room.Id, room.Capacity, "");
                 WriteLine();
                 foreach (var item in room.Schedule)
-                    Write($"{item.Key,70} - {item.Value}\n");
+                    Write($"{item.Start,70} - {item.End}\n");
             }
           
         }
