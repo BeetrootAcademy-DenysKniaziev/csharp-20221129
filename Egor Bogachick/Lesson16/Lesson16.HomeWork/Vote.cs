@@ -67,13 +67,13 @@ namespace Lesson16.HomeWork
             Console.WriteLine($"Today's theme: {Name}");
             ShowThems();
             int temp = int.Parse(Console.ReadLine()!);
-            if (temp >= Thems.Count || temp <= 0)
+            if (temp > Thems.Count || temp <= 0)
             {
                 Console.WriteLine("Unexpected erorr");
             }
             else
             {
-                Voters.Add(lastname, Thems[temp]);
+                Voters.Add(lastname, Thems[temp - 1]);
             }
         }
 
@@ -82,7 +82,7 @@ namespace Lesson16.HomeWork
             Console.WriteLine("\nSelect theme:");
             ShowThems();
             int temp = int.Parse(Console.ReadLine()!);
-            if (temp >= Thems.Count)
+            if (temp > Thems.Count)
             {
                 Console.WriteLine("Unexpected erorr");
             }
@@ -91,7 +91,7 @@ namespace Lesson16.HomeWork
                 int i = 1;
                 foreach (var person in Voters)
                 {
-                    if (person.Value == Thems[temp])
+                    if (person.Value == Thems[temp - 1])
                     {
                         Console.WriteLine($"{i}. {person.Key} {person.Value}");
                         i++;
