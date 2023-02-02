@@ -10,8 +10,8 @@ namespace Lesson16.HomeWork
     public class Vote
     {
         public static string Name { get; set; }
-        public static List<string> Thems { get; set; }
-        public static Dictionary<string, string> Voters { get; set; }
+        public static List<string> Thems { get; set; } = new List<string>();
+        public static Dictionary<string, string> Voters { get; set; } = new Dictionary<string, string>();
 
         public static void Create()
         {
@@ -50,7 +50,54 @@ namespace Lesson16.HomeWork
 
         public static void VoteFor()
         {
+            Console.WriteLine("\nWrite you're last name: ");
+            int reg = 0;
+            string lastname = "" ;
+            do
+            {
+                if (reg > 0)
+                {
+                    Console.WriteLine("\nIncorrect input, try again:");
+                }
+                lastname = Console.ReadLine()!;
+                reg++;
+            } while (!Regex.IsMatch(lastname, @"[A-Za-z]"));
 
+            Console.WriteLine("\nSelect voting option (number): ");
+            Console.WriteLine($"Today's theme: {Name}");
+            ShowThems();
+            int temp = int.Parse(Console.ReadLine()!);
+            if (temp >= Thems.Count || temp <= 0)
+            {
+                Console.WriteLine("Unexpected erorr");
+            }
+            else
+            {
+                Voters.Add(lastname, Thems[temp]);
+            }
+        }
+
+        public static void SelectVoters()
+        {
+            Console.WriteLine("\nSelect theme:");
+            ShowThems();
+            int temp = int.Parse(Console.ReadLine()!);
+            if (temp >= Thems.Count)
+            {
+                Console.WriteLine("Unexpected erorr");
+            }
+            else
+            {
+                int i = 1;
+                foreach (var person in Voters)
+                {
+                    if (person.Value == Thems[temp])
+                    {
+                        Console.WriteLine($"{i}. {person.Key} {person.Value}");
+                        i++;
+                    }
+                }
+            }
         }
 
        public static void ShowThems()
@@ -63,12 +110,12 @@ namespace Lesson16.HomeWork
 
         public static void ShowVoters()
         {
-            for (int i = 0; i < Voters.Count; i++)
+            int i = 1;
+            foreach (var person in Voters)
             {
-                Console.WriteLine($"{i + 1}. {Voters[i]}");
+                Console.WriteLine($"{i}. {person.Key} {person.Value}");
+                i++;
             }
         }
-
-
     }
 }

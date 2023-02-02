@@ -20,31 +20,27 @@
                 switch (action.Key)
                 {
                     case ConsoleKey.D1:
-                        Console.WriteLine("Phone Book:");
-                        
+                        Console.WriteLine("\nCreate theme:");
+                        Vote.Create();
                         break;
                     case ConsoleKey.D2:
-                        Console.WriteLine("Search:");
-                        
+                        Console.WriteLine("\nVote:");
+                        Vote.VoteFor();
                         break;
                     case ConsoleKey.D3:
-                        Console.WriteLine("Add:");
-                        
+                        Console.WriteLine("\nAll voters:");
+                        Vote.ShowVoters();
                         break;
                     case ConsoleKey.D4:
-                        Console.WriteLine("Update:");
-                        
-                        break;
-                    case ConsoleKey.D5:
-                        Console.WriteLine("Remove:");
-                       
+                        Console.WriteLine("\nSelected voters:");
+                        Vote.SelectVoters();
                         break;
                     case ConsoleKey.D0:
-                        Console.WriteLine("Exit");
+                        Console.WriteLine("\nExit");
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Incorrect Input!");
+                        Console.WriteLine("\nIncorrect Input!");
                         break;
                 }
             }

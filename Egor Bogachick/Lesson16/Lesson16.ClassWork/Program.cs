@@ -162,10 +162,10 @@ namespace Lesson16.ClassWork
 
             //PrintEnumerable(d1);
 
-            //d1.Add(4, new Person());
+            d1.Add(4, new Person { FirstName = "d", LastName = "d" });
             //var b = d1.TryGetValue(1, out Person person);
             //Console.WriteLine(person);
-
+            PrintEnumerable(d1);
             ////d1.Add(1, new Person());
             //d1[8] = new Person();
 
@@ -177,7 +177,7 @@ namespace Lesson16.ClassWork
             //    d1[1] = new Person();
             //}
 
-            Console.WriteLine(d1[1]);
+            //Console.WriteLine(d1[1]);
 
             //PrintEnumerable(d1.Keys);
             //PrintEnumerable(d1.Values);
