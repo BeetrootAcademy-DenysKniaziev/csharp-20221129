@@ -13,6 +13,7 @@ class Program
       
         var microWeatherClient = new MicroWeatherAPI();
         var openMeteoClient = new OpenMeteoAPI();
+        var OpenWeather = new OpenWeatherAPI();
         LatitudeLongitude coordinateCity;
         string cityName;
 
@@ -25,8 +26,9 @@ class Program
           
             var task1 = microWeatherClient.CreateRequestAsync(cityName);
             var task2 = openMeteoClient.CreateRequestAsync(coordinateCity.Latitude, coordinateCity.Longitude);
-          
-            var allTasks = Task.WhenAll(task1, task2);
+            var task3 = OpenWeather.CreateRequestAsync(coordinateCity.Latitude, coordinateCity.Longitude);
+
+            var allTasks = Task.WhenAll(task1, task2, task3);
 
             try
             {
