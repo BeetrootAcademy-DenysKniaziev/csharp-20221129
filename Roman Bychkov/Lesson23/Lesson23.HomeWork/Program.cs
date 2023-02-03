@@ -11,9 +11,9 @@ class Program
     static async Task Main()
     {
       
-        var microWeatherClient = new MicroWeatherAPI();
+        var microWeatherClient = new MicroWeatherAPI("token");
         var openMeteoClient = new OpenMeteoAPI();
-        var OpenWeather = new OpenWeatherAPI();
+        var OpenWeather = new OpenWeatherAPI("token");
         LatitudeLongitude coordinateCity;
         string cityName;
 

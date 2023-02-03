@@ -5,15 +5,18 @@ namespace Lesson23.HomeWork.API
 {
     internal class OpenMeteoAPI
     {
-
+        private HttpClient _httpClient;
+        public OpenMeteoAPI()
+        {
+            _httpClient = new HttpClient();
+        }
         public async Task<string> CreateRequestAsync(double latitude, double longitude)
         {
-            using var httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri("https://api.open-meteo.com");
-            httpClient.Timeout = TimeSpan.FromSeconds(10);
+            _httpClient.BaseAddress = new Uri("https://api.open-meteo.com");
+            _httpClient.Timeout = TimeSpan.FromSeconds(10);
           
 
-            var response = await httpClient.GetAsync(
+            var response = await _httpClient.GetAsync(
                $"v1/forecast?latitude="+latitude.ToString().Replace(',', '.')+"&longitude=" + longitude.ToString().Replace(',', '.') + "&current_weather=true");
             var responseContent = await response.Content.ReadAsStringAsync();
 
