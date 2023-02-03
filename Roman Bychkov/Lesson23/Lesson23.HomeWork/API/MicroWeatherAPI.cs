@@ -7,24 +7,23 @@ namespace Lesson23.HomeWork
     internal class MicroWeatherAPI
     {
         private string _token;
-        private HttpClient _httpClient;
+       
         public MicroWeatherAPI(string token)
         {
             _token = token;
-            _httpClient = new HttpClient();
         }
         public async Task<string> CreateRequestAsync(string city)
         {
-            
-            _httpClient.BaseAddress = new Uri("https://api.m3o.com");
-            _httpClient.Timeout = TimeSpan.FromSeconds(10);
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
+            using var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://api.m3o.com");
+            httpClient.Timeout = TimeSpan.FromSeconds(10);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
             var _body = new RequestBody
             {
                 Location = city,
             };
-            var response = await _httpClient.PostAsync(
+            var response = await httpClient.PostAsync(
                "v1/weather/Now",
                new StringContent(JsonConvert.SerializeObject(_body), Encoding.UTF8, "application/json"));
             var responseContent = await response.Content.ReadAsStringAsync();

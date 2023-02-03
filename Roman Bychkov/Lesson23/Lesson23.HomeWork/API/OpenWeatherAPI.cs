@@ -5,19 +5,18 @@ namespace Lesson23.HomeWork.API
     internal class OpenWeatherAPI
     {
         private string _token;
-        private HttpClient _httpClient;
+
         public OpenWeatherAPI(string token)
         {
             _token = token;
-            _httpClient = new HttpClient();
         }
         public async Task<string> CreateRequestAsync(double latitude, double longitude)
         {
-
-            _httpClient.BaseAddress = new Uri("https://api.openweathermap.org");
-            _httpClient.Timeout = TimeSpan.FromSeconds(10);
-
-            var response = await _httpClient.GetAsync(
+            using var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri("https://api.openweathermap.org");
+            httpClient.Timeout = TimeSpan.FromSeconds(10);
+            
+            var response = await httpClient.GetAsync(
                $"data/2.5/weather?lat=" + latitude.ToString().Replace(',', '.') + "&lon=" + longitude.ToString().Replace(',', '.') + "&appid=" + _token);
             var responseContent = await response.Content.ReadAsStringAsync();
 
