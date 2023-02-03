@@ -76,9 +76,9 @@ namespace CalendarApp.Console.Presenters.Meetings
 
                 var freeRooms = (from r in _roomsservice.GetAll()
                                  from s in r.Schedule
-                                 where (start < s.Start || s.End < start) && r.Schedule.All(x => x.Start > end || x.End < start) || r.Schedule.Count() == 0
+                                 where (start < s.Start || s.End < start) && r.Schedule.All(x => x.Start > end || x.End < start)
                                  select r).Distinct().Union(_roomsservice.GetAll().Where(r => r.Schedule.Count == 0));
-
+                
 
                 if (freeRooms.Count() == 0)
                 {

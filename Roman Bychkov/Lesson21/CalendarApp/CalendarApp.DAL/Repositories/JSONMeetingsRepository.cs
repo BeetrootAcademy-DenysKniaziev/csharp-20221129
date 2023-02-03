@@ -19,6 +19,11 @@ namespace CalendarApp.DAL.Repositories
             }
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate);
             var meetings = JsonSerializer.Deserialize<IEnumerable<Meeting>>(fs);
+
+            //to synchronise with the rooms after start-up
+            foreach (var meeting in meetings)
+                meeting.Room = FactoryRoom.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
+
             return meetings;
         }
 
