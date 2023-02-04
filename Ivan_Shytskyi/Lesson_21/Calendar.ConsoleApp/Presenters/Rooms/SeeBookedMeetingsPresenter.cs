@@ -19,16 +19,13 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
         {
             Console.Write("Select room: ");
             string name = Console.ReadLine();
-            foreach (var room in _serviceRoom.GetAll())
+            Console.Clear();
+            Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", "Name", "Start time", "End time", "Room name");
+            foreach (var meeting in _serviceMeeting.GetAll())
             {
-                Console.Clear();
-                Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", "Name", "Start time", "End time", "Room name");
-                foreach (var meeting in _serviceMeeting.GetAll())
+                if (name == meeting.Room)
                 {
-                    if (name == meeting.Room)
-                    {
-                        Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.Room);
-                    }
+                    Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.Room);
                 }
             }
             Console.WriteLine("Press any key to continue...");

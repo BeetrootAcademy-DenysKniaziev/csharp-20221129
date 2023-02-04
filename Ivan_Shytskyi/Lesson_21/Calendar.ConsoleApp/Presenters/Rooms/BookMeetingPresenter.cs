@@ -30,7 +30,6 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
                     int a = Convert.ToInt32(Console.ReadLine());
                     DateTime dt = new DateTime();
                     dt = dt.AddHours(a);
-
                     Console.Write("Enter end time: ");
                     int b = Convert.ToInt32(Console.ReadLine());
                     DateTime dt1 = new DateTime();
