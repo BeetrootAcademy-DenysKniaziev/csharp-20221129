@@ -74,13 +74,7 @@ namespace CalendarApp.Console.Presenters.Meetings
             while (true)
             {
 
-                var freeRooms = (from r in _roomsservice.GetAll()
-                                 from s in r.Schedule
-                                 where (start < s.Start || s.End < start) && r.Schedule.All(x => x.Start > end || x.End < start)
-                                 select r).Distinct().Union(_roomsservice.GetAll().Where(r => r.Schedule.Count == 0));
-                
-
-                if (freeRooms.Count() == 0)
+                if (_roomsservice.GetFreeRooms(start, end).Count() == 0)
                 {
                     WriteLine("Free room is not exist. Wait until some room is free or go back to the main menu? y/n");
                     while (true)
@@ -95,16 +89,24 @@ namespace CalendarApp.Console.Presenters.Meetings
                 }
                 else
                 {
-                    WriteLine("Free rooms:");
-                    foreach (var r in freeRooms)
-                        WriteLine("\t Id: " + r.Id + " Capacity: " + r.Capacity);
-                    WriteLine();
-                    Write("Pick: ");
-                    if (int.TryParse(ReadLine(), out id) || freeRooms.FirstOrDefault(r => r.Id == id) != null)
+                    while (true)
                     {
-                        room = freeRooms.FirstOrDefault(r => r.Id == id);
-                        room.Schedule.Add(new TimeRange(start, end));
-                        _roomsservice.Update(room);
+                        WriteLine("Free rooms:");
+                        foreach (var r in _roomsservice.GetFreeRooms(start, end))
+                            WriteLine("\t Id: " + r.Id + " Capacity: " + r.Capacity);
+                        WriteLine();
+                        Write("Pick: ");
+                        if (int.TryParse(ReadLine(), out id) && _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id) != null)
+                        {
+                            room = _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id);
+                            room.Schedule.Add(new TimeRange(start, end));
+                            _roomsservice.Update(room);
+                            break;
+                        }
+                        else
+                        {
+                           Clear();
+                        }
                     }
                     return new Meeting()
                     {
@@ -119,3 +121,4 @@ namespace CalendarApp.Console.Presenters.Meetings
         }
     }
 }
+

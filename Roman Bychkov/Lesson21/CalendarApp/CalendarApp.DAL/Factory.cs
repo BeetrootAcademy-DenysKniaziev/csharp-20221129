@@ -9,11 +9,5 @@ namespace CalendarApp.DAL
     {
         public static IRepository<Meeting> MeetingsRepository { get; } = new JSONMeetingsRepository();
 
-        static Factory()//to synchronise with the rooms after start-up
-        {
-         
-
-        }
-
     }
 }
