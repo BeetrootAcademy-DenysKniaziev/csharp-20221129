@@ -1,0 +1,10 @@
+0|Dmytro Bonislavskyi|99|1
+0|Someone|15|1
+0|Jane|25|1
+0|Jade|56|1
+0|Hat|42|0
+0|whom|77|0
+0|Kolin|80|1
+0|Donna|25|0
+0|Tymur|14|1
+0|Oksana|19|0

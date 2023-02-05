@@ -1,0 +1,3 @@
+The new Voting
+Right answer|1
+Wrong Answer|0
