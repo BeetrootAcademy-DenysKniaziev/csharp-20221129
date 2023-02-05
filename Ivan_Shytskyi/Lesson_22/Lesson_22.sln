@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.BLL", "Lesson_21_Calendar.BLL\Calendar.BLL.csproj", "{31177610-9E3A-4D52-A9E0-9C3B05B227DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.DAL", "Calendar.DAL\Calendar.DAL.csproj", "{7169BE2C-2CA5-4A07-A524-5A24ACBD7F16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.DAL", "Calendar.DAL\Calendar.DAL.csproj", "{7169BE2C-2CA5-4A07-A524-5A24ACBD7F16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.Contracts", "Calendar.Contracts\Calendar.Contracts.csproj", "{F573F5A4-1420-4BDD-8E28-4DFEC83EBC2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.Contracts", "Calendar.Contracts\Calendar.Contracts.csproj", "{F573F5A4-1420-4BDD-8E28-4DFEC83EBC2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.ConsoleApp", "Calendar.ConsoleApp\Calendar.ConsoleApp.csproj", "{7800AC52-1C59-49DB-B4E9-0BBCD0EF2FED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.ConsoleApp", "Calendar.ConsoleApp\Calendar.ConsoleApp.csproj", "{7800AC52-1C59-49DB-B4E9-0BBCD0EF2FED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calendar.BLL", "Calendar.BLL\Calendar.BLL.csproj", "{BF1CF0BB-1759-42E4-A723-5C3227267FAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{31177610-9E3A-4D52-A9E0-9C3B05B227DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31177610-9E3A-4D52-A9E0-9C3B05B227DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31177610-9E3A-4D52-A9E0-9C3B05B227DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31177610-9E3A-4D52-A9E0-9C3B05B227DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7169BE2C-2CA5-4A07-A524-5A24ACBD7F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7169BE2C-2CA5-4A07-A524-5A24ACBD7F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7169BE2C-2CA5-4A07-A524-5A24ACBD7F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{7800AC52-1C59-49DB-B4E9-0BBCD0EF2FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7800AC52-1C59-49DB-B4E9-0BBCD0EF2FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7800AC52-1C59-49DB-B4E9-0BBCD0EF2FED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF1CF0BB-1759-42E4-A723-5C3227267FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF1CF0BB-1759-42E4-A723-5C3227267FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF1CF0BB-1759-42E4-A723-5C3227267FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF1CF0BB-1759-42E4-A723-5C3227267FAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

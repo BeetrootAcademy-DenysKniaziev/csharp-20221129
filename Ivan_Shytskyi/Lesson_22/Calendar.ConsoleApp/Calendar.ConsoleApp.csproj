@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Calendar.BLL\Calendar.BLL.csproj" />
     <ProjectReference Include="..\Calendar.Contracts\Calendar.Contracts.csproj" />
-    <ProjectReference Include="..\Lesson_21_Calendar.BLL\Calendar.BLL.csproj" />
   </ItemGroup>
 
 </Project>
