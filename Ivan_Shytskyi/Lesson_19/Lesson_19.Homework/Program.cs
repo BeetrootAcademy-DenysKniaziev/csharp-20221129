@@ -191,14 +191,22 @@ namespace Lesson_19.Homework
                                 Math.Cos(d.Latitude * (Math.PI / 180)) * Math.Cos(d1.Latitude * (Math.PI / 180)) * Math.Cos(theta * (Math.PI / 180)))
                       select Math.Round(distant * 1.609344, 2);
             //attention a lot of results
-
             //foreach (var i in dis)
             //    Console.WriteLine($"Distance {i} km");
             //Console.WriteLine();
 
 
             //find 2 persons whos ‘about’ have the most same words
-            //find persons with same friends(compare by friend’s name)               
+            //find persons with same friends(compare by friend’s name)
+            var sameF = from p in persons
+                        from p1 in persons
+                        from f in p.Friends
+                        from f1 in p1.Friends
+                        where p != p1 && f.Name == f1.Name
+                        select (p.Name, p1.Name);
+            foreach (var i in sameF)
+                Console.WriteLine($"Persons with same friends : {i}");
+            Console.WriteLine();
         }
     }
 }
