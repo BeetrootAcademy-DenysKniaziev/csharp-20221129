@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp.DAL", "CalendarApp.DAL\CalendarApp.DAL.csproj", "{788ACEE4-DB0D-4270-A4E3-4D35B64A18AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApp.DAL", "CalendarApp.DAL\CalendarApp.DAL.csproj", "{788ACEE4-DB0D-4270-A4E3-4D35B64A18AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp.Contracts", "CalendarApp.Contracts\CalendarApp.Contracts.csproj", "{15C49190-9282-4818-824D-35D89A6ECB8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApp.Contracts", "CalendarApp.Contracts\CalendarApp.Contracts.csproj", "{15C49190-9282-4818-824D-35D89A6ECB8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp.BLL", "CalendarApp.BLL\CalendarApp.BLL.csproj", "{34C3E818-E27E-4D53-8968-E820105BC259}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApp.BLL", "CalendarApp.BLL\CalendarApp.BLL.csproj", "{34C3E818-E27E-4D53-8968-E820105BC259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApp.Console", "CalendarApp.Console\CalendarApp.Console.csproj", "{294455BC-A8DF-4875-B5E0-C90F6D4C5624}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApp.Console", "CalendarApp.Console\CalendarApp.Console.csproj", "{294455BC-A8DF-4875-B5E0-C90F6D4C5624}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson7.HomeWork", "..\Lesson7.HomeWork\Lesson7.HomeWork.csproj", "{8FBB9C04-39BC-406F-B428-205132E75D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringUtils", "StringUtils\StringUtils.csproj", "{E90D9A31-1014-47B2-B622-51E7306FF2FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarTest", "CalindarTest\CalendarTest.csproj", "{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{294455BC-A8DF-4875-B5E0-C90F6D4C5624}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{294455BC-A8DF-4875-B5E0-C90F6D4C5624}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{294455BC-A8DF-4875-B5E0-C90F6D4C5624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FBB9C04-39BC-406F-B428-205132E75D2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FBB9C04-39BC-406F-B428-205132E75D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FBB9C04-39BC-406F-B428-205132E75D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FBB9C04-39BC-406F-B428-205132E75D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90D9A31-1014-47B2-B622-51E7306FF2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90D9A31-1014-47B2-B622-51E7306FF2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90D9A31-1014-47B2-B622-51E7306FF2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90D9A31-1014-47B2-B622-51E7306FF2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,7 +2,9 @@
 using CalendarApp.Contracts.Models;
 using CalendarApp.DAL.Repositories.Interfaces;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("CalendarTest")]
 namespace CalendarApp.BLL.Services
 {
     internal class MeetingsService : IService<Meeting>
