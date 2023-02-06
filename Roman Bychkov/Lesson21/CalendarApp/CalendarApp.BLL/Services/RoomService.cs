@@ -18,7 +18,14 @@ namespace CalendarApp.BLL.Services
 
         public IEnumerable<Room> GetAll() => _rooms.GetAll();
 
-        public void Add(Room room) => _rooms.Add(room);
+        public void Add(Room room)
+        {
+            if (room.Capacity < 0)
+                throw new ArgumentException("Invalid capacity");
+            if (room.Id <= _rooms.GetAll().Max(r => r.Id))
+                throw new ArgumentException("Invalid ID");
+            _rooms.Add(room);
+        }
 
         public void Update(Room entity) => _rooms.Update(entity);
     }

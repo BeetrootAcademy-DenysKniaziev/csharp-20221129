@@ -24,11 +24,14 @@
         }
         public int ValidCapacity()
         {
-            _service.GetAll(); // This is to get the id to accept the current value
+           
             while (true)
             {
                 if (int.TryParse(ReadLine(), out int capacity) && capacity > 0)
+                {
+                    _service.GetAll(); // This is to get the id to accept the current value
                     return capacity;
+                }
                 else
                     WriteLine("Invalid capacity.");
             }

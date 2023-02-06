@@ -25,7 +25,6 @@ namespace CalendarApp.DAL.Repositories
         public void Add(Room room)
         {
             var rooms = GetAll();
-
             rooms = rooms.Append(room);
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
             JsonSerializer.Serialize(fs, rooms);

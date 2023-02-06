@@ -1,7 +1,9 @@
 ﻿using CalendarApp.BLL.Services.Interfaces;
 using CalendarApp.Contracts.Models;
 using CalendarApp.DAL.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CalendarApp.BLL.Services
 {
@@ -16,7 +18,21 @@ namespace CalendarApp.BLL.Services
 
         public IEnumerable<Meeting> GetAll() => _repository.GetAll();
 
-        public void Add(Meeting meeting) => _repository.Add(meeting);
+        public void Add(Meeting meeting)
+        {
+            if (string.IsNullOrWhiteSpace(meeting.Name))
+                throw new ArgumentException("Invalid Name");
+
+            if (meeting.StartTime == DateTime.MinValue)
+                throw new ArgumentException("Invalid start time");
+
+            if (meeting.EndTime == DateTime.MinValue)
+                throw new ArgumentException("Invalid end time");
+
+            if (meeting.Room.Schedule.Count != 0 && !meeting.Room.Schedule.All(r => meeting.StartTime > r.End || meeting.EndTime < r.Start))
+                throw new ArgumentException("There is a scheduling conflict with this room");
+            _repository.Add(meeting);
+        }
 
         public void Update(Meeting entity) => _repository.Update(entity);
     }

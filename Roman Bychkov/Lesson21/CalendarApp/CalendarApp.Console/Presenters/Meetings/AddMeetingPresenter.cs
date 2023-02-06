@@ -20,6 +20,8 @@ namespace CalendarApp.Console.Presenters.Meetings
             if (meeting != null)
             {
                 _metingservice.Add(meeting);
+                meeting.Room.Schedule.Add(new TimeRange(meeting.StartTime, meeting.EndTime));
+                _roomsservice.Update(meeting.Room);
                 WriteLine("Success!");
             }
             WriteLine("Press any key to continue...");
@@ -99,13 +101,11 @@ namespace CalendarApp.Console.Presenters.Meetings
                         if (int.TryParse(ReadLine(), out id) && _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id) != null)
                         {
                             room = _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id);
-                            room.Schedule.Add(new TimeRange(start, end));
-                            _roomsservice.Update(room);
                             break;
                         }
                         else
                         {
-                           Clear();
+                            Clear();
                         }
                     }
                     return new Meeting()
