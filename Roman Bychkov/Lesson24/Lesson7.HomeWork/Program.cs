@@ -39,7 +39,7 @@ public class Program
                 return false;
         return true;
     }
-    static (int letter, int number, int another) Analyze(string s)
+    public static (int letter, int number, int another) Analyze(string s)
     {
         int let = 0, num = 0, ano = 0;
         foreach (char c in s)
@@ -65,7 +65,7 @@ public class Program
 
         return arr;
     }
-    static char[] Duplicate(string str)
+    public static char[] Duplicate(string str)
     {
         var ans = new StringBuilder();
         str = str.ToLower();
