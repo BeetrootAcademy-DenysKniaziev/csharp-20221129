@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 public enum Season { summer = 0, winter = 1 };
 
 public class Tyre
@@ -8,8 +10,8 @@ public class Tyre
     int _aspectRatio = 60;
     public Season _season = 0;
 
-    public Season Season {get;  set;}
-    
+    public Season Season { get; set; }
+
     int Diameter
     {
         get => _diameter;
@@ -37,7 +39,7 @@ public class Tyre
         Diameter = diameter;
         SectionWidth = sectionWidth;
         AspectRatio = aspectRatio;
-        Season= season;
+        Season = season;
     }
 
     public override string ToString()
@@ -62,22 +64,23 @@ class Auto
         _engine = new Engine(sparkPlug);
     }
 
-    public Engine Engine 
+    public Engine Engine
     {
         get { return _engine; }
     }
 
     public override string ToString()
     {
-        return $"Brand: {Brand}\nVIN: {_vin}\nPower: {_engine._power} kW\nSpakplugs:"+ _engine._sparkPlugs[1]._brand +
+        return $"Brand: {Brand}\nVIN: {_vin}\nPower: {_engine._power} kW\nSpakplugs: {_engine._sparkPlugs[0]}" +
             $"\nTYRES\nLF: {_tyres[0]}\nRF: {_tyres[1]}\nRR: {_tyres[2]}\nLR: {_tyres[3]}";
-    } 
+    }
 
 }
 
 class SparkPlug
 {
-    public string _brand;
+    public string _brand = "Denso";
+
 
     public SparkPlug(string brand)
     {
@@ -91,21 +94,20 @@ class SparkPlug
 }
 
 class Engine
-{    
+{
     int _oilVolume = 5;
-    int _numberOfCylindres = 4;
-    public SparkPlug[] _sparkPlugs;
+    int _numberOfCylindres = 6;
+    public List<SparkPlug> _sparkPlugs;
     public int _power = 100;
-     
+
     public Engine(SparkPlug sparkPlug)
     {
-        var _sparkPlugs = new SparkPlug[NumberOfCylindres];
-        
-        for(int i = 0; i<_sparkPlugs.Length; i++)
+        _sparkPlugs = new List<SparkPlug> { };
+        for (int i = 0; i < _numberOfCylindres; i++)
         {
-            _sparkPlugs[i] = sparkPlug;
+            _sparkPlugs.Add(sparkPlug);
         }
-        
+
     }
 
     public int OilVolume
@@ -118,43 +120,63 @@ class Engine
         get { return _numberOfCylindres; }
     }
 
-    
-   
+    public void GetSparkPlugs()
+    {
+        foreach (var spark in _sparkPlugs)
+        {
+            Console.WriteLine(spark);
+        }
+    }
 
 }
 
 class AutoService
 {
-    double _priceForChangeOil=10;
-    double _oilCost=5;
-    double _priceForChangeSpark=4.5;
-    double _sparkCost=8.8;
-    double _priceForChangeTyre=20;
-    
-    public double _account=1000;
-               
-    public AutoService ()
-    { }
+    string _title;
+    double _priceForChangeOil = 10;
+    double _oilCost = 5;
+    double _priceForChangeSpark = 4.5;
+    double _sparkCost = 8.8;
+    double _priceForChangeTyre = 20;
+
+    public double _account = 1000;
+
+    public AutoService(string title)
+    {
+        _title = title;
+    }
 
     public void ChangeOil(Auto auto)
     {
         _account += _priceForChangeOil + _oilCost * auto.Engine.OilVolume;
     }
 
-    public void ChangeSparks(Auto auto)
+    public void ChangeSparks(Auto auto, SparkPlug sparkPlug)
     {
         _account += (_priceForChangeSpark + _sparkCost) * auto.Engine.NumberOfCylindres;
+
+        for (int i = 0; i < auto.Engine.NumberOfCylindres; i++)
+        {
+            auto.Engine._sparkPlugs[i] = sparkPlug;
+        }
+
     }
 
     public void ChangeTyres(Auto auto, Tyre tyre)
     {
         _account += _priceForChangeTyre;
 
-        for(int i=0;i<auto._tyres.Length;i++)
+        for (int i = 0; i < auto._tyres.Length; i++)
         {
             auto._tyres[i] = tyre;
         }
     }
+
+    public override string ToString()
+    {
+        return "Title: "+_title+"\n"+$"Account: ${ _account}" ;
+    }
+
 
 }
 
@@ -173,9 +195,11 @@ class Program
 
         SparkPlug SP1 = new SparkPlug("Denso");
 
-        Auto Car = new Auto("ZAZ","AB123CD",T1,SP1);
+        SparkPlug SP2 = new SparkPlug("Champion");
 
-        var STO = new AutoService();
+        Auto Car = new Auto("ZAZ", "AB123CD", T1, SP1);
+
+        var STO = new AutoService("STO");
 
         Console.WriteLine($"{STO._account}");
 
@@ -183,7 +207,9 @@ class Program
 
         Console.WriteLine($"{STO._account}");
 
-        STO.ChangeSparks(Car);
+        Console.WriteLine(Car);
+
+        STO.ChangeSparks(Car, SP2);
 
         Console.WriteLine($"{STO._account}");
 
@@ -197,7 +223,9 @@ class Program
 
         Console.WriteLine();
 
-        Console.WriteLine($"{STO._account}");
+        Console.WriteLine(STO);
+
+        Car.Engine.GetSparkPlugs();
 
 
     }
