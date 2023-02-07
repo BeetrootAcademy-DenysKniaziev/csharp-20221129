@@ -20,9 +20,9 @@ namespace CalendarApp.BLL.Services
 
         public void Add(Room room)
         {
-            if (room.Capacity < 0)
+            if (room.Capacity < 1)
                 throw new ArgumentException("Invalid capacity");
-            if (room.Id <= _rooms.GetAll().Max(r => r.Id))
+            if (_rooms.GetAll().Count() != 0 && room.Id <= _rooms.GetAll().Max(r => r.Id))
                 throw new ArgumentException("Invalid ID");
             _rooms.Add(room);
         }
