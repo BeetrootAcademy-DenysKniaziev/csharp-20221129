@@ -90,7 +90,6 @@ class SparkPlug
     {
         return _brand;
     }
-
 }
 
 class Engine
@@ -107,7 +106,6 @@ class Engine
         {
             _sparkPlugs.Add(sparkPlug);
         }
-
     }
 
     public int OilVolume
@@ -159,7 +157,6 @@ class AutoService
         {
             auto.Engine._sparkPlugs[i] = sparkPlug;
         }
-
     }
 
     public void ChangeTyres(Auto auto, Tyre tyre)
@@ -176,8 +173,6 @@ class AutoService
     {
         return "Title: "+_title+"\n"+$"Account: ${ _account}" ;
     }
-
-
 }
 
 
@@ -225,9 +220,9 @@ class Program
 
         Console.WriteLine(STO);
 
+        Console.WriteLine();
+
         Car.Engine.GetSparkPlugs();
-
-
     }
 
 }
