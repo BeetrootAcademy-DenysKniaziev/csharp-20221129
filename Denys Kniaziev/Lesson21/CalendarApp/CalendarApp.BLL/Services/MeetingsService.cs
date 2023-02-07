@@ -2,6 +2,9 @@
 using CalendarApp.Contracts.Models;
 using CalendarApp.DAL.Repositories.Interfaces;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("CalendarApp.BLL.Tests")]
 
 namespace CalendarApp.BLL.Services
 {
@@ -16,6 +19,10 @@ namespace CalendarApp.BLL.Services
 
         public IEnumerable<Meeting> GetAll() => _repository.GetAll();
 
-        public void Add(Meeting meeting) => _repository.Add(meeting);
+        public void Add(Meeting meeting)
+        {
+            meeting.Created = System.DateTime.UtcNow;
+            _repository.Add(meeting);
+        }
     }
 }

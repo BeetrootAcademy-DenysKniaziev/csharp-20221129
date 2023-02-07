@@ -11,5 +11,7 @@ namespace CalendarApp.Contracts.Models
         public DateTime EndTime { get; set; }
 
         public string RoomName { get; set; }
+
+        public DateTime? Created { get; set; }
     }
 }
