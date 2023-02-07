@@ -28,7 +28,7 @@ namespace CalendarApp.BLL.Services
             if (meeting.StartTime == DateTime.MinValue)
                 throw new ArgumentException("Invalid start time");
 
-            if (meeting.EndTime == DateTime.MinValue)
+            if (meeting.EndTime == DateTime.MinValue && meeting.EndTime >= meeting.StartTime)
                 throw new ArgumentException("Invalid end time");
 
             if (meeting.Room.Schedule.Count != 0 && !meeting.Room.Schedule.All(r => meeting.StartTime > r.End || meeting.EndTime < r.Start))
