@@ -86,15 +86,8 @@ namespace LinqLesson
 
 
             //find 2 persons whos ‘about’ have the most same words
-            var friendQuery = (from p1 in persons
-                              from p2 in persons
-                              where p1.Name != p2.Name
-                              select p1.Name).Distinct();
 
-            foreach (var item in friendQuery)
-            {
-                Console.WriteLine(item);
-            }
+
             //find persons with same friends(compare by friend’s name)
             
         }
