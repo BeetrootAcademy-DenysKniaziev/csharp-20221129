@@ -4,20 +4,23 @@ namespace Lesson17.HomeWork
 {
     internal class Program
     {
-
+        public delegate void EventHandler(Snake snake);
+        static event EventHandler Event;
         static void Main(string[] args)
         {
+            CursorVisible = false;
             Directions direction = Directions.RIGHT;
 
             Pixel food = new Pixel();
             food = Pixel.RandomFood(food);
-
-            CursorVisible = false;
             Pixel.DrawBorder();
             Snake snake = new Snake(Pixel.width / 2, Pixel.height / 2);
+            
+            Event += Game.Score;
+            Event += Game.CheckStatus;
+            
             while (true)
             {
-
                 while (Console.KeyAvailable)
                 {
                     var action = Console.ReadKey();
@@ -37,16 +40,11 @@ namespace Lesson17.HomeWork
                             break;
                     }
                 }
-
                 snake.Move(direction, ref food);
-                Game.CheckStatus(snake);
-                Game.Score(snake);
+                Event(snake);
                 Thread.Sleep(200);
             }
         }
-
-
-
     }
 }
 

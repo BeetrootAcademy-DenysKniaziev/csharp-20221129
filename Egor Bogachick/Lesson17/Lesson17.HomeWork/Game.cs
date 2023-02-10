@@ -22,7 +22,7 @@ namespace Lesson17.HomeWork
                 if (snake.Head.X == c.X && snake.Head.Y == c.Y)
                 {
                     Console.SetCursorPosition(Pixel.width + 2, Pixel.height / 2);
-                    Console.Write("Game Over");
+                    Console.Write("Game Over!");
                     Console.SetCursorPosition(0, Pixel.height + 1);
                     Environment.Exit(0);
                 }
