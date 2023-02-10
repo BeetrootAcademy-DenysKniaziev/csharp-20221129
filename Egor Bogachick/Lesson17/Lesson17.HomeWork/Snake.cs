@@ -11,9 +11,7 @@ namespace Lesson17.HomeWork
     {
         private const ConsoleColor headColor = ConsoleColor.Magenta;
         private const char snakeChar = '*';
-        //private const char headChar = ' ';
         private const ConsoleColor bodyColor = ConsoleColor.Cyan;
-        //private const char bodyChar = '*';
 
         public Snake(int x, int y)
         {
