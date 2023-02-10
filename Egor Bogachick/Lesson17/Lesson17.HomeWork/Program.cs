@@ -38,14 +38,13 @@ namespace Lesson17.HomeWork
                     }
                 }
 
-
                 snake.Move(direction, ref food);
-                snake.CheckFail();
+                Game.CheckStatus(snake);
+                Game.Score(snake);
                 Thread.Sleep(200);
             }
-
-            // ReadKey();
         }
+
 
 
     }
