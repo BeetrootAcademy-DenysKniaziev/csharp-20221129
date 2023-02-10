@@ -1,9 +1,4 @@
-﻿using CalendarApp.Contracts.Models;
-using CalendarApp.DAL.Repositories.Interfaces;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace CalendarApp.DAL.Repositories
 {
@@ -22,7 +17,7 @@ namespace CalendarApp.DAL.Repositories
 
             //to synchronise with the rooms after start-up
             foreach (var meeting in meetings)
-                meeting.Room = Factory.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
+                meeting.Room = FactoryJSON.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
 
             return meetings;
         }

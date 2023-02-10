@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Text.Json.Serialization;
 
 namespace CalendarApp.Contracts.Models
 {
@@ -11,6 +11,8 @@ namespace CalendarApp.Contracts.Models
 
         public int Capacity { get; set; }
         public List<TimeRange> Schedule { get; set; }
+
+        [JsonConstructor]
         public Room(int capacity, List<TimeRange> schedule = null, Guid? id = null)
         {
             if (id.HasValue)
@@ -26,6 +28,8 @@ namespace CalendarApp.Contracts.Models
 
             Capacity = capacity;
         }
+        public Room()
+        { }
 
         public override bool Equals(object obj)
         {

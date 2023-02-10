@@ -1,10 +1,12 @@
-﻿using System.Text.Json;
+﻿using System.Xml.Serialization;
 
 namespace CalendarApp.DAL.Repositories
 {
-    internal class JSONRoomRepository : IRepository<Room>
+    internal class XMLRoomRepository : IRepository<Room>
     {
-        private const string FileName = "Room.json";
+        private const string FileName = "Room.xml";
+        private static readonly XmlSerializer xmlSerializer = new(typeof(Room[]));
+
 
         public IEnumerable<Room> GetAll()
         {
@@ -13,7 +15,7 @@ namespace CalendarApp.DAL.Repositories
                 return Enumerable.Empty<Room>();
             }
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate);
-            var rooms = JsonSerializer.Deserialize<IEnumerable<Room>>(fs);
+            var rooms = xmlSerializer.Deserialize(fs) as IEnumerable<Room> ?? Enumerable.Empty<Room>();
             return rooms;
         }
 
@@ -22,7 +24,7 @@ namespace CalendarApp.DAL.Repositories
             var rooms = GetAll();
             rooms = rooms.Append(room);
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs, rooms);
+            xmlSerializer.Serialize(fs, rooms.ToArray());
 
         }
         public void Update(Room room)
@@ -36,7 +38,7 @@ namespace CalendarApp.DAL.Repositories
 
 
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs, rooms);
+            xmlSerializer.Serialize(fs, rooms.ToArray());
 
         }
     }

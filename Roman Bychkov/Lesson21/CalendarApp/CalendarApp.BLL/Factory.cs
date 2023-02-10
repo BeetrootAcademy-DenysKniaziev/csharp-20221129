@@ -2,7 +2,7 @@
 using CalendarApp.BLL.Services.Interfaces;
 using CalendarApp.Contracts.Models;
 
-using DALFactory = CalendarApp.DAL.Factory;
+using DALFactory = CalendarApp.DAL.FactoryJSON;
 
 namespace CalendarApp.BLL
 {

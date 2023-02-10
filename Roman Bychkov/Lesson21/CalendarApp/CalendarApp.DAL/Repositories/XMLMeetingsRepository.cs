@@ -1,9 +1,4 @@
-﻿using CalendarApp.Contracts.Models;
-using CalendarApp.DAL.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Xml.Serialization;
 
 namespace CalendarApp.DAL.Repositories
@@ -11,7 +6,7 @@ namespace CalendarApp.DAL.Repositories
     internal class XMLMeetingsRepository : IRepository<Meeting>
     {
         private const string FileName = "Meetings.xml";
-
+        private static readonly XmlSerializer xmlSerializer = new(typeof(Meeting[]));
         public IEnumerable<Meeting> GetAll()
         {
             if (!File.Exists(FileName))
@@ -19,11 +14,11 @@ namespace CalendarApp.DAL.Repositories
                 return Enumerable.Empty<Meeting>();
             }
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate);
-            var meetings = XmlSerializer.Deserialize(fs) as Enumerable<Meeting>;
+            var meetings = xmlSerializer.Deserialize(fs) as IEnumerable<Meeting> ?? Enumerable.Empty<Meeting>();
 
             //to synchronise with the rooms after start-up
             foreach (var meeting in meetings)
-                meeting.Room = Factory.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
+                meeting.Room = FactoryXML.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
 
             return meetings;
         }
@@ -34,8 +29,7 @@ namespace CalendarApp.DAL.Repositories
 
             meetings = meetings.Append(meeting);
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs, meetings);
-
+            xmlSerializer.Serialize(fs, meetings.ToArray());
         }
 
         public void Update(Meeting meeting)
@@ -51,7 +45,7 @@ namespace CalendarApp.DAL.Repositories
 
 
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs, meetings);
+            xmlSerializer.Serialize(fs, meetings.ToArray());
         }
     }
 }
