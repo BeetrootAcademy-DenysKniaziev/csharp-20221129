@@ -8,12 +8,43 @@ namespace Lesson17.HomeWork
 
         static void Main(string[] args)
         {
+            Directions direction = Directions.RIGHT;
 
-            Console.CursorVisible = false;
-            
+            Pixel food = new Pixel();
+            food = Pixel.RandomFood(food);
+
+            CursorVisible = false;
             Pixel.DrawBorder();
-            Snake snake = new Snake(10, 5);
-            ReadKey();
+            Snake snake = new Snake(Pixel.width / 2, Pixel.height / 2);
+            while (true)
+            {
+
+                while (Console.KeyAvailable)
+                {
+                    var action = Console.ReadKey();
+                    switch (action.Key)
+                    {
+                        case ConsoleKey.DownArrow when direction != Directions.UP:
+                            direction = Directions.DOWN;
+                            break;
+                        case ConsoleKey.UpArrow when direction != Directions.DOWN:
+                            direction = Directions.UP;
+                            break;
+                        case ConsoleKey.LeftArrow when direction != Directions.RIGHT:
+                            direction = Directions.LEFT;
+                            break;
+                        case ConsoleKey.RightArrow when direction != Directions.LEFT:
+                            direction = Directions.RIGHT;
+                            break;
+                    }
+                }
+
+
+                snake.Move(direction, ref food);
+                Thread.Sleep(200);
+            }
+
+            // ReadKey();
         }
 
 
