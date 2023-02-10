@@ -5,7 +5,6 @@ namespace Lesson17.HomeWork
     internal class Program
     {
 
-
         static void Main(string[] args)
         {
             Directions direction = Directions.RIGHT;
@@ -41,6 +40,7 @@ namespace Lesson17.HomeWork
 
 
                 snake.Move(direction, ref food);
+                snake.CheckFail();
                 Thread.Sleep(200);
             }
 

@@ -31,6 +31,26 @@ namespace Lesson17.HomeWork
         public Pixel Head { get; private set; }
         public Queue<Pixel> Body { get; } = new Queue<Pixel>();
 
+        public void CheckFail() 
+        {
+            if (Head.X == Pixel.width - 1 || Head.X == 0 || Head.Y == 0 || Head.Y == Pixel.height - 1)
+            {
+                Console.SetCursorPosition(Pixel.width + 2, Pixel.height / 2);
+                Console.Write("Game Over");
+                Console.SetCursorPosition(0, Pixel.height + 1 );
+                Environment.Exit(0);
+            }
+            foreach (var c in Body)
+            {
+                if (Head.X == c.X && Head.Y == c.Y)
+                {
+                    Console.SetCursorPosition(Pixel.width + 2, Pixel.height / 2);
+                    Console.Write("Game Over");
+                    Console.SetCursorPosition(0, Pixel.height + 1);
+                    Environment.Exit(0);
+                }
+            }
+        }
         public void Move(Directions direction, ref Pixel food)
         {
             Clear();
