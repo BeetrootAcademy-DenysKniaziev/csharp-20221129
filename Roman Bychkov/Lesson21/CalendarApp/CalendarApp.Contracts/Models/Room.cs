@@ -7,8 +7,9 @@ namespace CalendarApp.Contracts.Models
     public class Room
     {
 
-        public Guid? Id { get; }
+        public Guid? Id { get; set; }
 
+      
         public int Capacity { get; set; }
         public List<TimeRange> Schedule { get; set; }
 
@@ -29,7 +30,9 @@ namespace CalendarApp.Contracts.Models
             Capacity = capacity;
         }
         public Room()
-        { }
+        {
+            Schedule = new List<TimeRange>();
+        }
 
         public override bool Equals(object obj)
         {

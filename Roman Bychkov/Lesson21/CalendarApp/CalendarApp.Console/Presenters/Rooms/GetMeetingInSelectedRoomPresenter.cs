@@ -54,7 +54,7 @@
                     WriteLine("\t  " + i + " Capacity: " + rooms[i - 1].Capacity);
                 WriteLine();
                 Write("Pick: ");
-                if (int.TryParse(ReadLine(), out int id) && rooms.FirstOrDefault(r => r.Equals(rooms[id - 1])) != null)
+                if (int.TryParse(ReadLine(), out int id) && id > 0 && id <= rooms.Count)
                 {
                     room = rooms.FirstOrDefault(r => r.Equals(rooms[id - 1]));
                     break;

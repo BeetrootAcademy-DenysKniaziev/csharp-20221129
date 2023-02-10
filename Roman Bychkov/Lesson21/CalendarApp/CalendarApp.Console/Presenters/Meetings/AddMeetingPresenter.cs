@@ -66,7 +66,7 @@ namespace CalendarApp.Console.Presenters.Meetings
             while (true)
             {
                 Write("End time: ");
-                if (!DateTime.TryParse(ReadLine(), out end) || end == DateTime.MinValue || end <= start)
+                if (!DateTime.TryParse(ReadLine(), out end) || end == DateTime.MinValue || end < start)
                 {
                     WriteLine("Invalid end time");
                     continue;
@@ -100,7 +100,7 @@ namespace CalendarApp.Console.Presenters.Meetings
 
                         WriteLine();
                         Write("Pick: ");
-                        if (int.TryParse(ReadLine(), out id) && _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Equals(rooms[id - 1])) != null)
+                        if (int.TryParse(ReadLine(), out id) && id > 0 && id <= rooms.Count)
                         {
                             room = _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Equals(rooms[id - 1]));
                             break;

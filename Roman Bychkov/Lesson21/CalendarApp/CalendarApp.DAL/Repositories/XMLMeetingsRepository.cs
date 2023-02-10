@@ -37,7 +37,8 @@ namespace CalendarApp.DAL.Repositories
             var meetings = GetAll();
 
             var temp = meetings.FirstOrDefault(m => m.Id == meeting.Id);
-
+            if (temp == null)
+                return;
             temp.Name = meeting.Name;
             temp.Room = meeting.Room;
             temp.StartTime = meeting.StartTime;

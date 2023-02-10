@@ -1,10 +1,12 @@
-﻿using System.Text.Json;
+﻿using CalendarApp.DAL;
+using CsvHelper;
+using System.Globalization;
 
 namespace CalendarApp.DAL.Repositories
 {
-    internal class JSONMeetingsRepository : IRepository<Meeting>
+    internal class CSVMeetingRepository : IRepository<Meeting>
     {
-        private const string FileName = "Meetings.json";
+        private const string FileName = "Meetings.csv";
 
         public IEnumerable<Meeting> GetAll()
         {
@@ -12,12 +14,15 @@ namespace CalendarApp.DAL.Repositories
             {
                 return Enumerable.Empty<Meeting>();
             }
-            using var fs = new FileStream(FileName, FileMode.OpenOrCreate);
-            var meetings = JsonSerializer.Deserialize<IEnumerable<Meeting>>(fs);
+
+            using var reader = new StreamReader(FileName);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            var meetings = csv.GetRecords<Meeting>().ToList();
 
             //to synchronise with the rooms after start-up
+            var rooms = FactoryCSV.RoomsRepository.GetAll();
             foreach (var meeting in meetings)
-                meeting.Room = FactoryJSON.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
+                meeting.Room = rooms.FirstOrDefault(r => r.Equals(meeting.Room));
 
             return meetings;
         }
@@ -27,8 +32,10 @@ namespace CalendarApp.DAL.Repositories
             var meetings = GetAll();
 
             meetings = meetings.Append(meeting);
-            using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs, meetings);
+
+            using var writer = new StreamWriter(FileName);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords<Meeting>(meetings);
 
         }
 
@@ -39,14 +46,15 @@ namespace CalendarApp.DAL.Repositories
             var temp = meetings.FirstOrDefault(m => m.Id == meeting.Id);
             if (temp == null)
                 return;
-
             temp.Name = meeting.Name;
             temp.Room = meeting.Room;
             temp.StartTime = meeting.StartTime;
             temp.EndTime = meeting.EndTime;
-           
-            using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs, meetings);
+
+
+            using var writer = new StreamWriter(FileName);
+            using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csv.WriteRecords<Meeting>(meetings);
         }
     }
 }

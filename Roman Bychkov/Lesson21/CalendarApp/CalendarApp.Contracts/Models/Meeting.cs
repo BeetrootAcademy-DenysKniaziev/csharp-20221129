@@ -5,7 +5,7 @@ namespace CalendarApp.Contracts.Models
     public class Meeting
     {
         public string Name { get; set; }
-        public Guid Id { get; }
+        public Guid Id { get; set; }
 
         public DateTime StartTime { get; set; }
 
@@ -21,7 +21,7 @@ namespace CalendarApp.Contracts.Models
         }
         public override int GetHashCode()
         {
-           return HashCode.Combine(Id);
+            return HashCode.Combine(Id);
         }
     }
 }
