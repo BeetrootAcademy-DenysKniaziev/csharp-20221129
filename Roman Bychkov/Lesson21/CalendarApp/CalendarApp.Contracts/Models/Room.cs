@@ -7,7 +7,7 @@ namespace CalendarApp.Contracts.Models
     public class Room
     {
 
-        public Guid Id { get; }
+        public Guid? Id { get; }
 
         public int Capacity { get; set; }
         public List<TimeRange> Schedule { get; set; }

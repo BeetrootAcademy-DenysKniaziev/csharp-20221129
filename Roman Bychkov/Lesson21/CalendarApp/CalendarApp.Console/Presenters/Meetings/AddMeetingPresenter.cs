@@ -94,15 +94,15 @@ namespace CalendarApp.Console.Presenters.Meetings
                     while (true)
                     {
                         WriteLine("Free rooms:");
-                        var rooms = _roomsservice.GetFreeRooms(start, end);
+                        var rooms = _roomsservice.GetFreeRooms(start, end).ToList();
                         for (int i = 1; i <= rooms.Count(); i++)
-                            WriteLine("\t  " + i + " Capacity: " + rooms.);
+                            WriteLine("\t  " + i + " Capacity: " + rooms[i - 1].Capacity);
 
                         WriteLine();
                         Write("Pick: ");
-                        if (int.TryParse(ReadLine(), out id) && _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id) != null)
+                        if (int.TryParse(ReadLine(), out id) && _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Equals(rooms[id - 1])) != null)
                         {
-                            room = _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id);
+                            room = _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Equals(rooms[id - 1]));
                             break;
                         }
                         else

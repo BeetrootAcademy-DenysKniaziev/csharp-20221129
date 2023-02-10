@@ -21,7 +21,7 @@ namespace CalendarApp.Contracts.Models
         }
         public override int GetHashCode()
         {
-            return Id;
+           return HashCode.Combine(Id);
         }
     }
 }

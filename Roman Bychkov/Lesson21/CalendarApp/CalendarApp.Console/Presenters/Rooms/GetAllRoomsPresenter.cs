@@ -25,8 +25,8 @@ namespace CalendarApp.Console.Presenters.Meetings
 
             foreach (var room in _service.GetAll())
             {
-                WriteLine("{0,-25}{1,-25}{2,-25}", "Id", "Capacity", "Taken");
-                Write("{0,-25}{1,-25}{2,-25}", room.Id, room.Capacity, "");
+                WriteLine("{0,-60}{1,-25}{2,-25}", "Id", "Capacity", "Taken");
+                Write("{0,-60}{1,-25}{2,-25}", room.Id, room.Capacity, "");
                 WriteLine();
                 foreach (var item in room.Schedule)
                     Write($"{item.Start,70} - {item.End}\n");

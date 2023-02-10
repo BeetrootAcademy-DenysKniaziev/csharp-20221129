@@ -1,15 +1,16 @@
 ﻿using CalendarApp.Contracts.Models;
 using CalendarApp.DAL.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.Json;
+using System.Xml.Serialization;
 
 namespace CalendarApp.DAL.Repositories
 {
-    internal class JSONMeetingsRepository : IRepository<Meeting>
+    internal class XMLMeetingsRepository : IRepository<Meeting>
     {
-        private const string FileName = "Meetings.json";
+        private const string FileName = "Meetings.xml";
 
         public IEnumerable<Meeting> GetAll()
         {
@@ -18,7 +19,7 @@ namespace CalendarApp.DAL.Repositories
                 return Enumerable.Empty<Meeting>();
             }
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate);
-            var meetings = JsonSerializer.Deserialize<IEnumerable<Meeting>>(fs);
+            var meetings = XmlSerializer.Deserialize(fs) as Enumerable<Meeting>;
 
             //to synchronise with the rooms after start-up
             foreach (var meeting in meetings)
@@ -47,7 +48,7 @@ namespace CalendarApp.DAL.Repositories
             temp.Room = meeting.Room;
             temp.StartTime = meeting.StartTime;
             temp.EndTime = meeting.EndTime;
-            
+
 
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
             JsonSerializer.Serialize(fs, meetings);

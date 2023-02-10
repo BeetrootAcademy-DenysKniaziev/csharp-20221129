@@ -24,7 +24,7 @@
         }
         public int ValidCapacity()
         {
-           
+
             while (true)
             {
                 if (int.TryParse(ReadLine(), out int capacity) && capacity > 0)

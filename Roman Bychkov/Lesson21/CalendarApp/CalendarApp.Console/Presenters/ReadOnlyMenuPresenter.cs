@@ -21,7 +21,7 @@
                 case ConsoleKey.D2:
                     return new GetAllRoomsPresenter(_roomService, this);
                 case ConsoleKey.D3:
-                    return new GetMeetingInSelectedRoomPresenter(_meetingsService, this);
+                    return new GetMeetingInSelectedRoomPresenter(_meetingsService, _roomService, this);
                 case ConsoleKey.D4:
                     return new RWMainMenuPresenter(_meetingsService, _roomService);
                 case ConsoleKey.D0:

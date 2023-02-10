@@ -8,8 +8,8 @@ namespace CalendarApp.Console
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine(Guid.NewGuid);
-            IPresenter presenter = new ReadOnlyMenuPresenter(BLLFactory.Factory.MeetingsService, BLLFactory.FactoryRoom.RoomService);
+
+            IPresenter presenter = new ReadOnlyMenuPresenter(BLLFactory.Factory.MeetingsService, BLLFactory.Factory.RoomService);
 
             while (presenter != null)
             {

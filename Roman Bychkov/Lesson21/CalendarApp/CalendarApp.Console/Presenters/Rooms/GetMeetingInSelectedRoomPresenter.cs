@@ -3,12 +3,14 @@
     internal class GetMeetingInSelectedRoomPresenter : IPresenter
     {
 
-        private readonly IService<Meeting> _service;
+        private readonly IService<Meeting> _meetingService;
+        private readonly IService<Room> _roomService;
         private readonly IPresenter _presenter;
 
-        public GetMeetingInSelectedRoomPresenter(IService<Meeting> service, IPresenter sender)
+        public GetMeetingInSelectedRoomPresenter(IService<Meeting> meetingService, IService<Room> roomService, IPresenter sender)
         {
-            _service = service;
+            _meetingService = meetingService;
+            _roomService = roomService;
             _presenter = sender;
         }
 
@@ -41,13 +43,29 @@
         }
         public IEnumerable<Meeting> SearchRoom()
         {
+            Room room = null;
             while (true)
             {
-                if (int.TryParse(ReadLine(), out int id) || id < 0)
-                    return _service.GetAll().Where(m => m.Room.Id == id);
+                var rooms = _roomService.GetAll().ToList();
+                if (rooms.Count == 0)
+                    break;
+                WriteLine("Rooms:");
+                for (int i = 1; i <= rooms.Count(); i++)
+                    WriteLine("\t  " + i + " Capacity: " + rooms[i - 1].Capacity);
+                WriteLine();
+                Write("Pick: ");
+                if (int.TryParse(ReadLine(), out int id) && rooms.FirstOrDefault(r => r.Equals(rooms[id - 1])) != null)
+                {
+                    room = rooms.FirstOrDefault(r => r.Equals(rooms[id - 1]));
+                    break;
+                }
                 else
-                    WriteLine("Invalid id.");
+                {
+                    Clear();
+                }
             }
+            return _meetingService.GetAll().Where(m => m.Room.Equals(room));
+
         }
     }
 }

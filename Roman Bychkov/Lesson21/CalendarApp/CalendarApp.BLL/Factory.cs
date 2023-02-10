@@ -9,5 +9,6 @@ namespace CalendarApp.BLL
     public static class Factory
     {
         public static IService<Meeting> MeetingsService { get; } = new MeetingsService(DALFactory.MeetingsRepository);
+        public static IService<Room> RoomService { get; } = new RoomService(DALFactory.RoomsRepository);
     }
 }

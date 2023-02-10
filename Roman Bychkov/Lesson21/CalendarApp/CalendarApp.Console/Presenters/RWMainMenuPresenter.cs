@@ -21,7 +21,7 @@ namespace CalendarApp.Console.Presenters
             {
 
                 case ConsoleKey.D1:
-                    return new AddMeetingPresenter(_meetingsService, _roomService, this);
+                    return new AddMeetingPresenter(_meetingsService, _roomService as IRoomService, this);
                 case ConsoleKey.D2:
                     return new AddRoomPresenter(_roomService, this);
                 case ConsoleKey.D3:
@@ -29,7 +29,7 @@ namespace CalendarApp.Console.Presenters
                 case ConsoleKey.D4:
                     return new GetAllRoomsPresenter(_roomService, this);
                 case ConsoleKey.D5:
-                    return new GetMeetingInSelectedRoomPresenter(_meetingsService, this);
+                    return new GetMeetingInSelectedRoomPresenter(_meetingsService, _roomService, this);
                 case ConsoleKey.D6:
                     return new ReadOnlyMenuPresenter(_meetingsService, _roomService);
                 case ConsoleKey.D0:
