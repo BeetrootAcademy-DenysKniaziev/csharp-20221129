@@ -8,6 +8,7 @@ namespace CalendarApp.Console
     {
         static void Main(string[] args)
         {
+            System.Console.WriteLine(Guid.NewGuid);
             IPresenter presenter = new ReadOnlyMenuPresenter(BLLFactory.Factory.MeetingsService, BLLFactory.FactoryRoom.RoomService);
 
             while (presenter != null)

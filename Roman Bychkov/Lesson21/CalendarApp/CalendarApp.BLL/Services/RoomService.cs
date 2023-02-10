@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CalendarApp.BLL.Services
 {
-    internal class RoomService : IService<Room>
+    internal class RoomService : IRoomService
     {
         private readonly IRepository<Room> _rooms;
 
@@ -22,22 +22,17 @@ namespace CalendarApp.BLL.Services
         {
             if (room.Capacity < 1)
                 throw new ArgumentException("Invalid capacity");
-            if (_rooms.GetAll().Count() != 0 && room.Id <= _rooms.GetAll().Max(r => r.Id))
-                throw new ArgumentException("Invalid ID");
             _rooms.Add(room);
         }
 
         public void Update(Room entity) => _rooms.Update(entity);
-    }
 
-    public static class ExtensionRoomService
-    {
-        public static IEnumerable<Room> GetFreeRooms(this IService<Room> roomsservice, DateTime start, DateTime end)
+        public IEnumerable<Room> GetFreeRooms(DateTime start, DateTime end)
         {
-            return (from r in roomsservice.GetAll()
+            return (from r in GetAll()
                     from s in r.Schedule
                     where (start < s.Start || s.End < start) && r.Schedule.All(x => x.Start > end || x.End < start)
-                    select r).Distinct().Union(roomsservice.GetAll().Where(r => r.Schedule.Count == 0));
+                    select r).Distinct().Union(GetAll().Where(r => r.Schedule.Count == 0));
         }
     }
 }

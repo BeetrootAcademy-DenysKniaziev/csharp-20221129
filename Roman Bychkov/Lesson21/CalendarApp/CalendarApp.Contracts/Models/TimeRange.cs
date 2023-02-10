@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CalendarApp.Contracts.Models
 {
-    public class TimeRange
+    public struct TimeRange
     {
         public DateTime Start { get; set; }
         public DateTime End { get; set; }

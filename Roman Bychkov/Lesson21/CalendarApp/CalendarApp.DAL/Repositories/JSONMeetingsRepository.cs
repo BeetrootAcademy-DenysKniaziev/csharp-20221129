@@ -22,7 +22,7 @@ namespace CalendarApp.DAL.Repositories
 
             //to synchronise with the rooms after start-up
             foreach (var meeting in meetings)
-                meeting.Room = FactoryRoom.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
+                meeting.Room = Factory.RoomsRepository.GetAll().FirstOrDefault(r => r.Equals(meeting.Room));
 
             return meetings;
         }
@@ -33,13 +33,24 @@ namespace CalendarApp.DAL.Repositories
 
             meetings = meetings.Append(meeting);
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
-            JsonSerializer.Serialize(fs,meetings);
-           
+            JsonSerializer.Serialize(fs, meetings);
+
         }
 
-        public void Update(Meeting entity)
+        public void Update(Meeting meeting)
         {
-            throw new System.NotImplementedException();
+            var meetings = GetAll();
+
+            var temp = meetings.FirstOrDefault(m => m.Id == meeting.Id);
+
+            temp.Name = meeting.Name;
+            temp.Room = meeting.Room;
+            temp.StartTime = meeting.StartTime;
+            temp.EndTime = meeting.EndTime;
+            
+
+            using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
+            JsonSerializer.Serialize(fs, meeting);
         }
     }
 }

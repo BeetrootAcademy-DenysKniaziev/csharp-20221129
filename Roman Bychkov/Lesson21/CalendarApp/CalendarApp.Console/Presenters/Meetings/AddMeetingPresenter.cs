@@ -4,10 +4,10 @@ namespace CalendarApp.Console.Presenters.Meetings
     internal class AddMeetingPresenter : IPresenter
     {
         private readonly IService<Meeting> _metingservice;
-        private readonly IService<Room> _roomsservice;
+        private readonly IRoomService _roomsservice;
         private readonly IPresenter _presenter;
 
-        public AddMeetingPresenter(IService<Meeting> service, IService<Room> rooms, IPresenter sender)
+        public AddMeetingPresenter(IService<Meeting> service, IRoomService rooms, IPresenter sender)
         {
             _metingservice = service;
             _roomsservice = rooms;
@@ -94,8 +94,10 @@ namespace CalendarApp.Console.Presenters.Meetings
                     while (true)
                     {
                         WriteLine("Free rooms:");
-                        foreach (var r in _roomsservice.GetFreeRooms(start, end))
-                            WriteLine("\t Id: " + r.Id + " Capacity: " + r.Capacity);
+                        var rooms = _roomsservice.GetFreeRooms(start, end);
+                        for (int i = 1; i <= rooms.Count(); i++)
+                            WriteLine("\t  " + i + " Capacity: " + rooms.);
+
                         WriteLine();
                         Write("Pick: ");
                         if (int.TryParse(ReadLine(), out id) && _roomsservice.GetFreeRooms(start, end).FirstOrDefault(r => r.Id == id) != null)

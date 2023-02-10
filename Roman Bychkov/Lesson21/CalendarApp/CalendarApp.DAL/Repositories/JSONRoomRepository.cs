@@ -34,8 +34,10 @@ namespace CalendarApp.DAL.Repositories
         {
             var rooms = GetAll();
 
-            var temp = rooms.Where(r => r.Id == room.Id).FirstOrDefault();
+            var temp = rooms.FirstOrDefault(r => r.Id == room.Id);
+
             temp.Schedule = room.Schedule;
+            temp.Capacity = room.Capacity;
 
 
             using var fs = new FileStream(FileName, FileMode.OpenOrCreate, FileAccess.Write);
