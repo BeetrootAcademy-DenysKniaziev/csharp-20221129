@@ -6,6 +6,7 @@
     --gender VARCHAR(1) NOT NULL,
     --adress VARCHAR(255)
  --)
+
  SELECT * FROM tbl_persons
  ORDER BY tbl_persons.id
  
