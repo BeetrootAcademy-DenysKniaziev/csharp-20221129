@@ -1,0 +1,64 @@
+CREATE TABLE tbl_persons(
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(100) NOT NULL,
+	last_name VARCHAR(100) NOT NULL,
+	age SMALLINT NOT NULL,
+	gender VARCHAR(1) NOT NULL,
+	address VARCHAR(255)
+);
+
+--INSERT INTO  tbl_persons 	
+--VALUES 
+--	(1, 'Oleg', 'Skrypka', 50, 'M', 'Kyiv'),
+--	(2, 'Andriy', 'Kuzmenko', 43, 'M', 'Lviv'),
+--	(3, 'Oleksandr','Bondariev', 13, 'M', 'Modena');
+	
+INSERT INTO tbl_persons
+	(first_name, last_name, age, gender, address)
+VALUES
+	('Charles', 'Leclerc', 24, 'M', 'Monaco'),
+	('Kally', 'Piquet', 30, 'F', 'Buenos Aires'),
+	('Alla', 'Moskovka', 39, 'F', 'Poltava'),
+	('Ulyana', 'Kushuk', 28, 'F', null),
+	('Olena', 'Vlasenko', 8, 'F', null),
+	('Myron', 'Markevych', 24, 'M', 'Dnipro'),
+	('Andriy', 'Subota', 33, 'M', null),
+	('Oleg', 'Skrypka', 50, 'M', 'Kyiv'),
+	('Andriy', 'Kuzmenko', 43, 'M', 'Lviv'),
+	('Oleksandr','Bondariev', 13, 'M', 'Modena');
+
+SELECT * FROM tbl_persons;
+
+UPDATE tbl_persons
+SET last_name='Kushyk'
+WHERE first_name='Ulyana';	
+	
+SELECT * FROM tbl_persons;
+	
+SELECT * FROM tbl_persons
+WHERE gender='M';
+
+SELECT * FROM tbl_persons
+WHERE age<18;
+
+SELECT * FROM tbl_persons
+WHERE address IS null;
+
+UPDATE tbl_persons
+SET age=age+1;
+SELECT * FROM tbl_persons;
+
+DELETE FROM tbl_persons
+WHERE address IS null;
+SELECT * FROM tbl_persons;
+
+SELECT COUNT(id) FROM tbl_persons;
+
+SELECT * FROM tbl_persons
+ORDER BY age DESC;
+
+SELECT COUNT (id), age
+FROM tbl_persons
+GROUP BY age;
+
+DROP TABLE tbl_persons;
