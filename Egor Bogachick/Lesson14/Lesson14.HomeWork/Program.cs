@@ -78,12 +78,6 @@
             Vector v2 = new Vector(3, 2, 1);
 
             Console.WriteLine(v1 < v2);
-            Console.WriteLine(v1 > v2);
-            Console.WriteLine(v1 + v2);
-            Console.WriteLine(v1 - v2);
-            Console.WriteLine(v1 * v2);
-            Console.WriteLine(v1 / v2);
-            Console.WriteLine(v1 + 4);
             Console.WriteLine(v1.ToString());
 
             Console.WriteLine(Vector.IsAdjacent(v1, v2));
