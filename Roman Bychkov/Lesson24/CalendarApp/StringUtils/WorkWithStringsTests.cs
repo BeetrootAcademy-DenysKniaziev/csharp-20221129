@@ -1,7 +1,7 @@
 using System.Linq;
 using Xunit;
 
-namespace StringUtils
+namespace Lesson7.HomeWork.Tests
 {
     public class WorkWithStringsTests
     {

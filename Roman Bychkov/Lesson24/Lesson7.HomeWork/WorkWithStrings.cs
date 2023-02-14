@@ -2,6 +2,10 @@
 
 public class WorkWithStrings
 {
+    public static void Main()
+    {
+
+    }
     static public bool MyEquals(string s1, string s2)
     {
         if (s1.Length != s2.Length)
@@ -25,7 +29,7 @@ public class WorkWithStrings
         }
         return (let, num, ano);
     }
-    static string Sort(string arr = "")
+    public static string Sort(string arr = "")
     {
         arr = arr.ToLower();
         for (int i = 1; i < arr.Length; i++)
