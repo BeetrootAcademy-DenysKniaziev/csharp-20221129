@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("CalendarTest")]
+[assembly: InternalsVisibleTo("CalendarApp.BLL.Tests")]
 namespace CalendarApp.BLL.Services
 {
     internal class MeetingsService : IService<Meeting>

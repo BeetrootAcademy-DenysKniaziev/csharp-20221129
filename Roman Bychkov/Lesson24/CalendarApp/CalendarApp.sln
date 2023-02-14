@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApp.Console", "Cale
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson7.HomeWork", "..\Lesson7.HomeWork\Lesson7.HomeWork.csproj", "{8FBB9C04-39BC-406F-B428-205132E75D2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringUtils", "StringUtils\StringUtils.csproj", "{E90D9A31-1014-47B2-B622-51E7306FF2FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StringUtils", "StringUtils\StringUtils.csproj", "{E90D9A31-1014-47B2-B622-51E7306FF2FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarTest", "CalindarTest\CalendarTest.csproj", "{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApp.BLL.Tests", "CalindarTest\CalendarApp.BLL.Tests.csproj", "{6DDF7207-C3AE-4C21-8D91-858F051BCEB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,35 +1,7 @@
 ﻿using System.Text;
 
-public class Program
+public class WorkWithStrings
 {
-    public static void Main(string[] args)
-    {
-        Console.WriteLine($"MyEquals\nPass == Login {MyEquals("Pass", "Login"),5}");
-        Console.WriteLine($"Pass == Logi {MyEquals("Pass", "Logi"),5}");
-        Console.WriteLine($"Pass == Pass {MyEquals("Pass", "Pass"),5}\n");
-
-        while (true)
-        {
-            Console.Write("Type a word: ");
-            string str = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(str))
-            {
-                Console.WriteLine("invalid input");
-                continue;
-            }
-
-            Console.WriteLine($"Sort: {Sort(str)}");
-            Console.WriteLine("Duplicate: ");
-            foreach (var i in Duplicate(str))
-                Console.Write($"{i,2}");
-
-
-            var analyze = Analyze(str);
-            Console.WriteLine($"\nAnalyze: letter:{analyze.letter}, numberOf:{analyze.number}, another:{analyze.another}\n");
-        }
-    }
-
-
     static public bool MyEquals(string s1, string s2)
     {
         if (s1.Length != s2.Length)
