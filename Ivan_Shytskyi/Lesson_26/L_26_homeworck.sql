@@ -1,11 +1,11 @@
- --CREATE TABLE tbl_persons(
-   --id serial PRIMARY KEY,
-    --first_name VARCHAR(100)NOT NULL,
-    --last_name VARCHAR(100) NOT NULL,
-    --age SMALLINT NOT NULL,
-    --gender VARCHAR(1) NOT NULL,
-    --adress VARCHAR(255)
- --)
+ CREATE TABLE tbl_persons(
+   id serial PRIMARY KEY,
+    first_name VARCHAR(100)NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    age SMALLINT NOT NULL,
+    gender VARCHAR(1) NOT NULL,
+    adress VARCHAR(255)
+ )
 
  SELECT * FROM tbl_persons
  ORDER BY tbl_persons.id
