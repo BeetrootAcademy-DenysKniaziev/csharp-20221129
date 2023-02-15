@@ -1,7 +1,7 @@
 ﻿
 namespace Lesson29.HomeWork.DTO
 {
-    [Table("genre", Schema = "public")]
+    [Table("genres", Schema = "public")]
     internal class Genre
     {
         [Column("id")]
@@ -12,6 +12,5 @@ namespace Lesson29.HomeWork.DTO
         [Required]
         [MaxLength(35)]
         public string Name { get; set; }
-        public List<Film> Films { get; set; } = new();
     }
 }

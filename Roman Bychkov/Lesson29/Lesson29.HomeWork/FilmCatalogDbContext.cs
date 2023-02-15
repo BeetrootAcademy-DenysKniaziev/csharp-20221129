@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace Lesson29.HomeWork
 {
-    internal class FilmCatalogDbContext:DbContext
+    internal class FilmCatalogDbContext : DbContext
     {
         public DbSet<Actor> Actors { get; set; }
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Production> Productions { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
         public DbSet<ProductionAndFilm> ProductionAndFilm { get; set; }
-        //public DbSet<GenreAndFilm> GenresAndFilms { get; set; }
+     
 
         public FilmCatalogDbContext()
         {
@@ -25,6 +27,10 @@ namespace Lesson29.HomeWork
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Server=host.docker.internal;Port=32768;User Id=postgres;Password=postgrespw;Database=FilmCatalog");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //here is api
         }
     }
 }

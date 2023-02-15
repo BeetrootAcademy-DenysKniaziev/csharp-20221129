@@ -3,6 +3,7 @@ using System;
 using Lesson29.HomeWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Lesson29.HomeWork.Migrations
 {
     [DbContext(typeof(FilmCatalogDbContext))]
-    partial class FilmCatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230215230344_Added_table_roles")]
+    partial class Added_table_roles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,36 +180,6 @@ namespace Lesson29.HomeWork.Migrations
                     b.ToTable("production_film", "public");
                 });
 
-            modelBuilder.Entity("Lesson29.HomeWork.DTO.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActorId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("FilmId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(35)
-                        .HasColumnType("character varying(35)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ActorId");
-
-                    b.HasIndex("FilmId");
-
-                    b.ToTable("roles", "public");
-                });
-
             modelBuilder.Entity("ActorFilm", b =>
                 {
                     b.HasOne("Lesson29.HomeWork.DTO.Actor", null)
@@ -257,25 +230,6 @@ namespace Lesson29.HomeWork.Migrations
                     b.Navigation("Film");
 
                     b.Navigation("Production");
-                });
-
-            modelBuilder.Entity("Lesson29.HomeWork.DTO.Role", b =>
-                {
-                    b.HasOne("Lesson29.HomeWork.DTO.Actor", "Actor")
-                        .WithMany()
-                        .HasForeignKey("ActorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Lesson29.HomeWork.DTO.Film", "Film")
-                        .WithMany()
-                        .HasForeignKey("FilmId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Actor");
-
-                    b.Navigation("Film");
                 });
 
             modelBuilder.Entity("Lesson29.HomeWork.DTO.Film", b =>

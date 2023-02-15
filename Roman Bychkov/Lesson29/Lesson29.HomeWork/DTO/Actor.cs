@@ -1,7 +1,7 @@
 ﻿
 namespace Lesson29.HomeWork.DTO
 {
-    [Table("actor", Schema = "public")]
+    [Table("actors", Schema = "public")]
     internal class Actor
     {
         [Column("id")]
@@ -23,11 +23,7 @@ namespace Lesson29.HomeWork.DTO
         [Required]
         public char Gender { get; set; }
 
-        [Column("role")]
-        [Required]
-        [MaxLength(60)]
-        public string Role { get; set; }
-
+        
         [Column("birthday")]
         [Required]
         public DateTime Birthday { get; set; }

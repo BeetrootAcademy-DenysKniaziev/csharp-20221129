@@ -1,5 +1,6 @@
 ﻿
 using Lesson29.HomeWork;
+using Lesson29.HomeWork.DTO;
 using Microsoft.EntityFrameworkCore;
 
 class Program
@@ -11,17 +12,17 @@ class Program
         //{
         //    Name = "Comedy"
         //};
-        //db.Genres.Add(genreMovie);
-        //db.SaveChanges();
+        //await db.Genres.AddAsync(genreMovie);
+        //await db.SaveChangesAsync();
 
         //var production = new Production()
         //{
         //    Name = "WarnerBrothers",
         //    YearOfCreated = DateTime.UtcNow
         //};
-        //db.Productions.Add(production);
-        //db.SaveChanges();
-        //var genre = db.Genres.First();
+        //await db.Productions.AddAsync(production);
+        //await db.SaveChangesAsync();
+        //var genre = await db.Genres.FirstAsync();
         //var film = new Film()
         //{
         //    Name = "NoTime",
@@ -29,25 +30,33 @@ class Program
         //    Production = db.Productions.First(),
         //};
         //film.Genres.Add(genre);
-        //db.Films.Add(film);
-        //db.SaveChanges();
-        //var film = db.Films.Include(film=>film.Genres).FirstOrDefault();
+        //await db.Films.AddAsync(film);
+        //await db.SaveChangesAsync();
+        //var film = await db.Films.Include(film => film.Genres).FirstOrDefaultAsync();
         //var genreMovie2 = new Genre()
         //{
         //    Name = "Criminal"
         //};
-        //db.Genres.Add(genreMovie2);
-        //db.SaveChanges();
+        //await db.Genres.AddAsync(genreMovie2);
+        //await db.SaveChangesAsync();
         //film.Genres.Add(genreMovie2);
         //db.Update(film);
-        //db.SaveChanges();
+        //await db.SaveChangesAsync();
         foreach (var prod in (await db.Productions.Include(prod => prod.Films).FirstOrDefaultAsync()).Films)
         {
             Console.WriteLine(prod);
+            //}
+           
         }
-
-
-
-
+        var actor = new Actor()
+        {
+            Name = "Johny",
+            LastName = "Depp",
+            Birthday = DateTime.UtcNow,
+            Gender = 'M'
+        };
+        actor.Films.Add(await db.Films.FirstOrDefaultAsync());
+        await db.Actors.AddAsync(actor);
+        await db.SaveChangesAsync();
     }
 }
