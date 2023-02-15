@@ -14,13 +14,13 @@ namespace Lesson29.HomeWork
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Production> Productions { get; set; }
-        //public DbSet<ProductionAndFilm> ProductionAndFilm { get; set; }
+        public DbSet<ProductionAndFilm> ProductionAndFilm { get; set; }
         //public DbSet<GenreAndFilm> GenresAndFilms { get; set; }
 
         public FilmCatalogDbContext()
         {
-            base.Database.EnsureDeleted();
-            base.Database.EnsureCreated();
+            //base.Database.EnsureDeleted();
+            //base.Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
