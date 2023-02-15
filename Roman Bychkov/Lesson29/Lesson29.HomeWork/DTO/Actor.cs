@@ -34,7 +34,7 @@ namespace Lesson29.HomeWork.DTO
 
         [Column("date_death")]
         public DateTime? DateDeath { get; set; }
-      
-        public List<Film> Films { get; set; }
+
+        public List<Film> Films { get; set; } = new();
     }
 }

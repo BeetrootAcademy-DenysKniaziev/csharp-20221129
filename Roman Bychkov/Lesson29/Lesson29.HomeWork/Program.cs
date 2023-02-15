@@ -1,9 +1,10 @@
 ﻿
 using Lesson29.HomeWork;
+using Microsoft.EntityFrameworkCore;
 
 class Program
 {
-    public static void Main()
+    async public static Task Main()
     {
         using var db = new FilmCatalogDbContext();
         //var genreMovie = new Genre()
@@ -27,10 +28,25 @@ class Program
         //    Budget = 250.05m,
         //    Production = db.Productions.First(),
         //};
-        //film.Genres = new List<Genre> { genre };
+        //film.Genres.Add(genre);
         //db.Films.Add(film);
         //db.SaveChanges();
-        //db.GenresAndFilms.FirstOrDefault();
+        //var film = db.Films.Include(film=>film.Genres).FirstOrDefault();
+        //var genreMovie2 = new Genre()
+        //{
+        //    Name = "Criminal"
+        //};
+        //db.Genres.Add(genreMovie2);
+        //db.SaveChanges();
+        //film.Genres.Add(genreMovie2);
+        //db.Update(film);
+        //db.SaveChanges();
+        foreach (var prod in (await db.Productions.Include(prod => prod.Films).FirstOrDefaultAsync()).Films)
+        {
+            Console.WriteLine(prod);
+        }
+
+
 
 
     }

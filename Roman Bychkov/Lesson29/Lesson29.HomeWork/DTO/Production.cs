@@ -16,6 +16,6 @@ namespace Lesson29.HomeWork.DTO
         [Column("year_of_created")]
         [Required]
         public DateTime YearOfCreated { get; set; }
-        public List<Film> Films { get; set; }
+        public List<Film> Films { get; set; } = new();
     }
 }
