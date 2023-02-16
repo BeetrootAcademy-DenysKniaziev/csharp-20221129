@@ -1,7 +1,4 @@
-﻿
-
-
-namespace Lesson29.HomeWork.DTO
+﻿namespace Lesson29.HomeWork.DTO
 {
     // This
     [Table("production_film", Schema = "public")]

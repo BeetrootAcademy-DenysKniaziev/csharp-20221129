@@ -3,6 +3,7 @@ using System;
 using Lesson29.HomeWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Lesson29.HomeWork.Migrations
 {
     [DbContext(typeof(FilmCatalogDbContext))]
-    partial class FilmCatalogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230216150240_Added_new_table_genre_film")]
+    partial class Added_new_table_genre_film
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
