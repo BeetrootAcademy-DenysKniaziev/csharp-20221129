@@ -145,18 +145,48 @@ namespace Lesson19.Homeork
             var persons = JsonConvert.DeserializeObject<IEnumerable<Person>>(File.ReadAllText("data.json"));
 
             #region third task
+
             #region find out who is located farthest north/south/west/east using latitude/longitude data
+            var north = persons.Max(x => x.Latitude);
+            var south = persons.Min(x => x.Latitude);
+            var west = persons.Max(x => x.Longitude);
+            var east = persons.Min(x => x.Longitude);
 
+            foreach (var person in persons)
+            {
+                if (person.Latitude == north)
+                {
+                    Console.WriteLine($"North: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+                }
+                else if (person.Latitude == south)
+                {
+                    Console.WriteLine($"South: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+                }
+                else if (person.Longitude == west)
+                {
+                    Console.WriteLine($"West: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+                }
+                else if (person.Longitude == east)
+                {
+                    Console.WriteLine($"East: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+                }
+            }
             #endregion
+
             #region find max and min distance between 2 persons
+            //var distance = persons.SelectMany(SkipWhile(x => x != item1).Skip(1), (x1, x2) => Math.Sqrt(Math.Pow(x1.Longitude - x1.Latitude, 2) + Math.Pow(x2.Longitude - x2.Latitude, 2)));
 
+            Console.WriteLine();
             #endregion
+
             #region find 2 persons whos ‘about’ have the most same words
 
             #endregion
+
             #region find persons with same friends(compare by friend’s name)
 
             #endregion
+
             #endregion
         }
     }
