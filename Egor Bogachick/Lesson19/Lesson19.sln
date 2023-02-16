@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson19.ClassWork", "Lesson19.ClassWork\Lesson19.ClassWork.csproj", "{5BA46B9C-4A06-41BE-9AFC-2BF3FDC9AEA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson19.ClassWork", "Lesson19.ClassWork\Lesson19.ClassWork.csproj", "{5BA46B9C-4A06-41BE-9AFC-2BF3FDC9AEA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson19.Homeork", "Lesson19.Homeork\Lesson19.Homeork.csproj", "{CDDF2C19-1A1D-4C79-9039-8EE0D1007D04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5BA46B9C-4A06-41BE-9AFC-2BF3FDC9AEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BA46B9C-4A06-41BE-9AFC-2BF3FDC9AEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BA46B9C-4A06-41BE-9AFC-2BF3FDC9AEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDF2C19-1A1D-4C79-9039-8EE0D1007D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDF2C19-1A1D-4C79-9039-8EE0D1007D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDF2C19-1A1D-4C79-9039-8EE0D1007D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDF2C19-1A1D-4C79-9039-8EE0D1007D04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
