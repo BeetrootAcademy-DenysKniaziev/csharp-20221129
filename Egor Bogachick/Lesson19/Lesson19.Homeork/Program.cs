@@ -3,6 +3,8 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using System.Security.Cryptography;
+using System.Linq;
 
 namespace Lesson19.Homeork
 {
@@ -147,39 +149,66 @@ namespace Lesson19.Homeork
             #region third task
 
             #region find out who is located farthest north/south/west/east using latitude/longitude data
-            var north = persons.Max(x => x.Latitude);
-            var south = persons.Min(x => x.Latitude);
-            var west = persons.Max(x => x.Longitude);
-            var east = persons.Min(x => x.Longitude);
+            //var north = persons.Max(x => x.Latitude);
+            //var south = persons.Min(x => x.Latitude);
+            //var west = persons.Max(x => x.Longitude);
+            //var east = persons.Min(x => x.Longitude);
 
-            foreach (var person in persons)
-            {
-                if (person.Latitude == north)
-                {
-                    Console.WriteLine($"North: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
-                }
-                else if (person.Latitude == south)
-                {
-                    Console.WriteLine($"South: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
-                }
-                else if (person.Longitude == west)
-                {
-                    Console.WriteLine($"West: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
-                }
-                else if (person.Longitude == east)
-                {
-                    Console.WriteLine($"East: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
-                }
-            }
+            //foreach (var person in persons)
+            //{
+            //    if (person.Latitude == north)
+            //    {
+            //        Console.WriteLine($"North: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+            //    }
+            //    else if (person.Latitude == south)
+            //    {
+            //        Console.WriteLine($"South: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+            //    }
+            //    else if (person.Longitude == west)
+            //    {
+            //        Console.WriteLine($"West: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+            //    }
+            //    else if (person.Longitude == east)
+            //    {
+            //        Console.WriteLine($"East: {person.Name}, {person.Age}, {person.Address}, {person.Phone}");
+            //    }
+            //}
             #endregion
 
             #region find max and min distance between 2 persons
-            //var distance = persons.SelectMany(SkipWhile(x => x != item1).Skip(1), (x1, x2) => Math.Sqrt(Math.Pow(x1.Longitude - x1.Latitude, 2) + Math.Pow(x2.Longitude - x2.Latitude, 2)));
+            //var distance = from p1 in persons
+            //               from p2 in persons
+            //               where p2 != p1
+            //               select new
+            //               {
+            //                   Distance = Math.Sqrt(Math.Pow(p1.Longitude - p1.Latitude, 2) + Math.Pow(p2.Longitude - p2.Latitude, 2))
+            //               };
 
-            Console.WriteLine();
+            //Console.WriteLine("Max distance: " + distance.Max(x => x.Distance));
+            //Console.WriteLine("Min distance: " + distance.Min(x => x.Distance));
             #endregion
 
             #region find 2 persons whos ‘about’ have the most same words
+            //var people = from p1 in persons
+            //             from p2 in persons
+            //             where p2 != p1 
+            //             select new 
+            //             { 
+            //                 Human1 = p1.Name,
+            //                 Human2 = p2.Name, 
+            //                 Count = p1.About.ToLower().Split(" ").Intersect(p2.About.ToLower().Split(" ")).Count()
+            //             };
+
+            //int c = people.Max(x => x.Count);
+            //bool isFirst = true; // перші люди у яких більше слів 
+            //foreach (var person in people)
+            //{
+            //    if (person.Count == c && isFirst == true)
+            //    {
+            //        Console.WriteLine($"Person - {person.Human1} and person - {person.Human2} have most same words: {person.Count}");
+            //        isFirst = false;
+            //    }
+            //}
 
             #endregion
 
