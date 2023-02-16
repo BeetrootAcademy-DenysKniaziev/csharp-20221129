@@ -12,5 +12,7 @@ namespace Lesson29.HomeWork.DTO
         [Required]
         [MaxLength(35)]
         public string Name { get; set; }
+
+        public List<Film> Films { get; set; } = new ();
     }
 }

@@ -14,13 +14,7 @@ namespace Lesson29.HomeWork
         public DbSet<Film> Films { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Production> Productions { get; set; }
-
         public DbSet<Role> Roles { get; set; }
-        public DbSet<GenreAndFilm> GenresAndFilms { get; set; }
-
-
-        public DbSet<ProductionAndFilm> ProductionAndFilm { get; set; }  //This table is not yet in use
-
 
         public FilmCatalogDbContext()
         {

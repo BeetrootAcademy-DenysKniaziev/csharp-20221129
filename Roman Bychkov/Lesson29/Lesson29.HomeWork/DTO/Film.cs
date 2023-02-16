@@ -26,6 +26,7 @@ namespace Lesson29.HomeWork.DTO
         public virtual Production Production { get; set; }
 
         public List<Actor> Actors { get; set; } = new();
+        public List<Genre> Genres { get; set; } = new();
 
         public override string ToString()
         {
