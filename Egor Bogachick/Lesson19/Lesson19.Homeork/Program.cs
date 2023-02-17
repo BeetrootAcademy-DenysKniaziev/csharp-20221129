@@ -5,6 +5,7 @@ using System.IO;
 using System;
 using System.Security.Cryptography;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lesson19.Homeork
 {
@@ -191,16 +192,16 @@ namespace Lesson19.Homeork
             #region find 2 persons whos ‘about’ have the most same words
             //var people = from p1 in persons
             //             from p2 in persons
-            //             where p2 != p1 
-            //             select new 
-            //             { 
+            //             where p2 != p1
+            //             select new
+            //             {
             //                 Human1 = p1.Name,
-            //                 Human2 = p2.Name, 
+            //                 Human2 = p2.Name,
             //                 Count = p1.About.ToLower().Split(" ").Intersect(p2.About.ToLower().Split(" ")).Count()
             //             };
 
             //int c = people.Max(x => x.Count);
-            //bool isFirst = true; // перші люди у яких більше слів 
+            //bool isFirst = true;
             //foreach (var person in people)
             //{
             //    if (person.Count == c && isFirst == true)
@@ -212,11 +213,36 @@ namespace Lesson19.Homeork
 
             #endregion
 
-            #region find persons with same friends(compare by friend’s name)
+            #region find persons with same friends(compare by friend’s name) // не розумію чому, але не виводить результат 
+            //var people = from p1 in persons
+            //             from p2 in persons
+            //             where p2 != p1 && p1.Friends.Intersect(p2.Friends, new FriendComparer()).Any()
+            //             select new
+            //             {
+            //                 Name1 = p1.Name,
+            //                 Name2 = p2.Name
+            //             };
+            //foreach (var person in people)
+            //{
+            //    Console.WriteLine($"{person.Name2} and {person.Name1} has same frinds");
+            //}
 
             #endregion
 
             #endregion
+        }
+        public class FriendComparer : IEqualityComparer<Friend>
+        {
+            public bool Equals(Friend? p1, Friend? p2)
+            {
+                if (p1 is null || p2 is null) return false;
+                return p1.Name == p2.Name;
+            }
+            public int GetHashCode(Friend obj)
+            {
+                return obj.Name.GetHashCode();
+
+            }
         }
     }
 }
