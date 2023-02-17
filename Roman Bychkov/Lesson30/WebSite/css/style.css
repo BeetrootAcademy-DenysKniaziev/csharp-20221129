@@ -25,6 +25,7 @@ img {
 }
 .profile {
     outline: 3px solid #8D8D8D;
+    border-radius: 50%;
 }
 .container {
     padding: 10px;
@@ -42,7 +43,7 @@ header {
     font-weight: bold;
     font-family: FreeMono, monospace;
 }
-header .blocktext {
+header .blocktext { 
     margin-left: auto;
     margin-right: auto;
 }
@@ -54,9 +55,17 @@ header .blocktext {
     justify-content: center;
     outline: 0px;
 }
+    .icon:hover {
+        outline: 2px solid #d0a827;
+    }
 .divicon {
     display: flex;
     flex-direction: row;
     margin-left: auto;
     margin-left: auto;
+}
+a {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
 }
