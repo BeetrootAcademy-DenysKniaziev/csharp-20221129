@@ -1,0 +1,60 @@
+CREATE TABLE tbl_authors(
+	author_id SERIAL PRIMARY KEY,
+	first_name VARCHAR(100),
+	last_name VARCHAR(100)
+);
+
+INSERT INTO tbl_authors
+	(first_name, last_name)
+VALUES
+	('Charles', 'Dickens'),
+	('Jack', 'London');
+
+
+CREATE TABLE IF NOT EXISTS tbl_books(
+	book_id SERIAL PRIMARY KEY,
+	title VARCHAR(255) NOT NULL,
+	author_id int,
+	FOREIGN KEY (author_id) REFERENCES tbl_authors (author_id)  
+);
+
+INSERT INTO tbl_books
+	(title, author_id)
+VALUES
+	('Dombey and Son', 1),
+	('The SEA-Wolf', 2),
+	('Hard Times', 1),
+	('White Fand', 2);
+
+SELECT * FROM tbl_books;
+
+CREATE TABLE IF NOT EXISTS book_quantity(
+	book_id INT,
+	book_quantity INT,
+	FOREIGN KEY (book_id) REFERENCES tbl_books (book_id)
+);
+
+CREATE TABLE IF NOT EXISTS customers(
+	customer_id SERIAL PRIMARY KEY,
+	first_name VARCHAR(100) NOT NULL,
+	last_name VARCHAR(100) NOT NULL,
+	adresses VARCHAR(512) NOT NULL
+);
+
+--ALTER TABLE custumers 
+	--RENAME TO customers;
+
+
+CREATE TABLE IF NOT EXISTS hystory_of_take(
+	customer_id INT,
+	book_id INT NOT NULL,
+	date_of_take DATE,
+	date_of_return DATE,
+	FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+);
+
+SELECT * FROM book_quantity;
+
+SELECT * FROM tbl_authors 
+FULL OUTER JOIN tbl_books ON tbl_authors.author_id=tbl_books.author_id
+ORDER BY tbl_authors.first_name;
