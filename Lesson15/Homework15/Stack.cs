@@ -25,7 +25,7 @@ public class Element<U>
     }
 }
 
-internal class MyStack<U> //: IEnumerable<U>
+internal class MyStack<U> : IEnumerable<U>
 {
     //public U Element { get; set; }
     //public Element<U> CurrentElement { get; set; }
@@ -111,20 +111,20 @@ internal class MyStack<U> //: IEnumerable<U>
     
     }
 
-    //IEnumerator IEnumerable.GetEnumerator()
-    //{                                               
-    //    return ((IEnumerable)this).GetEnumerator();
-    //}
+    IEnumerator IEnumerable.GetEnumerator()
+    {                                               
+        return ((IEnumerable)this).GetEnumerator();
+    }
 
-    //IEnumerator<U> IEnumerable<U>.GetEnumerator()
-    //{
-    //    Element<U> temp = Bottom; 
-    //    while (temp != null) 
-    //    {
-    //        yield return temp.TheElement;
-    //        temp = temp.Next; 
-    //    }
-    //}
+    IEnumerator<U> IEnumerable<U>.GetEnumerator()
+    {
+        Element<U> temp = Bottom; 
+        while (temp != null) 
+        {
+            yield return temp.TheElement;//Povrertae potochnyi stan fiksuuchy danu tochku vykonnannya, pry nastupnomu zvernenni pochynae z nei
+            temp = temp.Next; 
+        }
+    }
 
 
 

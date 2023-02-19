@@ -8,25 +8,12 @@ namespace Snake
 {
     internal class Obj
     {
-        public int ObjType;// Same to ability
-        //public string Simbol;// ">>", "<<"; :), 
-
+        public int ObjType;
         public Obj(int objType) { ObjType = objType; }
-
         public static void TypeClarifing(TheSnake snake, int objType)
         {
             switch (objType)
             {
-                //-2 => "@@",
-                //-1 => "::",
-                //0 => "  ",
-                //1 => "<<",
-                //2 => ":)",
-                //3 => ":(",
-                //4 => "--",
-                //5 => "()",
-                //6 => ">>",
-                //_ => "  "
                 case 6: snake.speedDelay = (snake.speedDelay / 3) * 2; break;
                 case 1: snake.speedDelay = (int)(snake.speedDelay * 1.33); break;
                 case 2: snake.Skin = -4; break;

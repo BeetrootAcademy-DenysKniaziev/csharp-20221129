@@ -53,9 +53,3 @@ namespace Homework19
     }
 }
 
-//from p2 in persons
-//let dist = p2.Position(p1)
-//let name1 = p1.Name
-//let name2 = p2.Name
-////where p2.Position(p1) == persons.Select(b => p2.Position(p1)).Min()
-//select new { dist = p2.Position(p1), name1 = p1.Name, name2 = p2.Name }).Max();
