@@ -44,7 +44,6 @@ CREATE TABLE IF NOT EXISTS customers(
 --ALTER TABLE custumers 
 	--RENAME TO customers;
 
-
 CREATE TABLE IF NOT EXISTS hystory_of_take(
 	customer_id INT,
 	book_id INT NOT NULL,
