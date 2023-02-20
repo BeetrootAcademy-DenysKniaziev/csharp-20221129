@@ -52,6 +52,11 @@ namespace Lesson20.FromLesson13
             return new Buyer(FirstName, LastName, Age, Adress);
         }
 
+        private void BuyerPrivateMethod()
+        {
+            Console.WriteLine("BuyerPrivateMethod");
+        }
+
 
         public override void Info()
         {

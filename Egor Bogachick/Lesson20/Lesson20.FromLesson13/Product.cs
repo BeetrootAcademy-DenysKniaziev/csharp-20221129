@@ -43,6 +43,10 @@ namespace Lesson20.FromLesson13
             return new Product(Name, Price, Quantity);
         }
 
+        private void ProductPrivateMethod()
+        {
+            Console.WriteLine("ProductPrivateMethod");
+        }
         public void Info()
         {
             Console.Write("Name: " + Name + "  Price: " + Price + "  Quantity: " + Quantity);
