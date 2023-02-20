@@ -15,7 +15,10 @@
     width: 450px;
     height: 450px;
 }
-
+#link:hover {
+    text-decoration: underline;
+    background-color: black;
+}
 body {
     background-color: #F7F4F1;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
@@ -72,4 +75,33 @@ a {
 .black-white {
     width: 20px;
     margin-right: 20px;
+}
+.extraInfo {
+    border: 2px solid rgba(196,196,196,.5);
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.btnclass {
+    border: 2px solid rgba(196,196,196,.5);
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: FreeMono, monospace;
+    width: 40%;
+}
+
+
+li {
+    list-style-type: circle;
+}
+
+    li li {
+        list-style-type: square;
+    }
+.item-container {
+    position: absolute;
+    visibility: hidden;
+    font-family: Courier New, monospace;
 }
