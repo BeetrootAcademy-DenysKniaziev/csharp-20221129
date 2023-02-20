@@ -1,0 +1,56 @@
+﻿
+header {
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: left;
+    background-color: white;
+    color: darkgreen;
+}
+
+.photo-container {
+    position: relative;
+}
+
+    .photo-container img {
+/*        width: 100%;*/
+        max-height: 750px;
+/*        height: auto;*/
+    }
+
+.description-container {
+    margin-top: 20px;
+}
+
+    .description-container h2 {
+        margin-bottom: 10px;
+    }
+
+.buttons-container {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: darkgreen;
+    color: white;
+}
+
+    button:hover {
+        background-color: white;
+        color: darkgreen;
+    }
