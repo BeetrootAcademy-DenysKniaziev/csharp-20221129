@@ -76,6 +76,10 @@ a {
     width: 20px;
     margin-right: 20px;
 }
+.black-white:hover
+{
+    cursor:pointer;
+}
 .extraInfo {
     border: 2px solid rgba(196,196,196,.5);
     margin-left: 25%;
@@ -91,6 +95,11 @@ a {
     font-family: FreeMono, monospace;
     width: 40%;
 }
+    .btnclass:hover {
+        background-color: gray;
+        cursor: pointer;
+        transition: background-color 500ms linear;
+    }
 
 
 li {
