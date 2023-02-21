@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>About Me</title>
+    <link rel="stylesheet" type="text/css" href="css/StyleCSS.css" />
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+    </header>
+    <main>
+        <img id="profile-pic" src="https://picsum.photos/500" alt="Profile picture">
+        <h2>Hi, I'm <span id="name">Artem Sushko</span></h2>
+        <p>I am a <span id="occupation">C# Programmer</span> based in <span id="location">Ukraine</span>.</p>
+        <p>Some of my hobbies include:</p>
+        <ul>
+            <li>Reading books</li>
+            <li>Playing video games</li>
+            <li>Hiking</li>
+        </ul>
+        <p>Feel free to <a href="https://artem.sushko.98@gmail.com">get in touch with me</a>.</p>
+        <button id="edit-button">Edit Profile</button>
+    </main>
+    <script>
+        const editButton = document.getElementById("edit-button");
+        editButton.addEventListener("click", () => {
+            const name = prompt("Enter your name:");
+            const occupation = prompt("Enter your occupation:");
+            const location = prompt("Enter your location:");
+            if (name && occupation && location)
+            const nameSpan = document.getElementById("name");
+            nameSpan.textContent = name;
+            const occupationSpan = document.getElementById("occupation");
+            occupationSpan.textContent = occupation;
+            const locationSpan = document.getElementById("location");
+            locationSpan.textContent = location;
+        });
+    </script>
+</body>
+</html>
