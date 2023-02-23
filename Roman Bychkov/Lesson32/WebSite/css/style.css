@@ -1,0 +1,19 @@
+﻿.mycontainer
+{
+    display:flex;
+    justify-content:center;
+   
+}
+.item-container {
+    position: absolute;
+    visibility: hidden;
+    align-items: center;
+}
+.myactive
+{
+    background-color: burlywood;
+}
+#map {
+    width: 100%;
+    height: 480px;
+}
