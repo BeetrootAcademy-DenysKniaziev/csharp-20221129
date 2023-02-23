@@ -1,0 +1,123 @@
+body {
+	display: flex;
+	justify-content: center;
+}
+.container {
+	display: flex;
+	justify-content: center;
+	min-width: 300px;
+	max-width: 800px;
+}
+
+.left-panel {
+	background: #1a1a1a;
+	color: white;
+	width: 220px;
+	padding: 15px;
+}
+img, .image-box {
+	width: 200px;
+}
+ul {
+	list-style: none;
+}
+ul#contacts {
+	list-style: disc;
+}
+
+.main-part {
+	padding: 15px;
+}
+.header {
+	background-color: #ffb84d;
+	margin: 30px -15px 0;
+	padding: 20px 0px;
+}
+h1 {
+	padding: 0px 15px; 
+}
+.header h3 {
+	margin-left: 100px;
+}
+.work-details {
+	display: flex;
+	flex-direction: column;
+}
+.call-center, .prog-teach {
+	display: flex;
+}
+.work-date {
+	padding: 22px 10px;
+	width: 150px;
+}
+.about-work {
+	max-width: 600px;
+	padding: 0px 10px;
+	width: 90%;
+}
+.left-panel hr {
+	background-color: #ffb84d;
+	border: 3px solid #ffb84d;
+	width: 85%;
+	margin-right: -15px;
+}
+.main-part hr {
+	background-color: #1a1a1a;
+	border: 3px solid #1a1a1a;
+}
+.ss-boxes {
+	display: grid;
+	grid-template-columns: 0.8fr 0.8fr;
+}
+.software ul, .technologies ul {
+	padding: 0px 0px 0px 90px;
+	list-style: disc;
+}
+.software h4, .technologies h4 {
+	text-align: center;
+}
+.ss-details {
+	grid-column: 1/4;
+	padding: 0px 15px;
+}
+.ss-details strong {
+	font-size: 18px;
+}
+a {
+	color: #ffb84d;
+}
+.certificates ul {
+	list-style: disc;
+}
+.projects a {
+	color: #1a1a1a;
+	font-size: 18px;
+}
+
+img {
+	width: 100%;
+}
+
+
+html {
+	scroll-behavior: smooth;
+}
+button {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	float: right;
+	background: skyblue;
+	height: 25px;
+}
+#color-btn {
+	top: 20px;
+}
+#alert-btn {
+	top: 20px;
+	right: 130px;
+}
+#clear-btn {
+	top: 20px;
+	right: 250px;
+}
