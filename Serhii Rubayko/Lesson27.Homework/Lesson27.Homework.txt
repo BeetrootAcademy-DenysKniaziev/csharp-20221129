@@ -1,0 +1,63 @@
+CREATE TABLE IF NOT EXISTS phone_book (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(100) NOT NULL,
+	second_name VARCHAR(100) NOT NULL,
+	phone_number VARCHAR(25) UNIQUE
+);
+
+ALTER TABLE phone_book
+RENAME COLUMN second_name to last_name;
+
+SELECT*FROM phone_book;
+
+INSERT INTO phone_book
+	(first_name, last_name, phone_number)
+VALUES
+	('Vasyl','Vasylcsev','+38(067) 777-77-77');
+	
+CREATE TYPE week AS ENUM ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+
+CREATE TABLE IF NOT EXISTS Class_School_schedule (
+	id SERIAL PRIMARY KEY,
+	day week,
+	subject VARCHAR(100),
+	room int NOT NULL CHECK (room BETWEEN 1 AND 20),
+	teacher_name VARCHAR(50) NOT NULL,
+	start_time time NOT NULL
+);
+
+INSERT INTO Class_School_schedule 
+	(day, subject, room, teacher_name, start_time)
+VALUES
+	('Monday', 'Mathematic', 4, 'Olga Anatolivna', 	'08:00');
+SELECT * FROM Class_School_schedule;
+
+DROP TABLE 	Class_School_schedule;
+
+CREATE TABLE IF NOT EXISTS users_login_history (
+	id SERIAL PRIMARY KEY,
+	nick_name VARCHAR(50) NOT NULL,
+	logIn_date DATE NOT NULL,
+	login_time TIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS bank_accounts (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(100) NOT NULL,
+	second_name VARCHAR(100) NOT NULL,
+	client_id INT NOT NULL UNIQUE,
+	client_password VARCHAR NOT NULL UNIQUE,
+	balance MONEY
+);
+SELECT * FROM bank_accounts ;
+
+CREATE TABLE IF NOT EXISTS bank_transactions (
+	id SERIAL PRIMARY KEY,
+	from_ INT NOT NULL REFERENCES bank_accounts(client_id),
+	to_ INT NOT NULL REFERENCES bank_accounts(client_id),
+	transfer_amount MONEY,
+	transfer_date DATE NOT NULL,
+	transfer_time TIME NOT NULL
+);
+
+SELECT * FROM bank_transactions;
