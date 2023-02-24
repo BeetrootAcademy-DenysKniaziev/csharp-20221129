@@ -59,7 +59,20 @@
 			"name": "GetPersonById",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Persons/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Persons",
+						"1"
+					]
+				}
 			},
 			"response": []
 		},
@@ -78,7 +91,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/Persons/3",
+					"raw": "http://localhost:5000/api/Persons/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -87,7 +100,7 @@
 					"path": [
 						"api",
 						"Persons",
-						"3"
+						"1"
 					]
 				}
 			},

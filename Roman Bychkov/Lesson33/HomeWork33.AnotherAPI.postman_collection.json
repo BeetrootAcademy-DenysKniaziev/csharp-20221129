@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "8c87b302-b06b-47e3-bd35-3599182f2cf5",
+		"name": "HomeWork33.AnotherAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21415715"
+	},
+	"item": [
+		{
+			"name": "PrivatBankGetExchangeRate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5",
+					"protocol": "https",
+					"host": [
+						"api",
+						"privatbank",
+						"ua"
+					],
+					"path": [
+						"p24api",
+						"pubinfo"
+					],
+					"query": [
+						{
+							"key": "json",
+							"value": null
+						},
+						{
+							"key": "exchange",
+							"value": null
+						},
+						{
+							"key": "coursid",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WeatherForecastNext-1_10_days",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer  your_key",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "days",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "Poltava",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.m3o.com/v1/weather/Forecast",
+					"protocol": "https",
+					"host": [
+						"api",
+						"m3o",
+						"com"
+					],
+					"path": [
+						"v1",
+						"weather",
+						"Forecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WeatherForecastNow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer your_token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "location",
+							"value": "Kiev",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.m3o.com/v1/weather/Now",
+					"protocol": "https",
+					"host": [
+						"api",
+						"m3o",
+						"com"
+					],
+					"path": [
+						"v1",
+						"weather",
+						"Now"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InfoAboutFootballTransfers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "your_key",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "football98.p.rapidapi.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "bundesliga",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://football98.p.rapidapi.com/bundesliga/transfers",
+					"protocol": "https",
+					"host": [
+						"football98",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"bundesliga",
+						"transfers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InfoAboutFootballTeam",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "your_key",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "football98.p.rapidapi.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://football98.p.rapidapi.com/premierleague/table/squadname/Arsenal",
+					"protocol": "https",
+					"host": [
+						"football98",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"premierleague",
+						"table",
+						"squadname",
+						"Arsenal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NovaPoshtaInfoWaybill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"apiKey\": \"[Не потрібен]\",\r\n   \"modelName\": \"TrackingDocument\",\r\n   \"calledMethod\": \"getStatusDocuments\",\r\n   \"methodProperties\": {\r\n\"Documents\" : [\r\n{\r\n\"DocumentNumber\":\"59000932898702\",\r\n\"Phone\":\"380600000000\"\r\n}\r\n]\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.novaposhta.ua/v2.0/json/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"novaposhta",
+						"ua"
+					],
+					"path": [
+						"v2.0",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "modelName",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "calledMethod",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "methodProperties",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
