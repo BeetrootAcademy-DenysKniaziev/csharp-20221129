@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body>  
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="tblProductsBody">
+            </tbody>
+        </table>
+
+    </main>
+        
+    <form id="formAdd">
+
+        <div>
+            <input type="text" id="inpName" name="name" pattern="[a-zA-Z]{1,10}" required maxlength="10" />
+            <label for="name">Name</label>
+        </div>
+
+        <div>
+            <input type="number" id="inpPrice" name="price" step="any" />
+            <label for="price">Price</label>
+        </div>
+
+        <button type="submit" id="btnAdd">Add</button>
+    </form>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
