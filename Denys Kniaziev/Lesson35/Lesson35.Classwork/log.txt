@@ -1,0 +1,108 @@
+dbug: 2/25/2023 13:20:43.637 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 2/25/2023 13:24:00.422 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 2/25/2023 13:24:00.564 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Person>()'dbug: 2/25/2023 13:24:01.972 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => new SingleQueryingEnumerable<Person>(
+          (RelationalQueryContext)queryContext, 
+          RelationalCommandCache.QueryExpression(
+              Projection Mapping:
+                  EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Person.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Person.Address (string) Required, 1], [Property: Person.Age (int) Required, 2], [Property: Person.FirstName (string) Required MaxLength(100), 3], [Property: Person.Gender (string) Required MaxLength(1), 4], [Property: Person.LastName (string) Required MaxLength(100), 5] }
+              SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+              FROM public.persons AS p), 
+          null, 
+          Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Person>, 
+          Lesson35.Classwork.Model.ApplicationDbContext, 
+          False, 
+          False, 
+          True
+      )'dbug: 2/25/2023 13:24:02.162 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 2/25/2023 13:24:02.458 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (309ms).dbug: 2/25/2023 13:24:02.460 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 2/25/2023 13:24:02.473 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (337ms).dbug: 2/25/2023 13:24:02.479 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (347ms).dbug: 2/25/2023 13:24:02.507 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:24:04.182 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:04.240 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pinfo: 2/25/2023 13:24:04.813 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (530ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pdbug: 2/25/2023 13:24:05.087 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'ApplicationDbContext' started tracking 'Person' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 2/25/2023 13:24:05.350 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:05.401 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'shop_new' on server 'tcp://host.docker.internal:32768' is being disposed after spending 568ms reading results.dbug: 2/25/2023 13:24:05.444 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:05.473 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'shop_new' on server '' (25ms).dbug: 2/25/2023 13:24:05.635 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ApplicationDbContext' disposed.dbug: 2/25/2023 13:24:05.660 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:24:05.671 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'shop_new' on server '' (10ms).dbug: 2/25/2023 13:24:44.778 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 2/25/2023 13:24:44.781 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 2/25/2023 13:24:44.781 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (0ms).dbug: 2/25/2023 13:24:44.782 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 2/25/2023 13:24:44.784 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (3ms).dbug: 2/25/2023 13:24:44.786 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (5ms).dbug: 2/25/2023 13:24:44.788 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:24:44.791 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:44.792 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pinfo: 2/25/2023 13:24:44.821 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (26ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pdbug: 2/25/2023 13:24:44.822 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'ApplicationDbContext' started tracking 'Person' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 2/25/2023 13:24:44.823 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:44.824 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'shop_new' on server 'tcp://host.docker.internal:32768' is being disposed after spending 2ms reading results.dbug: 2/25/2023 13:24:44.825 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:44.825 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'shop_new' on server '' (0ms).dbug: 2/25/2023 13:24:44.841 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ApplicationDbContext' disposed.dbug: 2/25/2023 13:24:44.844 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:24:44.846 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'shop_new' on server '' (1ms).dbug: 2/25/2023 13:24:48.314 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 2/25/2023 13:24:48.332 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 2/25/2023 13:24:48.334 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (2ms).dbug: 2/25/2023 13:24:48.336 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 2/25/2023 13:24:48.337 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (5ms).dbug: 2/25/2023 13:24:48.338 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (5ms).dbug: 2/25/2023 13:24:48.344 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:24:48.346 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:48.347 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pinfo: 2/25/2023 13:24:48.398 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (44ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pdbug: 2/25/2023 13:24:48.399 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'ApplicationDbContext' started tracking 'Person' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 2/25/2023 13:24:48.400 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:48.401 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'shop_new' on server 'tcp://host.docker.internal:32768' is being disposed after spending 2ms reading results.dbug: 2/25/2023 13:24:48.402 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:24:48.403 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'shop_new' on server '' (0ms).dbug: 2/25/2023 13:24:48.426 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ApplicationDbContext' disposed.dbug: 2/25/2023 13:24:48.427 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:24:48.429 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'shop_new' on server '' (1ms).dbug: 2/25/2023 13:26:49.526 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 2/25/2023 13:26:49.528 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 2/25/2023 13:26:49.529 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (1ms).dbug: 2/25/2023 13:26:49.530 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 2/25/2023 13:26:49.531 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (2ms).dbug: 2/25/2023 13:26:49.531 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (3ms).dbug: 2/25/2023 13:26:49.532 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:26:49.533 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:26:49.533 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pinfo: 2/25/2023 13:26:49.539 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.age, p.first_name, p.gender, p.last_name
+      FROM public.persons AS pdbug: 2/25/2023 13:26:49.541 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'ApplicationDbContext' started tracking 'Person' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 2/25/2023 13:26:49.542 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:26:49.545 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'shop_new' on server 'tcp://host.docker.internal:32768' is being disposed after spending 4ms reading results.dbug: 2/25/2023 13:26:49.546 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'shop_new' on server 'tcp://host.docker.internal:32768'.dbug: 2/25/2023 13:26:49.547 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'shop_new' on server '' (1ms).dbug: 2/25/2023 13:26:49.584 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'ApplicationDbContext' disposed.dbug: 2/25/2023 13:26:49.586 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'shop_new' on server ''.dbug: 2/25/2023 13:26:49.588 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'shop_new' on server '' (1ms).dbug: 2/25/2023 13:30:35.294 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'ApplicationDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: None
