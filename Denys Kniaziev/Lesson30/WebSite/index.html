@@ -59,11 +59,70 @@
                     <th>Price</th>
                 </tr>
             </thead>
-            <tbody id="tblProductsBody">  
+            <tbody id="tblProductsBody">
             </tbody>
         </table>
 
-        <textarea></textarea>
+        <form id="form1" action="/products" method="get">
+            <input type="button" value="button" title="button title" />
+
+            <div>
+                <input type="checkbox" id="1" name="isOption1Enabled" checked>
+                <label for="1">option1</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="2" name="isOption2Enabled">
+                <label for="2">option2</label>
+            </div>
+
+            <div>
+                <input type="color" name="selectedColor" />
+            </div>
+
+            <div>
+                <input type="date" name="date" />
+            </div>
+
+            <div>
+                <input type="email" name="email" />
+                <label for="email">email</label>
+            </div>
+
+            <div>
+                <input type="file" name="file" />
+            </div>
+
+            <div>
+                <input type="image" src="Screenshot_1.png" name="image" />
+            </div>
+
+            <div>
+                <input type="password" name="password" />
+            </div>
+
+            <div>
+                <input type="radio" value="1" name="radio">
+                <label for="1">option1</label>
+            </div>
+
+            <div>
+                <input type="radio" value="2" name="radio">
+                <label for="2">option2</label>
+            </div>
+            <div>
+                <input type="radio" value="3" name="radio">
+                <label for="3">option3</label>
+            </div>
+
+            <div>
+                <input type="text" />
+            </div>
+        </form>
+
+        <div>
+            <button type="submit" form="form1">Save</button>
+        </div>
 
         <p id="counter">Counter: 0</p>
         <button id="button1" onclick="console.log('clicked inline!')" ;>Click Me!</button>
