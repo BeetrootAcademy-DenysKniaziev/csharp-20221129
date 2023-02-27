@@ -56,11 +56,12 @@ namespace Lesson34.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PersonId,ProductId")] Orders orders)
+        public async Task<IActionResult> Create([Bind("Id,PersonId,ProductId,ProductCount,TotalPrice,OrderDate")] Orders orders)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(orders);
+                orders.TotalPrice = orders.ProductCount * _context.Product.Find(orders.ProductId).Price;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -88,7 +89,7 @@ namespace Lesson34.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonId,ProductId")] Orders orders)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonId,ProductId,ProductCount,TotalPrice,OrderDate")] Orders orders)
         {
             if (id != orders.Id)
             {
@@ -100,6 +101,8 @@ namespace Lesson34.Controllers
                 try
                 {
                     _context.Update(orders);
+                    orders.TotalPrice = orders.ProductCount * _context.Product.Find(orders.ProductId).Price;
+
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
