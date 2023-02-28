@@ -22,7 +22,7 @@ namespace Lesson35.Classwork.Controllers
         // GET: Persons
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Persons.ToListAsync());
+            return View(await _context.Persons.ToListAsync());
         }
 
         // GET: Persons/Details/5
