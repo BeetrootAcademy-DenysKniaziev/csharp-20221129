@@ -33,7 +33,8 @@ CREATE TABLE libraries (
 CREATE TABLE books_counts (
 	record_id serial PRIMARY KEY,
 	book int REFERENCES books(book_id) NOT NULL,
-	library_ int REFERENCES libraries(library_id) NOT NULL
+	library_ int REFERENCES libraries(library_id) NOT NULL,
+	book_count int DEFAULT 0
 );
 
 CREATE TABLE operations (
