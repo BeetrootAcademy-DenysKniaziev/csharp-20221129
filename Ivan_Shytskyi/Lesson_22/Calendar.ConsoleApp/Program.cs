@@ -1,7 +1,7 @@
 ﻿using Calendar.ConsoleApp.Presenters;
 using Calendar.ConsoleApp.Presenters.Interface;
 using BLLFactory = Calendar.BLL.Factory;
-using BLLRoomFactory = Calendar.BLL.RoomFactory;
+//using BLLRoomFactory = Calendar.BLL.RoomFactory;
 
 namespace Calendar.ConsoleApp
 {
@@ -14,7 +14,7 @@ namespace Calendar.ConsoleApp
             int a = Convert.ToInt32(Console.ReadLine());
             if (a == 1)
             {
-                IPresenter presenter = new MainManuPresenter(BLLFactory.meetingsService, BLLRoomFactory.roomsService, a);
+                IPresenter presenter = new MainManuPresenter(BLLFactory.meetingsService, BLLFactory.roomsService, a);
                 while (presenter != null)
                 {
                     presenter.Show();
@@ -23,7 +23,7 @@ namespace Calendar.ConsoleApp
             }
             else if (a == 2)
             {
-                IPresenter presenter = new RWMainManuPresenter(BLLFactory.meetingsService, BLLRoomFactory.roomsService, a);
+                IPresenter presenter = new RWMainManuPresenter(BLLFactory.meetingsService, BLLFactory.roomsService, a);
                 while (presenter != null)
                 {
                     presenter.Show();

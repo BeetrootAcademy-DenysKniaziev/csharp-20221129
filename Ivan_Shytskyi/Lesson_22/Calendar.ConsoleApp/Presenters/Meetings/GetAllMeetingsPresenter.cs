@@ -32,7 +32,7 @@ namespace Calendar.ConsoleApp.Presenters.Meetings
             Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", "Name", "Start time", "End time", "Room name");
             foreach (var meeting in _serviceMeeting.GetAll())
             {
-                Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.Room);
+                Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.RoomName);
             }
         }
     }

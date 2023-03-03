@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace Calendar.DAL.Repositorys
 {
-    internal class RoomsRepository : IRepository<Room>
+    internal class JSONRoomsRepository : IRepository<Room>
     {
         private const string FileName = "Rooms.json";
         public void Add(Room room)

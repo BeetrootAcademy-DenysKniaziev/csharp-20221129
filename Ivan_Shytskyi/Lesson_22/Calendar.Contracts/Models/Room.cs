@@ -1,9 +1,11 @@
-﻿namespace Calendar.Contracts.Models
+﻿using System;
+
+namespace Calendar.Contracts.Models
 {
-    public class Room
+    public class Room : BaseEntity<Guid>
     {
         public string RoomName { get; set; }
-        public Room(string RoomName)
+        public Room(string RoomName) : base(Guid.NewGuid())
         {
             this.RoomName = RoomName;
         }

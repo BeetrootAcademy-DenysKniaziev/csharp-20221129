@@ -7,13 +7,15 @@ using Newtonsoft.Json;
 
 namespace Calendar.DAL.Repositorys
 {
-    internal class MeetingsRepository : IRepository<Meeting>
+    internal class JSONMeetingsRepository : IRepository<Meeting>
     {
         private const string FileName = "Meetings.json";
+
         //private readonly List<Meeting> _meetings = new List<Meeting>
         //{
         //    new Meeting("Test Meeting", DateTime.UtcNow, DateTime.UtcNow.AddHours(8), "Green")
         //};
+
         public void Add(Meeting meeting) //=> _meetings.Add(meeting);
         {
             var meetings = GetAll();
@@ -27,6 +29,7 @@ namespace Calendar.DAL.Repositorys
                 return Enumerable.Empty<Meeting>();
             var json = File.ReadAllText(FileName);
             //var meeting = JsonConvert.DeserializeObject<IEnumerable<Meeting>>(json)  == null ? Enumerable.Empty<Meeting>() : JsonConvert.DeserializeObject<IEnumerable<Meeting>>(json);
+            
             var meetings = JsonConvert.DeserializeObject<IEnumerable<Meeting>>(json) ?? Enumerable.Empty<Meeting>();
             return meetings;
         }

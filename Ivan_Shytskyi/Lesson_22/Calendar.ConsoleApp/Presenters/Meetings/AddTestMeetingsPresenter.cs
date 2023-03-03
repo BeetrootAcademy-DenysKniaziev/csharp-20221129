@@ -20,7 +20,7 @@ namespace Calendar.ConsoleApp.Presenters.Meetings
 
         public IPresenter Action()
         {
-            _serviceMeeting.Add(new Meeting("Dummy Meeting", DateTime.UtcNow, DateTime.Now, "Green"));
+            _serviceMeeting.Add(new Meeting("Dummy Meeting", DateTime.UtcNow, DateTime.Now, "1", "black"));
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
 

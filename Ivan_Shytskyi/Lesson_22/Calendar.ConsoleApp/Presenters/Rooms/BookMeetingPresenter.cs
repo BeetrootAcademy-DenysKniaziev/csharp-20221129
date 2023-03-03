@@ -17,15 +17,19 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
         }
         public IPresenter Action()
         {
-            Console.Write("Choose room: ");
-            string name = Console.ReadLine();
+            //Console.Write("Choose room: ");
+            //string name = Console.ReadLine();
+            Console.Write("Enter ID: ");
+            string id = Console.ReadLine();
             foreach (var room in _serviceRoom.GetAll())
             {
-                if (name == room.RoomName)
+                //if (name == room.RoomName)
+                string c = room.Id.ToString();
+                if (id == c)
                 {
                     Console.Write("Enter name meeting: ");
                     string nameMeeting = Console.ReadLine();
-
+                    string name = room.RoomName;
                     Console.Write("Enter start time: ");
                     int a = Convert.ToInt32(Console.ReadLine());
                     DateTime dt = new DateTime();
@@ -34,8 +38,7 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
                     int b = Convert.ToInt32(Console.ReadLine());
                     DateTime dt1 = new DateTime();
                     dt1 = dt1.AddHours(b);
-
-                    _serviceMeeting.Add(new Meeting(nameMeeting, dt, dt1, name));
+                    _serviceMeeting.Add(new Meeting(nameMeeting, dt, dt1, id, name));
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
 
@@ -58,10 +61,10 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
         {
             Console.Clear();
             Console.WriteLine("All rooms:");
-            Console.WriteLine("{0,-25}", "Name");
+            Console.WriteLine("{0,-40} {1,-40}", "ID", "Name");
             foreach (var room in _serviceRoom.GetAll())
             {
-                Console.WriteLine("{0,-25}", room.RoomName);
+                Console.WriteLine("{0,-40} {1,-40}", room.Id, room.RoomName);
             }
         }
     }

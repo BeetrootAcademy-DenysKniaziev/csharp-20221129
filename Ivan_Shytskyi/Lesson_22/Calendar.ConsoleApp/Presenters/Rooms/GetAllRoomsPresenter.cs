@@ -28,10 +28,10 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
         public void Show()
         {
             Console.Clear();
-            Console.WriteLine("{0,-25}", "Name");
+            Console.WriteLine("{0,-40} {1,-40}", "ID", "Name");
             foreach (var room in _serviceRoom.GetAll())
             {
-                Console.WriteLine("{0,-25}", room.RoomName);
+                Console.WriteLine("{0,-40} {1,-40}", room.Id, room.RoomName);
             }
         }
     }
