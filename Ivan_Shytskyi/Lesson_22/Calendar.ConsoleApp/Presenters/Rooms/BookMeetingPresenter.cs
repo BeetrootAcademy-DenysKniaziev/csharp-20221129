@@ -17,13 +17,10 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
         }
         public IPresenter Action()
         {
-            //Console.Write("Choose room: ");
-            //string name = Console.ReadLine();
             Console.Write("Enter ID: ");
             string id = Console.ReadLine();
             foreach (var room in _serviceRoom.GetAll())
             {
-                //if (name == room.RoomName)
                 string c = room.Id.ToString();
                 if (id == c)
                 {

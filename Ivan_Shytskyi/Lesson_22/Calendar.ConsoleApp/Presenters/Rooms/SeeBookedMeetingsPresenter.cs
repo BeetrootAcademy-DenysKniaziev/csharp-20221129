@@ -18,13 +18,11 @@ namespace Calendar.ConsoleApp.Presenters.Rooms
         public IPresenter Action()
         {
             Console.Write("Select room by ID: ");
-            //string name = Console.ReadLine();
             string id = Console.ReadLine();
             Console.Clear();
             Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", "Name", "Start time", "End time", "Room name");
             foreach (var meeting in _serviceMeeting.GetAll())
             {
-                //if (name == meeting.Room)
                 if (id == meeting.RoomId)
                 {
                     Console.WriteLine("{0,-25} {1,-25} {2,-25} {3,-25}", meeting.Name, meeting.StartTime, meeting.EndTime, meeting.RoomName);
