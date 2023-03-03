@@ -1,0 +1,80 @@
+﻿﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple</title>
+    <link rel="stylesheet" type="text/css" href="CSS/StyleSheet.css">
+</head>
+<body>
+    <header>
+        <h1>Test</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href=index.html>Home</a></li>
+            <li><a href=About_Me.html>About Me</a></li>
+            <li><a href=Test.html>Test</a></li>
+            <li><a href="#Contact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="Test">
+            <h2>Test:</h2>
+            <div>
+                <div>
+                    <ul>
+                        <li><button onclick="console.log('Clicked')">Click</button></li>
+                        <li><button ondblclick="console.log('Clicked 2')">Dbl Click</button></li>
+                    </ul>
+                </div>
+
+                <div id="second-list">
+                    <ul>
+                        <li><button id="bt3" onclick="console.log('Style')">Style</button></li>
+                        <li><button ondblclick="console.log('Clicked 2')">Dbl Click</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <button id="b1" onclick="console.log('Insert Child')">Click</button>
+                    <button id="b2" ondblclick="console.log('Counter')">Dbl Click Counter</button>
+                </div>
+
+                <div>
+                    <ol>
+                        <li>Перший елемент списку</li>
+                        <li>Другий елемент списку</li>
+                        <li>Третій елемент списку</li>
+                    </ol>
+
+                    <ol reversed>
+                        <li>Перший елемент списку</li>
+                        <li>Другий елемент списку</li>
+                        <li>Третій елемент списку</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="Contact">
+            <h2>Contact Me</h2>
+            <p>my E-mail: asdfa@.gmail.com</p>
+            <p>my tel. 234-234-456</p>
+        </section>
+
+        <div id="tableHolder"></div>
+
+        <section>
+            <p id="counter">Counter: 0</p>
+        </section>
+    </main>
+
+    <footer>
+        <p> &copy; 2023 My Simple Website</p>
+    </footer>
+
+    <script src="JS/main.js"></script>
+    <body>
+</html>
