@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<!--<html>
 <head>
     <title>Simple</title>
     <link rel="stylesheet" type="text/css" href="CSS/StyleSheet.css">
@@ -10,22 +10,22 @@
     </header>
     <nav>
         <ul>
-            <li><a href=index.html>Home</a></li>
-            <li><a href=About_Me.html>About Me</a></li>
-            <li><a href=Test.html>Test</a></li>
-            <li><a href="#Contact">Contact Me</a></li>
-        </ul>
-    </nav>
+            <li><a href=index.html>Home</a></li>-->
+<!--<li><a href=About_Me.html>About Me</a></li>
+<li><a href=Test.html>Test</a></li>-->
+<!--<li><a href="#Contact">Contact Me</a></li>
+    </ul>
+</nav>
 
-    <main>
-        <div class="container">
-            <div class="text-left">
-                <p>Text on the left side of the image. Text on the left side of the image. Text on the left side of the image. Text on the left side of the image. </p>
-            </div>
-            <div class="image-container">
-                <img src="photo.jpg" alt="image">
-            </div>
-            <div class="text-right">
+<main>
+    <div class="container">
+        <div class="text-left">
+            <p>Text on the left side of the image. Text on the left side of the image. Text on the left side of the image. Text on the left side of the image. </p>
+        </div>-->
+<!--<div class="image-container">
+    <img src="photo.jpg" alt="image">
+</div>-->
+<!--<div class="text-right">
                 <p>Text on the right side of the image. Text on the right side of the image. Text on the right side of the image. Text on the right side of the image. </p>
                 <div id="myDiv"></div>
             </div>
@@ -47,5 +47,132 @@
     </footer>
 
     <script src="JS/main.js"></script>
+</body>
+</html>-->
+
+<html>
+<head>
+    <title>HTML Forms</title>
+</head>
+<body>
+    <header>
+        <h1>HTML FORM</h1>
+    </header>
+    <form>
+        <fieldset>
+            <legend>Date</legend>
+            <input type="date" id="Date" name="date" />
+        </fieldset>
+        <fieldset>
+            <legend>File</legend>
+            <input type="file" id="File" name="file" />
+        </fieldset>
+
+        <fieldset>
+            <legend>Image</legend>
+            <input type="image" src="2023-03-03 151809.jpg" id="Image" name="image" />
+        </fieldset>
+
+        <fieldset>
+            <legend>Button</legend>
+            <button type="button">Button</button>
+        </fieldset>
+
+        <fieldset>
+            <legend>Color Picker</legend>
+            <label for="ColorPicker">Color:</label>
+            <input type="color" id="colorPicker" name="color" />
+        </fieldset>
+
+        <fieldset>
+            <legend>Text Input</legend>
+            <label for="textInput">Name:</label>
+            <input type="text" id="textInput" name="name" title="Name">
+        </fieldset>
+
+        <fieldset>
+            <legend>Email Input</legend>
+            <label for="emailInput">Email:</label>
+            <input type="email" id="emailInput" name="email" title="Email">
+        </fieldset>
+
+        <fieldset>
+            <legend>Password Input</legend>
+            <label for="passwordInput">Password:</label>
+            <input type="password" id="passwordInput" name="password" title="password">
+        </fieldset>
+
+        <fieldset>
+            <legend>Radio Buttons</legend>
+            <input type="radio" id="option1" name="option" value="option1">
+            <label for="option1">Option 1</label>
+            <br>
+            <input type="radio" id="option2" name="option" value="option2">
+            <label for=" option2">Option 2</label>
+            <br>
+            <input type="radio" id="option3" name="option" value="option3">
+            <label for="option3">Option 3</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Checkboxes</legend>
+            <input type="checkbox" id="checkbox1" name="checkbox1" value="value1">
+            <label for="checkbox1">Check 1</label>
+            <br>
+            <input type="checkbox" id="checkbox2" name="checkbox2" value="value2">
+            <label for="checkbox2">Check 2</label>
+            <br>
+            <input type="checkbox" id="checkbox3" name="checkbox3" value="value3">
+            <label for="checkbox3">Check 3</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Select Dropdown</legend>
+            <label for="selectDropdown">Select an Option:</label>
+            <select id="selectDropdown" name="select">
+                <option value="">--Please choose an option--</option>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>Textarea</legend>
+            <label for="textarea">Comments:</label>
+
+            <textarea id="textarea" name="comments" rows="4" cols="50"></textarea>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Submit Button</legend>
+            <button type="submit">Submit</button>
+        </fieldset>
+    </form>
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <footer>
+        <p> &copy; 2023 Simple WebForm</p>
+    </footer>
 </body>
 </html>
