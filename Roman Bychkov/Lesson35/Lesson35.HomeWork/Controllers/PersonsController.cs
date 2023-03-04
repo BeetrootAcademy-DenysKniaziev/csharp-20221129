@@ -1,4 +1,7 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+
 namespace Lesson35.HomeWork.Controllers
 {
     [Route("api/[controller]")]
@@ -6,7 +9,7 @@ namespace Lesson35.HomeWork.Controllers
     public class PersonsController : ControllerBase
     {
         private ApplicationDbContext _dbContext;
-        private HttpContext _httpContext;
+       
         public PersonsController(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -14,27 +17,60 @@ namespace Lesson35.HomeWork.Controllers
         }
         [Route("GetAll")]
         [HttpGet]
-        public ActionResult<List<Person>> GetAll()
+        public async Task<ActionResult> GetAll()
         {
             return Ok(_dbContext.Persons.ToList());
         }
         [Route("GetById")]
         [HttpGet]
-        public ActionResult<Person> GetById(int id)
+        public async Task<ActionResult> GetById(int id)
         {
-            var result = _dbContext.Persons.FirstOrDefault(p => p.Id == id);
+            var result = _dbContext.Persons.FirstOrDefaultAsync(p => p.Id == id).Result;
             return result != null ? Ok(result) : NotFound(result);
         }
 
         [HttpPost]
         [Route("AddPerson")]
-        public ActionResult<Person> PostPerson([FromBody] Person person)
+        [ConsoleLogFilter]
+        public async Task<ActionResult> PostPerson([FromBody] PersonJSON person)
         {
+            Person newPerson = new Person()
+            {
+                Age = person.Age,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Gender = person.Gender,
+                Address = person.Address
+            };
+            await _dbContext.Persons.AddAsync(newPerson);
+            await _dbContext.SaveChangesAsync();
+            return Created("Created",newPerson);
+        }
 
-            Response.StatusCode = 201;
-            return Ok(person);
-            //_dbContext.Persons.Add(person);
-            //return person;
+        [Route("DeleteById")]
+        [HttpDelete]
+        [ConsoleLogFilter]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var person = _dbContext.Persons.FirstOrDefaultAsync(p => p.Id == id).Result;
+            if (person is null)
+                throw new NullReferenceException();
+            _dbContext.Persons.Remove(person);
+            await _dbContext.SaveChangesAsync();
+            return Ok("Deleted");
+        }
+        public class PersonJSON
+        {
+            [JsonProperty("firstName")]
+            public string FirstName { get; set; }
+            [JsonProperty("lastName")]
+            public string LastName { get; set; }
+            [JsonProperty("age")]
+            public int Age { get; set; }
+            [JsonProperty("gender")]
+            public string Gender { get; set; }
+            [JsonProperty("address")]
+            public string Address { get; set; }
         }
 
     }
