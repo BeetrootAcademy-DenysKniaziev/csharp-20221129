@@ -27,9 +27,9 @@ app.UseSwagger();
 app.UseSwaggerUI();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<CheckTokenMiddleware>(new List<string>()
-{   "abrikos",
-    "ananas",
-    "kapusta"
+{   Guid.NewGuid().ToString(),
+     Guid.NewGuid().ToString(),
+     Guid.NewGuid().ToString()
 });
 
 app.Run();

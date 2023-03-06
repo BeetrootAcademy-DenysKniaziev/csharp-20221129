@@ -9,3 +9,7 @@ Request URL: https://localhost:7218/api/Orders/DeleteById
 Method: DELETE
 Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
 Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/DeleteById
+Method: DELETE
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
