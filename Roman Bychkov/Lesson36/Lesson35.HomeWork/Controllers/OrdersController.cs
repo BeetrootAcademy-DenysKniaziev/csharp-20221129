@@ -9,11 +9,11 @@ namespace Lesson35.HomeWork.Controllers
     [ConsoleLogFilter]
     public class OrdersController : ControllerBase
     {
-        private ApplicationDbContext _dbContext;
+        private IOrdersServices _orders;
 
-        public OrdersController(ApplicationDbContext dbContext)
+        public OrdersController(IOrdersServices orders)
         {
-            _dbContext = dbContext;
+            _orders = orders;
 
         }
 
@@ -21,14 +21,14 @@ namespace Lesson35.HomeWork.Controllers
         [Route("GetAll")]
         public async Task<ActionResult> GetAll()
         {
-            return Ok(_dbContext.Orders.ToList());
+            return Ok(await _orders.Get());
         }
         [Route("GetById")]
         [HttpGet]
        
         public async Task<ActionResult> GetById(int id)
         {
-            var result = _dbContext.Orders.FirstOrDefaultAsync(p => p.Id == id).Result;
+            var result = await _orders.GetById(id);
             return result != null ? Ok(result) : NotFound(result);
         }
 
@@ -36,11 +36,7 @@ namespace Lesson35.HomeWork.Controllers
         [Route("DeleteById")]
         public async Task<ActionResult> Delete(int id)
         {
-            var order = _dbContext.Orders.FirstOrDefaultAsync(p => p.Id == id).Result;
-            if (order is null)
-                throw new NullReferenceException();
-            _dbContext.Orders.Remove(order);
-            await _dbContext.SaveChangesAsync();
+            _orders.Delete(await _orders.GetById(id));
             return Ok("Deleted");
         }
 
@@ -54,8 +50,7 @@ namespace Lesson35.HomeWork.Controllers
                 ProductId = order.IdProduct,
                 OrderTime = order.DateCreate
             };
-            await _dbContext.Orders.AddAsync(newOrder);
-            await _dbContext.SaveChangesAsync();
+            _orders.Add(newOrder);
             return Created("Created", newOrder);
         }
        

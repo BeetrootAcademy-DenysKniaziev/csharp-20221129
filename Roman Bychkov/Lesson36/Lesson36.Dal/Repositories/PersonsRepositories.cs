@@ -1,11 +1,10 @@
 ﻿
-
 namespace Lesson36.Dal.Repositories
 {
-    public class PersonRepositories : IPersonsRepository
+    public class PersonsRepositories : IPersonsRepository
     {
         private ApplicationDbContext _context;
-        public PersonRepositories(ApplicationDbContext context)
+        public PersonsRepositories(ApplicationDbContext context)
         {
             _context = context;
         }

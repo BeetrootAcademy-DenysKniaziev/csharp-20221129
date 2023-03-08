@@ -1,5 +1,6 @@
 using Lesson35.HomeWork.Middleware;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +8,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressInferBindingSourcesForParameters = true);
+
+builder.Services.AddScoped<IPersonsRepository, PersonsRepositories>();
+builder.Services.AddScoped<IOrdersRepository, OrdersRepositories>();
+builder.Services.AddScoped<IProductsRepository, ProductsRepositories>();
+
+
+builder.Services.AddScoped<IOrdersServices,OrdersServices>();
+builder.Services.AddScoped<IProductsServices, ProductsServices>();
+builder.Services.AddScoped<IPersonsServices, PersonsServices>();
+
+
+
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddMvc(options =>
 {

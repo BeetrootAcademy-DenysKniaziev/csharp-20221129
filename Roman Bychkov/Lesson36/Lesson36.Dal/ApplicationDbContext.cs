@@ -1,4 +1,4 @@
-﻿using DataBase.DTO;
+﻿using Lesson36.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataBase

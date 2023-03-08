@@ -1,11 +1,11 @@
-﻿namespace Lesson36.Dal
+﻿namespace Lesson36.Dal.Repositories
 {
     public interface IOrdersRepository
     {
-        public void Add(Order person);
-        public void Update(Order person);
-        public void Delete(Order person);
-        public IEnumerable<Order> Get();
-        public Order GetById(int id);
+        public void Add(Order order);
+        public void Update(Order order);
+        public void Delete(Order order);
+        public Task<IEnumerable<Order>> Get();
+        public Task<Order> GetById(int id);
     }
 }

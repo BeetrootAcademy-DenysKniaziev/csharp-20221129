@@ -7,11 +7,11 @@ namespace Lesson35.HomeWork.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private ApplicationDbContext _dbContext;
+        private IProductsServices _products;
 
-        public ProductsController(ApplicationDbContext dbContext)
+        public ProductsController(IProductsServices products)
         {
-            _dbContext = dbContext;
+            _products = products;
 
         }
         [Route("GetAll")]
@@ -19,25 +19,21 @@ namespace Lesson35.HomeWork.Controllers
         [ConsoleLogFilter]
         public async Task<ActionResult> GetAll()
         {
-            return Ok(_dbContext.Products.ToList());
+            return Ok(await _products.Get());
         }
         [Route("GetById")]
         [HttpGet]
         public async Task<ActionResult> GetById(int id)
         {
-            var result = _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id).Result;
+            var result = await _products.GetById(id);
             return result != null ? Ok(result) : NotFound(result);
         }
         [Route("DeleteById")]
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            var product = _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id).Result;
-            if (product is null)
-                throw new NullReferenceException();
-            _dbContext.Products.Remove(product);
-            await _dbContext.SaveChangesAsync();
-            return Ok("Deleted");
+             _products.Delete(await _products.GetById(id));
+             return Ok("Deleted");
         }
         [HttpPost]
         [Route("AddProduct")]
@@ -51,8 +47,7 @@ namespace Lesson35.HomeWork.Controllers
                 Price = product.Price,
                 DiscountedPrice = product.DiscountedPrice
             };
-            await _dbContext.Products.AddAsync(newProduct);
-            await _dbContext.SaveChangesAsync();
+            _products.Add(newProduct);
             return Created("Created", newProduct);
         }
         public class ProductJSON

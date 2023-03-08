@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson35.HomeWork", "Lesson
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.Dal", "Lesson36.Dal\Lesson36.Dal.csproj", "{A208B7ED-88F9-497A-9F1D-BE9CD99DC2A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson37.Contracts", "Lesson37.Contracts\Lesson37.Contracts.csproj", "{DAE23280-AECD-416F-9C04-AF6DDAE3D6C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.Contracts", "Lesson37.Contracts\Lesson36.Contracts.csproj", "{DAE23280-AECD-416F-9C04-AF6DDAE3D6C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.BL", "Lesson36.BL\Lesson36.BL.csproj", "{FEEBB19C-D199-43CA-9DE2-76190A5EBDC6}"
 EndProject

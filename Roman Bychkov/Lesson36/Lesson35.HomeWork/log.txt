@@ -27,3 +27,82 @@ Body: System.Threading.Tasks.Task`1[System.String]
 Status Code: 200
 Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
 Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/CreateOrder
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/CreateOrder
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/CreateOrder
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/DeleteById
+Method: DELETE
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/DeleteById
+Method: DELETE
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]

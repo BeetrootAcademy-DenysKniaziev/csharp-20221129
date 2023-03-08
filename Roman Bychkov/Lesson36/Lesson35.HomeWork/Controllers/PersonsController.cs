@@ -8,24 +8,24 @@ namespace Lesson35.HomeWork.Controllers
     [ApiController]
     public class PersonsController : ControllerBase
     {
-        private ApplicationDbContext _dbContext;
+        private IPersonsServices _persons;
        
-        public PersonsController(ApplicationDbContext dbContext)
+        public PersonsController(IPersonsServices persons)
         {
-            _dbContext = dbContext;
+           _persons = persons;
 
         }
         [Route("GetAll")]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {
-            return Ok(_dbContext.Persons.ToList());
+            return Ok(await _persons.Get());
         }
         [Route("GetById")]
         [HttpGet]
         public async Task<ActionResult> GetById(int id)
         {
-            var result = _dbContext.Persons.FirstOrDefaultAsync(p => p.Id == id).Result;
+            var result = await _persons.GetById(id);
             return result != null ? Ok(result) : NotFound(result);
         }
 
@@ -42,8 +42,7 @@ namespace Lesson35.HomeWork.Controllers
                 Gender = person.Gender,
                 Address = person.Address
             };
-            await _dbContext.Persons.AddAsync(newPerson);
-            await _dbContext.SaveChangesAsync();
+            _persons.Add(newPerson);
             return Created("Created",newPerson);
         }
 
@@ -52,11 +51,7 @@ namespace Lesson35.HomeWork.Controllers
         [ConsoleLogFilter]
         public async Task<ActionResult> Delete(int id)
         {
-            var person = _dbContext.Persons.FirstOrDefaultAsync(p => p.Id == id).Result;
-            if (person is null)
-                throw new NullReferenceException();
-            _dbContext.Persons.Remove(person);
-            await _dbContext.SaveChangesAsync();
+            _persons.Delete(_persons.GetById(id).Result);
             return Ok("Deleted");
         }
         public class PersonJSON

@@ -1,7 +1,7 @@
 ﻿
 namespace Lesson36.BL.Services
 {
-    internal interface IProductsServices
+    public interface IProductsServices
     {
         public void Add(Product product);
         public void Update(Product product);

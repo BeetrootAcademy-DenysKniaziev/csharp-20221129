@@ -1,5 +1,5 @@
 ﻿
-namespace DataBase.DTO
+namespace Lesson36.Models
 {
     [Table("orders", Schema = "public")]
     public class Order

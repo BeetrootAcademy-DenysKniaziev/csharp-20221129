@@ -1,6 +1,6 @@
 ﻿namespace Lesson36.BL.Services
 {
-    internal interface IPersonsServices
+    public interface IPersonsServices
     {   
         public void Add(Person person);
         public void Update(Person person);
