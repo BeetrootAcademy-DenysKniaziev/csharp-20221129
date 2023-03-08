@@ -1,0 +1,296 @@
+dbug: 08.03.2023 17:53:36.966 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'MyDBContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 08.03.2023 17:53:37.278 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'MyDBContext' disposed.dbug: 08.03.2023 21:37:19.807 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'MyDBContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 08.03.2023 21:37:20.020 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'MyDBContext' disposed.dbug: 08.03.2023 21:37:33.007 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'MyDBContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 08.03.2023 21:37:33.041 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 08.03.2023 21:37:33.099 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (59ms).dbug: 08.03.2023 21:37:33.106 RelationalEventId.MigrateUsingConnection[20400] (Microsoft.EntityFrameworkCore.Migrations) 
+      Migrating using database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.126 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.273 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.276 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.289 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (9ms).dbug: 08.03.2023 21:37:33.302 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.dbug: 08.03.2023 21:37:33.312 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (9ms).dbug: 08.03.2023 21:37:33.315 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (17ms).dbug: 08.03.2023 21:37:33.316 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.346 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.354 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');info: 08.03.2023 21:37:33.403 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (51ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');dbug: 08.03.2023 21:37:33.405 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.409 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (3ms).dbug: 08.03.2023 21:37:33.412 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.427 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.427 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.428 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:37:33.536 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:37:33.537 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:37:33.538 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:37:33.539 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.540 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.541 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "__EFMigrationsHistory" (
+          "MigrationId" character varying(150) NOT NULL,
+          "ProductVersion" character varying(32) NOT NULL,
+          CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+      );info: 08.03.2023 21:37:33.574 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (33ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE "__EFMigrationsHistory" (
+          "MigrationId" character varying(150) NOT NULL,
+          "ProductVersion" character varying(32) NOT NULL,
+          CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+      );dbug: 08.03.2023 21:37:33.575 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.575 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:37:33.577 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.589 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.590 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.591 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:37:33.592 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.dbug: 08.03.2023 21:37:33.594 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).dbug: 08.03.2023 21:37:33.595 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (2ms).dbug: 08.03.2023 21:37:33.595 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.596 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.597 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');info: 08.03.2023 21:37:33.601 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');dbug: 08.03.2023 21:37:33.601 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.602 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:37:33.605 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 08.03.2023 21:37:33.606 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).dbug: 08.03.2023 21:37:33.606 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (1ms).dbug: 08.03.2023 21:37:33.607 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.608 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.609 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";info: 08.03.2023 21:37:33.614 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";dbug: 08.03.2023 21:37:33.618 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.621 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson29' on server 'tcp://host.docker.internal:32768' is being disposed after spending 5ms reading results.dbug: 08.03.2023 21:37:33.622 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.623 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).info: 08.03.2023 21:37:33.637 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20230308155337_InitialCreate'.dbug: 08.03.2023 21:37:33.670 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.671 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.676 RelationalEventId.TransactionStarting[20209] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Beginning transaction with isolation level 'Unspecified'.dbug: 08.03.2023 21:37:33.680 RelationalEventId.TransactionStarted[20200] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Began transaction with isolation level 'ReadCommitted'.dbug: 08.03.2023 21:37:33.682 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:37:33.683 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:37:33.684 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:37:33.684 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.account_types (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Type" character varying(50) NOT NULL,
+          CONSTRAINT "PK_account_types" PRIMARY KEY ("Id")
+      );fail: 08.03.2023 21:37:33.700 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Failed executing DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.account_types (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Type" character varying(50) NOT NULL,
+          CONSTRAINT "PK_account_types" PRIMARY KEY ("Id")
+      );dbug: 08.03.2023 21:37:33.711 RelationalEventId.TransactionDisposed[20204] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Disposing transaction.dbug: 08.03.2023 21:37:33.713 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:37:33.714 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (1ms).dbug: 08.03.2023 21:37:33.717 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'MyDBContext' disposed.dbug: 08.03.2023 21:37:33.720 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:37:33.722 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson29' on server '' (1ms).dbug: 08.03.2023 21:44:59.346 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'MyDBContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 08.03.2023 21:44:59.373 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 08.03.2023 21:44:59.417 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (45ms).dbug: 08.03.2023 21:44:59.422 RelationalEventId.MigrateUsingConnection[20400] (Microsoft.EntityFrameworkCore.Migrations) 
+      Migrating using database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.434 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.540 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.542 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.554 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (8ms).dbug: 08.03.2023 21:44:59.561 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.dbug: 08.03.2023 21:44:59.566 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (5ms).dbug: 08.03.2023 21:44:59.568 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (9ms).dbug: 08.03.2023 21:44:59.569 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.594 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.601 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');info: 08.03.2023 21:44:59.639 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');dbug: 08.03.2023 21:44:59.641 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.644 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (2ms).dbug: 08.03.2023 21:44:59.646 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.657 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.658 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.659 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:44:59.661 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.dbug: 08.03.2023 21:44:59.662 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (0ms).dbug: 08.03.2023 21:44:59.663 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (2ms).dbug: 08.03.2023 21:44:59.664 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.665 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.667 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');info: 08.03.2023 21:44:59.670 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');dbug: 08.03.2023 21:44:59.671 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.671 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:44:59.692 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 08.03.2023 21:44:59.693 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (0ms).dbug: 08.03.2023 21:44:59.693 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (1ms).dbug: 08.03.2023 21:44:59.694 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.695 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.700 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";info: 08.03.2023 21:44:59.709 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "MigrationId", "ProductVersion"
+      FROM "__EFMigrationsHistory"
+      ORDER BY "MigrationId";dbug: 08.03.2023 21:44:59.713 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.717 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson29' on server 'tcp://host.docker.internal:32768' is being disposed after spending 5ms reading results.dbug: 08.03.2023 21:44:59.718 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.719 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).info: 08.03.2023 21:44:59.734 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20230308155337_InitialCreate'.dbug: 08.03.2023 21:44:59.793 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.794 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.799 RelationalEventId.TransactionStarting[20209] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Beginning transaction with isolation level 'Unspecified'.dbug: 08.03.2023 21:44:59.805 RelationalEventId.TransactionStarted[20200] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Began transaction with isolation level 'ReadCommitted'.dbug: 08.03.2023 21:44:59.809 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.809 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.810 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.812 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.account_types (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Type" character varying(50) NOT NULL,
+          CONSTRAINT "PK_account_types" PRIMARY KEY ("Id")
+      );info: 08.03.2023 21:44:59.835 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (23ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.account_types (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Type" character varying(50) NOT NULL,
+          CONSTRAINT "PK_account_types" PRIMARY KEY ("Id")
+      );dbug: 08.03.2023 21:44:59.836 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.836 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.838 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.839 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.genres (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Title" character varying(50) NOT NULL,
+          CONSTRAINT "PK_genres" PRIMARY KEY ("Id")
+      );info: 08.03.2023 21:44:59.849 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.genres (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Title" character varying(50) NOT NULL,
+          CONSTRAINT "PK_genres" PRIMARY KEY ("Id")
+      );dbug: 08.03.2023 21:44:59.849 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.850 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.851 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.852 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.users (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "FirstName" character varying(20) NOT NULL,
+          "LastName" character varying(20) NOT NULL,
+          "Email" text NOT NULL,
+          "AccountTypeId" integer NOT NULL,
+          CONSTRAINT "PK_users" PRIMARY KEY ("Id"),
+          CONSTRAINT "FK_users_account_types_AccountTypeId" FOREIGN KEY ("AccountTypeId") REFERENCES public.account_types ("Id")
+      );info: 08.03.2023 21:44:59.871 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (19ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.users (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "FirstName" character varying(20) NOT NULL,
+          "LastName" character varying(20) NOT NULL,
+          "Email" text NOT NULL,
+          "AccountTypeId" integer NOT NULL,
+          CONSTRAINT "PK_users" PRIMARY KEY ("Id"),
+          CONSTRAINT "FK_users_account_types_AccountTypeId" FOREIGN KEY ("AccountTypeId") REFERENCES public.account_types ("Id")
+      );dbug: 08.03.2023 21:44:59.872 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.872 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.873 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.874 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.movies (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Title" character varying(50) NOT NULL,
+          "GenreId" integer NOT NULL,
+          release_date timestamp with time zone NOT NULL,
+          "Rating" numeric NOT NULL,
+          "IsPremium" boolean NOT NULL,
+          CONSTRAINT "PK_movies" PRIMARY KEY ("Id"),
+          CONSTRAINT "FK_movies_genres_GenreId" FOREIGN KEY ("GenreId") REFERENCES public.genres ("Id")
+      );info: 08.03.2023 21:44:59.890 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE public.movies (
+          "Id" integer GENERATED BY DEFAULT AS IDENTITY,
+          "Title" character varying(50) NOT NULL,
+          "GenreId" integer NOT NULL,
+          release_date timestamp with time zone NOT NULL,
+          "Rating" numeric NOT NULL,
+          "IsPremium" boolean NOT NULL,
+          CONSTRAINT "PK_movies" PRIMARY KEY ("Id"),
+          CONSTRAINT "FK_movies_genres_GenreId" FOREIGN KEY ("GenreId") REFERENCES public.genres ("Id")
+      );dbug: 08.03.2023 21:44:59.891 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.891 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.892 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.893 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_movies_GenreId" ON public.movies ("GenreId");info: 08.03.2023 21:44:59.899 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (7ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_movies_GenreId" ON public.movies ("GenreId");dbug: 08.03.2023 21:44:59.900 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.901 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.901 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.902 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_users_AccountTypeId" ON public.users ("AccountTypeId");info: 08.03.2023 21:44:59.908 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (6ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_users_AccountTypeId" ON public.users ("AccountTypeId");dbug: 08.03.2023 21:44:59.908 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.909 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.909 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.910 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20230308155337_InitialCreate', '7.0.3');info: 08.03.2023 21:44:59.913 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20230308155337_InitialCreate', '7.0.3');dbug: 08.03.2023 21:44:59.915 RelationalEventId.TransactionCommitting[20210] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Committing transaction.dbug: 08.03.2023 21:44:59.921 RelationalEventId.TransactionCommitted[20202] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Committed transaction.dbug: 08.03.2023 21:44:59.923 RelationalEventId.TransactionDisposed[20204] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Disposing transaction.dbug: 08.03.2023 21:44:59.924 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.925 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).info: 08.03.2023 21:44:59.926 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20230308193719_AddPhoneField'.dbug: 08.03.2023 21:44:59.939 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:44:59.940 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.941 RelationalEventId.TransactionStarting[20209] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Beginning transaction with isolation level 'Unspecified'.dbug: 08.03.2023 21:44:59.942 RelationalEventId.TransactionStarted[20200] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Began transaction with isolation level 'ReadCommitted'.dbug: 08.03.2023 21:44:59.944 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.944 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.946 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (2ms).dbug: 08.03.2023 21:44:59.949 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE public.users ADD "Phone" text NOT NULL DEFAULT '';info: 08.03.2023 21:44:59.960 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE public.users ADD "Phone" text NOT NULL DEFAULT '';dbug: 08.03.2023 21:44:59.961 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.dbug: 08.03.2023 21:44:59.962 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).dbug: 08.03.2023 21:44:59.963 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteNonQuery' (1ms).dbug: 08.03.2023 21:44:59.964 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20230308193719_AddPhoneField', '7.0.3');info: 08.03.2023 21:44:59.968 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20230308193719_AddPhoneField', '7.0.3');dbug: 08.03.2023 21:44:59.969 RelationalEventId.TransactionCommitting[20210] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Committing transaction.dbug: 08.03.2023 21:44:59.992 RelationalEventId.TransactionCommitted[20202] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Committed transaction.dbug: 08.03.2023 21:44:59.993 RelationalEventId.TransactionDisposed[20204] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      Disposing transaction.dbug: 08.03.2023 21:44:59.993 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson29' on server 'tcp://host.docker.internal:32768'.dbug: 08.03.2023 21:44:59.994 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson29' on server '' (0ms).dbug: 08.03.2023 21:44:59.997 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'MyDBContext' disposed.dbug: 08.03.2023 21:44:59.999 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson29' on server ''.dbug: 08.03.2023 21:45:00.001 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson29' on server '' (1ms).
