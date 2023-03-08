@@ -21,11 +21,16 @@ namespace Lesson35.HomeWork.Filter
 
             Console.WriteLine($"[RESPONSE] {response.StatusCode}");
             Console.WriteLine($"[HEADERS] {JsonConvert.SerializeObject(response.Headers, Formatting.Indented)}");
-
-            if (context.Result is ObjectResult objectResult)
-                Console.WriteLine($"[BODY] {JsonConvert.SerializeObject(objectResult.Value, Formatting.Indented)}");
-            else if (context.Result is ContentResult contentResult)
-                Console.WriteLine($"[BODY] {contentResult.Content}");
+            try
+            {
+                if (context.Result is ObjectResult objectResult)
+                    Console.WriteLine($"[BODY] {JsonConvert.SerializeObject(objectResult.Value, Formatting.Indented)}");
+                else if (context.Result is ContentResult contentResult)
+                    Console.WriteLine($"[BODY] {contentResult.Content}");
+            }
+            catch (Exception ex)
+            { }
+                
         }
     }
 }

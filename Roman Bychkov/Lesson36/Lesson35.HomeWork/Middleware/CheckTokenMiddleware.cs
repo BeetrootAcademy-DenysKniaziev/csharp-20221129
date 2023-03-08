@@ -12,20 +12,19 @@
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var valid = Guid.TryParse(context.Request.Headers["token"].ToString(), out Guid result);
-
-            if (valid && _whiteList.Contains(result))
+            if (Guid.TryParse(context.Request.Headers["token"].ToString(), out Guid result) && _whiteList.Contains(result))
                 await _next.Invoke(context);
-            else if(!valid)
-            {
-                context.Response.StatusCode = 401;
-                context.Response.WriteAsync("Invalid token");
-            }
-            else
+            else if(string.IsNullOrWhiteSpace(context.Request.Headers["token"].ToString()))
             {
                 context.Response.StatusCode = 403;
                 context.Response.WriteAsync("You have not access!");
             }
+            else
+            {
+                context.Response.StatusCode = 401;
+                context.Response.WriteAsync("Invalid token");
+            }
+            
         }
     }
 }

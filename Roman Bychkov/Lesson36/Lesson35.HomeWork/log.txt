@@ -106,3 +106,476 @@ Body: System.Threading.Tasks.Task`1[System.String]
 Status Code: 200
 Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
 Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/DeleteById
+Method: DELETE
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/DeleteById
+Method: DELETE
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/5
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/5
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/5
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/5
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/5
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/7
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/DeleteById
+Method: DELETE
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/CreateOrder
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/CreateOrder
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/CreateOrder
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/7
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/7
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/7
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/UpdateProduct/7
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Orders/UpdateOrder/23
+Method: PATCH
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Persons/GetById
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/GetAll
+Method: GET
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Request URL: https://localhost:7218/api/Products/AddProduct
+Method: POST
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpRequestHeaders
+Body: System.Threading.Tasks.Task`1[System.String]
+Status Code: 200
+Headers: Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders
+Body: System.Threading.Tasks.Task`1[System.String]

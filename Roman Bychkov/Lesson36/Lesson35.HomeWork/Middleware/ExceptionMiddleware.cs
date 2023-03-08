@@ -22,8 +22,8 @@ namespace Lesson35.HomeWork.Middleware
             {
                 Console.WriteLine(ex.Message);
                 context.Response.StatusCode = 400;
-                var buffer = Encoding.UTF8.GetBytes("Bad Request 404!!!");
-                context.Response.Body.WriteAsync(buffer, 0, buffer.Length);
+                var buffer = Encoding.UTF8.GetBytes(ex.Message);
+                await context.Response.Body.WriteAsync(buffer, 0, buffer.Length);
 
             }
         }

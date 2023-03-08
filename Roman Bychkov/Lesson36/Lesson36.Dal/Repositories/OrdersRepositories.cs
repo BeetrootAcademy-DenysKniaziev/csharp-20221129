@@ -9,13 +9,13 @@ namespace Lesson36.Dal.Repositories
             _context = context;
         }
 
-        public async void Add(Order order)
+        public async Task Add(Order order)
         {
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(Order order)
+        public async Task Delete(Order order)
         {
             _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
@@ -31,7 +31,7 @@ namespace Lesson36.Dal.Repositories
             return await _context.Orders.SingleOrDefaultAsync(p => p.Id == id);
         }
 
-        public async void Update(Order order)
+        public async Task Update(Order order)
         {
             _context.Orders.Update(order);
             await _context.SaveChangesAsync();

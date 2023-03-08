@@ -32,13 +32,13 @@ namespace Lesson35.HomeWork.Controllers
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-             _products.Delete(await _products.GetById(id));
+             await _products.Delete(await _products.GetById(id));
              return Ok("Deleted");
         }
         [HttpPost]
         [Route("AddProduct")]
         [ConsoleLogFilter]
-        public async Task<ActionResult> PostPerson([FromBody] ProductJSON product)
+        public async Task<ActionResult> PostProduct([FromBody] ProductJSON product)
         {
             Product newProduct = new Product()
             {
@@ -47,9 +47,26 @@ namespace Lesson35.HomeWork.Controllers
                 Price = product.Price,
                 DiscountedPrice = product.DiscountedPrice
             };
-            _products.Add(newProduct);
+            await _products.Add(newProduct);
             return Created("Created", newProduct);
         }
+
+      
+       
+        [HttpPatch("UpdateProduct/{id}")]
+        public async Task<ActionResult> UpdatePerson([FromRoute] int id, [FromBody] ProductJSON product)
+        {
+            Product newProduct = new Product()
+            {
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                DiscountedPrice = product.DiscountedPrice
+            };
+            await _products.Update(newProduct, id);
+            return Ok(await _products.GetById(id));
+        }
+
         public class ProductJSON
         {
             [JsonProperty("name")]

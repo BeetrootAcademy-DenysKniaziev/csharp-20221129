@@ -1,6 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Lesson35.HomeWork.Controllers
 {
@@ -14,7 +12,6 @@ namespace Lesson35.HomeWork.Controllers
         public OrdersController(IOrdersServices orders)
         {
             _orders = orders;
-
         }
 
         [HttpGet]
@@ -25,7 +22,7 @@ namespace Lesson35.HomeWork.Controllers
         }
         [Route("GetById")]
         [HttpGet]
-       
+
         public async Task<ActionResult> GetById(int id)
         {
             var result = await _orders.GetById(id);
@@ -36,7 +33,7 @@ namespace Lesson35.HomeWork.Controllers
         [Route("DeleteById")]
         public async Task<ActionResult> Delete(int id)
         {
-            _orders.Delete(await _orders.GetById(id));
+            await _orders.Delete(await _orders.GetById(id));
             return Ok("Deleted");
         }
 
@@ -50,10 +47,24 @@ namespace Lesson35.HomeWork.Controllers
                 ProductId = order.IdProduct,
                 OrderTime = order.DateCreate
             };
-            _orders.Add(newOrder);
+            await _orders.Add(newOrder);
             return Created("Created", newOrder);
         }
-       
+        [HttpPatch("UpdateOrder/{id}")]
+        public async Task<ActionResult> UpdatePerson([FromRoute] int id, [FromBody] OrderJSON order)
+        {
+            Order newOrder = new Order()
+            {
+                PersonId = order.IdPerson,
+                ProductId = order.IdProduct,
+                OrderTime = order.DateCreate
+            };
+            await _orders.Update(newOrder, id);
+            var result = await _orders.GetById(id);
+            result.Product = null;
+            result.Person = null;
+            return Ok(result);
+        }
         public class OrderJSON
         {
             [JsonProperty("idProduct")]
@@ -64,7 +75,5 @@ namespace Lesson35.HomeWork.Controllers
             public DateTime DateCreate { get; set; }
 
         }
-
     }
-
 }

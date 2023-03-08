@@ -42,7 +42,7 @@ namespace Lesson35.HomeWork.Controllers
                 Gender = person.Gender,
                 Address = person.Address
             };
-            _persons.Add(newPerson);
+            await _persons.Add(newPerson);
             return Created("Created",newPerson);
         }
 
@@ -51,8 +51,22 @@ namespace Lesson35.HomeWork.Controllers
         [ConsoleLogFilter]
         public async Task<ActionResult> Delete(int id)
         {
-            _persons.Delete(_persons.GetById(id).Result);
+            await _persons.Delete(_persons.GetById(id).Result);
             return Ok("Deleted");
+        }
+        [HttpPatch("UpdatePerson/{id}")]
+        public async Task<ActionResult> UpdatePerson([FromRoute] int id, [FromBody] PersonJSON person)
+        {
+            Person newPerson = new Person()
+            {
+               LastName = person.LastName,
+               FirstName = person.FirstName,
+               Age = person.Age,
+               Gender = person.Gender,
+               Address= person.Address
+            };
+            await _persons.Update(newPerson, id);
+            return Ok(await _persons.GetById(id));
         }
         public class PersonJSON
         {

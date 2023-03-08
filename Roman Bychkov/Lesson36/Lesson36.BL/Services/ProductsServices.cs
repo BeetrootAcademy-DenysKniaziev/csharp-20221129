@@ -3,21 +3,34 @@ using Lesson36.Dal.Repositories;
 
 namespace Lesson36.BL.Services
 {
-    public class ProductsServices:IProductsServices
+    public class ProductsServices : IProductsServices
     {
         private IProductsRepository _productsRepository;
         public ProductsServices(IProductsRepository rep)
         {
             _productsRepository = rep;
         }
-        public void Add(Product product)
+        public async Task Add(Product product)
         {
-            _productsRepository.Add(product);
+            if (string.IsNullOrWhiteSpace(product.Name))
+                throw new ArgumentException("Invalid product name");
+            if (product.Price <= 0)
+                throw new ArgumentException("Invalid product price");
+            if (string.IsNullOrWhiteSpace(product.Description))
+                throw new ArgumentException("Invalid product description");
+            if (string.IsNullOrWhiteSpace(product.Description))
+                throw new ArgumentException("Invalid product description");
+            if (product.Price < product.DiscountedPrice)
+                throw new ArgumentException("Invalid product discount price");
+
+            await _productsRepository.Add(product);
         }
 
-        public void Delete(Product person)
+        public async Task Delete(Product product)
         {
-            _productsRepository.Delete(person);
+            if (product is null)
+                throw new ArgumentNullException("Product does not exist");
+            await _productsRepository.Delete(product);
         }
 
         public async Task<IEnumerable<Product>> Get()
@@ -30,9 +43,21 @@ namespace Lesson36.BL.Services
             return await _productsRepository.GetById(id);
         }
 
-        public void Update(Product person)
+        public async Task Update(Product product, int id)
         {
-            _productsRepository.Update(person);
+            var updateProduct = await GetById(id);
+            if (updateProduct is null)
+                throw new ArgumentNullException("Product does not exist");
+            else
+            {
+                updateProduct.Price = product.Price > 0 ? product.Price : updateProduct.Price;
+                updateProduct.Description = product.Description ?? updateProduct.Description;
+                updateProduct.DiscountedPrice = product.DiscountedPrice > 0 ? product.DiscountedPrice : updateProduct.DiscountedPrice;
+                if (updateProduct.DiscountedPrice >= updateProduct.Price)
+                    throw new ArgumentException("Invalid discount price");
+                updateProduct.Name = product.Name ?? updateProduct.Name;
+            }
+            await _productsRepository.Update(updateProduct);
         }
     }
 }
