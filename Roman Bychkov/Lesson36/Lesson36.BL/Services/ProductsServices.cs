@@ -20,7 +20,7 @@ namespace Lesson36.BL.Services
                 throw new ArgumentException("Invalid product description");
             if (string.IsNullOrWhiteSpace(product.Description))
                 throw new ArgumentException("Invalid product description");
-            if (product.Price < product.DiscountedPrice)
+            if (product.Price < product.DiscountedPrice || product.DiscountedPrice <= 0)
                 throw new ArgumentException("Invalid product discount price");
 
             await _productsRepository.Add(product);

@@ -17,9 +17,9 @@ namespace Lesson36.BL.Services
         }
         public async Task Add(Order order)
         {
-            if (_productsRepository.GetById(order.ProductId) is null)
+            if (await _productsRepository.GetById(order.ProductId) is null)
                 throw new ArgumentNullException("Required product identifier does not exist");
-            if (_personsRepository.GetById(order.PersonId) is null)
+            if (await _personsRepository.GetById(order.PersonId) is null)
                 throw new ArgumentNullException("Required person identifier does not exist");
             await _ordersRepository.Add(order);
         }
