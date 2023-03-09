@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lesson37.Contracts\Lesson36.Contracts.csproj" />
+    <ProjectReference Include="..\Lesson36.Contracts\Lesson36.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

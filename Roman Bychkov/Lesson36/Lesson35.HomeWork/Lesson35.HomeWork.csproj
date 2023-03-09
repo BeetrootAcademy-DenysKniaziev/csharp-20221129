@@ -21,8 +21,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lesson36.BL\Lesson36.BL.csproj" />
+    <ProjectReference Include="..\Lesson36.Contracts\Lesson36.Contracts.csproj" />
     <ProjectReference Include="..\Lesson36.Dal\Lesson36.Dal.csproj" />
-    <ProjectReference Include="..\Lesson37.Contracts\Lesson36.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
