@@ -8,6 +8,7 @@ namespace Snake
 {
     internal class Obj
     {
+
         public int ObjType;
         public Obj(int objType) { ObjType = objType; }
         public static void TypeClarifing(TheSnake snake, int objType)

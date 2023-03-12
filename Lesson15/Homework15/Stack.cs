@@ -25,7 +25,9 @@ public class Element<U>
     }
 }
 
+
 internal class MyStack<U> : IEnumerable<U>
+
 {
     //public U Element { get; set; }
     //public Element<U> CurrentElement { get; set; }
@@ -111,6 +113,7 @@ internal class MyStack<U> : IEnumerable<U>
     
     }
 
+
     IEnumerator IEnumerable.GetEnumerator()
     {                                               
         return ((IEnumerable)this).GetEnumerator();
@@ -125,6 +128,7 @@ internal class MyStack<U> : IEnumerable<U>
             temp = temp.Next; 
         }
     }
+
 
 
 
