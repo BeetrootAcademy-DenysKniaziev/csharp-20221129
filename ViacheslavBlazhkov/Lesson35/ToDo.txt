@@ -1,0 +1,6 @@
+﻿Add Controllers for People, Orders
+Add handling middleware (status code + body)
+Add Action Filter x2
+
+- Extra:
+Add Authentication middleware
