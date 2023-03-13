@@ -14,13 +14,14 @@
         [Column("arcticle_name")]
         public string ArcticleName { get; set; }
 
-        [StringLength(50)]
-        [Required]
-        [Column("arcticle_view")]
-        public string ArcticleView { get; set; }
+        //[StringLength(50)]
+        //[Required]
+        //[Column("arcticle_view")]
+        //public string ArcticleView { get; set; }
 
         public virtual Course Course { get; set; }
-        public virtual List<Like> Like { get; set; }
-        public virtual List<Comment> Comment { get; set; }
+        public virtual List<LikeArticle> Likes { get; set; }
+        public virtual List<Comment> Comments { get; set; }
+        public virtual List<Image> Images { get; set; }
     }
 }

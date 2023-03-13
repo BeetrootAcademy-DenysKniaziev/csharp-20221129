@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LearningSystem.Contracts
 {
-    internal class Course
+    [Table("courses", Schema = "public")]
+    public class Course
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("id")]
+        public int Id { get; set; }
+
+
+        [StringLength(50, MinimumLength = 3)]
+        [Required]
+        [Column("course_name")]
+        public string CourseName { get; set; }
+
+        [Column("created")]
+        public DateTime Created { get; } = DateTime.UtcNow;
+
+        public virtual List<Arcticle> Arcticles { get; set; }
+
     }
 }

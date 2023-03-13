@@ -15,7 +15,7 @@ namespace LearningSystem.Contracts
         [Column("user_name")]
         public string UserName { get; set; }
 
-        [StringLength(70]
+        [StringLength(70)]
         [Required]
         [Column("image")]
         public string Image { get; set; }
@@ -26,12 +26,16 @@ namespace LearningSystem.Contracts
         public string Password { get; set; }
 
         [Column("created")]
-        public DateTime Created { get; } = DateTime.Now;
+        public DateTime Created { get; } = DateTime.UtcNow;
 
         [Required]
         [EmailAddress]
         [Column("mail")]
         public string Email { get; set; }
+
+        public virtual List<LikeArticle> LikeArticles { get; set;}
+        public virtual List<Comment> Comments { get; set; }
+        public virtual List<LikeComment> LikeComments { get; set; }
 
     }
 }

@@ -9,10 +9,6 @@ namespace LearningSystem.Contracts
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("created")]
-        public DateTime Created { get; } = DateTime.Now;
-
-
         [Required]
         public bool Liked { get; set; } = false;
 
