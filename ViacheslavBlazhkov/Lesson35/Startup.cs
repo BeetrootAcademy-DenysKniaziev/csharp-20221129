@@ -1,5 +1,4 @@
 ﻿using Lesson35.Data;
-using Lesson35.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +22,6 @@ namespace Lesson35
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddScoped<ProductsRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
