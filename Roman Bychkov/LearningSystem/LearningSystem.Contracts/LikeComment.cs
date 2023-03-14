@@ -9,9 +9,7 @@ namespace LearningSystem.Contracts
         [Column("id")]
         public int Id { get; set; }
 
-        [Required]
-        public bool Liked { get; set; } = false;
-
+      
         [ForeignKey("user_id")]
         [Required]
         public int UserId { get; set; }

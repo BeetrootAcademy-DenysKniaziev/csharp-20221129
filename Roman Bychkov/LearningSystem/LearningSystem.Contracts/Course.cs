@@ -18,7 +18,7 @@ namespace LearningSystem.Contracts
         [Column("created")]
         public DateTime Created { get; } = DateTime.UtcNow;
 
-        public virtual List<Arcticle> Arcticles { get; set; }
+        public virtual List<Article> Articles { get; set; }
 
     }
 }

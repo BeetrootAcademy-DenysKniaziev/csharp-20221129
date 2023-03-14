@@ -21,7 +21,7 @@ namespace LearningSystem.Contracts
         public string Path { get; set; }
 
 
-        public virtual List<Arcticle> Arcticles { get; set; }
+        public virtual List<Article> Articles { get; set; }
 
     }
 }

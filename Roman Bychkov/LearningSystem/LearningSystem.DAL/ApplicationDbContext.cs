@@ -9,7 +9,7 @@ namespace LearningSystem.DAL
 
         public DbSet<Course> Courses { get; set; }
 
-        public DbSet<Arcticle> Arcticles { get; set; }
+        public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<LikeArticle> LikeArticles { get; set; }

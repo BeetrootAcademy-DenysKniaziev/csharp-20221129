@@ -22,7 +22,7 @@ namespace LearningSystem.Contracts
 
         public virtual User User { get; set; }
 
-        public virtual Arcticle Arcticle { get; set; }
+        public virtual Article Article { get; set; }
 
         public virtual List<LikeComment> LikeComments { get; set; }
     }

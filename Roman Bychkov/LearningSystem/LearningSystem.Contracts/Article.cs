@@ -1,7 +1,7 @@
 ﻿namespace LearningSystem.Contracts
 {
     [Table("arcticles", Schema = "public")]
-    public class Arcticle
+    public class Article
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

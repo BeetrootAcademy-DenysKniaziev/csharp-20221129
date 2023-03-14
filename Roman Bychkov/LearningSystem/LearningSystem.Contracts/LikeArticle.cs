@@ -21,6 +21,6 @@ namespace LearningSystem.Contracts
         public int ArticleId { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Arcticle Arcticle { get; set; }
+        public virtual Article Article { get; set; }
     }
 }
