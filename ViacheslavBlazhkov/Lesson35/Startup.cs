@@ -1,10 +1,6 @@
 ﻿using Lesson35.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using Lesson35.Middlewares;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 namespace Lesson35
@@ -36,6 +32,7 @@ namespace Lesson35
             {
                 app.UseDeveloperExceptionPage();
             }
+            // app.UseMiddleware<ThrowException>();
 
             app.UseHttpsRedirection();
 
@@ -54,6 +51,7 @@ namespace Lesson35
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

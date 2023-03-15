@@ -3918,4 +3918,637 @@ dbug: 11.03.2023 14:14:18.112 CoreEventId.ContextInitialized[10403] (Microsoft.E
       Closed connection to database 'Lesson35' on server '' (0ms).dbug: 14.03.2023 21:13:40.446 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
       'AppDbContext' disposed.dbug: 14.03.2023 21:13:40.447 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:13:40.448 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
-      Disposed connection to database 'Lesson35' on server '' (1ms).
+      Disposed connection to database 'Lesson35' on server '' (1ms).dbug: 14.03.2023 21:30:29.502 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:30:29.568 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:30:29.734 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:30:29.794 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:30:29.844 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (46ms).dbug: 14.03.2023 21:30:29.846 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:30:29.854 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (65ms).dbug: 14.03.2023 21:30:29.860 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (73ms).dbug: 14.03.2023 21:30:29.865 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:30:29.977 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:30:29.987 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:30:30.031 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (38ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:30:30.043 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:30:30.050 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 14ms reading results.dbug: 14.03.2023 21:30:30.056 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:30:30.064 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (9ms).dbug: 14.03.2023 21:30:30.081 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:30:30.086 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:30:30.091 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (2ms).dbug: 14.03.2023 21:31:29.070 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:31:29.137 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:31:29.345 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:31:29.381 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:31:29.406 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (25ms).dbug: 14.03.2023 21:31:29.407 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:31:29.415 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (38ms).dbug: 14.03.2023 21:31:29.419 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (44ms).dbug: 14.03.2023 21:31:29.424 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:31:29.539 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:31:29.551 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:31:29.595 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (41ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:31:29.604 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:31:29.613 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 13ms reading results.dbug: 14.03.2023 21:31:29.617 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:31:29.622 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (4ms).dbug: 14.03.2023 21:31:29.636 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:31:29.643 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:31:29.646 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (4ms).dbug: 14.03.2023 21:32:19.466 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:32:19.527 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:32:19.672 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:32:19.707 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:32:19.734 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (26ms).dbug: 14.03.2023 21:32:19.736 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:32:19.743 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (37ms).dbug: 14.03.2023 21:32:19.748 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (45ms).dbug: 14.03.2023 21:32:19.754 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:32:19.895 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:32:19.905 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:32:19.951 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (39ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:32:19.961 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:32:19.970 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 14ms reading results.dbug: 14.03.2023 21:32:19.975 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:32:19.982 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (6ms).dbug: 14.03.2023 21:32:19.997 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:32:20.008 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:32:20.014 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (6ms).dbug: 14.03.2023 21:46:13.987 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:46:14.024 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Product>()'dbug: 14.03.2023 21:46:14.136 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => new SingleQueryingEnumerable<Product>(
+          (RelationalQueryContext)queryContext, 
+          RelationalCommandCache.QueryExpression(
+              Projection Mapping:
+                  EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Product.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Product.Description (string), 1], [Property: Product.Price (decimal) Required, 2], [Property: Product.Title (string) Required, 3] }
+              SELECT p.id, p.description, p.price, p.title
+              FROM products AS p), 
+          null, 
+          Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Product>, 
+          Lesson35.Data.AppDbContext, 
+          False, 
+          False, 
+          True
+      )'dbug: 14.03.2023 21:46:14.163 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:46:14.192 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (26ms).dbug: 14.03.2023 21:46:14.194 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:46:14.201 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (38ms).dbug: 14.03.2023 21:46:14.203 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (43ms).dbug: 14.03.2023 21:46:14.211 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:46:14.360 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:14.367 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.description, p.price, p.title
+      FROM products AS pinfo: 14.03.2023 21:46:14.399 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.description, p.price, p.title
+      FROM products AS pdbug: 14.03.2023 21:46:14.434 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.450 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.451 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.452 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.453 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.453 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.454 CoreEventId.StartedTracking[10806] (Microsoft.EntityFrameworkCore.ChangeTracking) 
+      Context 'AppDbContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.dbug: 14.03.2023 21:46:14.461 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:14.469 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 65ms reading results.dbug: 14.03.2023 21:46:14.474 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:14.479 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (5ms).dbug: 14.03.2023 21:46:14.502 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:46:14.507 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:46:14.511 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (2ms).dbug: 14.03.2023 21:46:27.618 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:46:27.648 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Person>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:46:27.740 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Person>(
+          asyncEnumerable: new SingleQueryingEnumerable<Person>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Person.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Person.Address (string), 1], [Property: Person.Email (string), 2], [Property: Person.FirstName (string) Required MaxLength(30), 3], [Property: Person.LastName (string) Required MaxLength(30), 4], [Property: Person.Phone (string) Required, 5] }
+                  SELECT TOP(1) p.id, p.address, p.email, p.first_name, p.last_name, p.phone
+                  FROM people AS p
+                  WHERE p.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Person>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:46:27.753 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:46:27.753 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (0ms).dbug: 14.03.2023 21:46:27.754 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:46:27.755 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (2ms).dbug: 14.03.2023 21:46:27.761 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (8ms).dbug: 14.03.2023 21:46:27.762 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:46:27.763 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:27.767 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.email, p.first_name, p.last_name, p.phone
+      FROM people AS p
+      WHERE p.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:46:27.786 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.address, p.email, p.first_name, p.last_name, p.phone
+      FROM people AS p
+      WHERE p.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:46:27.789 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:27.791 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 3ms reading results.dbug: 14.03.2023 21:46:27.793 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:27.795 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (2ms).dbug: 14.03.2023 21:46:27.800 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:46:27.803 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:46:27.805 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (1ms).dbug: 14.03.2023 21:46:55.760 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:46:55.821 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Product>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:46:56.005 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Product>(
+          asyncEnumerable: new SingleQueryingEnumerable<Product>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Product.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Product.Description (string), 1], [Property: Product.Price (decimal) Required, 2], [Property: Product.Title (string) Required, 3] }
+                  SELECT TOP(1) p.id, p.description, p.price, p.title
+                  FROM products AS p
+                  WHERE p.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Product>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:46:56.046 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:46:56.069 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (22ms).dbug: 14.03.2023 21:46:56.071 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:46:56.077 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (31ms).dbug: 14.03.2023 21:46:56.080 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (37ms).dbug: 14.03.2023 21:46:56.084 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:46:56.211 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:56.219 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.description, p.price, p.title
+      FROM products AS p
+      WHERE p.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:46:56.255 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (35ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT p.id, p.description, p.price, p.title
+      FROM products AS p
+      WHERE p.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:46:56.262 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:56.271 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 10ms reading results.dbug: 14.03.2023 21:46:56.277 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:46:56.283 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (5ms).dbug: 14.03.2023 21:46:56.301 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:46:56.316 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:46:56.320 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (3ms).dbug: 14.03.2023 21:53:07.785 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:53:07.855 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:53:08.024 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:53:08.065 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:53:08.088 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (22ms).dbug: 14.03.2023 21:53:08.090 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:53:08.096 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (32ms).dbug: 14.03.2023 21:53:08.099 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (38ms).dbug: 14.03.2023 21:53:08.103 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:53:08.202 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:53:08.211 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:53:08.256 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (45ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:53:08.267 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:53:08.274 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 14ms reading results.dbug: 14.03.2023 21:53:08.283 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:53:08.289 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (6ms).dbug: 14.03.2023 21:53:08.316 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:53:08.321 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:53:08.324 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (3ms).dbug: 14.03.2023 21:55:17.913 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 14.03.2023 21:55:17.985 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 14.03.2023 21:55:18.144 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 14.03.2023 21:55:18.193 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 14.03.2023 21:55:18.221 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (25ms).dbug: 14.03.2023 21:55:18.223 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 14.03.2023 21:55:18.230 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (37ms).dbug: 14.03.2023 21:55:18.236 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (44ms).dbug: 14.03.2023 21:55:18.242 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:55:18.350 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:55:18.359 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 14.03.2023 21:55:18.395 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (36ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 14.03.2023 21:55:18.404 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:55:18.411 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 12ms reading results.dbug: 14.03.2023 21:55:18.415 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 14.03.2023 21:55:18.421 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (5ms).dbug: 14.03.2023 21:55:18.448 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 14.03.2023 21:55:18.455 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 14.03.2023 21:55:18.458 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (3ms).dbug: 15.03.2023 08:50:36.783 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 15.03.2023 08:50:36.894 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 15.03.2023 08:50:37.139 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 15.03.2023 08:50:37.187 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 15.03.2023 08:50:37.223 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (35ms).dbug: 15.03.2023 08:50:37.224 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 15.03.2023 08:50:37.233 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (48ms).dbug: 15.03.2023 08:50:37.236 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (53ms).dbug: 15.03.2023 08:50:37.241 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.fail: 15.03.2023 08:50:39.331 RelationalEventId.ConnectionError[20004] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      An error occurred using the connection to database 'Lesson35' on server ''.fail: 15.03.2023 08:50:39.403 CoreEventId.QueryIterationFailed[10100] (Microsoft.EntityFrameworkCore.Query) 
+      An exception occurred while iterating over the results of a query for context type 'Lesson35.Data.AppDbContext'.
+      System.InvalidOperationException: An exception has been raised that is likely due to a transient failure.
+       ---> Npgsql.NpgsqlException (0x80004005): Failed to connect to 192.168.1.140:32768
+       ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+         at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+         at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|281_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+         at Npgsql.TaskTimeoutAndCancellation.ExecuteAsync(Func`2 getTaskFunc, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+         at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+         at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+         at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|215_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+         at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.OpenNewConnector(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.PoolingDataSource.<Get>g__RentAsync|28_0(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+         at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|45_0(Boolean async, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+         at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         --- End of inner exception stack trace ---
+         at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+         at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()dbug: 15.03.2023 08:50:39.461 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 15.03.2023 08:50:39.468 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 15.03.2023 08:50:39.479 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (4ms).dbug: 15.03.2023 08:50:56.555 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 15.03.2023 08:50:56.565 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 15.03.2023 08:50:56.566 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (1ms).dbug: 15.03.2023 08:50:56.567 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 15.03.2023 08:50:56.568 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (2ms).dbug: 15.03.2023 08:50:56.569 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (4ms).dbug: 15.03.2023 08:50:56.571 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 15.03.2023 08:50:56.823 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 08:50:56.832 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 15.03.2023 08:50:56.886 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (54ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 15.03.2023 08:50:56.894 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 08:50:56.901 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 12ms reading results.dbug: 15.03.2023 08:50:56.905 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 08:50:56.913 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (7ms).dbug: 15.03.2023 08:50:56.923 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 15.03.2023 08:50:56.924 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 15.03.2023 08:50:56.925 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (0ms).dbug: 15.03.2023 08:52:52.381 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 15.03.2023 08:52:52.461 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 15.03.2023 08:52:52.660 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 15.03.2023 08:52:52.706 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 15.03.2023 08:52:52.740 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (32ms).dbug: 15.03.2023 08:52:52.741 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 15.03.2023 08:52:52.747 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (43ms).dbug: 15.03.2023 08:52:52.751 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (49ms).dbug: 15.03.2023 08:52:52.755 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 15.03.2023 08:52:52.902 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 08:52:52.909 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 15.03.2023 08:52:52.967 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (51ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 15.03.2023 08:52:52.978 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 08:52:52.988 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 15ms reading results.dbug: 15.03.2023 08:52:52.994 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 08:52:53.000 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (5ms).dbug: 15.03.2023 08:52:53.026 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 15.03.2023 08:52:53.036 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 15.03.2023 08:52:53.040 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (3ms).dbug: 15.03.2023 09:01:20.964 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 15.03.2023 09:01:21.034 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 15.03.2023 09:01:21.188 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 15.03.2023 09:01:21.223 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 15.03.2023 09:01:21.248 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (24ms).dbug: 15.03.2023 09:01:21.249 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 15.03.2023 09:01:21.254 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (32ms).dbug: 15.03.2023 09:01:21.258 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (37ms).dbug: 15.03.2023 09:01:21.263 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 15.03.2023 09:01:21.435 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:01:21.442 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 15.03.2023 09:01:21.477 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (31ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 15.03.2023 09:01:21.484 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:01:21.492 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 10ms reading results.dbug: 15.03.2023 09:01:21.497 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:01:21.501 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (4ms).dbug: 15.03.2023 09:01:21.518 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 15.03.2023 09:01:21.523 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 15.03.2023 09:01:21.527 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (2ms).dbug: 15.03.2023 09:01:57.427 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 15.03.2023 09:01:57.524 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 15.03.2023 09:01:57.687 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 15.03.2023 09:01:57.727 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 15.03.2023 09:01:57.755 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (27ms).dbug: 15.03.2023 09:01:57.757 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 15.03.2023 09:01:57.765 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (37ms).dbug: 15.03.2023 09:01:57.768 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (44ms).dbug: 15.03.2023 09:01:57.773 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 15.03.2023 09:01:57.882 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:01:57.890 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 15.03.2023 09:01:57.930 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (38ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 15.03.2023 09:01:57.937 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:01:57.946 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 11ms reading results.dbug: 15.03.2023 09:01:57.951 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:01:57.955 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (4ms).dbug: 15.03.2023 09:01:58.013 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 15.03.2023 09:01:58.019 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 15.03.2023 09:01:58.022 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (3ms).dbug: 15.03.2023 09:02:22.564 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.3 initialized 'AppDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:7.0.3+fb48afb5038d8370cce4298b33a3ed51888890e7' with options: Nonedbug: 15.03.2023 09:02:22.642 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Order>()
+          .FirstOrDefault(e => EF.Property<int>(e, "Id") == __p_0)'dbug: 15.03.2023 09:02:22.794 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<Order>(
+          asyncEnumerable: new SingleQueryingEnumerable<Order>(
+              (RelationalQueryContext)queryContext, 
+              RelationalCommandCache.QueryExpression(
+                  Projection Mapping:
+                      EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Order.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Order.OrderDate (DateTime) Required, 1], [Property: Order.PersonId (int) Required FK Index, 2], [Property: Order.ProductId (int) Required FK Index, 3] }
+                  SELECT TOP(1) o.id, o.order_time, o.person_id, o.product_id
+                  FROM orders AS o
+                  WHERE o.id == @__p_0), 
+              null, 
+              Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Order>, 
+              Lesson35.Data.AppDbContext, 
+              False, 
+              False, 
+              True
+          ), 
+          cancellationToken: queryContext.CancellationToken)'dbug: 15.03.2023 09:02:22.842 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.dbug: 15.03.2023 09:02:22.870 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (27ms).dbug: 15.03.2023 09:02:22.872 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.dbug: 15.03.2023 09:02:22.878 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (38ms).dbug: 15.03.2023 09:02:22.883 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (45ms).dbug: 15.03.2023 09:02:22.888 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'Lesson35' on server ''.dbug: 15.03.2023 09:02:23.009 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:02:23.024 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1info: 15.03.2023 09:02:23.066 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (47ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT o.id, o.order_time, o.person_id, o.product_id
+      FROM orders AS o
+      WHERE o.id = @__p_0
+      LIMIT 1dbug: 15.03.2023 09:02:23.072 RelationalEventId.DataReaderClosing[20301] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Closing data reader to 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:02:23.081 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+      A data reader for 'Lesson35' on server 'tcp://host.docker.internal:32768' is being disposed after spending 10ms reading results.dbug: 15.03.2023 09:02:23.085 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'Lesson35' on server 'tcp://host.docker.internal:32768'.dbug: 15.03.2023 09:02:23.090 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'Lesson35' on server '' (5ms).dbug: 15.03.2023 09:02:23.135 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      'AppDbContext' disposed.dbug: 15.03.2023 09:02:23.140 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'Lesson35' on server ''.dbug: 15.03.2023 09:02:23.142 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'Lesson35' on server '' (2ms).
