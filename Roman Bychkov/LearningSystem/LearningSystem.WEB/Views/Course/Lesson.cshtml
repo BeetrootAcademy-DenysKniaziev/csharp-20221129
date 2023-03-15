@@ -1,0 +1,20 @@
+﻿@using LearningSystem.Contracts
+@model int[]
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Курси</h1>
+    <div class="course-container">
+        @{
+            foreach(int item in @Model)
+            {
+               <p>item</p>
+            }
+          }
+    </div>
+</div>

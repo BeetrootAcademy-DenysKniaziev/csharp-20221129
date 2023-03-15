@@ -1,8 +1,26 @@
-﻿@{
+﻿@using LearningSystem.Contracts
+@model List<LearningSystem.Contracts.Course>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
+
+
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Курси</h1>
+    <div class="course-container">
+        @{
+            foreach(Course item in @Model)
+            {
+                <a class="course-item" asp-area="" asp-controller="Course" asp-action="Lesson/@item.Id">
+                <div class="course-item"> 
+                    <img class="course-image" src="@item.ImagePath" />
+                    <p class="title">@item.CourseName</p>
+                    <p>@item.Description</p>
+                </div>
+                </a>
+            }
+          }
+    </div>
 </div>

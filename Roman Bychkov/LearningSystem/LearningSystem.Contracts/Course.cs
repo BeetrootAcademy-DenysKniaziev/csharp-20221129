@@ -15,6 +15,16 @@ namespace LearningSystem.Contracts
         [Column("course_name")]
         public string CourseName { get; set; }
 
+        [StringLength(100)]
+        [Required]
+        [Column("image_path")]
+        public string ImagePath { get; set; }
+
+        [StringLength(200)]
+        [Required]
+        [Column("description")]
+        public string Description { get; set; }
+
         [Column("created")]
         public DateTime Created { get; } = DateTime.UtcNow;
 

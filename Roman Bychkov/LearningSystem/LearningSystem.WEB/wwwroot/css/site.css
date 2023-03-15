@@ -2,6 +2,7 @@ html {
   font-size: 14px;
 }
 
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -14,5 +15,24 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: Courier New, monospace;
+    font-size: large;
+}
+.header-style {
+    display: flex;
+    justify-content: flex-end;
+    background-color: ghostwhite;
+}
+.icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-image: url('path/to/icon.png');
+    background-size: cover;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.myactive {
+    background-color: #ded09f;
 }

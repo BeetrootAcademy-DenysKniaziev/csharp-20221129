@@ -1,5 +1,7 @@
-﻿using LearningSystem.WEB.Models;
+﻿using LearningSystem.DAL;
+using LearningSystem.WEB.Models;
 using Microsoft.AspNetCore.Mvc;
+
 using System.Diagnostics;
 
 namespace LearningSystem.WEB.Controllers
@@ -7,19 +9,22 @@ namespace LearningSystem.WEB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ApplicationDbContext _db;
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _logger = logger;
+            _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewBag.Active = "courses";
+            return View(await _db.Courses.ToListAsync());
         }
 
         public IActionResult Privacy()
         {
+            ViewBag.Active = "privacy";
             return View();
         }
 

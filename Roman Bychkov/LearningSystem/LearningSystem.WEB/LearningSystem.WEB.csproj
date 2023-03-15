@@ -18,4 +18,8 @@
     <ProjectReference Include="..\LearningSystem.DAL\LearningSystem.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\icon\" />
+  </ItemGroup>
+
 </Project>
