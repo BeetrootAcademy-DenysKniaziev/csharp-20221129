@@ -14,6 +14,11 @@
         [Column("arcticle_name")]
         public string ArcticleName { get; set; }
 
+        
+        [Required]
+        [Column("number")]
+        public int Number { get; set; }
+
         //[StringLength(50)]
         //[Required]
         //[Column("arcticle_view")]

@@ -1,0 +1,27 @@
+﻿@using LearningSystem.Contracts
+@model Course
+
+@{
+    ViewData["Title"] = Model.CourseName;
+    Layout = "_LayoutLessons";
+}
+
+
+
+<div  class="no-center" style="margin-left: 0 auto">
+    @{
+        
+           <div class="lessons-content-container">
+                <div class="lessons-cotnainer">
+                    @foreach(Article item in Model.Articles)
+                    {
+                        <div>@item.Id @item.ArcticleName</div>
+                    }
+                </div>
+                <div>
+                    AAAAAAAAAAAAAAAAAAA
+                </div>
+            </div>
+    }
+ </div>
+

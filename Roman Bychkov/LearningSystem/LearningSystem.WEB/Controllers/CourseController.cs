@@ -1,11 +1,9 @@
 ﻿using LearningSystem.DAL;
-using LearningSystem.WEB.Models;
 using Microsoft.AspNetCore.Mvc;
-
-using System.Diagnostics;
 
 namespace LearningSystem.WEB.Controllers
 {
+    [Route("[controller]")]
     public class CourseController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -16,11 +14,11 @@ namespace LearningSystem.WEB.Controllers
             _db = db;
         }
 
-        [Route("Lesson/{id}")]
-        public async Task<IActionResult> Lesson(int id)
+        [Route("{id}/Lessons")]
+        public async Task<IActionResult> Lessons(int id)
         {
             ViewBag.Active = "courses";
-            return View(new int[] {1,2,3,4,5});
+            return View(await _db.Courses.Include(c=>c.Articles).SingleOrDefaultAsync(c => c.Id == id));
         }
 
     }

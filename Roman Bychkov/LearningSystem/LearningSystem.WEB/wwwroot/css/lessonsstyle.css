@@ -1,0 +1,14 @@
+﻿.lessons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 1px solid #ccc; /* добавляем рамку */
+}
+
+.lessons-content-container {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    margin-left: 5%; /* добавляем отступ слева */
+}

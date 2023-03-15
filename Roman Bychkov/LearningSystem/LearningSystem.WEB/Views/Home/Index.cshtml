@@ -13,13 +13,12 @@
         @{
             foreach(Course item in @Model)
             {
-                <a class="course-item" asp-area="" asp-controller="Course" asp-action="Lesson/@item.Id">
                 <div class="course-item"> 
                     <img class="course-image" src="@item.ImagePath" />
-                    <p class="title">@item.CourseName</p>
+                    <a asp-area="" asp-controller="Course" asp-action="Lessons" asp-route-id="@item.Id"><p class="title">@item.CourseName</p></a>
                     <p>@item.Description</p>
                 </div>
-                </a>
+               
             }
           }
     </div>

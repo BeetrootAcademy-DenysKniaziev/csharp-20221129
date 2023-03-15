@@ -25,6 +25,10 @@ namespace LearningSystem.Contracts
         [Column("description")]
         public string Description { get; set; }
 
+        
+        [Column("content")]
+        public string Content { get; set; }
+
         [Column("created")]
         public DateTime Created { get; } = DateTime.UtcNow;
 
