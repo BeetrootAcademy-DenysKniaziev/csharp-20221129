@@ -13,7 +13,7 @@ namespace Lesson35.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            context.Response.StatusCode = 4040;
+            context.Response.StatusCode = 999;
 
             context.Response.ContentType = "text/plain";
             await context.Response.WriteAsync("<center><h1>What are you doing, MAN !?</h1></center>");

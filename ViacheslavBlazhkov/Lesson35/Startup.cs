@@ -1,4 +1,5 @@
-﻿using Lesson35.Data;
+﻿using Lesson35.ActionFilters;
+using Lesson35.Data;
 using Lesson35.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -19,7 +20,12 @@ namespace Lesson35
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(typeof(LoggingActionFilter));
+            });
+            services.AddLogging();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -32,7 +38,7 @@ namespace Lesson35
             {
                 app.UseDeveloperExceptionPage();
             }
-            // app.UseMiddleware<ThrowException>();
+            //app.UseMiddleware<ThrowException>();
 
             app.UseHttpsRedirection();
 
