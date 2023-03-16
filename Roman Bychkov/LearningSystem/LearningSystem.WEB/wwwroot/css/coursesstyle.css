@@ -29,12 +29,17 @@
             padding: 0; /* убираем внутренние отступы */
             margin-bottom: 5px; /* добавляем отступ между текстом и рамкой */
         }
-.course-item:hover{
-   border: 5px solid #ccc; 
-   border-radius: 10px;
-
+.course-item:hover {
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    height: auto;
+    overflow: hidden;
 }
-.title {
+.course-item {
+    word-wrap: break-word;
+}
+  
+    .title {
     padding-top: 5px;
     font-size: 20px; /* установите желаемый размер шрифта */
     font-weight: bold; /* установите желаемый вес шрифта */

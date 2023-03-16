@@ -36,3 +36,11 @@ body {
 .myactive {
     background-color: #ded09f;
 }
+a {
+    text-decoration: none;
+    color: inherit;
+}
+    a:hover {
+        text-decoration: none;
+        color: inherit;
+    }

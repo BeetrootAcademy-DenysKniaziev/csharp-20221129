@@ -21,5 +21,13 @@ namespace LearningSystem.WEB.Controllers
             return View(await _db.Courses.Include(c=>c.Articles).SingleOrDefaultAsync(c => c.Id == id));
         }
 
+        [Route("{id}/Lesson/{number}")]
+        public async Task<IActionResult> Lesson(int id, int number)
+        {
+            ViewBag.Active = "courses";
+            ViewBag.Number = number;
+            return View(await _db.Courses.Include(c => c.Articles).SingleOrDefaultAsync(c => c.Id == id));
+        }
+
     }
 }

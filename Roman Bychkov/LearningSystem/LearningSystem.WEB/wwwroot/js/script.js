@@ -6,18 +6,3 @@
         else
             document.getElementById(items[i]).classList.remove('myactive');
 }
-document.getElementById('about').addEventListener('click',
-    () => {
-        RemoveActive('about');
-       
-    });
-document.getElementById('curses').addEventListener('click',
-    () => {
-        RemoveActive('curses');
-     
-    });
-document.getElementById('privacy').addEventListener('click',
-    () => {
-        RemoveActive('privacy');
-       
-    });

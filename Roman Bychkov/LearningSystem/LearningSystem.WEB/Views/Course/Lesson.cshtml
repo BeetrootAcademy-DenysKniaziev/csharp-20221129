@@ -2,7 +2,7 @@
 @model Course
 
 @{
-    ViewData["Title"] = Model.CourseName;
+    ViewData["Title"] = Model.CourseName + " - " + Model.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number).ArcticleName;
     Layout = "_LayoutLessons";
 }
 
@@ -13,17 +13,17 @@
         
            <div class="lessons-content-container">
                 <div class="lessons-container">
-                    @foreach(Article item in Model.Articles)
+                     @foreach(Article item in Model.Articles)
                     {
                          <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item.Number">
-                            <div>
-                                <h3><b>@item.Number @item.ArcticleName</b></h3>
+                            <div  id='@item.Number'>
+                                <h3><b>@item.Id @item.ArcticleName</b></h3>
                             </div>
                          </a>
                     }
                 </div>
                 <div style="margin-left: 5%">
-                    @Model.Content
+                   @Html.Raw(@Model.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number).Content)
                 </div>
             </div>
     }

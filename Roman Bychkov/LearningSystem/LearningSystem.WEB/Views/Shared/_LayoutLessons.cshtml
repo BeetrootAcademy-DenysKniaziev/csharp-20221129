@@ -22,6 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse header-style">
+                    <div style="margin-right: 10%">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" id="courses" asp-area="" asp-controller="Home" asp-action="Index">Курси</a>
@@ -33,6 +34,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Про сайт</a>
                         </li>
                     </ul>
+                    </div>
                  </div>
             </div>
         </nav>
@@ -54,6 +56,7 @@
     <script src="~/js/script.js" asp-append-version="true"></script>
      <script>
           document.getElementById('@ViewBag.Active').classList.add('myactive');
+          document.getElementById('@ViewBag.Number').classList.add('myactive');
      </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

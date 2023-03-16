@@ -22,6 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse header-style">
+                    <div style="margin-right: 10%">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" id="courses" asp-area="" asp-controller="Home" asp-action="Index">Курси</a>
@@ -33,11 +34,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Про сайт</a>
                         </li>
                     </ul>
+                    </div>
                  </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container" style="margin-bottom:20%">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
