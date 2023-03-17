@@ -15,7 +15,7 @@ namespace LearningSystem.WEB.Controllers
         }
 
         [Route("{id}/Lessons")]
-        public async Task<IActionResult> Lessons(int id)
+        public async Task<IActionResult> Lesson(int id)
         {
             ViewBag.Active = "courses";
             return View(await _db.Courses.Include(c=>c.Articles).SingleOrDefaultAsync(c => c.Id == id));

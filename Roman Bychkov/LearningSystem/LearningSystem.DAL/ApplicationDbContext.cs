@@ -11,7 +11,6 @@ namespace LearningSystem.DAL
 
         public DbSet<Article> Articles { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Image> Images { get; set; }
         public DbSet<LikeArticle> LikeArticles { get; set; }
         public DbSet<LikeComment> LikeComments { get; set; }
 

@@ -31,15 +31,20 @@
                             <a class="nav-link text-dark" id="privacy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Про сайт</a>
-                        </li>
+                           <a class="nav-link text-dark" id="authorisation" asp-area="" asp-controller="Aauthorisation" asp-action="Registration">
+                                <div style="display: flex">
+                                    Авторизація
+                                    <img class="icon" src="~/icon/authorisation.png">
+                               </div>
+                            </a>
+                         </li>
                     </ul>
                     </div>
                  </div>
             </div>
         </nav>
     </header>
-    <div class="container" style="margin-bottom:20%">
+    <div class="container" id="container" style="margin-bottom:20%">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

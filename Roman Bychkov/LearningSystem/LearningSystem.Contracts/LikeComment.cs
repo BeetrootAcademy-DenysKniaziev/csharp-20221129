@@ -2,7 +2,7 @@
 namespace LearningSystem.Contracts
 {
     [Table("like_comment", Schema = "public")]
-    public class LikeComment
+    public class LikeComment : IEntityWithId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

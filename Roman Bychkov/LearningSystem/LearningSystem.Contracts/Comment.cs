@@ -2,7 +2,7 @@
 namespace LearningSystem.Contracts
 {
     [Table("comment", Schema = "public")]
-    public class Comment
+    public class Comment : IEntityWithId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

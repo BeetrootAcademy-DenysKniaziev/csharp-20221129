@@ -2,13 +2,10 @@
 @model Course
 
 @{
-    ViewData["Title"] = Model.CourseName + " - " + Model.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number).ArcticleName;
-    Layout = "_LayoutLessons";
+    ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.ArcticleName;
 }
 
 
-
-<div  class="no-center" style="margin-left: 0 auto">
     @{
         
            <div class="lessons-content-container">
@@ -23,9 +20,13 @@
                     }
                 </div>
                 <div style="margin-left: 5%">
-                   @Html.Raw(@Model.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number).Content)
+                   @Html.Raw(@Model.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Content)
                 </div>
+                <script>
+                    document.getElementById('container').classList.remove('container');
+                    document.getElementById('@ViewBag.Number').classList.add('myactive');
+                 </script>
             </div>
     }
- </div>
+
 

@@ -14,7 +14,7 @@
             foreach(Course item in @Model)
             {
                 <div class="course-item"> 
-                <a asp-area="" asp-controller="Course" asp-action="Lessons" asp-route-id="@item.Id">
+                <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@item.Id">
                     <img class="course-image" src="@item.ImagePath" />
                     <p class="title">@item.CourseName</p>
                     <div>

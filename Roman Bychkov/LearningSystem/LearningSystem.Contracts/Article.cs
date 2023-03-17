@@ -1,7 +1,8 @@
-﻿namespace LearningSystem.Contracts
+﻿
+namespace LearningSystem.Contracts
 {
     [Table("arcticles", Schema = "public")]
-    public class Article
+    public class Article: IEntityWithId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,7 +18,7 @@
         
         [Required]
         [Column("number")]
-        public int Number { get; set; }
+        public byte Number { get; set; }
 
        
         [Required]
@@ -31,6 +32,5 @@
         public virtual Course Course { get; set; }
         public virtual List<LikeArticle> Likes { get; set; }
         public virtual List<Comment> Comments { get; set; }
-        public virtual List<Image> Images { get; set; }
     }
 }
