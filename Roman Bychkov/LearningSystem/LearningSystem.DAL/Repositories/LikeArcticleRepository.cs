@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LearningSystem.DAL.Repositories
 {
-    public class LikeArcticleRepository:ILikeArticleRepistory
+    public class LikeArcticleRepository:ILikeArticleRepository
     {
         private ApplicationDbContext _context;
         public LikeArcticleRepository(ApplicationDbContext context)

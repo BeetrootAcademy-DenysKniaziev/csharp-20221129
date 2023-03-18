@@ -23,6 +23,7 @@ body {
     display: flex;
     justify-content: flex-end;
     background-color: ghostwhite;
+    font-family: Verdana, bold;
 }
 .icon {
     display: inline-block;

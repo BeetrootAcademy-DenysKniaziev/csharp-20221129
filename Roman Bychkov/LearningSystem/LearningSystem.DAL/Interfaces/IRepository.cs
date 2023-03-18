@@ -1,7 +1,9 @@
 ﻿
+using LearningSystem.Contracts.Interfaces;
+
 namespace LearningSystem.DAL.Interfaces
 {
-    public  interface IRepository<T> where T : class
+    public  interface IRepository<T> where T : class, IEntityWithId
     {
         public Task AddAsync(T item);
         public Task UpdateAsync(T item);

@@ -1,5 +1,6 @@
 ﻿
-namespace LearningSystem.BL.Interfaces
+
+namespace LearningSystem.BLL.Interfaces
 {
     public interface IServices<T> where T : class, IEntityWithId
     {

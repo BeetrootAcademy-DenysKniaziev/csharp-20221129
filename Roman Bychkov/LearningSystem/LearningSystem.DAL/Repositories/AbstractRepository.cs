@@ -6,7 +6,7 @@ namespace LearningSystem.DAL.Repositories
 {
     public class AbstractRepository<T> : IRepository<T> where T : class, IEntityWithId
     {
-        private ApplicationDbContext _context;
+        protected ApplicationDbContext _context;
         public AbstractRepository(ApplicationDbContext context)
         {
             _context = context;
@@ -23,12 +23,12 @@ namespace LearningSystem.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAsync()
+        public async virtual Task<IEnumerable<T>> GetAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async virtual Task<T> GetByIdAsync(int id)
         {
             return await _context.Set<T>().SingleOrDefaultAsync(p => p.Id == id);
         }

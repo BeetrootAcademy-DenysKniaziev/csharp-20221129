@@ -1,4 +1,4 @@
-﻿namespace LearningSystem.BL.Services
+﻿namespace LearningSystem.BLL.Services
 {
     public class CoursesService:ICoursesService
     {

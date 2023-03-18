@@ -1,8 +1,20 @@
-﻿namespace LearningSystem.DAL.Repositories
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace LearningSystem.DAL.Repositories
 {
-    public class CoursesRepository:AbstractRepository<Course>
+    public class CoursesRepository : AbstractRepository<Course>, ICoursesRepository
     {
+
         public CoursesRepository(ApplicationDbContext context) : base(context)
         { }
+        public override async Task<Course> GetByIdAsync(int id)
+        {
+            return await _context.Courses.Include(c => c.Articles).SingleOrDefaultAsync(c => c.Id == id);
+        }
+
+        public override async Task<IEnumerable<Course>> GetAsync()
+        {
+            return await _context.Courses.Include(c => c.Articles).ToListAsync();
+        }
     }
 }

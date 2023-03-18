@@ -1,6 +1,6 @@
-﻿namespace LearningSystem.BL.Services
+﻿namespace LearningSystem.BLL.Services
 {
-    public class LikeArticleService
+    public class LikeArticleService:ILikeArticleService
     {
         private ILikeArticleRepository _context;
         public LikeArticleService(ILikeArticleRepository context)

@@ -1,9 +1,10 @@
-﻿namespace LearningSystem.BL.Services
+﻿
+namespace LearningSystem.BLL.Services
 {
-    public class ArticlesUser : IArticlesService
+    public class ArticlesService : IArcticlesService
     {
         private IArticlesRepository _context;
-        public ArticlesUser(IArticlesRepository context)
+        public ArticlesService(IArticlesRepository context)
         {
             _context = context;
         }

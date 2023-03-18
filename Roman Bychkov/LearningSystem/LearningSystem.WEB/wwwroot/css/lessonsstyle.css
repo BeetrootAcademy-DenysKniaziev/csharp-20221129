@@ -3,14 +3,14 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border: 5px solid #ccc !important;/* добавляем рамку */
+    border: 5px solid #ccc !important;
 }
 
 .lessons-content-container {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
-    margin-left: 5%; /* добавляем отступ слева */
+    margin-left: 5%; 
 }
 table {
     border-collapse: collapse;

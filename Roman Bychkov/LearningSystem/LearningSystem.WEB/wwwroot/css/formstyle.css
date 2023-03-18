@@ -1,0 +1,16 @@
+#registration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 0;
+    font-family: Verdana, bold;
+}
+
+#FormRegistration {
+    width: 400px;
+}
+
+    #FormRegistration form {
+        margin-bottom: 0;
+    }

@@ -1,10 +1,10 @@
 ﻿
-namespace LearningSystem.BL.Services
+namespace LearningSystem.BLL.Services
 {
     public class LikeCommentService : ILikeCommentService
     {
-        private ILikeCommentService _context;
-        public LikeCommentService(ILikeCommentService context)
+        private ILikeCommentRepository _context;
+        public LikeCommentService(ILikeCommentRepository context)
         {
             _context = context;
         }

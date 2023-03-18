@@ -1,0 +1,25 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace LearningSystem.WEB.ValidationModels
+{
+    public class RegistrationModel
+    {
+
+        [Required(ErrorMessage = "Введіть електрону адресу")]
+        [EmailAddress(ErrorMessage = "Будь ласка, укажіть акутальну електрону адресу")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Будь ласка, введіть свій логін")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Ім'я повино бути від 3-х до 50-ти символів")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Введіть пароль")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Compare("Password", ErrorMessage = "Паролі не співпадають")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
+
+    }
+}

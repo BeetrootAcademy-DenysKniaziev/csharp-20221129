@@ -15,11 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LearningSystem.DAL\LearningSystem.DAL.csproj" />
+    <Folder Include="wwwroot\icon\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\icon\" />
+    <ProjectReference Include="..\LearningSystem.BLL\LearningSystem.BLL.csproj" />
+    <ProjectReference Include="..\LearningSystem.Contracts\LearningSystem.Contracts.csproj" />
+    <ProjectReference Include="..\LearningSystem.DAL\LearningSystem.DAL.csproj" />
   </ItemGroup>
 
 </Project>

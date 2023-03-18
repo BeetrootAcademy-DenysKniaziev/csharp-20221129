@@ -16,7 +16,6 @@ namespace LearningSystem.Contracts
         public string UserName { get; set; }
 
         [StringLength(70)]
-        [Required]
         [Column("image")]
         public string Image { get; set; }
 

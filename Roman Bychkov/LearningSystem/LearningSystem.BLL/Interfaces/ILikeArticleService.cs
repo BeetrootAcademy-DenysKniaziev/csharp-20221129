@@ -1,7 +1,7 @@
 ﻿
-namespace LearningSystem.BL.Interfaces
+namespace LearningSystem.BLL.Interfaces
 {
-    internal interface ILikeArticleService
+    public interface ILikeArticleService
     {
         public Task AddAsync(LikeArticle item);
         public Task DeleteAsync(LikeArticle item);
