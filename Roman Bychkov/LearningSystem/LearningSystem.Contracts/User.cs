@@ -15,12 +15,13 @@ namespace LearningSystem.Contracts
         [Column("user_name")]
         public string UserName { get; set; }
 
-        [StringLength(70)]
+        [StringLength(80)]
         [Column("image")]
         public string Image { get; set; }
 
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 3)]
+        [Required]
         [Column("password")]
         public string Password { get; set; }
 

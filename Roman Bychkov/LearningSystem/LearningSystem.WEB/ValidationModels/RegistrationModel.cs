@@ -15,6 +15,8 @@ namespace LearningSystem.WEB.ValidationModels
 
         [Required(ErrorMessage = "Введіть пароль")]
         [DataType(DataType.Password)]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Пароль повинен бути від 3-х до 20-ти символів")]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{3,20}$", ErrorMessage = "Пароль повинен містити: хоча б літеру, нижнього та верхнього регістру, та хоча б одну цифру")]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Паролі не співпадають")]

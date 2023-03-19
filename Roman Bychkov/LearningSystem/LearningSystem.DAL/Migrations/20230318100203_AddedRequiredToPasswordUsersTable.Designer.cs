@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LearningSystem.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230318014400_DeletedAttrRequiredFromImageInUsersTable")]
-    partial class DeletedAttrRequiredFromImageInUsersTable
+    [Migration("20230318100203_AddedRequiredToPasswordUsersTable")]
+    partial class AddedRequiredToPasswordUsersTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,7 +93,6 @@ namespace LearningSystem.DAL.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("content");
 
@@ -183,9 +182,8 @@ namespace LearningSystem.DAL.Migrations
                         .HasColumnName("mail");
 
                     b.Property<string>("Image")
-                        .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("character varying(70)")
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)")
                         .HasColumnName("image");
 
                     b.Property<string>("Password")

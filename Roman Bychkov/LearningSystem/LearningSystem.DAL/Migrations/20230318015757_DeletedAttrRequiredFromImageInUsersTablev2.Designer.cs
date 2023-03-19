@@ -2,6 +2,7 @@
 using LearningSystem.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LearningSystem.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230318015757_DeletedAttrRequiredFromImageInUsersTablev2")]
+    partial class DeletedAttrRequiredFromImageInUsersTablev2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,6 +93,7 @@ namespace LearningSystem.DAL.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("content");
 
@@ -179,8 +183,9 @@ namespace LearningSystem.DAL.Migrations
                         .HasColumnName("mail");
 
                     b.Property<string>("Image")
-                        .HasMaxLength(80)
-                        .HasColumnType("character varying(80)")
+                        .IsRequired()
+                        .HasMaxLength(90)
+                        .HasColumnType("character varying(90)")
                         .HasColumnName("image");
 
                     b.Property<string>("Password")

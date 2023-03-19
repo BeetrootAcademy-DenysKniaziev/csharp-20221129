@@ -9,8 +9,22 @@
 
 #FormRegistration {
     width: 400px;
+    position: absolute;
+    visibility: hidden;
 }
 
     #FormRegistration form {
         margin-bottom: 0;
     }
+
+#FormLogin {
+    position: absolute;
+    width: 400px;
+}
+
+.btn {
+    margin-left: 60%;
+    margin-top: 10%;
+    position: absolute;
+    font-family: Verdana, bold;
+}

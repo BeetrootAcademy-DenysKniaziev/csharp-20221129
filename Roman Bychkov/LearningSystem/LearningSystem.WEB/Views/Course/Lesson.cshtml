@@ -4,13 +4,10 @@
 @{
     ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.ArcticleName;
 }
-
-
-    @{
-        
-           <div class="lessons-content-container">
+@{
+        <div class="lessons-content-container">
                 <div class="lessons-container">
-                     @foreach(Article item in Model.Articles)
+                     @foreach(Article item in Model?.Articles)
                     {
                          <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item.Number">
                             <div  id='@item.Number'>
@@ -20,13 +17,13 @@
                     }
                 </div>
                 <div style="margin-left: 5%">
-                   @Html.Raw(@Model.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Content)
+                   @Html.Raw(@Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Content)
                 </div>
                 <script>
                     document.getElementById('container').classList.remove('container');
                     document.getElementById('@ViewBag.Number').classList.add('myactive');
                  </script>
             </div>
-    }
+}
 
 
