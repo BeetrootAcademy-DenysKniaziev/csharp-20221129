@@ -1,0 +1,12 @@
+Request: GET /api/Orders  | 18.03.2023 16:23:48
+Response: 200
+
+Request: DELETE /api/Orders/1  | 18.03.2023 16:23:58
+Response: 200
+
+Request: DELETE /api/Orders/1  | 18.03.2023 16:33:28
+Response: 200
+
+Request: DELETE /api/Orders/9  | 18.03.2023 16:36:03
+Response: 200
+

@@ -17,12 +17,14 @@ namespace Lesson35
 
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers(options =>
             {
-                options.Filters.Add(typeof(LoggingActionFilter));
+                options.Filters.Add(typeof(ConsoleLoggingActionFilter));
+                options.Filters.Add(typeof(FileLoggingActionFilter));
             });
             services.AddLogging();
 

@@ -1,7 +1,0 @@
-﻿Add handling middleware (status code + body)
-Add Action Filter x2
-Console Color
-
-- Extra:
-Add Authentication middleware
-One Controller for Everything
