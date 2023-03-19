@@ -6,13 +6,6 @@ namespace Lesson35.ActionFilters
 {
     public class FileLoggingActionFilter : IActionFilter
     {
-        private readonly ILogger _logger;
-
-        public FileLoggingActionFilter(ILogger<FileLoggingActionFilter> logger)
-        {
-            _logger = logger;
-        }
-
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var request = context.HttpContext.Request;

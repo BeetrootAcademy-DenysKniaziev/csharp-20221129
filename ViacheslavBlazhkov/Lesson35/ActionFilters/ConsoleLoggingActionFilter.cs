@@ -1,19 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.IO;
 
 namespace Lesson35.ActionFilters
 {
     public class ConsoleLoggingActionFilter : IActionFilter
     {
-        private readonly ILogger _logger;
-
-        public ConsoleLoggingActionFilter(ILogger<ConsoleLoggingActionFilter> logger)
-        {
-            _logger = logger;
-        }
-
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var request = context.HttpContext.Request;
