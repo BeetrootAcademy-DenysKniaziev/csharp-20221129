@@ -1,4 +1,4 @@
-#registration {
+#reg-log-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,6 @@
 #FormRegistration {
     width: 400px;
     position: absolute;
-    visibility: hidden;
 }
 
     #FormRegistration form {

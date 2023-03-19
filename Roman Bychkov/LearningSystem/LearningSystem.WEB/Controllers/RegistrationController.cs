@@ -1,7 +1,6 @@
 ﻿
 using LearningSystem.Contracts;
 using LearningSystem.WEB.ValidationModels;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace LearningSystem.WEB.Controllers
 {
@@ -17,15 +16,15 @@ namespace LearningSystem.WEB.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Authorisation()
+        public async Task<IActionResult> Registration()
         {
-            ViewBag.Active = "authorisation";
+            ViewBag.Active = "registration";
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Authorisation(RegistrationModel model)
+        public async Task<IActionResult> Registration(RegistrationModel model)
         {
-            ViewBag.Active = "authorisation";
+            ViewBag.Active = "registration";
 
             if (await _context.IsValueExistAsync(u => u.Email, model.Email))
             {
@@ -38,7 +37,7 @@ namespace LearningSystem.WEB.Controllers
                 return View(model);
             }
 
-           
+
             if (ModelState.IsValid)
             {
 
@@ -48,37 +47,13 @@ namespace LearningSystem.WEB.Controllers
                     UserName = model.UserName,
                     Password = model.Password,
                 };
-               
-
-
                 await _context.AddAsync(user);
                 //TODO: add logic after succesful registration
-                return RedirectToAction("Authorisation", "Authorisation", model);
+                return RedirectToAction("Login", "Login", model);
             }
             else
-                return RedirectToAction("Authorisation", "Authorisation", model);
+                return View(model);
 
         }
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginModel model)
-        {
-
-            ViewBag.Active = "authorisation";
-
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                var redirectionModel = new RegistrationModel
-                {
-                    UserName = model.UserName,
-                    Password = model.Password
-                };
-                return RedirectToAction("Authorisation", "Authorisation", redirectionModel);
-            }
-        }
-
     }
 }
