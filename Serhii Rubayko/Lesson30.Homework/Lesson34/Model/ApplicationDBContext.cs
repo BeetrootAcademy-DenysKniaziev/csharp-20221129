@@ -1,6 +1,9 @@
-﻿namespace Lesson34.Model
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Lesson34.Model
 {
-    public class ApplicationDBContext
+    public class ApplicationDbContext:DbContext
     {
+        public DbSet<> Persons { get; set; }
     }
 }
