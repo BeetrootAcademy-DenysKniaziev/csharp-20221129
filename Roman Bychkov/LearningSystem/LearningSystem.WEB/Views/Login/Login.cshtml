@@ -21,10 +21,12 @@
                    <div class="mb-3">
                         <label asp-for="UserName" class="form-label">Логін</label>
                         <input asp-for="UserName" type="text" minlength="3" required class="form-control" id="name">
+                          <span asp-validation-for="UserName" style="color: red"/>
                         </div>
                     <div class="mb-3">
                         <label asp-for="Password" class="form-label">Пароль</label>
                         <input asp-for="Password" type="password" required class="form-control">
+                          <span asp-validation-for="Password" style="color: red"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Увійти</button>
                 </form>

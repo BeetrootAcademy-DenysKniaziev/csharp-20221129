@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace LearningSystem.BLL.Services
 {
@@ -13,22 +14,15 @@ namespace LearningSystem.BLL.Services
         public async Task AddAsync(User item)
         {
 
-            item.Password = HMACSHA256(item.Password);
+            item.Password = SHA256Managed(item.Password);
             await _context.AddAsync(item);
         }
-        private string HMACSHA256(string password)
+        private string SHA256Managed(string password)
         {
-            // Generate a 128-bit salt using a sequence of
-            // cryptographically strong random bytes.
-            byte[] salt = RandomNumberGenerator.GetBytes(128 / 8); // divide by 8 to convert bits to bytes
-            // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: password!,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA256,
-                iterationCount: 100000,
-                numBytesRequested: 256 / 8));
-            return hashed;
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            byte[] hashedBytes = new SHA256Managed().ComputeHash(passwordBytes);
+            string hash = BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            return hash.Remove(50);
         }
         public async Task DeleteAsync(User item)
         {
@@ -54,5 +48,13 @@ namespace LearningSystem.BLL.Services
         {
             return await _context.IsValueExistAsync(valueSelector, value);
         }
+
+        public async Task<bool> IsValidPassword(string login, string password)
+        {
+            password = SHA256Managed(password);
+            return await _context.IsValidPassword(login, password);
+        }
+
+       
     }
 }

@@ -28,7 +28,17 @@ namespace LearningSystem.WEB.Controllers
         {
 
             ViewBag.Active = "login";
-
+            
+            if (!await _context.IsValueExistAsync(u => u.UserName, model.UserName))
+            {
+                ModelState.AddModelError(nameof(model.UserName), "Такого аккаунта не існує");
+                return View(model);
+            }
+            if (!await _context.IsValidPassword(model.UserName, model.Password))
+            {
+                ModelState.AddModelError(nameof(model.Password), "Пароль не вірний");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Home");
