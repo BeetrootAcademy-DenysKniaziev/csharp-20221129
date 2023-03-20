@@ -1,18 +1,15 @@
-﻿
-using LearningSystem.Contracts;
-using LearningSystem.WEB.ValidationModels;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using LearningSystem.WEB.ValidationModels;
 
 namespace LearningSystem.WEB.Controllers
 {
     public class LoginController : Controller
     {
         private readonly ILogger<LoginController> _logger;
-        private IUsersServices _context;
-        public LoginController(ILogger<LoginController> logger, IUsersServices context)
+        private IUsersServices _service;
+        public LoginController(ILogger<LoginController> logger, IUsersServices service)
         {
             _logger = logger;
-            _context = context;
+            _service = service;
         }
 
 
@@ -22,19 +19,19 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Active = "login";
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
 
             ViewBag.Active = "login";
-            
-            if (!await _context.IsValueExistAsync(u => u.UserName, model.UserName))
+
+            if (!await _service.IsValueExistAsync(u => u.UserName, model.UserName))
             {
                 ModelState.AddModelError(nameof(model.UserName), "Такого аккаунта не існує");
                 return View(model);
             }
-            if (!await _context.IsValidPassword(model.UserName, model.Password))
+            if ((await _service.GetUserByLoginPassword(model.UserName, model.Password)) == null)
             {
                 ModelState.AddModelError(nameof(model.Password), "Пароль не вірний");
                 return View(model);
@@ -45,11 +42,6 @@ namespace LearningSystem.WEB.Controllers
             }
             else
             {
-                var redirectionModel = new RegistrationModel
-                {
-                    UserName = model.UserName,
-                    Password = model.Password
-                };
                 return View(model);
             }
         }

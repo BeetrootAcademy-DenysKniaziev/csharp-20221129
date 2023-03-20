@@ -28,3 +28,10 @@ td {
 .black {
     background-color: #000;
 }
+.like-container {
+    display: flex;
+}
+.liked
+{
+    color: orangered;
+}

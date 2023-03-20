@@ -9,7 +9,12 @@ namespace LearningSystem.DAL.Repositories
         { }
         public override async Task<Course> GetByIdAsync(int id)
         {
-            return await _context.Courses.Include(c => c.Articles).SingleOrDefaultAsync(c => c.Id == id);
+            return await _context.Courses
+         .Include(c => c.Articles)
+             .ThenInclude(a => a.Likes)
+         .Include(c => c.Articles)
+             .ThenInclude(a => a.Comments)
+         .SingleOrDefaultAsync(c => c.Id == id);
         }
 
         public override async Task<IEnumerable<Course>> GetAsync()

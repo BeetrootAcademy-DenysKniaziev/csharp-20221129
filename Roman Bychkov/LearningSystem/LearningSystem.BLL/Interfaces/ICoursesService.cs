@@ -1,7 +1,7 @@
 ﻿
 namespace LearningSystem.BLL.Interfaces
 {
-    public interface ICoursesService
+    public interface ICoursesService:IServices<Course>
     {
     }
 }

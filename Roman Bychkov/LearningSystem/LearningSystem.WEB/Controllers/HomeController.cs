@@ -11,17 +11,17 @@ namespace LearningSystem.WEB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ICoursesRepository _context;
-        public HomeController(ILogger<HomeController> logger, ICoursesRepository db)
+        private ICoursesService _service;
+        public HomeController(ILogger<HomeController> logger, ICoursesService service)
         {
             _logger = logger;
-            _context = db;
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
         {
             ViewBag.Active = "courses";
-            return View(await _context.GetAsync());
+            return View(await _service.GetAsync());
         }
 
         public IActionResult Privacy()

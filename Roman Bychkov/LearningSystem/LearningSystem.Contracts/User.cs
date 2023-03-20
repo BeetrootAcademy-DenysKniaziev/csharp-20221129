@@ -33,9 +33,9 @@ namespace LearningSystem.Contracts
         [Column("mail")]
         public string Email { get; set; }
 
-        public virtual List<LikeArticle> LikeArticles { get; set;}
-        public virtual List<Comment> Comments { get; set; }
-        public virtual List<LikeComment> LikeComments { get; set; }
+        public virtual List<LikeArticle> LikeArticles { get; set;} = new List<LikeArticle>();
+        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
+        public virtual List<LikeComment> LikeComments { get; set; } = new List<LikeComment>();
 
     }
 }

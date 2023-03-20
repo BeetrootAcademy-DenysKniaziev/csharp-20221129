@@ -5,18 +5,18 @@ namespace LearningSystem.WEB.Controllers
     public class CourseController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private ICoursesRepository _context;
-        public CourseController(ILogger<HomeController> logger, ICoursesRepository context)
+        private ICoursesService _service;
+        public CourseController(ILogger<HomeController> logger, ICoursesService service)
         {
             _logger = logger;
-            _context = context;
+            _service = service;
         }
 
         [Route("{id}/Lessons")]
         public async Task<IActionResult> Lesson(int id)
         {
             ViewBag.Active = "courses";
-            return View(await _context.GetByIdAsync(id));
+            return View(await _service.GetByIdAsync(id));
         }
 
         [Route("{id}/Lesson/{number}")]
@@ -24,7 +24,7 @@ namespace LearningSystem.WEB.Controllers
         {
             ViewBag.Active = "courses";
             ViewBag.Number = number;
-            return View(await _context.GetByIdAsync(id));
+            return View(await _service.GetByIdAsync(id));
         }
 
     }

@@ -24,6 +24,6 @@ namespace LearningSystem.Contracts
 
         public virtual Article Article { get; set; }
 
-        public virtual List<LikeComment> LikeComments { get; set; }
+        public virtual List<LikeComment> LikeComments { get; set; } = new List<LikeComment>();
     }
 }

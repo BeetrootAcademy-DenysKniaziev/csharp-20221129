@@ -49,10 +49,10 @@ namespace LearningSystem.BLL.Services
             return await _context.IsValueExistAsync(valueSelector, value);
         }
 
-        public async Task<bool> IsValidPassword(string login, string password)
+        public async Task<User> GetUserByLoginPassword(string login, string password)
         {
             password = SHA256Managed(password);
-            return await _context.IsValidPassword(login, password);
+            return await _context.GetUserByLoginPassword(login, password);
         }
 
        

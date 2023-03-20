@@ -17,8 +17,20 @@
                     }
                 </div>
                 <div style="margin-left: 5%">
-                   @Html.Raw(@Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Content)
-                </div>
+                 @if(ViewBag.Number==null)
+                   {
+                       <p>@Model?.Content</p>
+                   }
+                   else
+                   {
+                       @Html.Raw(@Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Content)
+                       <div class="like-container" id="like" onclick="PostLike(@ViewBag.Number,@Model.Id)">
+                           <img class="icon" style="background-color: transparent" src="~/icon/like.png">
+                           <div id="like-count">@Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Likes?.Count</div>
+                       </div>
+                   }
+                   
+                 </div>
                 <script>
                     document.getElementById('container').classList.remove('container');
                     document.getElementById('@ViewBag.Number').classList.add('myactive');

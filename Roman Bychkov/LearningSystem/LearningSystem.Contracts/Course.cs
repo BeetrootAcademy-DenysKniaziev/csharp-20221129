@@ -32,7 +32,7 @@ namespace LearningSystem.Contracts
         [Column("created")]
         public DateTime Created { get; } = DateTime.UtcNow;
 
-        public virtual List<Article> Articles { get; set; }
+        public virtual List<Article> Articles { get; set; } = new List<Article>();
 
     }
 }

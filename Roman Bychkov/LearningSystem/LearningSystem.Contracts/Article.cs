@@ -30,7 +30,7 @@ namespace LearningSystem.Contracts
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
-        public virtual List<LikeArticle> Likes { get; set; }
-        public virtual List<Comment> Comments { get; set; }
+        public virtual List<LikeArticle> Likes { get; set; } = new List<LikeArticle>();
+        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
     }
 }
