@@ -30,7 +30,8 @@ namespace LearningSystem.Contracts
         public string Content { get; set; }
 
         [Column("created")]
-        public DateTime Created { get; } = DateTime.UtcNow;
+        [Required]
+        public DateTime Created { get; set; } = DateTime.UtcNow;
 
         public virtual List<Article> Articles { get; set; } = new List<Article>();
 

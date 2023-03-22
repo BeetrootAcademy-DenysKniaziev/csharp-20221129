@@ -1,41 +1,59 @@
-﻿@using LearningSystem.Contracts
-@model Course
+﻿@model Course
 
 @{
-    ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.ArcticleName;
+ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArcticleName;
 }
-@{
-        <div class="lessons-content-container">
-                <div class="lessons-container">
-                     @foreach(Article item in Model?.Articles)
+
+<div class="lessons-content-container">
+    <div class="lessons-container">
+        @foreach (Article item in Model?.Articles.OrderBy(a => a?.Number))
+        {
+            <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
+                <div id="@item?.Number">
+                    <h3><b>@item?.Number @item?.ArcticleName</b></h3>
+                </div>
+            </a>
+        }
+    </div>
+    <div style="margin-left: 5%">
+        @if (ViewBag.Number == null)
+        {
+            <p>@Model?.Content</p>
+        }
+        else
+        {
+            @Html.Raw(Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content)
+            <div class="like-container" id="like">
+                <img class="icon" style="background-color: transparent" src="~/icon/like.png">
+                <div id="like-count">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Likes?.Count</div>
+            </div>
+            <div class="comment-container">
+                <form id="form-comment" action="/api/Comment/PostComment?articleNumber=@ViewBag?.Number&courseId=@Model?.Id" method="POST">
+                    <label for="comment">Comment:</label><br>
+                    <textarea id="comment" maxlength="250" name="comment" rows="5" cols="50" required></textarea><br><br>
+                    <input id="comment-submit" type="submit" value="Відправити">
+                          </form>
+                    @foreach (Comment item in Model?.Articles.SingleOrDefault(a => a.Number == ViewBag.Number && a.CourseId == Model.Id).Comments?.OrderByDescending(c=>c.Created))
                     {
-                         <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item.Number">
-                            <div  id='@item.Number'>
-                                <h3><b>@item.Id @item.ArcticleName</b></h3>
-                            </div>
-                         </a>
+                        <div>
+                            @item?.User.UserName @item?.Created.ToShortDateString()
+                        </div>
+                        <p>@item?.Content</p>
                     }
                 </div>
-                <div style="margin-left: 5%">
-                 @if(ViewBag.Number==null)
-                   {
-                       <p>@Model?.Content</p>
-                   }
-                   else
-                   {
-                       @Html.Raw(@Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Content)
-                       <div class="like-container" id="like" onclick="PostLike(@ViewBag.Number,@Model.Id)">
-                           <img class="icon" style="background-color: transparent" src="~/icon/like.png">
-                           <div id="like-count">@Model?.Articles.SingleOrDefault(a=>a.Number==ViewBag.Number)?.Likes?.Count</div>
-                       </div>
-                   }
-                   
-                 </div>
-                <script>
-                    document.getElementById('container').classList.remove('container');
-                    document.getElementById('@ViewBag.Number').classList.add('myactive');
-                 </script>
-            </div>
-}
+            }  
+          </div>
+    <script>
+        document.getElementById('container').classList.remove('container');
+        document.getElementById('@ViewBag.Number').classList.add('myactive');
+    </script>
+    <script src="~/js/comment.js" asp-append-version="true"></script>
+    <script src="~/js/postLike.js" asp-append-version="true"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+ </div>
+
+
 
 

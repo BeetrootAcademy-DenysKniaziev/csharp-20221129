@@ -17,9 +17,11 @@
         [Route("PostLike")]
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
-
+            string userLogin = "qwe1", password = "Qq1";
+            if (true);
             //Для прикладу, беремо тут дані з куків
-            string userLogin = "qwe", password = "Qq1";
+            else
+                return Unauthorized();
 
             var user = await _usersService.GetUserByLoginPassword(userLogin, password);
             var article = await _articlesService.GetByNumber(articleNumber, courseId);
@@ -28,7 +30,7 @@
             if (articleLike != null)
             {
                 await _service.DeleteAsync(articleLike);
-                return Ok(false);
+                return NotFound(false);
             }
             else
             {
@@ -39,7 +41,7 @@
 
                 };
                 await _service.AddAsync(articleLike);
-                return NotFound(true);
+                return Ok(true);
             }
 
         }

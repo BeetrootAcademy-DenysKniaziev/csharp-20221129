@@ -35,3 +35,13 @@ td {
 {
     color: orangered;
 }
+.comment-container {
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 600px) {
+    .lessons-content-container {
+        flex-direction: column;
+    }
+}
+

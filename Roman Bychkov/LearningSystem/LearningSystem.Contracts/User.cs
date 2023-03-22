@@ -26,7 +26,8 @@ namespace LearningSystem.Contracts
         public string Password { get; set; }
 
         [Column("created")]
-        public DateTime Created { get; } = DateTime.UtcNow;
+        [Required]
+        public DateTime Created { get; set; } = DateTime.UtcNow;
 
         [Required]
         [EmailAddress]
