@@ -36,7 +36,7 @@ namespace LearningSystem.DAL.Repositories
 
         public async Task<LikeArticle> LikeExistInArticle(Article article, User user)
         {
-            return (await _context.LikeArticles.ToListAsync()).SingleOrDefault(l => l.ArticleId == article.Id && l.UserId == user.Id);
+            return (await _context.LikeArticles.ToListAsync()).SingleOrDefault(l => l.ArticleId == article?.Id && l.UserId == user?.Id);
         }
     }
 }

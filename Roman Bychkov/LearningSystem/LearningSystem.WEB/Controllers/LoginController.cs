@@ -1,4 +1,5 @@
-﻿using LearningSystem.WEB.ValidationModels;
+﻿using LearningSystem.Contracts;
+using LearningSystem.WEB.ValidationModels;
 
 namespace LearningSystem.WEB.Controllers
 {
@@ -26,6 +27,7 @@ namespace LearningSystem.WEB.Controllers
         {
 
             ViewBag.Active = "login";
+            
 
             if (!await _service.IsValueExistAsync(u => u.UserName, model.UserName))
             {
@@ -39,7 +41,15 @@ namespace LearningSystem.WEB.Controllers
             }
             if (ModelState.IsValid)
             {
-                HttpC
+                //var token = GenerateJwtToken(await _service.GetUserByLoginPassword(model.UserName, model.Password));
+                Response.Cookies.Append("user_login", model.UserName, new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                });
+                Response.Cookies.Append("user_pass", model.Password, new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                });
                 return RedirectToAction("Index", "Home");
             }
             else

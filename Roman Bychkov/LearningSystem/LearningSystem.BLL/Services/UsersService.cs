@@ -51,7 +51,8 @@ namespace LearningSystem.BLL.Services
 
         public async Task<User> GetUserByLoginPassword(string login, string password)
         {
-            password = SHA256Managed(password);
+            if(!string.IsNullOrEmpty(password))
+                password = SHA256Managed(password);
             return await _context.GetUserByLoginPassword(login, password);
         }
 

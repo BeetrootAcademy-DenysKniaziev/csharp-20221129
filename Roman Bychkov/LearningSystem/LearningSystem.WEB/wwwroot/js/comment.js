@@ -39,6 +39,9 @@ form.addEventListener('submit', function (e) {
         if (xhr.readyState === 4 && xhr.status === 400) {
             window.alert('Можно тільки 250 символів!')
         }
+        if (xhr.readyState === 4 && xhr.status === 401) {
+            window.location.href = "/Login/Login";
+        }
     });
    
     xhr.send(`comment=${commentInput.value}`);

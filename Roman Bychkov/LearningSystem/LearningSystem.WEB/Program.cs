@@ -17,6 +17,28 @@ builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressInferBindingSourcesForParameters = true);
 
 var services = builder.Services;
+var configuration = builder.Configuration;
+
+
+services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.GetSection("Jwt").Value)),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
+
+
 
 
 services.AddScoped<IArcticlesService, ArticlesService>();
@@ -41,23 +63,7 @@ services.AddScoped<ILikeCommentRepository, LikeCommentRepository>();
 var app = builder.Build();
 
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.RequireHttpsMetadata = false;
-    options.SaveToken = true;
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(app.Configuration.GetSection("Jwt").Value)),
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

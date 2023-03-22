@@ -17,16 +17,14 @@
         [Route("PostLike")]
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
-            string userLogin = "qwe1", password = "Qq1";
-            if (true);
-            //Для прикладу, беремо тут дані з куків
-            else
-                return Unauthorized();
-
+            string userLogin = Request?.Cookies["user_login"], password = Request?.Cookies["user_pass"];
             var user = await _usersService.GetUserByLoginPassword(userLogin, password);
             var article = await _articlesService.GetByNumber(articleNumber, courseId);
             var articleLike = await _service.LikeExistInArticle(article, user);
 
+
+            if (user == null)
+                return Unauthorized();
             if (articleLike != null)
             {
                 await _service.DeleteAsync(articleLike);

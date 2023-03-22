@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace LearningSystem.WEB.Controllers
 {
@@ -20,13 +19,19 @@ namespace LearningSystem.WEB.Controllers
         [Route("PostComment")]
         public async Task<ActionResult<Comment>> PostComment(int articleNumber, int courseId, [FromForm] string comment)
         {
+            string userLogin = Request?.Cookies["user_login"], password = Request?.Cookies["user_pass"];
+            var user = await _usersService.GetUserByLoginPassword(userLogin, password);
+
+            if (user == null)
+                return Unauthorized();
+
             if (comment.Length > 250)
                 return BadRequest();
-            //Для прикладу, беремо тут дані з куків
-            string userLogin = "qwe1", password = "Qq1";
+           
+
             if (true)
             {
-                var user = await _usersService.GetUserByLoginPassword(userLogin, password);
+              
                 var article = await _articlesService.GetByNumber(articleNumber, courseId);
                 var newComment = new Comment
                 {

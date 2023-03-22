@@ -37,7 +37,18 @@
                         <li class="nav-item">
                            <a class="nav-link text-dark" id="login" asp-area="" asp-controller="Login" asp-action="Login">
                                 <div style="display: flex">
-                                    Вхід
+                                    @{
+                                            var cookieValue = Context.Request.Cookies["user_login"];
+                                            if (!string.IsNullOrEmpty(cookieValue))
+                                            {
+                                                @cookieValue
+                                            }
+                                            else
+                                            {
+                                                <p>Вхід</p>
+                                            }
+                                            
+                                     }
                                     <img class="icon" style="background-color: transparent" src="~/icon/authorisation.png">
                                </div>
                             </a>
@@ -63,6 +74,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
+    <script src="~/js/comment.js" asp-append-version="true"></script>
+    <script src="~/js/postLike.js" asp-append-version="true"></script>
 
       
      <script>

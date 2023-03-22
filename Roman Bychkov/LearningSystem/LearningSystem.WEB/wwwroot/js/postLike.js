@@ -1,7 +1,7 @@
 ﻿function PostLike(articleNumber, courseId) {
     console.log(articleNumber + ' ' + courseId)
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://localhost:7163/api/Like/PostLike?articleNumber=" + articleNumber + "&courseId=" + courseId);
+    xhr.open("POST", "/api/Like/PostLike?articleNumber=" + articleNumber + "&courseId=" + courseId);
     xhr.onload = function () {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
@@ -14,6 +14,9 @@
             document.getElementById('like').classList.remove('liked');
             var countLike = document.getElementById('like-count').innerText;
             document.getElementById('like-count').innerText = parseInt(countLike) - 1;
+        }
+        if (xhr.readyState === 4 && xhr.status === 401) {
+            window.location.href = "/Login/Login";
         }
     };
     xhr.send();
