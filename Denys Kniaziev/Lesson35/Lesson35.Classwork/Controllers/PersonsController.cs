@@ -92,28 +92,27 @@ namespace Lesson35.Classwork.Controllers
             {
                 return NotFound();
             }
+     
+            if (!ModelState.IsValid)
+                return View(person);
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(person);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PersonExists(person.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(person);
+                await _context.SaveChangesAsync();
             }
-            return View(person);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PersonExists(person.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Persons/Delete/5
@@ -148,14 +147,14 @@ namespace Lesson35.Classwork.Controllers
             {
                 _context.Persons.Remove(person);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PersonExists(int id)
         {
-          return _context.Persons.Any(e => e.Id == id);
+            return _context.Persons.Any(e => e.Id == id);
         }
     }
 }

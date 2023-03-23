@@ -17,8 +17,8 @@ namespace Lesson35.Classwork.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseNpgsql("Server=host.docker.internal;Port=32768;Database=shop_new;User Id=postgres;Password=postgrespw;");
+            //optionsBuilder
+            //    .UseNpgsql("Server=host.docker.internal;Port=32768;Database=shop_new;User Id=postgres;Password=postgrespw;");
                 //.LogTo(text => File.AppendAllText("log.txt", text));
         }
     }

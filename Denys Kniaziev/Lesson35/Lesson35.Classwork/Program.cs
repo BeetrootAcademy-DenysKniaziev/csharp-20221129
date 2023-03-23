@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews(options =>
 });
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql("Server=host.docker.internal;Port=32768;Database=shop_new;User Id=postgres;Password=postgrespw;"));
+                options.UseNpgsql("Server=host.docker.internal;Port=32769;Database=shop_new;User Id=postgres;Password=postgrespw;"));
 
 
 
