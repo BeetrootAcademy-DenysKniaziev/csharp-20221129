@@ -11,7 +11,8 @@ namespace Homework14;
 
 internal class Picture
 {
-    const int sprite = 2;
+    const int sprite = 3;
+
     public Point[,] Points;
     public Bitmap Img;
     public int[,] LevelMask;
@@ -30,6 +31,7 @@ internal class Picture
                 Points[x, y].PColor = Img.GetPixel(x, y);
             }
         }
+
         for (int x = 2; x < Img.Width-1; x++)
         {
             for (int y = 2; y < Img.Height-1; y++)
@@ -53,8 +55,9 @@ internal class Picture
     public override string ToString()
     {
         int maxLevel = 0;
-        int xMaskSize = Img.Width / sprite+1;
-        int yMaskSize = Img.Height / sprite+1;
+        int xMaskSize = Img.Width / sprite + 1;
+        int yMaskSize = Img.Height / sprite + 1;
+
         LevelMask = new int[xMaskSize, yMaskSize];
         ConsolPic = "";// new string[yMaskSize];
         for (int x = 1; x < Img.Width; x++)
@@ -66,9 +69,10 @@ internal class Picture
             }
         }
 
-        for(int cY = 0; cY < yMaskSize; cY++) 
+
+        for (int cY = 0; cY < yMaskSize; cY++)
         {
-            for (int cX = 0; cX < xMaskSize; cX++) 
+            for (int cX = 0; cX < xMaskSize; cX++)
             {
                 if (LevelMask[cX, cY] >= maxLevel / 1.33) ConsolPic += "@@";
                 else if (LevelMask[cX, cY] >= maxLevel / 2) ConsolPic += "ll";
@@ -78,7 +82,9 @@ internal class Picture
             ConsolPic += "\n";
         }
         return ConsolPic;
-    } 
+
+    }
+
 }
 
 

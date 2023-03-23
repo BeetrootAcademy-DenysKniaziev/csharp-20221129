@@ -1,0 +1,14 @@
+2023-03-13 23:23:24.818 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-13 23:23:24.997 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-13 23:23:39.114 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-13 23:23:39.123 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-13 23:44:20.232 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-13 23:44:20.396 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-13 23:51:58.099 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-13 23:51:58.216 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-13 23:52:07.068 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-13 23:52:07.088 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-13 23:52:16.292 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-13 23:52:16.294 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-13 23:52:24.036 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-13 23:52:24.044 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}

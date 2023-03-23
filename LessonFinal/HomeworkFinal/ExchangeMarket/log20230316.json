@@ -1,0 +1,100 @@
+2023-03-16 13:54:32.100 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 13:54:32.685 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 13:56:11.242 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 13:56:11.271 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 13:57:56.348 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 13:57:56.354 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 14:12:30.710 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 14:12:31.268 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 14:15:54.792 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 14:15:55.287 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 14:16:28.974 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 14:16:29.010 -04:00 [INF] {"StatusCode":201,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 14:18:01.258 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 14:18:01.268 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 14:18:55.278 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 14:18:55.285 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 14:19:23.394 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 14:19:23.398 -04:00 [INF] {"StatusCode":201,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 15:10:18.036 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 15:10:18.619 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 15:10:27.685 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-16 15:10:27.813 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 15:10:31.904 -04:00 [INF] {"Method":"GET","Path":"/People/Details/1"}
+2023-03-16 20:12:27.119 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 20:12:27.542 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:21:51.561 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 20:21:52.484 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:01.768 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-16 20:22:01.831 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:29.693 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-16 20:22:29.847 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:43.527 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-16 20:22:43.530 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-16 20:22:44.041 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-16 20:22:44.066 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:48.844 -04:00 [INF] {"Method":"GET","Path":"/People/Edit/7"}
+2023-03-16 20:22:48.915 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:53.474 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-16 20:22:53.513 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:55.545 -04:00 [INF] {"Method":"GET","Path":"/People/Details/7"}
+2023-03-16 20:22:55.568 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:22:59.915 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-16 20:22:59.951 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:23:04.133 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/7"}
+2023-03-16 20:23:04.159 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:23:08.134 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/7"}
+2023-03-16 20:23:08.135 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-16 20:23:08.401 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-16 20:23:08.427 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:40:43.463 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 20:40:43.846 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:46:24.094 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 20:46:24.464 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:48:30.038 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 20:48:30.344 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 20:48:54.524 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 20:48:54.548 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 20:49:59.308 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 20:49:59.318 -04:00 [INF] {"StatusCode":201,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 21:00:04.624 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:00:05.022 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:00:20.163 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 21:00:20.183 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 21:02:58.773 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:02:59.084 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:03:12.225 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 21:03:12.246 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 21:03:45.397 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:03:45.771 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:04:03.203 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 21:04:03.229 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 21:05:13.474 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:05:13.781 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:05:26.678 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 21:05:26.703 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 21:05:31.114 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 21:05:31.117 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 21:05:33.138 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-16 21:05:33.140 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-16 21:06:17.673 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:06:18.115 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:08:59.460 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:08:59.857 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:12:55.540 -04:00 [INF] {"count":7,"value":{"Type":"https://tools.ietf.org/html/rfc7231#section-6.6.1","Title":"An error occurred while processing your request.","Status":500,"Detail":"This member is not found","Instance":null,"Extensions":{"traceId":"00-b073e0559b19010575a18e25f17fffec-403ef489838d83ce-00"}},"status":500}
+2023-03-16 21:13:20.938 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 21:13:44.777 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 21:14:51.969 -04:00 [INF] {"count":7,"value":{"Type":"https://tools.ietf.org/html/rfc7231#section-6.6.1","Title":"An error occurred while processing your request.","Status":500,"Detail":"This member is not found","Instance":null,"Extensions":{"traceId":"00-fc050d0b3f56c7c8148dcf941c8c9215-489fa7a9994f8137-00"}},"status":500}
+2023-03-16 21:14:57.361 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 21:14:57.365 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 21:15:52.594 -04:00 [INF] {"count":7,"value":{"Type":"https://tools.ietf.org/html/rfc7231#section-6.6.1","Title":"An error occurred while processing your request.","Status":500,"Detail":"This member is not found","Instance":null,"Extensions":{"traceId":"00-1d7a625ca19be34481e44fa3b1005d36-ef955363dee76cf7-00"}},"status":500}
+2023-03-16 21:15:52.628 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 21:15:52.630 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 21:28:33.257 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-16 21:28:33.673 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-16 21:28:50.757 -04:00 [INF] {"membersCount":7,"message":"Some one obsorved list of our members"}
+2023-03-16 21:28:50.765 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 21:28:50.801 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-16 21:28:58.607 -04:00 [INF] {"membersCount":7,"message":"Some one obsorved list of our members"}
+2023-03-16 21:28:58.608 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-16 21:28:58.611 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}

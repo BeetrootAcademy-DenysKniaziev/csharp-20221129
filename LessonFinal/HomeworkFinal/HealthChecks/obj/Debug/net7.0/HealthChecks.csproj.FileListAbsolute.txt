@@ -1,0 +1,17 @@
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\HealthChecks.deps.json
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\HealthChecks.dll
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\HealthChecks.pdb
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\Contracts.dll
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\DAL.dll
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\DAL.pdb
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\bin\Debug\net7.0\Contracts.pdb
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.csproj.AssemblyReference.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.AssemblyInfoInputs.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.AssemblyInfo.cs
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.csproj.CoreCompileInputs.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.csproj.CopyComplete
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.dll
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\refint\HealthChecks.dll
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\HealthChecks.pdb
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\HealthChecks\obj\Debug\net7.0\ref\HealthChecks.dll

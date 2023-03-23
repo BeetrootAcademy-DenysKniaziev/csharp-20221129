@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "7d543135-010e-4e6c-be82-9b7bd30f8020",
+		"name": "Translation API",
+		"description": "API requests for translation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Detect Language",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "application/gzip"
+					},
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "bae4feaa5amshf5dd0f32dd3356ep186f0djsn4b8a9fa6615e"
+					},
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "google-translate1.p.rapidapi.com"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "q",
+							"value": "Капустина"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://google-translate1.p.rapidapi.com/language/translate/v2/detect",
+					"protocol": "https",
+					"host": [
+						"google-translate1",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"language",
+						"translate",
+						"v2",
+						"detect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Translate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "application/gzip",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "bae4feaa5amshf5dd0f32dd3356ep186f0djsn4b8a9fa6615e",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "google-translate1.p.rapidapi.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "q",
+							"value": "Hello, world!",
+							"type": "text"
+						},
+						{
+							"key": "source",
+							"value": "en",
+							"type": "text"
+						},
+						{
+							"key": "target",
+							"value": "uk",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://google-translate1.p.rapidapi.com/language/translate/v2",
+					"protocol": "https",
+					"host": [
+						"google-translate1",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"language",
+						"translate",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "application/gzip",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Key",
+						"value": "bae4feaa5amshf5dd0f32dd3356ep186f0djsn4b8a9fa6615e",
+						"type": "text"
+					},
+					{
+						"key": "X-RapidAPI-Host",
+						"value": "google-translate1.p.rapidapi.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://google-translate1.p.rapidapi.com/language/translate/v2/languages",
+					"protocol": "https",
+					"host": [
+						"google-translate1",
+						"p",
+						"rapidapi",
+						"com"
+					],
+					"path": [
+						"language",
+						"translate",
+						"v2",
+						"languages"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
