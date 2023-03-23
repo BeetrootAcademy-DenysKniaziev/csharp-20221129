@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Вхід";
 }
+<script>document.getElementById('container').classList.remove('container'); </script>
 @if (!ViewData.ModelState.IsValid)
 {
     <div class="alert alert-danger" style="position: absolute">
@@ -36,7 +37,7 @@
 
 </div>
 
-   <script>document.getElementById('container').classList.remove('container'); </script>
+   
 
 
 

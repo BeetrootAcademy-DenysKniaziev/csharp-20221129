@@ -2,8 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    border: 5px solid #ccc !important;
+    border: 5px solid #87CEFA !important;
+    border-radius: 5%;
+    padding: 2%;
+    width: 20%;
+    align-items: stretch;
+    height: auto;
+    width: auto;
+    
+}
+.lessons-container div
+{
+    flex-grow: 1;
 }
 
 .lessons-content-container {
@@ -31,17 +41,67 @@ td {
 .like-container {
     display: flex;
 }
-.liked
-{
-    color: orangered;
+.liked {
+    color: #FFA07A;
+    max-height: 25px;
+    max-width: 25px;
 }
 .comment-container {
     display: flex;
     flex-direction: column;
+    /* flex-wrap: wrap;
+    width: 30%;*/
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 500px;
+}
+    .comment-container > * {
+        flex-grow: 1;
+    }
+.btn-comment {
+    margin-left: auto;
+    border-radius: 8px;
+    border: none;
+    margin-left: 75%;
+    color: #fff;
+    background-color: #00BFFF;
+    outline: none;
+}
+.area-comment {
+    border-radius: 10px;
+    resize: none;
+    min-width: 500px;
+    max-width: 500px;
+   
 }
 @media (max-width: 600px) {
     .lessons-content-container {
         flex-direction: column;
     }
 }
-
+.number-lesson {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    color: #ADD8E6;
+    border-radius: 50%;
+    color: #E0FFFF;
+    background-color: #00BFFF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.active-lesson {
+    background-color: #00FA9A;
+    border-radius: 5%;
+}
+.comment-date {
+    color: rgba(128, 128, 128, 0.6);
+}
+.comment-content {
+    margin-left: 10%;
+    color: rgb(27, 24, 24);
+}

@@ -41,16 +41,17 @@
                                         if (!string.IsNullOrEmpty(cookieValue))
                                         {
                                             <div class="nav-link text-dark">
-                                                <div style="display: flex;">
-                                                    <div class="dropdown">
+                                             
+                                                    <div class="dropdown" style="display: flex;">
                                                         <div onclick="myFunction()" class="dropbtn">@cookieValue</div>
                                                         <div id="myDropdown" class="dropdown-content">
-                                                          <a class="nav-link text-dark" style="padding-top: 0%" id="login" asp-area="" asp-controller="Authentication" asp-action="Profile">Профіль</a>
-                                                          <a class="nav-link text-dark" style="padding-top: 0%" id="login" asp-area="" asp-controller="Authentication" asp-action="Logout">Вихід</a>
+                                                          <a class="nav-link text-dark" style="border-bottom: 1px solid #333;" id="login" asp-area="" asp-controller="Authentication" asp-action="Profile">Профіль</a>
+                                                          <a class="nav-link text-dark" style=" border-bottom: 1px solid #333;" asp-area="" asp-controller="Authentication" asp-action="Logout">Вихід</a>
                                                         </div>
+                                                        <img class="icon" style="background-color: transparent; flex-basis: 0" src="~/icon/authorisation.png" />
                                                     </div>
-                                                    <img class="icon" style="background-color: transparent" src="~/icon/authorisation.png" />
-                                                </div>
+                                                  
+                                               
                                             </div>
                                           
                                         }
