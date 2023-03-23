@@ -55,6 +55,7 @@ internal class Program
 
         Console.SetWindowSize(200, 60);
         Picture Pic1 = new(), Pic2 = new(), Pic3 = new();
+
         Pic1.LoadBitmap(AppDomain.CurrentDomain.BaseDirectory + "images.jfif"); //"sword1s.jfif"
         Console.WriteLine(Pic1.ToString());
 
@@ -62,6 +63,7 @@ internal class Program
         string picStr1 = Pic2.ToString();
         Console.WriteLine(picStr1);
         File.AppendAllText("snake.txt", picStr1);
+
 
         Pic3.LoadBitmap("drag3.jfif");
         Console.WriteLine(Pic3.ToString());

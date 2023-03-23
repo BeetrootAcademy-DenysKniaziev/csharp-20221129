@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Homework14;
 
-
 internal class Picture
 {
     const int sprite = 3;
+
     public Point[,] Points;
     public Bitmap Img;
     public int[,] LevelMask;
@@ -31,9 +31,10 @@ internal class Picture
                 Points[x, y].PColor = Img.GetPixel(x, y);
             }
         }
-        for (int x = 2; x < Img.Width - 1; x++)
+
+        for (int x = 2; x < Img.Width-1; x++)
         {
-            for (int y = 2; y < Img.Height - 1; y++)
+            for (int y = 2; y < Img.Height-1; y++)
             {
                 LookAround(ref Points[x, y]);
             }
@@ -56,6 +57,7 @@ internal class Picture
         int maxLevel = 0;
         int xMaskSize = Img.Width / sprite + 1;
         int yMaskSize = Img.Height / sprite + 1;
+
         LevelMask = new int[xMaskSize, yMaskSize];
         ConsolPic = "";// new string[yMaskSize];
         for (int x = 1; x < Img.Width; x++)
@@ -66,6 +68,7 @@ internal class Picture
                 if (LevelMask[(int)x / sprite, (int)y / sprite] > maxLevel) maxLevel = LevelMask[(int)x / sprite, (int)y / sprite];
             }
         }
+
 
         for (int cY = 0; cY < yMaskSize; cY++)
         {
@@ -79,7 +82,9 @@ internal class Picture
             ConsolPic += "\n";
         }
         return ConsolPic;
+
     }
+
 }
 
 

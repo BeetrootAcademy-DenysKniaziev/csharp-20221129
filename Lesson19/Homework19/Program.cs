@@ -190,6 +190,7 @@ namespace Homework19
             //var simWords2 = persons.Select(p1 => persons.Select(p2 => p1.About.ToUpper().Split(' ', ',', '.', ':', ';', '\t')
             //.Intersect(p2.About.ToUpper().Split(' ', ',', '.', ':', ';', '\t')).Select(e => new { name1 = p1.Name, name2 = p2.Name, intersections = p1.About.ToUpper().Split(' ', ',', '.', ':', ';', '\t')
             //.Intersect(p2.About.ToUpper().Split(' ', ',', '.', ':', ';', '\t')) }).OrderByDescending(x => x.intersections.Count())));
+
             //.Where(h => p1.Name != p2.Name)
 
             WriteLine();
