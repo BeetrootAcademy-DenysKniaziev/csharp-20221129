@@ -1,0 +1,443 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Homework35\\Homework35.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\BAL\\BAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\BAL\\BAL.csproj",
+        "projectName": "BAL",
+        "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\BAL\\BAL.csproj",
+        "packagesPath": "C:\\Users\\bonis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\BAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bonis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj"
+              },
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj",
+        "projectName": "Contracts",
+        "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj",
+        "packagesPath": "C:\\Users\\bonis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bonis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj",
+        "projectName": "DAL",
+        "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj",
+        "packagesPath": "C:\\Users\\bonis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bonis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\HealthChecks\\MyHealthChecks.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\HealthChecks\\MyHealthChecks.csproj",
+        "projectName": "MyHealthChecks",
+        "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\HealthChecks\\MyHealthChecks.csproj",
+        "packagesPath": "C:\\Users\\bonis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\HealthChecks\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bonis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Homework35\\Homework35.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Homework35\\Homework35.csproj",
+        "projectName": "Homework35",
+        "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Homework35\\Homework35.csproj",
+        "packagesPath": "C:\\Users\\bonis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Homework35\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\bonis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\BAL\\BAL.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\BAL\\BAL.csproj"
+              },
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\Contracts\\Contracts.csproj"
+              },
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\DAL\\DAL.csproj"
+              },
+              "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\HealthChecks\\MyHealthChecks.csproj": {
+                "projectPath": "C:\\Users\\bonis\\Desktop\\DmytroBonislavskiy_dev\\LessonFinal\\HomeworkFinal\\HealthChecks\\MyHealthChecks.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AspNetCore.HealthChecks.Npgsql": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "AspNetCore.HealthChecks.Uris": {
+              "target": "Package",
+              "version": "[6.0.3, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "IdentityServer3": {
+              "target": "Package",
+              "version": "[2.6.3, )"
+            },
+            "Microsoft.AspNet.WebApi.Core": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Diagnostics.HealthChecks": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.12.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

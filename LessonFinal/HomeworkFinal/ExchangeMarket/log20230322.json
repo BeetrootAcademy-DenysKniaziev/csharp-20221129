@@ -1,0 +1,95 @@
+2023-03-22 19:19:37.427 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:19:38.099 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:20:42.156 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:20:42.694 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:22:16.511 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:22:17.060 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:37:11.549 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:37:12.687 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:37:30.749 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-22 19:37:30.868 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:37:35.328 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:37:35.359 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:38:37.338 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:38:38.310 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:38:47.834 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-22 19:38:47.926 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:38:53.782 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:38:53.799 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:39:15.896 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:39:16.608 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:40:40.958 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:40:41.771 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 19:50:39.050 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 19:50:39.614 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:09:51.087 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:09:51.664 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:14:04.396 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:14:05.119 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:29:38.567 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:29:39.153 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:36:25.779 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:36:26.407 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:38:55.779 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:38:56.398 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:40:27.562 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:40:28.229 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:41:34.197 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:41:34.812 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:56:58.409 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:56:59.078 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:57:15.016 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-22 20:57:15.085 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:57:18.383 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:57:18.400 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:57:20.561 -04:00 [INF] {"Method":"GET","Path":"/Login/Logout"}
+2023-03-22 20:57:20.563 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-22 20:57:20.572 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:57:20.588 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:57:23.971 -04:00 [INF] {"Method":"GET","Path":"/Login/Index"}
+2023-03-22 20:57:24.009 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:57:52.433 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-22 20:57:52.462 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:58:06.770 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-22 20:58:06.771 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-22 20:58:06.783 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:58:06.808 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:58:22.514 -04:00 [INF] {"Method":"GET","Path":"/Login/Logout"}
+2023-03-22 20:58:22.514 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-22 20:58:22.528 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 20:58:22.546 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 20:58:35.873 -04:00 [INF] {"Method":"GET","Path":"/Login/Index"}
+2023-03-22 20:58:35.876 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:08:17.431 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 21:08:18.119 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:08:28.103 -04:00 [INF] {"Method":"GET","Path":"/Login/Index"}
+2023-03-22 21:08:28.152 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:10:33.760 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 21:10:34.318 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:10:56.820 -04:00 [INF] {"membersCount":1,"message":"Some one obsorved list of our members"}
+2023-03-22 21:10:56.830 -04:00 [INF] {"Method":"GET","Path":"/api/PeopleAPI"}
+2023-03-22 21:10:56.896 -04:00 [INF] {"StatusCode":200,"ContentType":"application/json; charset=utf-8"}
+2023-03-22 21:32:25.736 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 21:32:26.461 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:32:33.506 -04:00 [INF] {"Method":"GET","Path":"/Login/Index"}
+2023-03-22 21:32:33.575 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:32:41.694 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-22 21:32:41.763 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:32:45.506 -04:00 [INF] {"Method":"GET","Path":"/Orders/Details/5"}
+2023-03-22 21:32:45.543 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:51:22.343 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 21:51:23.017 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 21:51:29.637 -04:00 [INF] {"Method":"GET","Path":"/Login/Index"}
+2023-03-22 21:51:29.706 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 22:02:00.239 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 22:02:01.423 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 22:02:16.121 -04:00 [INF] {"Method":"GET","Path":"/Tag"}
+2023-03-22 22:02:16.206 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 22:02:19.110 -04:00 [INF] {"Method":"GET","Path":"/Items"}
+2023-03-22 22:02:19.147 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 22:04:09.345 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-22 22:04:09.719 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 22:04:12.906 -04:00 [INF] {"Method":"GET","Path":"/Login/Index"}
+2023-03-22 22:04:12.947 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-22 22:04:21.151 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-22 22:04:21.202 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}

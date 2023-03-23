@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Homework35.props" />
+</Project>

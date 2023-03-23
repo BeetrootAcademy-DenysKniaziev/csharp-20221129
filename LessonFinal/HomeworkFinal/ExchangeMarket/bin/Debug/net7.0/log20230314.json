@@ -1,0 +1,24 @@
+2023-03-14 00:04:57.270 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-14 00:04:57.376 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 00:05:25.005 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-14 00:05:25.023 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 00:15:56.741 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-14 00:15:56.968 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 00:16:18.632 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-14 00:16:18.636 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 00:16:21.593 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-14 00:16:21.611 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 00:30:10.080 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-14 00:30:10.191 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 00:30:19.659 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-14 00:30:19.666 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-14 12:58:45.325 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-14 12:58:45.458 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 12:58:56.180 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-14 12:58:56.189 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-14 13:04:06.881 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-14 13:04:07.028 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-14 13:04:24.068 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-14 13:04:24.082 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}
+2023-03-14 13:09:45.324 -04:00 [INF] {"Method":"POST","Path":"/api/PeopleAPI"}
+2023-03-14 13:09:45.326 -04:00 [INF] {"StatusCode":400,"ContentType":"application/problem+json; charset=utf-8"}

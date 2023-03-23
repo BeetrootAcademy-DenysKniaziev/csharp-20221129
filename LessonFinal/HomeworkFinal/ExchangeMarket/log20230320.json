@@ -1,0 +1,471 @@
+2023-03-20 13:13:16.693 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:13:16.820 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:13:30.146 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:13:30.159 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:15:18.105 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:15:18.108 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:16:03.597 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:16:03.598 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:17:59.979 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:18:00.139 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:18:03.788 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:18:03.804 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:21:22.958 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:21:37.012 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:29:55.987 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:29:55.988 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:30:14.684 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:30:14.801 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:30:23.557 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:30:23.564 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:30:25.079 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 13:30:25.095 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:30:27.976 -04:00 [INF] {"Method":"GET","Path":"/Tag"}
+2023-03-20 13:30:27.986 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:30:29.476 -04:00 [INF] {"Method":"GET","Path":"/Items"}
+2023-03-20 13:30:29.500 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:32:23.373 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:32:23.533 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:34:18.219 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:34:18.356 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:39:53.841 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:39:53.966 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:39:59.014 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:39:59.018 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:40:07.104 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:40:07.104 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:41:12.530 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:41:12.541 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:43:47.978 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:43:47.981 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:43:59.595 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:43:59.745 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:44:06.157 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 13:44:06.163 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 13:44:07.750 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 13:44:07.761 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 14:58:12.639 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 14:58:13.054 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:07:42.444 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 15:07:43.479 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:09:25.582 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 15:09:25.629 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:09:31.081 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 15:09:31.208 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:10:26.850 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 15:10:26.852 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 15:10:27.010 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 15:10:27.586 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:10:32.367 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:10:32.380 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:10:37.372 -04:00 [INF] {"Method":"GET","Path":"/Enrollments"}
+2023-03-20 15:10:37.409 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:10:40.859 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:10:40.862 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:19:26.982 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 15:19:27.413 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:19:31.684 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:19:31.738 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:20:12.876 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:20:12.887 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:20:26.264 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 15:20:26.310 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:20:31.634 -04:00 [INF] {"Method":"GET","Path":"/People/Edit/1"}
+2023-03-20 15:20:31.762 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:20:50.733 -04:00 [INF] {"Method":"POST","Path":"/People/Edit/1"}
+2023-03-20 15:20:50.736 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 15:20:51.095 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 15:20:51.106 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:20:54.868 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:20:54.870 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:21:42.356 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 15:21:42.786 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:21:53.531 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:21:53.573 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:23:44.563 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 15:23:44.926 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:23:47.442 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:23:47.491 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:37:27.158 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 15:37:27.555 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:38:33.858 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:38:33.911 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:45:29.527 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 15:45:30.077 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 15:45:41.236 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 15:45:41.298 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:02:37.110 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 16:02:37.653 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:02:43.197 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 16:02:43.287 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:02:48.513 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 16:02:48.675 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:03:25.756 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 16:03:25.759 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 16:03:25.802 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 16:03:25.845 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:03:40.425 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 16:03:40.472 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:39:50.082 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 16:39:50.823 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:41:58.282 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 16:41:58.810 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:43:19.826 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 16:43:19.909 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:43:22.117 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 16:43:22.265 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:43:53.897 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 16:43:53.899 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 16:43:54.513 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 16:43:54.540 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 16:46:11.699 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 16:46:11.741 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 17:17:53.686 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 17:17:54.209 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 17:17:58.082 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 17:17:58.165 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 17:18:00.074 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 17:18:00.242 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 17:18:31.562 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 17:18:31.565 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 17:18:32.065 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 17:18:32.093 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 17:20:25.728 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 17:20:25.808 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:07:17.822 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:07:18.005 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:07:20.840 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:07:20.872 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:07:24.141 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 18:07:24.191 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:07:47.254 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 18:07:47.255 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 18:07:47.270 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:07:47.281 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:20:54.705 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:20:54.875 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:20:58.180 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:20:58.207 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:20:59.926 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 18:20:59.984 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:23:47.658 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:23:47.856 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:23:51.046 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:23:51.074 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:23:52.549 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 18:23:52.598 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:40:37.718 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:40:37.877 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:40:41.403 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:40:41.426 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:40:42.986 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 18:40:43.035 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:43:08.406 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 18:43:08.411 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 18:43:15.469 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:43:15.485 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:43:37.938 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 18:43:37.950 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:43:58.634 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 18:43:58.638 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:44:59.042 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:44:59.226 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:45:25.788 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 18:45:25.812 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:45:43.447 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 18:45:43.453 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:49:44.605 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:49:44.760 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:49:46.798 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:49:46.837 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:49:54.779 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/1"}
+2023-03-20 18:49:54.808 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:49:58.222 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/1"}
+2023-03-20 18:49:58.223 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 18:49:58.235 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:49:58.244 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:53:20.290 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:53:20.546 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:53:25.149 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:53:25.171 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:53:31.178 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/2"}
+2023-03-20 18:53:31.207 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:53:33.631 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/2"}
+2023-03-20 18:53:33.632 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 18:53:33.643 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:54:33.582 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:54:33.764 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:54:38.964 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 18:54:38.985 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:54:40.923 -04:00 [INF] {"Method":"GET","Path":"/Orders/Create"}
+2023-03-20 18:54:40.966 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:03.826 -04:00 [INF] {"Method":"POST","Path":"/Orders/Create"}
+2023-03-20 18:55:03.826 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 18:55:03.849 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 18:55:03.861 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:06.554 -04:00 [INF] {"Method":"GET","Path":"/Orders/Edit/1"}
+2023-03-20 18:55:06.574 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:10.740 -04:00 [INF] {"Method":"POST","Path":"/Orders/Edit/1"}
+2023-03-20 18:55:10.740 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 18:55:10.750 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 18:55:10.756 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:13.286 -04:00 [INF] {"Method":"GET","Path":"/Orders/Details/1"}
+2023-03-20 18:55:13.302 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:16.818 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 18:55:16.823 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:19.604 -04:00 [INF] {"Method":"GET","Path":"/Orders/Delete/1"}
+2023-03-20 18:55:19.613 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:55:56.573 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 18:55:56.759 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:56:03.226 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 18:56:03.252 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 18:56:39.361 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 18:56:39.380 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:03:20.994 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:03:21.231 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:03:26.153 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 19:03:26.173 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:13:18.810 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:13:19.022 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:13:22.823 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 19:13:22.848 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:13:35.723 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 19:13:35.724 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 19:13:35.727 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:13:35.736 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:44:21.930 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:44:22.212 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:44:28.812 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 19:44:28.838 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:44:39.555 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 19:44:39.570 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:48:06.805 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:48:07.057 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:48:10.318 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 19:48:10.351 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:48:22.183 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 19:48:22.197 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:48:30.825 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 19:48:30.825 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 19:48:30.831 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:48:30.837 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:51:23.802 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:51:23.995 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:51:37.876 -04:00 [INF] {"Method":"GET","Path":"/Login/Logout"}
+2023-03-20 19:51:37.876 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 19:51:37.881 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:51:37.894 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:51:42.192 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 19:51:42.214 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:51:55.000 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 19:51:55.017 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:52:04.049 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 19:52:04.049 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 19:52:04.055 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:52:04.059 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:52:08.796 -04:00 [INF] {"Method":"GET","Path":"/Login/Logout"}
+2023-03-20 19:52:08.796 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 19:52:08.800 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:52:08.806 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 19:59:01.099 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 19:59:01.345 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:01:32.069 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:01:32.301 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:10:17.886 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:10:18.088 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:10:45.105 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:10:45.299 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:11:46.262 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:11:46.491 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:11:49.933 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:11:49.955 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:11:55.057 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 20:11:55.114 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:12:19.945 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 20:12:19.945 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:12:20.106 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:12:20.121 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:12:29.193 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 20:12:29.203 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:12:34.087 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:12:34.093 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:12:44.955 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 20:12:44.960 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:12:51.683 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 20:12:51.683 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:12:51.689 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:12:51.694 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:03.816 -04:00 [INF] {"Method":"GET","Path":"/Login/Logout"}
+2023-03-20 20:13:03.816 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:13:03.822 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:13:03.827 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:06.309 -04:00 [INF] {"Method":"GET","Path":"/Login"}
+2023-03-20 20:13:06.316 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:13.007 -04:00 [INF] {"Method":"POST","Path":"/Login"}
+2023-03-20 20:13:13.008 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:13:13.011 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:13:13.020 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:27.581 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:13:27.780 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:30.556 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:13:30.581 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:32.416 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 20:13:32.460 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:54.605 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 20:13:54.606 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:13:54.789 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:13:54.796 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:13:59.413 -04:00 [INF] {"Method":"GET","Path":"/People/Edit/2"}
+2023-03-20 20:13:59.436 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:01.925 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:14:01.933 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:03.234 -04:00 [INF] {"Method":"GET","Path":"/People/Details/2"}
+2023-03-20 20:14:03.247 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:06.330 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:14:06.337 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:08.678 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/2"}
+2023-03-20 20:14:08.691 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:10.811 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/2"}
+2023-03-20 20:14:10.811 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:14:38.377 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:14:38.630 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:51.337 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:14:51.371 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:14:56.225 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 20:14:56.281 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:15:10.959 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 20:15:10.960 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:15:11.110 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:15:11.119 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:15:15.099 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/3"}
+2023-03-20 20:15:15.114 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:15:16.996 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/3"}
+2023-03-20 20:15:16.996 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:21:31.456 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:21:31.658 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:21:36.355 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:21:36.384 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:21:38.780 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 20:21:38.822 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:21:50.454 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 20:21:50.455 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:21:50.630 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:21:50.636 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:21:53.829 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/4"}
+2023-03-20 20:21:53.846 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:21:55.572 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/4"}
+2023-03-20 20:21:55.572 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:24:07.625 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:24:07.866 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:24:15.548 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:24:15.578 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:24:17.142 -04:00 [INF] {"Method":"GET","Path":"/People/Create"}
+2023-03-20 20:24:17.183 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:24:26.507 -04:00 [INF] {"Method":"POST","Path":"/People/Create"}
+2023-03-20 20:24:26.508 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:24:26.691 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:24:26.701 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:24:30.060 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/5"}
+2023-03-20 20:24:30.075 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:24:31.661 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/5"}
+2023-03-20 20:24:31.661 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:24:31.675 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:24:31.688 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:24:36.199 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:24:36.207 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:25:20.208 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:25:20.408 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:25:24.073 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:25:24.093 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:25:25.556 -04:00 [INF] {"Method":"GET","Path":"/Orders/Create"}
+2023-03-20 20:25:25.604 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:25:35.861 -04:00 [INF] {"Method":"POST","Path":"/Orders/Create"}
+2023-03-20 20:25:35.862 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:25:35.888 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:25:35.898 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:25:39.173 -04:00 [INF] {"Method":"GET","Path":"/Orders/Delete/1"}
+2023-03-20 20:25:39.189 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:02.078 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:36:02.305 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:05.628 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:36:05.662 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:08.765 -04:00 [INF] {"Method":"GET","Path":"/People/Delete/5"}
+2023-03-20 20:36:08.794 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:10.268 -04:00 [INF] {"Method":"POST","Path":"/People/Delete/5"}
+2023-03-20 20:36:10.269 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:36:10.286 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:36:10.418 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:13.234 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:36:13.254 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:15.435 -04:00 [INF] {"Method":"GET","Path":"/Orders/Create"}
+2023-03-20 20:36:15.476 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:25.634 -04:00 [INF] {"Method":"POST","Path":"/Orders/Create"}
+2023-03-20 20:36:25.634 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:36:25.648 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:36:25.656 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:28.088 -04:00 [INF] {"Method":"GET","Path":"/Orders/Delete/2"}
+2023-03-20 20:36:28.099 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:36:57.433 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:36:57.598 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:37:01.640 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:37:01.667 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:37:03.641 -04:00 [INF] {"Method":"GET","Path":"/Orders/Create"}
+2023-03-20 20:37:03.685 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:37:13.835 -04:00 [INF] {"Method":"POST","Path":"/Orders/Create"}
+2023-03-20 20:37:13.836 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:37:13.866 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:37:13.879 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:37:16.337 -04:00 [INF] {"Method":"GET","Path":"/Orders/Delete/3"}
+2023-03-20 20:37:16.350 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:18.539 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:41:18.719 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:25.352 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:41:25.382 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:27.485 -04:00 [INF] {"Method":"GET","Path":"/Orders/Create"}
+2023-03-20 20:41:27.529 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:41.324 -04:00 [INF] {"Method":"POST","Path":"/Orders/Create"}
+2023-03-20 20:41:41.325 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:41:41.357 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:41:41.369 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:45.098 -04:00 [INF] {"Method":"GET","Path":"/Orders/Delete/4"}
+2023-03-20 20:41:45.114 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:46.773 -04:00 [INF] {"Method":"POST","Path":"/Orders/Delete/4"}
+2023-03-20 20:41:46.773 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:41:46.789 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:41:46.890 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:52.178 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:41:52.184 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:41:54.117 -04:00 [INF] {"Method":"GET","Path":"/Orders/Create"}
+2023-03-20 20:41:54.126 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:07.734 -04:00 [INF] {"Method":"POST","Path":"/Orders/Create"}
+2023-03-20 20:42:07.734 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:42:07.745 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:42:07.751 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:10.209 -04:00 [INF] {"Method":"GET","Path":"/Orders/Edit/5"}
+2023-03-20 20:42:10.225 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:14.525 -04:00 [INF] {"Method":"POST","Path":"/Orders/Edit/5"}
+2023-03-20 20:42:14.525 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:42:14.534 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:42:14.539 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:16.981 -04:00 [INF] {"Method":"GET","Path":"/Orders/Details/5"}
+2023-03-20 20:42:16.993 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:18.492 -04:00 [INF] {"Method":"GET","Path":"/Orders/Edit/5"}
+2023-03-20 20:42:18.498 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:23.041 -04:00 [INF] {"Method":"POST","Path":"/Orders/Edit/5"}
+2023-03-20 20:42:23.041 -04:00 [INF] {"StatusCode":302,"ContentType":null}
+2023-03-20 20:42:23.052 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 20:42:23.057 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:30.198 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 20:42:30.211 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 20:42:32.632 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 20:42:32.638 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 21:59:03.288 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 21:59:03.499 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 21:59:08.647 -04:00 [INF] {"Method":"GET","Path":"/Tag"}
+2023-03-20 21:59:08.669 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 21:59:11.447 -04:00 [INF] {"Method":"GET","Path":"/Orders"}
+2023-03-20 21:59:11.467 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 21:59:12.759 -04:00 [INF] {"Method":"GET","Path":"/People"}
+2023-03-20 21:59:12.778 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}
+2023-03-20 21:59:15.445 -04:00 [INF] {"Method":"GET","Path":"/"}
+2023-03-20 21:59:15.452 -04:00 [INF] {"StatusCode":200,"ContentType":"text/html; charset=utf-8"}

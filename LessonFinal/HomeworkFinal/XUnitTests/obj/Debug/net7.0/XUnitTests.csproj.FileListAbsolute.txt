@@ -1,0 +1,12 @@
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\XUnitTests\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\XUnitTests\obj\Debug\net7.0\XUnitTests.csproj.AssemblyReference.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\XUnitTests\obj\Debug\net7.0\XUnitTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\XUnitTests\obj\Debug\net7.0\XUnitTests.AssemblyInfoInputs.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\XUnitTests\obj\Debug\net7.0\XUnitTests.AssemblyInfo.cs
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\Lesson35\XUnitTests\obj\Debug\net7.0\XUnitTests.csproj.CoreCompileInputs.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\LessonFinal\HomeworkFinal\XUnitTests\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\LessonFinal\HomeworkFinal\XUnitTests\obj\Debug\net7.0\XUnitTests.csproj.AssemblyReference.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\LessonFinal\HomeworkFinal\XUnitTests\obj\Debug\net7.0\XUnitTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\LessonFinal\HomeworkFinal\XUnitTests\obj\Debug\net7.0\XUnitTests.AssemblyInfoInputs.cache
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\LessonFinal\HomeworkFinal\XUnitTests\obj\Debug\net7.0\XUnitTests.AssemblyInfo.cs
+C:\Users\bonis\Desktop\DmytroBonislavskiy_dev\LessonFinal\HomeworkFinal\XUnitTests\obj\Debug\net7.0\XUnitTests.csproj.CoreCompileInputs.cache
