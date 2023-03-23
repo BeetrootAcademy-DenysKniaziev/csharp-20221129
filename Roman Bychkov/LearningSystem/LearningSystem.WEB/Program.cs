@@ -1,11 +1,7 @@
-
-using LearningSystem.BLL.Interfaces;
 using LearningSystem.BLL.Services;
-using LearningSystem.DAL;
-using LearningSystem.DAL.Interfaces;
 using LearningSystem.DAL.Repositories;
+using LearningSystem.WEB;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -16,25 +12,35 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressInferBindingSourcesForParameters = true);
 
+
+var secretKey = builder.Configuration.GetSection("JWTSettings:SecretKey").Value;
+var issuer = builder.Configuration.GetSection("JWTSettings:Issuer").Value;
+var audience = builder.Configuration.GetSection("JWTSettings:Audience").Value;
+var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+
+
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+services.Configure<JWTSettings>(builder.Configuration.GetSection("JWTSettings"));
 
 services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 .AddJwtBearer(options =>
 {
-    options.RequireHttpsMetadata = false;
-    options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration.GetSection("Jwt").Value)),
-        ValidateIssuer = false,
-        ValidateAudience = false
+        ValidateIssuer = true,
+        ValidIssuer = issuer,
+        ValidateAudience = true,
+        ValidAudience = audience,
+        ValidateLifetime = true,
+        IssuerSigningKey = signingKey,
+        ValidateIssuerSigningKey = true
     };
 });
 
@@ -78,6 +84,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

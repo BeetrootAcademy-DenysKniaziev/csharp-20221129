@@ -33,14 +33,14 @@ form.addEventListener('submit', function (e) {
 
             var myTextarea = document.getElementById("comment");
 
-            // Очищаємо вміст елемента
+            
             myTextarea.value = "";
         }
         if (xhr.readyState === 4 && xhr.status === 400) {
             window.alert('Можно тільки 250 символів!')
         }
         if (xhr.readyState === 4 && xhr.status === 401) {
-            window.location.href = "/Login/Login";
+            window.location.href = "/Authentication/Login";
         }
     });
    

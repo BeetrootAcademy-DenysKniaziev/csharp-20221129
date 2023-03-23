@@ -16,7 +16,7 @@
             document.getElementById('like-count').innerText = parseInt(countLike) - 1;
         }
         if (xhr.readyState === 4 && xhr.status === 401) {
-            window.location.href = "/Login/Login";
+            window.location.href = "/Authentication/Login";
         }
     };
     xhr.send();

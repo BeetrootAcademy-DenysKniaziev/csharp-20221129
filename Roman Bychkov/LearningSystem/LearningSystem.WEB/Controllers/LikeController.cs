@@ -1,7 +1,10 @@
-﻿namespace LearningSystem.WEB.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace LearningSystem.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize]
     public class LikeController : ControllerBase
     {
         private ILikeArticleService _service;

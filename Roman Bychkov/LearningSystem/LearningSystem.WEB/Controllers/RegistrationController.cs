@@ -1,4 +1,6 @@
 ﻿using LearningSystem.WEB.ValidationModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -10,12 +12,13 @@ namespace LearningSystem.WEB.Controllers
     {
         private readonly ILogger<RegistrationController> _logger;
         private IUsersServices _service;
-        private IConfiguration _configuration;
-        public RegistrationController(ILogger<RegistrationController> logger, IUsersServices service, IConfiguration configuration)
+        private readonly JWTSettings _options;
+        private SignInManager<User> _signInManager;
+        public RegistrationController(ILogger<RegistrationController> logger, IUsersServices service, IOptions<JWTSettings> optAccess)
         {
             _logger = logger;
             _service = service;
-            _configuration = configuration;
+            _options = optAccess.Value;
         }
 
 
@@ -44,10 +47,6 @@ namespace LearningSystem.WEB.Controllers
 
             if (ModelState.IsValid)
             {
-
-
-
-
                 var user = new User
                 {
                     Email = model.Email,
@@ -58,23 +57,41 @@ namespace LearningSystem.WEB.Controllers
                 //TODO: add logic after succesful registration
                 //var claims = new List<Claim>
                 //{
-                //    new Claim(ClaimTypes.Name, user.Password),
-                //    new Claim(ClaimTypes.Email, user.Email)
+                //        new Claim(ClaimTypes.Name, user.UserName),
+                //        new Claim(ClaimTypes.Email, user.Email)
                 //};
 
-                //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt").Value));
+                //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.SecretKey));
                 //var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-                //var token = new JwtSecurityToken(
-                //    issuer: null,
-                //    audience: null,
-                //    claims: claims,
-                //    expires: DateTime.Now.AddDays(7),
-                //    signingCredentials: creds
-                //);
-                //Response.Cookies.Append("jwt_token", new JwtSecurityTokenHandler().WriteToken(token));
-                //return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                //var jwt = new JwtSecurityToken(
 
+                //    issuer: _options.Issuer,
+                //    audience: _options.Audience,
+                //    claims: claims,
+                //    expires: DateTime.UtcNow.AddMinutes(35),
+                //    notBefore: DateTime.UtcNow,
+                //    signingCredentials: creds);
+                //var token = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+                //// Сохранение токена в Cookies
+                //Response.Cookies.Append("jwt", token, new CookieOptions
+                //{
+                //    HttpOnly = true,
+                //    Secure = true,
+                //    SameSite = SameSiteMode.Strict
+                //});
+
+                //var signInResult = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, isPersistent: false, lockoutOnFailure: false);
+                //if (signInResult.Succeeded)
+                //{
+                //    return RedirectToAction("Index", "Home");
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError(string.Empty, "Невірний логін або пароль");
+                //    return View(model);
+                //}
                 //Cookies
                 Response.Cookies.Append("user_login", model.UserName, new CookieOptions
                 {
@@ -85,10 +102,8 @@ namespace LearningSystem.WEB.Controllers
                     Expires = DateTime.Now.AddDays(7)
                 });
                 //
-
                 await _service.AddAsync(user);
-              
-                return RedirectToAction("Login", "Login", model);
+                return RedirectToAction("Index", "Home", model);
             }
             else
                 return View(model);

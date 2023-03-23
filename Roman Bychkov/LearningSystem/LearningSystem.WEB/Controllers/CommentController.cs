@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
 
 namespace LearningSystem.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize]
     public class CommentController : ControllerBase
     {
         private ICommentsService _service;

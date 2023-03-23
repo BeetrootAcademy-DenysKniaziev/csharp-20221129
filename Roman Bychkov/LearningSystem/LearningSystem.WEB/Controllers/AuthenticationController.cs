@@ -1,14 +1,13 @@
-﻿using LearningSystem.Contracts;
-using LearningSystem.WEB.ValidationModels;
+﻿using LearningSystem.WEB.ValidationModels;
 
 namespace LearningSystem.WEB.Controllers
 {
-    public class LoginController : Controller
+    public class AuthenticationController : Controller
     {
-        private readonly ILogger<LoginController> _logger;
+        private readonly ILogger<AuthenticationController> _logger;
         private IUsersServices _service;
-      
-        public LoginController(ILogger<LoginController> logger, IUsersServices service)
+
+        public AuthenticationController(ILogger<AuthenticationController> logger, IUsersServices service)
         {
             _logger = logger;
             _service = service;
@@ -21,13 +20,20 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Active = "login";
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            Response.Cookies.Delete("user_login");
+            Response.Cookies.Delete("user_pass");
+            return RedirectToAction("Index", "Home");
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel model)
         {
 
             ViewBag.Active = "login";
-            
+
 
             if (!await _service.IsValueExistAsync(u => u.UserName, model.UserName))
             {

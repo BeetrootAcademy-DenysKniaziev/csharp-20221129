@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img class="icon" src="~/icon/icon.png"></a>
-               <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LearningSystem</a>
+               <a style="font-family: Courier New, monospace;" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LearningSystem</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,25 +34,37 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" id="registration" asp-area="" asp-controller="Registration" asp-action="Registration">Регістрація</a>
                         </li>
-                        <li class="nav-item">
-                           <a class="nav-link text-dark" id="login" asp-area="" asp-controller="Login" asp-action="Login">
-                                <div style="display: flex">
+                       <li class="nav-item">
+                               
                                     @{
-                                            var cookieValue = Context.Request.Cookies["user_login"];
-                                            if (!string.IsNullOrEmpty(cookieValue))
-                                            {
-                                                @cookieValue
-                                            }
-                                            else
-                                            {
-                                                <p>Вхід</p>
-                                            }
-                                            
-                                     }
-                                    <img class="icon" style="background-color: transparent" src="~/icon/authorisation.png">
-                               </div>
-                            </a>
-                         </li>
+                                        var cookieValue = Context.Request.Cookies["user_login"];
+                                        if (!string.IsNullOrEmpty(cookieValue))
+                                        {
+                                            <div class="nav-link text-dark">
+                                                <div style="display: flex;">
+                                                    <div class="dropdown">
+                                                        <div onclick="myFunction()" class="dropbtn">@cookieValue</div>
+                                                        <div id="myDropdown" class="dropdown-content">
+                                                          <a class="nav-link text-dark" style="padding-top: 0%" id="login" asp-area="" asp-controller="Authentication" asp-action="Profile">Профіль</a>
+                                                          <a class="nav-link text-dark" style="padding-top: 0%" id="login" asp-area="" asp-controller="Authentication" asp-action="Logout">Вихід</a>
+                                                        </div>
+                                                    </div>
+                                                    <img class="icon" style="background-color: transparent" src="~/icon/authorisation.png" />
+                                                </div>
+                                            </div>
+                                          
+                                        }
+                                        else
+                                        { 
+                                          <a class="nav-link text-dark" id="login" asp-area="" asp-controller="Authentication" asp-action="Login">
+                                            <div style="display: flex"> 
+                                                   Вхід
+                                                 <img class="icon" style="background-color: transparent; flex-basis: 0" src="~/icon/authorisation.png" />
+                                            </div>
+                                          </a>
+                                         }
+                                    }
+                            </li>
                          </ul>
                     </div>
                  </div>

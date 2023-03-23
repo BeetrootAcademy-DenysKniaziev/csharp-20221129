@@ -20,14 +20,14 @@
 }
 
     .course-container > div {
-        flex-basis: calc(33.33% - 20px); /* установите желаемый отступ между элементами */
-        margin: 10px; /* установите желаемый внешний отступ элементов */
+        flex-basis: calc(33.33% - 20px); 
+        margin: 10px; 
     }
         .course-container > div > p {
             margin: 0;
             font-size: 1em;
-            padding: 0; /* убираем внутренние отступы */
-            margin-bottom: 5px; /* добавляем отступ между текстом и рамкой */
+            padding: 0; 
+            margin-bottom: 5px; 
         }
 .course-item:hover {
     border: 5px solid #ccc;
@@ -41,18 +41,18 @@
   
     .title {
     padding-top: 5px;
-    font-size: 20px; /* установите желаемый размер шрифта */
-    font-weight: bold; /* установите желаемый вес шрифта */
-    margin-top: 10px; /* установите желаемый внешний отступ сверху */
-    text-align: center; /* установите желаемое выравнивание */
+    font-size: 20px; 
+    font-weight: bold; 
+    margin-top: 10px; 
+    text-align: center; 
 }
 
     .title::after {
-        content: ""; /* добавляем пустой элемент для линии */
+        content: ""; 
         display: block;
-        margin: 5px auto; /* установите желаемые внешние отступы сбоку и выравнивание по центру */
-        width: 50px; /* установите желаемую длину линии */
-        border-bottom: 2px solid black; /* установите желаемую толщину и цвет линии */
+        margin: 5px auto; 
+        width: 50px;
+        border-bottom: 2px solid black; 
     }
 
 
