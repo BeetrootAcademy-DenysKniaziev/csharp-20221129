@@ -1,6 +1,6 @@
 using LearningSystem.BLL.Services;
 using LearningSystem.DAL.Repositories;
-using LearningSystem.WEB;
+using LearningSystem.WEB.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -11,40 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressInferBindingSourcesForParameters = true);
+builder.Services.AddSession();
 
 
-var secretKey = builder.Configuration.GetSection("JWTSettings:SecretKey").Value;
-var issuer = builder.Configuration.GetSection("JWTSettings:Issuer").Value;
-var audience = builder.Configuration.GetSection("JWTSettings:Audience").Value;
-var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-
-
+    
 var services = builder.Services;
 var configuration = builder.Configuration;
-
-services.Configure<JWTSettings>(builder.Configuration.GetSection("JWTSettings"));
-
-services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidIssuer = issuer,
-        ValidateAudience = true,
-        ValidAudience = audience,
-        ValidateLifetime = true,
-        IssuerSigningKey = signingKey,
-        ValidateIssuerSigningKey = true
-    };
-});
-
-
 
 
 services.AddScoped<IArcticlesService, ArticlesService>();
@@ -53,15 +25,31 @@ services.AddScoped<ICommentsService, CommentsService>();
 services.AddScoped<IUsersServices, UsersService>();
 services.AddScoped<ILikeCommentService, LikeCommentService>();
 services.AddScoped<ILikeArticleService, LikeArticleService>();
-
-
-
 services.AddScoped<IUsersRepository, UsersRepository>();
 services.AddScoped<ICoursesRepository, CoursesRepository>();
 services.AddScoped<IArticlesRepository, ArticlesRepository>();
 services.AddScoped<ICommentsRepository, CommentsRepository>();
 services.AddScoped<ILikeArticleRepository, LikeArcticleRepository>();
 services.AddScoped<ILikeCommentRepository, LikeCommentRepository>();
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "myapp",
+            ValidAudience = "myapp",
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt_Key"]))
+        };
+    });
+
+
+
 
 
 
@@ -78,6 +66,10 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseSession();
+app.UseMiddleware<AuthMiddleware>();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

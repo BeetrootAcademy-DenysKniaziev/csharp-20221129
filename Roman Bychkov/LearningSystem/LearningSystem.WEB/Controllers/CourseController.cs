@@ -30,9 +30,7 @@
             ViewBag.Active = "courses";
             ViewBag.Number = number;
 
-            string userLogin = Request?.Cookies["user_login"], password = Request?.Cookies["user_pass"];
-
-            var user = await _usersService.GetUserByLoginPassword(userLogin, password);
+            var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User.Identity.Name);
             var article = await _arcticlesService.GetByNumber(number, id);
 
             if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)

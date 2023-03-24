@@ -44,16 +44,16 @@ namespace LearningSystem.BLL.Services
             await _context.UpdateAsync(item);
         }
 
-        public async Task<bool> IsValueExistAsync(Func<User, string> valueSelector, string value)
+        public async Task<User> GetValueByСonditionAsync(Func<User, string> valueSelector, string value)
         {
-            return await _context.IsValueExistAsync(valueSelector, value);
+            return await _context.GetValueByСonditionAsync(valueSelector, value);
         }
 
-        public async Task<User> GetUserByLoginPassword(string login, string password)
+        public async Task<User> GetUserByLoginPasswordAsync(string login, string password)
         {
             if(!string.IsNullOrEmpty(password))
                 password = SHA256Managed(password);
-            return await _context.GetUserByLoginPassword(login, password);
+            return await _context.GetUserByLoginPasswordAsync(login, password);
         }
 
        

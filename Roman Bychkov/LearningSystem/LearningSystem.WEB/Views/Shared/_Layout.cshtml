@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/css/coursesstyle.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/formstyle.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/lessonsstyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LearningSystem.WEB.styles.css" asp-append-version="true" />
   
 </head>
@@ -32,21 +33,20 @@
                             <a class="nav-link text-dark" id="privacy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" id="registration" asp-area="" asp-controller="Registration" asp-action="Registration">Регістрація</a>
+                            <a class="nav-link text-dark" id="registration" asp-area="" asp-controller="Account" asp-action="Registration">Регістрація</a>
                         </li>
                        <li class="nav-item">
-                               
-                                    @{
-                                        var cookieValue = Context.Request.Cookies["user_login"];
-                                        if (!string.IsNullOrEmpty(cookieValue))
+                               @{
+                                       
+                                         @if (User.Identity.IsAuthenticated)
                                         {
                                             <div class="nav-link text-dark">
                                              
                                                     <div class="dropdown" style="display: flex;">
-                                                        <div onclick="myFunction()" class="dropbtn">@cookieValue</div>
+                                                        <div onclick="myFunction()" class="dropbtn">@User.Identity.Name</div>
                                                         <div id="myDropdown" class="dropdown-content">
-                                                          <a class="nav-link text-dark" style="border-bottom: 1px solid #333;" id="login" asp-area="" asp-controller="Authentication" asp-action="Profile">Профіль</a>
-                                                          <a class="nav-link text-dark" style=" border-bottom: 1px solid #333;" asp-area="" asp-controller="Authentication" asp-action="Logout">Вихід</a>
+                                                          <a class="nav-link text-dark" style="border-bottom: 1px solid #333;" id="login" asp-area="" asp-controller="Account" asp-route-name="@User.Identity.Name" asp-action="Profile">Профіль</a>
+                                                          <a class="nav-link text-dark" style=" border-bottom: 1px solid #333;" asp-area="" asp-controller="Account" asp-action="Logout">Вихід</a>
                                                         </div>
                                                         <img class="icon" style="background-color: transparent; flex-basis: 0" src="~/icon/authorisation.png" />
                                                     </div>
@@ -57,7 +57,7 @@
                                         }
                                         else
                                         { 
-                                          <a class="nav-link text-dark" id="login" asp-area="" asp-controller="Authentication" asp-action="Login">
+                                          <a class="nav-link text-dark" id="login" asp-area="" asp-controller="Account" asp-action="Login">
                                             <div style="display: flex"> 
                                                    Вхід
                                                  <img class="icon" style="background-color: transparent; flex-basis: 0" src="~/icon/authorisation.png" />

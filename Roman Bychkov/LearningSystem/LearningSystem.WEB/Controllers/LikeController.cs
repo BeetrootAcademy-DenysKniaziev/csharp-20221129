@@ -4,7 +4,6 @@ namespace LearningSystem.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize]
     public class LikeController : ControllerBase
     {
         private ILikeArticleService _service;
@@ -20,8 +19,8 @@ namespace LearningSystem.WEB.Controllers
         [Route("PostLike")]
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
-            string userLogin = Request?.Cookies["user_login"], password = Request?.Cookies["user_pass"];
-            var user = await _usersService.GetUserByLoginPassword(userLogin, password);
+
+            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name);
             var article = await _articlesService.GetByNumber(articleNumber, courseId);
             var articleLike = await _service.LikeExistInArticle(article, user);
 

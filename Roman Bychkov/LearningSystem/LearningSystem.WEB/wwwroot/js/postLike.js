@@ -18,7 +18,7 @@
             document.getElementById('like-image').src = "/icon/like.png"
         }
         if (xhr.readyState === 4 && xhr.status === 401) {
-            window.location.href = "/Authentication/Login";
+            window.location.href = "/Account/Login";
         }
     };
     xhr.send();

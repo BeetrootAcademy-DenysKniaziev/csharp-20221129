@@ -1,0 +1,9 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Профіль - "+User.Identity.Name;
+}
+<div class="profile-header" >
+	   <img class="profile-photo" src="~/icon/anonim.png" />
+	   <div class="profile-item"><p>Likes&nbsp;</p> @Model.LikeArticles.Count</div>
+	   <div class="profile-item"><p>Comments&nbsp;</p> @Model.Comments.Count</div>
+</div>

@@ -1,0 +1,28 @@
+.profile-header {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(30,144,255);
+    padding: 25px;
+    border-radius: 10px;
+    color: white;
+}
+.profile-photo {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 20%;
+    min-width: 20%;
+    max-height: 20%;
+    min-height: 20%;
+
+}
+.profile-item  {
+    display: flex;
+    font-size: 25px;
+    
+}
+
+    .profile-item p {
+        color:black
+    }

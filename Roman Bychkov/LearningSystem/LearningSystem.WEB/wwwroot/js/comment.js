@@ -40,7 +40,7 @@ form.addEventListener('submit', function (e) {
             window.alert('Можно тільки 250 символів!')
         }
         if (xhr.readyState === 4 && xhr.status === 401) {
-            window.location.href = "/Authentication/Login";
+            window.location.href = "/Account/Login";
         }
     });
    

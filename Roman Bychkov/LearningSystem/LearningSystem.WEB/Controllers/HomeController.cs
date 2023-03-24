@@ -1,6 +1,7 @@
 ﻿using LearningSystem.DAL;
 using LearningSystem.DAL.Interfaces;
 using LearningSystem.WEB.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using System.Diagnostics;
@@ -24,7 +25,7 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Context = HttpContext;
             return View(await _service.GetAsync());
         }
-
+        [Authorize]
         public IActionResult Privacy()
         {
             ViewBag.Active = "privacy";
