@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+
 
 namespace LearningSystem.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    // [Authorize]
+    [Authorize]
     public class CommentController : ControllerBase
     {
         private ICommentsService _service;
@@ -26,7 +28,7 @@ namespace LearningSystem.WEB.Controllers
             if (user == null)
                 return Unauthorized();
 
-            if (comment.Length > 250)
+            if (comment.Length > 250 || comment.Length == 0)
                 return BadRequest();
 
 

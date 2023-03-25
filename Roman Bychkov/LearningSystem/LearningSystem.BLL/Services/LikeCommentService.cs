@@ -10,11 +10,15 @@ namespace LearningSystem.BLL.Services
         }
         public async Task AddAsync(LikeComment item)
         {
+            if(item is null)
+                throw new ArgumentNullException("item");
             await _context.AddAsync(item);
         }
 
         public async Task DeleteAsync(LikeComment item)
         {
+            if (item is null)
+                throw new ArgumentNullException("item");
             await _context.DeleteAsync(item);
         }
 

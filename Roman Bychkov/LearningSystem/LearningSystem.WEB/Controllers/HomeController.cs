@@ -25,7 +25,7 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Context = HttpContext;
             return View(await _service.GetAsync());
         }
-        [Authorize]
+        
         public IActionResult Privacy()
         {
             ViewBag.Active = "privacy";

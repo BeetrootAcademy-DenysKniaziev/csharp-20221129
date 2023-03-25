@@ -9,6 +9,8 @@ html {
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    padding: 5px;
+    margin-right: 5px;
 }
 
 
@@ -20,6 +22,7 @@ html {
     position: absolute;
     z-index: 1;
     margin-top: 30px;
+    min-width: 120px;
 }
 
     .dropdown-content a {

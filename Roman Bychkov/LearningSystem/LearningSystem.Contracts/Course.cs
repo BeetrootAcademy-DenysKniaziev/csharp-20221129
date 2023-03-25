@@ -27,6 +27,8 @@ namespace LearningSystem.Contracts
 
         
         [Column("content")]
+        [Required]
+        [StringLength(10000)]
         public string Content { get; set; }
 
         [Column("created")]

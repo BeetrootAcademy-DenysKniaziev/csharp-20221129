@@ -20,6 +20,7 @@
   <ItemGroup>
     <Folder Include="Views\Registration\" />
     <Folder Include="wwwroot\icon\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
   <ItemGroup>

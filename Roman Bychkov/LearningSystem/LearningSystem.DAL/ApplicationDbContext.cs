@@ -22,9 +22,22 @@ namespace LearningSystem.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseNpgsql("Server=host.docker.internal;Port=32768;Database=learning_system;User Id=postgres;Password=postgrespw;");
+            //optionsBuilder
+            //    .UseNpgsql("Server=host.docker.internal;Port=32768;Database=learning_system;User Id=postgres;Password=postgrespw;");
             //.LogTo(text => File.AppendAllText("log.txt", text));
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                .HasIndex(p => p.UserName)
+                .IsUnique();
+            modelBuilder.Entity<User>()
+                .HasIndex(p => p.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<Article>()
+            .HasIndex(l => new { l.CourseId, l.Number })
+            .IsUnique();
         }
     }
 }

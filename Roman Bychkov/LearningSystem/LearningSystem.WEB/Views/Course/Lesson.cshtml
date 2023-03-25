@@ -39,9 +39,20 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
                 </form>
                     @foreach (Comment item in Model?.Articles.SingleOrDefault(a => a.Number == ViewBag.Number && a.CourseId == Model.Id).Comments?.OrderByDescending(c=>c.Created))
                     {
-                        <div style="display:flex">
-                            <p><b>@item?.User.UserName</b></p><p class="comment-date">&nbsp; @item?.Created.ToShortDateString() @item?.Created.ToShortTimeString()</p>
+                        <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-name="@item.User.UserName">
+                        <div class="comment-user-container">
+                               @if(item.User.Image==null)
+	                            {
+                                    <img class="profile-photo-comment" src="~/icon/anonim.png" />
+                                }
+                                else
+                                {
+                                     <img class="profile-photo-comment" src="@item.User.Image" />
+                                }
+                            <p><b>&nbsp; @item?.User.UserName</b></p>
+                            <p class="comment-date">&nbsp; @item?.Created.ToShortDateString() @item?.Created.ToShortTimeString()</p>
                         </div>
+                        </a>
                         <p class="comment-content">@item?.Content</p>
                     }
                 </div>

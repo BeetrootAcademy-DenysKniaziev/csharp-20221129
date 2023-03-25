@@ -1,4 +1,5 @@
 ﻿using LearningSystem.WEB.ValidationModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -65,7 +66,7 @@ namespace LearningSystem.WEB.Controllers
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
-{
+                {
                     new Claim("Id", Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Name, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Email, user.Email)
@@ -121,17 +122,17 @@ namespace LearningSystem.WEB.Controllers
                     UserName = model.UserName,
                     Password = model.Password,
                 };
+                /*
+                Cookies
+                Response.Cookies.Append("user_login", model.UserName, new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                });
+                Response.Cookies.Append("user_pass", model.Password, new CookieOptions
+                {
+                    Expires = DateTime.Now.AddDays(7)
+                });*/
 
-                //Cookies
-                //Response.Cookies.Append("user_login", model.UserName, new CookieOptions
-                //{
-                //    Expires = DateTime.Now.AddDays(7)
-                //});
-                //Response.Cookies.Append("user_pass", model.Password, new CookieOptions
-                //{
-                //    Expires = DateTime.Now.AddDays(7)
-                //});
-                //
                 await _service.AddAsync(user);
                 return RedirectToAction("Login", "Account", new LoginModel() { UserName = model.UserName });
             }
@@ -142,7 +143,37 @@ namespace LearningSystem.WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile(string name)
         {
-            return View(await _service.GetValueByСonditionAsync(u=>u.UserName,name));
+            if (name == User.Identity.Name)
+            {
+                ViewBag.Owner = true;
+            }
+            var user = await _service.GetValueByСonditionAsync(u => u.UserName, name);
+            if (user == null)
+                return NotFound();
+            return View(user);
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Upload()
+        {
+            
+            var files = Request.Form.Files;
+            var file = files[0];
+
+            if (file.ContentType != "image/jpeg" && file.ContentType != "image/png")
+            {
+                return BadRequest("Допустимі формати: png, jpg");
+            }
+
+
+            if (file.Length > 500000 || file.Length == 0)
+            {
+                return BadRequest("Файл повинен бути розміром до 500КБ");
+            }
+
+            var result = await _service.AddImage("imageProfile", User?.Identity?.Name, file);
+
+            return Ok(result);
         }
 
     }

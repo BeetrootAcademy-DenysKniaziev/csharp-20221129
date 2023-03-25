@@ -4,6 +4,7 @@ namespace LearningSystem.WEB.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LikeController : ControllerBase
     {
         private ILikeArticleService _service;
@@ -17,6 +18,7 @@ namespace LearningSystem.WEB.Controllers
         }
         [HttpPost]
         [Route("PostLike")]
+        [Authorize]
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
 

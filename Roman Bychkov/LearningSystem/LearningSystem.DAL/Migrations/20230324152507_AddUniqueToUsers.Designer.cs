@@ -3,6 +3,7 @@ using System;
 using LearningSystem.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LearningSystem.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230324152507_AddUniqueToUsers")]
+    partial class AddUniqueToUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,8 +42,7 @@ namespace LearningSystem.DAL.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(10000)
-                        .HasColumnType("character varying(10000)")
+                        .HasColumnType("text")
                         .HasColumnName("content");
 
                     b.Property<int>("CourseId")
@@ -53,10 +55,9 @@ namespace LearningSystem.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId", "Number")
-                        .IsUnique();
+                    b.HasIndex("CourseId");
 
-                    b.ToTable("articles", "public");
+                    b.ToTable("arcticles", "public");
                 });
 
             modelBuilder.Entity("LearningSystem.Contracts.Comment", b =>
@@ -103,9 +104,7 @@ namespace LearningSystem.DAL.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Content")
-                        .IsRequired()
-                        .HasMaxLength(10000)
-                        .HasColumnType("character varying(10000)")
+                        .HasColumnType("text")
                         .HasColumnName("content");
 
                     b.Property<string>("CourseName")

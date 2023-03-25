@@ -1,7 +1,7 @@
 ﻿
 namespace LearningSystem.Contracts
 {
-    [Table("arcticles", Schema = "public")]
+    [Table("articles", Schema = "public")]
     public class Article: IEntityWithId
     {
         [Key]
@@ -22,6 +22,7 @@ namespace LearningSystem.Contracts
 
        
         [Required]
+        [StringLength(10000)]
         [Column("content")]
         public string Content { get; set; }
 

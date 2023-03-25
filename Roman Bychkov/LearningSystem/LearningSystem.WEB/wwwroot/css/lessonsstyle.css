@@ -74,8 +74,32 @@ td {
     max-width: 500px;
    
 }
-@media (max-width: 600px) {
-    .lessons-content-container {
+.profile-photo-comment {
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+    padding: 2px;
+    border-radius: 10px;
+    max-width: 65px;
+    min-width: 65px;
+    max-height: 65px;
+    min-height: 65px;
+}
+.comment-user-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+    .comment-user-container p
+    {
+        margin-bottom: 0px;
+    }
+    @media (max-width: 600px) {
+        .lessons-content-container {
         flex-direction: column;
     }
 }
@@ -102,6 +126,7 @@ td {
     color: rgba(128, 128, 128, 0.6);
 }
 .comment-content {
-    margin-left: 10%;
+    margin-top: 25px;
+    margin-left: 15%;
     color: rgb(27, 24, 24);
 }

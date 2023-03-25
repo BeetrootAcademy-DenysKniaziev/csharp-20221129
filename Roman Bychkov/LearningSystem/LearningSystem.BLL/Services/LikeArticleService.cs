@@ -9,11 +9,17 @@
         }
         public async Task AddAsync(LikeArticle item)
         {
+            if(item is null)
+                throw new ArgumentNullException("item");
+            
             await _context.AddAsync(item);
         }
 
         public async Task DeleteAsync(LikeArticle item)
         {
+            if (item is null)
+                throw new ArgumentNullException("item");
+
             await _context.DeleteAsync(item);
         }
 
@@ -29,6 +35,7 @@
 
         public async Task<LikeArticle> LikeExistInArticle(Article article, User user)
         {
+        
             return await _context.LikeExistInArticle(article, user);
         }
     }
