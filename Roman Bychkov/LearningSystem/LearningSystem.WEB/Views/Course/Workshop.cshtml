@@ -1,0 +1,82 @@
+﻿@using LearningSystem.WEB.ValidationModels
+@model CourseModel
+@{
+    ViewData["Title"] = "Майстерня";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Створення курсу</p>
+
+<div>
+              <form id="FormCourse" action="/Course/Workshop"  enctype="multipart/form-data" method="post" style="width: 50%;">
+                    <div>
+                        <label asp-for="CourseName" class="form-label">Назва курсу</label>
+                        <input type="text" asp-for="CourseName" class="form-control">
+                        <span asp-validation-for="CourseName" style="color: red"/>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Опис курсу</label>
+                        <input asp-for="Description" type="text" minlength="3" required class="form-control">
+                        <span asp-validation-for="Description" style="color: red"/>
+
+                    </div>
+                    <div> 
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger" style="position: absolute; margin-right:5%">
+                                <hr>
+                                <ul>
+                                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                    {
+                                        <li>@error.ErrorMessage</li>
+                                    }
+                                </ul>
+                            </div>
+                        }
+                      <label for="file-input" class="file-label">Виберіть фото для превью курса</label><br>
+                      <input id="file-input" type="file" name="Uploads" class="file-input" /><br>
+                    </div>
+                        
+                        <div id="editor" >
+                          <textarea asp-for="Content" required> </textarea>
+                           <span asp-validation-for="Description" style="color: red"/>
+                        </div>
+                       
+
+                        <button type="submit">Створити курс</button>
+             </form>
+</div>
+
+
+
+
+
+
+<script>
+ let articleHtml = '';
+var simplemde = new SimpleMDE({autosave: {
+		enabled: true,
+		uniqueId: "MyUniqueID",
+		delay: 1000,
+	},
+	renderingConfig: {
+		singleLineBreaks: false,
+		codeSyntaxHighlighting: true,
+	},
+	showIcons: ["code", "table"],});
+</script>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var alertDanger = document.querySelector('.alert-danger');
+        if (alertDanger) {
+           setTimeout(function() {
+                alertDanger.remove();
+            }, 3000);
+        }
+    });
+</script>

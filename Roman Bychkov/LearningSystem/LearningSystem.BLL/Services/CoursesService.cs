@@ -1,4 +1,6 @@
-﻿namespace LearningSystem.BLL.Services
+﻿using Microsoft.AspNetCore.Http;
+
+namespace LearningSystem.BLL.Services
 {
     public class CoursesService : ICoursesService
     {
@@ -7,7 +9,7 @@
         {
             _context = context;
         }
-        public async Task AddAsync(Course item)
+        public async Task AddAsync(Course item, IFormFile file)
         {
             if (item is null)
                 throw new ArgumentNullException("item");
@@ -19,6 +21,24 @@
                 throw new ArgumentException("Invalid Content");
 
             await _context.AddAsync(item);
+
+            string uploadPath = "wwwroot/image";
+
+            Directory.CreateDirectory(uploadPath);
+
+
+            var fileName = $"{item.Id}.{Path.GetExtension(file.FileName).Replace(".", "")}";
+
+            string fullPath = $"{uploadPath}/{fileName}";
+
+
+            using (var fileStream = new FileStream(fullPath, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            item.ImagePath = "/image/" + fileName;
+            await _context.UpdateAsync(item);
+
         }
 
         public async Task DeleteAsync(Course item)
@@ -50,7 +70,7 @@
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
-            
+
             await _context.UpdateAsync(item);
         }
     }

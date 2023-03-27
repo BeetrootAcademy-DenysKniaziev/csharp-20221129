@@ -21,7 +21,13 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
     <div style="margin-left: 5%">
         @if (ViewBag.Number == null)
         {
-            <p>@Model?.Content</p>
+            <script>
+                var showdown  = require('showdown'),
+                converter = new showdown.Converter(),
+                text      = '@Model?.Content',
+                html      = converter.makeHtml(text);
+            </script>   
+           @* <p>@Model?.Content</p>*@
         }
         else
         {
@@ -61,6 +67,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
     <script>
        document.getElementById('@ViewBag.Number').classList.add('active-lesson');
     </script>
+    <script src="~/js/comment.js" asp-append-version="true"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

@@ -63,6 +63,14 @@
     margin-top: 5%;
     display: none;
 }
+#profile-courses {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 5%;
+    display: none;
+}
 #profile-comments {
     word-break: break-all;
     overflow-wrap: break-word;

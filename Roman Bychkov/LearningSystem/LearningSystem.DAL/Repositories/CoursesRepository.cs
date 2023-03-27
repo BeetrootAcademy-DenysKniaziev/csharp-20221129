@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace LearningSystem.DAL.Repositories
 {
@@ -17,6 +16,15 @@ namespace LearningSystem.DAL.Repositories
                      .ThenInclude(a => a.Comments)
                      .ThenInclude(a => a.User)
                  .SingleOrDefaultAsync(c => c.Id == id);
+        }
+        public async Task<Course> GetByIdAsync(int id, List<string> includeNodes) //Func<ISet<Course>, Course> del
+        {
+            var context = _context.Courses;
+            foreach (var includeNode in includeNodes)
+            {
+                context.Include(includeNode);
+            }
+            return await _context.Courses.SingleOrDefaultAsync(c => c.Id == id);
         }
 
         public override async Task<IEnumerable<Course>> GetAsync()

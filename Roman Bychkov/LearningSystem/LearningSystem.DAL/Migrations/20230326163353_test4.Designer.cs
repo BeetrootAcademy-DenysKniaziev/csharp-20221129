@@ -3,6 +3,7 @@ using System;
 using LearningSystem.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LearningSystem.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230326163353_test4")]
+    partial class test4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,11 +134,10 @@ namespace LearningSystem.DAL.Migrations
                         .HasColumnName("image_path");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("user_id");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("courses", "public");
                 });
@@ -263,17 +265,6 @@ namespace LearningSystem.DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LearningSystem.Contracts.Course", b =>
-                {
-                    b.HasOne("LearningSystem.Contracts.User", "User")
-                        .WithMany("Courses")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("LearningSystem.Contracts.LikeArticle", b =>
                 {
                     b.HasOne("LearningSystem.Contracts.Article", "Article")
@@ -332,8 +323,6 @@ namespace LearningSystem.DAL.Migrations
             modelBuilder.Entity("LearningSystem.Contracts.User", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Courses");
 
                     b.Navigation("LikeArticles");
 

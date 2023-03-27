@@ -38,5 +38,7 @@ namespace LearningSystem.Contracts
         public virtual List<Comment> Comments { get; set; } = new List<Comment>();
         public virtual List<LikeComment> LikeComments { get; set; } = new List<LikeComment>();
 
+        public virtual List<Course> Courses { get; set; } = new List<Course>();
+
     }
 }

@@ -25,7 +25,11 @@ namespace LearningSystem.Contracts
         [Column("description")]
         public string Description { get; set; }
 
-        
+        [ForeignKey("user_id")]
+        [Required]
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
+
         [Column("content")]
         [Required]
         [StringLength(10000)]
@@ -37,5 +41,6 @@ namespace LearningSystem.Contracts
 
         public virtual List<Article> Articles { get; set; } = new List<Article>();
 
+       
     }
 }

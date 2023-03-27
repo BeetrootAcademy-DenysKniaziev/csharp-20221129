@@ -16,6 +16,7 @@
             <div class="profile-extra-info">
                  <div id="likes" class="profile-item"><p><span style="color:gray">Likes</span>&nbsp; @Model.LikeArticles.Count</p></div>
 	             <div id="comments" class="profile-item"><p><span style="color:gray">Comments</span>&nbsp; @Model.Comments.Count</p></div>
+                 <div id="cour" class="profile-item"><p><span style="color:gray">Courses</span>&nbsp; @Model.Courses.Count</p></div>
             </div>
         </div>
 </div>
@@ -41,6 +42,14 @@
            <a asp-controller="Course" asp-action="Lesson" asp-route-number="@item.Article.Number" asp-route-id="@item.Article.CourseId">
                <p><b>@item?.Article.Course.CourseName</b> <span style="color:gray;">@item?.Article.ArcticleName</span></p>
                </a>
+        }
+    </div>
+     <div id="profile-courses">
+        @foreach(var item in Model.Courses)
+        {
+           <a asp-controller="Course" asp-action="Lesson" asp-route-id="@item.Id">
+               <p><b>@item?.CourseName</b> </p>
+           </a>
         }
     </div>
 </div>
