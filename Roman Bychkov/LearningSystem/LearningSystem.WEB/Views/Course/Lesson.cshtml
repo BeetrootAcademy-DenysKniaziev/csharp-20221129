@@ -7,23 +7,23 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
   <script>
         document.getElementById('container').classList.remove('container');</script>
 
-<div style="margin-left: 10%">
+<div class="course-title">
   <a href="/@Model.Id/Lessons"><h3><b>КУРС - @Model.CourseName</b></h3></a>
 </div>
 <div class="lessons-content-container">
     
     <div class="lessons-container">
-        @foreach (Article item in Model?.Articles.OrderBy(a => a?.Number))
+        @foreach (Article item in Model?.Articles?.OrderBy(a => a.Number))
         {
             <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
-                <div  style="display:flex">
+                <div class="display-flex">
                    <p id="@item?.Number" class="number-lesson">@item?.Number</p>  <p>@item?.ArcticleName</p>
                 </div>
             </a>
         }
         
     </div>
-    <div style="margin-left: 5%">
+    <div class="course-content">
         @if (ViewBag.Number == null)
         {
             var marked = new Marked();
@@ -36,7 +36,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
             @Html.Raw(htmlString);
             var status = ViewBag?.Liked != null ? "liked.png" : "like.png";
             <div class="like-container @ViewBag?.Liked" id="like" onclick="PostLike(@ViewBag.Number,@Model.Id)">
-                <img class="icon" id="like-image" style="background-color: transparent" src="~/icon/@status">
+                <img class="icon icon-transparent" id="like-image" src="~/icon/@status">
                 <div id="like-count">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Likes?.Count</div>
             </div>
             <div class="comment-container">
@@ -45,21 +45,21 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
                     <textarea class="area-comment" id="comment" maxlength="250" name="comment" rows="5" cols="50" required></textarea><br><br>
                     <input class="btn-comment" id="comment-submit" type="submit" value="Відправити">
                 </form>
-                    @foreach (Comment item in Model?.Articles.SingleOrDefault(a => a.Number == ViewBag.Number && a.CourseId == Model.Id).Comments?.OrderByDescending(c=>c.Created))
+                    @foreach (Comment item in Model?.Articles?.SingleOrDefault(a => a.Number == ViewBag?.Number && a.CourseId == Model?.Id).Comments?.OrderByDescending(c=>c.Created))
                     {
                         <a asp-area="" asp-controller="Account" asp-action="Profile" asp-route-name="@item.User.UserName">
-                        <div class="comment-user-container">
-                               @if(item.User.Image==null)
-	                            {
-                                    <img class="profile-photo-comment" src="~/icon/anonim.png" />
-                                }
-                                else
-                                {
-                                     <img class="profile-photo-comment" src="@item.User.Image" />
-                                }
-                            <p><b>&nbsp; @item?.User.UserName</b></p>
-                            <p class="comment-date">&nbsp; @item?.Created.ToShortDateString() @item?.Created.ToShortTimeString()</p>
-                        </div>
+                            <div class="comment-user-container">
+                                   @if(item.User.Image==null)
+	                                {
+                                        <img class="profile-photo-comment" src="~/icon/anonim.png" />
+                                    }
+                                    else
+                                    {
+                                         <img class="profile-photo-comment" src="@item.User.Image" />
+                                    }
+                                <p><b>&nbsp; @item?.User.UserName</b></p>
+                                <p class="comment-date">&nbsp; @item?.Created.ToShortDateString() @item?.Created.ToShortTimeString()</p>
+                            </div>
                         </a>
                         <p class="comment-content">@item?.Content</p>
                     }
@@ -67,7 +67,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
             }  
           </div>
     <script>
-       document.getElementById('@ViewBag.Number').classList.add('active-lesson');
+       document.getElementById('@ViewBag?.Number').classList.add('active-lesson');
     </script>
         <script src="~/js/comment.js" asp-append-version="true"></script>
      <script src="~/js/postLike.js" asp-append-version="true"></script>

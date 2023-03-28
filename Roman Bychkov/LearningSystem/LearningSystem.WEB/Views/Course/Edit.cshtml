@@ -8,12 +8,12 @@
 <p>Створення курсу</p>
 
 <div>
-              <form id="FormCourse" action="/Course/Edit"  enctype="multipart/form-data" method="post" style="width: 50%;">
+              <form id="FormCourse" action="/Course/Edit"  enctype="multipart/form-data" method="post" class="create-form-course">
                     <div>
                         
                         <label asp-for="CourseName" class="form-label">Назва курсу</label>
                         <input type="text" required asp-for="CourseName" class="form-control">
-                        <span asp-validation-for="CourseName" style="color: red"/>
+                        <span asp-validation-for="CourseName" class="validation-message"/>
                        </div>
                     <div>
                         <input type="hidden" asp-for="Id" name="Id" value="@Model.Id" />
@@ -22,13 +22,13 @@
                     <div class="mb-3">
                         <label asp-for="Description" class="form-label">Опис курсу</label>
                         <input asp-for="Description" required type="text" minlength="3" class="form-control">
-                        <span asp-validation-for="Description" style="color: red"/>
+                        <span asp-validation-for="Description" class="validation-message"/>
 
                     </div>
                     <div> 
                         @if (!ViewData.ModelState.IsValid)
                         {
-                            <div class="alert alert-danger" style="position: absolute; margin-right:5%">
+                            <div class="alert alert-danger upload-alert">
                                 <hr>
                                 <ul>
                                     @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
@@ -44,18 +44,11 @@
                         
                         <div id="editor" >
                           <textarea asp-for="Content" required>@Model?.Content</textarea>
-                          <span asp-validation-for="Content" style="color: red"/>
+                          <span asp-validation-for="Content" class="validation-message"/>
                         </div>
-                       
-
-                        <button type="submit">Обновити</button>
+                      <button type="submit">Обновити</button>
              </form>
 </div>
-
-
-
-
-
 
 <script>
  let articleHtml = '';

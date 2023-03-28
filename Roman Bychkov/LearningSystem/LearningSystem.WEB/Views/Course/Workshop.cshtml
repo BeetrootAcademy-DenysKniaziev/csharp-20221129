@@ -8,22 +8,22 @@
 <p>Створення курсу</p>
 
 <div>
-              <form id="FormCourse" action="/Course/Workshop"  enctype="multipart/form-data" method="post" style="width: 50%;">
+              <form id="FormCourse" action="/Course/Workshop"  enctype="multipart/form-data" method="post" class="create-form-course">
                     <div>
                         <label asp-for="CourseName" class="form-label">Назва курсу</label>
                         <input type="text" asp-for="CourseName" class="form-control">
-                        <span asp-validation-for="CourseName" style="color: red"/>
+                        <span asp-validation-for="CourseName" class="validation-message"/>
                     </div>
                     <div class="mb-3">
                         <label asp-for="Description" class="form-label">Опис курсу</label>
                         <input asp-for="Description" type="text" minlength="3" required class="form-control">
-                        <span asp-validation-for="Description" style="color: red"/>
+                        <span asp-validation-for="Description" class="validation-message"/>
 
                     </div>
                     <div> 
                         @if (!ViewData.ModelState.IsValid)
                         {
-                            <div class="alert alert-danger" style="position: absolute; margin-right:5%">
+                            <div class="alert alert-danger upload-alert">
                                 <hr>
                                 <ul>
                                     @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
@@ -39,7 +39,7 @@
                         
                         <div id="editor" >
                           <textarea asp-for="Content" required> </textarea>
-                           <span asp-validation-for="Description" style="color: red"/>
+                           <span asp-validation-for="Description" class="validation-message"/>
                         </div>
                        
 

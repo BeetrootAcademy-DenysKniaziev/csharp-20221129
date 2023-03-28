@@ -22,6 +22,9 @@ namespace LearningSystem.WEB.Middleware
             }
 
             await _next(context);
+            var response = context.Response;
+            if (response.StatusCode is (int)HttpStatusCode.Unauthorized or (int)HttpStatusCode.Forbidden)
+                context.Response.Redirect("/Account/Login");
         }
     }
 }

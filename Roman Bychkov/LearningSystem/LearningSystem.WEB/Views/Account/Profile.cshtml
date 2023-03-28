@@ -3,7 +3,7 @@
     ViewData["Title"] = "Профіль - "+User.Identity.Name;
 }
 <div class="profile-header" >
-       @if(Model.Image==null)
+       @if(Model?.Image==null)
 	   {
           <img id="photo" class="profile-photo" src="~/icon/anonim.png" />
         }

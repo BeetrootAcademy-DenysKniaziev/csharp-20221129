@@ -99,3 +99,14 @@ a {
 .nav-link:not(.myactive):hover {
     color: darksalmon !important;
 }
+
+.validation-message {
+    color: red;
+}
+.display-flex
+{
+    display:flex;
+}
+.icon-transparent {
+    background-color: transparent;
+}

@@ -38,8 +38,22 @@
 .course-item {
     word-wrap: break-word;
 }
+.course-title {
+    margin-left: 10%;
+}
+.course-content {
+    margin-left: 5%;
+    flex: 1 1 auto;
+}
+    .course-content textarea
+    {
+        width: 500px;
+    }
+.course-description {
+        font-family: Courier New, monospace;
+    }
   
-    .title {
+.title {
     padding-top: 5px;
     font-size: 20px; 
     font-weight: bold; 
@@ -47,13 +61,13 @@
     text-align: center; 
 }
 
-    .title::after {
+.title::after {
         content: ""; 
         display: block;
         margin: 5px auto; 
         width: 50px;
         border-bottom: 2px solid black; 
-    }
+    }    
 
 
 .course-edit {

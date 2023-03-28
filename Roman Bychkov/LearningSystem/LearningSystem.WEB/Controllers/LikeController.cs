@@ -22,7 +22,7 @@ namespace LearningSystem.WEB.Controllers
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
 
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name);
+            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             var article = await _articlesService.GetByNumber(articleNumber, courseId);
             var articleLike = await _service.LikeExistInArticle(article, user);
 

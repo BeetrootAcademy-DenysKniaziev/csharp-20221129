@@ -8,17 +8,17 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
         document.getElementById('container').classList.remove('container');
    </script>
 
-<div style="margin-left: 10%">
-  <a href="/@Model.Id/LessonsEdit"><h3><b>КУРС - @Model.CourseName</b></h3></a>
+<div class="course-title">
+  <a href="/@Model?.Id/LessonsEdit"><h3><b>КУРС - @Model?.CourseName</b></h3></a>
 </div>
 <div class="lessons-content-container">
     <div>
         <div class="lessons-container">
-            @foreach (Article item in Model?.Articles.OrderBy(a => a?.Number))
+            @foreach (Article item in Model?.Articles?.OrderBy(a => a?.Number))
             {
 
-                <a asp-area="" asp-controller="Course" asp-action="LessonEdit" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
-                    <div  style="display:flex">
+                <a asp-area="" asp-controller="Course" asp-action="EditLesson" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
+                    <div  class="display-flex">
                        <p id="@item?.Number" class="number-lesson">@item?.Number</p>  <p>@item?.ArcticleName</p>
                     </div>
                 </a>
@@ -30,14 +30,14 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
                   <div>
                         <input type="hidden" name="Id" value="@Model.Id" />
                   </div>
-                 <button type="submit" style="display: flex"> 
+                 <button type="submit" class="display-flex"> 
                            <img class="icon" flex-basis: 0" src="~/icon/plus.png" />
                             Додати урок
                   </button>
             </form>
         </div>
     </div>
-    <div style="margin-left: 5%;  flex: 1 1 auto;">
+    <div class="course-content">
       
         @if (ViewBag.Number == null)
         {
@@ -47,13 +47,13 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
         }
         else
         {    <div id="editor" >
-             <form id="FormLesson" action="/Course/LessonEdit" method="post">
+             <form id="FormLesson" action="/Course/EditLesson" method="post">
                   <div>
                         <label name="Name" class="form-label">Назва уроку</label>
                         <input type="text" required name="Name" value="@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArcticleName" class="form-control">
                   </div>
                  <div>
-                     <textarea required  name="Content" style="width: 500px">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content </textarea>
+                     <textarea required  name="Content">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content </textarea>
                      <button type="submit">Обновити</button>
                  </div>
                     <div>

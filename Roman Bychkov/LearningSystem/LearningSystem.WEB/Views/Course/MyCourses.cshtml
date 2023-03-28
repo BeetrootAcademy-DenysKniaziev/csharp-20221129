@@ -15,7 +15,7 @@
             {
                
                 <div class="course-item"> 
-                <a asp-area="" asp-controller="Course" asp-action="LessonEdit" asp-route-id="@item.Id">
+                <a asp-area="" asp-controller="Course" asp-action="EditLesson" asp-route-id="@item.Id">
                 
                     <button class="course-edit" onclick="event.preventDefault(); window.location.href = '/Course/Edit/'+@item.Id;"> 
                           РЕДАГУВАТИ
@@ -26,7 +26,7 @@
                     <img class="course-image" src="@item.ImagePath" />
                     <p class="title">@item.CourseName</p>
                     <div>
-                        <p style="font-family: Courier New, monospace;">@item.Description </p>
+                        <p class="course-description">@item.Description </p>
                     </div>
                  </a>
                 </div>

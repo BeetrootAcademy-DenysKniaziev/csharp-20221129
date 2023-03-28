@@ -5,7 +5,7 @@
 }
 @if (!ViewData.ModelState.IsValid)
 {
-    <div class="alert alert-danger" style="position: absolute">
+    <div class="alert alert-danger upload-alert">
         <hr>
         <ul>
             @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
@@ -21,23 +21,23 @@
                     <div>
                         <label asp-for="Email" class="form-label">Електрона скринька</label>
                         <input type="email" asp-for="Email" class="form-control" aria-describedby="emailHelp">
-                        <span asp-validation-for="Email" style="color: red"/>
+                        <span asp-validation-for="Email" class="validation-message"/>
                         <div id="emailHelp" class="form-text">Ми не передаємо третім особам ваші дані!</div>
                     </div>
                     <div class="mb-3">
                         <label asp-for="UserName" class="form-label">Логін</label>
                         <input asp-for="UserName" type="text" minlength="3" required class="form-control">
-                        <span asp-validation-for="UserName" style="color: red"/>
+                        <span asp-validation-for="UserName" class="validation-message"/>
                     </div>
                     <div class="mb-3">
                         <label asp-for="Password" class="form-label">Пароль</label>
                         <input asp-for="Password" type="password" required  class="form-control" >
-                        <span asp-validation-for="Password" style="color: red"/>
+                        <span asp-validation-for="Password" class="validation-message"/>
                     </div>
                     <div class="mb-3">
                         <label asp-for="ConfirmPassword" class="form-label">Повторіть пароль</label>
                         <input asp-for="ConfirmPassword" required type="password"  class="form-control">
-                         <span asp-validation-for="ConfirmPassword" style="color: red"/>
+                         <span asp-validation-for="ConfirmPassword" class="validation-message"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Зареєструватися</button>
                 </form>

@@ -27,3 +27,11 @@
     position: absolute;
     font-family: Verdana, bold;
 }
+.create-form-course {
+    width: 50%;
+}
+
+.upload-alert {
+    position: absolute;
+    margin-right: 5%;
+}

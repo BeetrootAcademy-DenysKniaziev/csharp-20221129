@@ -16,12 +16,18 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Name Article");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
+
+            var articles = (await _context.GetAsync()).Where(a => a.CourseId == item?.CourseId);
+            var number = articles.MaxBy(a => a.Number) == null ? 1 : articles.MaxBy(a => a.Number)?.Number + 1;
+
+            item.Number = (byte)number;
+
             await _context.AddAsync(item);
         }
 
         public async Task DeleteAsync(Article item)
         {
-            if(item is null)
+            if (item is null)
                 throw new ArgumentNullException("item");
             await _context.DeleteAsync(item);
         }

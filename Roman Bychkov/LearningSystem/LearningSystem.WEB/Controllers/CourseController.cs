@@ -36,7 +36,7 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Active = "courses";
             ViewBag.Number = number;
 
-            var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User.Identity.Name);
+            var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User?.Identity?.Name);
             var article = await _arcticlesService.GetByNumber(number, id);
 
             if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)
@@ -48,7 +48,6 @@ namespace LearningSystem.WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> Workshop()
         {
-
             return View();
         }
         [Authorize]
@@ -56,22 +55,21 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> MyCourses()
         {
 
-            return View((await _coursesService.GetAsync()).Where(x => x.User.UserName == User.Identity.Name).ToList());
+            return View((await _coursesService.GetAsync()).Where(x => x.User.UserName == User?.Identity?.Name).ToList());
         }
 
-
-        [HttpPost]
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Workshop(CourseModel model)
         {
 
             ViewBag.Active = "workshop";
 
 
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name);
+            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             var file = model.Uploads;
 
-            if (file is null || file.Length > 500000 || file.Length == 0)
+            if (file is null || file.Length > 500000)
             {
                 ModelState.AddModelError("Image", "Файл повинен бути розміром до 500КБ");
                 return View(model);
@@ -90,7 +88,7 @@ namespace LearningSystem.WEB.Controllers
                     Description = model.Description,
                     CourseName = model.CourseName,
                     ImagePath = "-",
-                    UserId = (await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name)).Id
+                    UserId = (await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name)).Id
                 };
 
                 await _coursesService.AddAsync(course, file);
@@ -98,10 +96,10 @@ namespace LearningSystem.WEB.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name);
+            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             if (!user.Courses.Any(c => c.Id == id))
                 return Unauthorized();
             var course = await _coursesService.GetByIdAsync(id);
@@ -119,7 +117,7 @@ namespace LearningSystem.WEB.Controllers
         [Authorize]
         public async Task<IActionResult> Edit(CourseModel model)
         {
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name);
+            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             if (!user.Courses.Any(c => c.Id == model.Id))
                 return NotFound("Курса не знайдено або він не існував взагалі");
             var file = model.Uploads;
@@ -144,10 +142,9 @@ namespace LearningSystem.WEB.Controllers
             {
                 path = await _coursesService.AddImage(model.Id, model.Uploads);
             }
-
-            if (ModelState.IsValid)
-            {
-                var course = await _coursesService.GetByIdAsync(model.Id);
+            // Я прибрав перевірку ModelState, так як якщо користувач не завантажить файл, то буде використаний файл, який був ДО
+            // Якщо не ставити атрибут [Required], то все одно потребує завантажити файл (?)
+            var course = await _coursesService.GetByIdAsync(model.Id);
 
                 course.Content = model.Content;
                 course.Description = model.Description;
@@ -155,20 +152,19 @@ namespace LearningSystem.WEB.Controllers
                 course.ImagePath = path ?? course.ImagePath;
 
                 await _coursesService.UpdateAsync(course);
-                return RedirectToAction("Index", "Home");
-            }
-            else
-                return View(model);
+            return RedirectToAction("Index", "Home");
+            
+            //return View(model);
 
         }
-        [Route("{id}/LessonEdit/{number}")]
+        [Route("{id}/EditLesson/{number}")]
         [HttpGet]
-        public async Task<IActionResult> LessonEdit(int id, int number)
+        public async Task<IActionResult> EditLesson(int id, int number)
         {
             ViewBag.Active = "courses";
             ViewBag.Number = number;
 
-            var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User.Identity.Name);
+            var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User?.Identity?.Name);
             var article = await _arcticlesService.GetByNumber(number, id);
 
             if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)
@@ -176,19 +172,19 @@ namespace LearningSystem.WEB.Controllers
 
             return View(await _coursesService.GetByIdAsync(id));
         }
-        [Route("{id}/LessonsEdit")]
+        [Route("{id}/EditLesson")]
         [HttpGet]
-        public async Task<IActionResult> LessonEdit(int id)
+        public async Task<IActionResult> EditLesson(int id)
         {
             ViewBag.Active = "courses";
             return View(await _coursesService.GetByIdAsync(id));
         }
         [HttpPost]
-        public async Task<IActionResult> LessonEdit(LessonModel model)
+        public async Task<IActionResult> EditLesson(LessonModel model)
         {
 
             var course = await _coursesService.GetByIdAsync(model.Id);
-            if (course.User.UserName == User.Identity.Name && !course.Articles.Any(a => a.Number == model.Number))
+            if (course.User.UserName == User?.Identity?.Name && !course.Articles.Any(a => a.Number == model.Number))
                 return NotFound("Урока не знайдено або він не існував взагалі");
             var lesson = await _arcticlesService.GetByNumber(model.Number, model.Id);
             if (ModelState.IsValid)
@@ -198,25 +194,28 @@ namespace LearningSystem.WEB.Controllers
                 await _arcticlesService.UpdateAsync(lesson);
             }
 
-            return await LessonEdit(model.Id, model.Number);
+            return await EditLesson(model.Id, model.Number);
 
         }
         [HttpPost]
         public async Task<IActionResult> AddLesson(int id)
         {
             var course = await _coursesService.GetByIdAsync(id);
-            if (course.User.UserName != User.Identity.Name)
+            if (course.User.UserName != User?.Identity?.Name)
                 return NotFound("Курсу не знайдено або він не існував взагалі");
-            var number = course.Articles.MaxBy(a => a.Number) == null ? 1 : course.Articles.MaxBy(a => a.Number).Number + 1;
+
+            // --Переніс в BLL
+            //var number = course.Articles.MaxBy(a => a.Number) == null ? 1 : course?.Articles?.MaxBy(a => a.Number)?.Number + 1;
+
             var article = new Article()
             {
                 ArcticleName = "Новий Урок",
-                Number = (byte)number,
+               // Number = (byte)number,
                 Content = "Тут нічого не має",
                 CourseId = id
             };
             await _arcticlesService.AddAsync(article);
-            return RedirectToAction("LessonEdit", "Course", new { id = id, number = number });
+            return RedirectToAction("EditLesson", "Course", new { id = id, number = article.Number });
         }
     }
 }
