@@ -10,5 +10,6 @@ namespace LearningSystem.BLL.Interfaces
         public  Task<IEnumerable<Course>> GetAsync();
         public  Task<Course> GetByIdAsync(int id);
         public  Task UpdateAsync(Course item);
+        public Task<string> AddImage(int id, IFormFile file);
     }
 }

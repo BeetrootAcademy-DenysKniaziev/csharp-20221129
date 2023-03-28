@@ -22,7 +22,6 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Active = "courses";
-            ViewBag.Context = HttpContext;
             return View(await _service.GetAsync());
         }
         

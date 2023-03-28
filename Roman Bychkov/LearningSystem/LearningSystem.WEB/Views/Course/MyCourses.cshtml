@@ -1,0 +1,37 @@
+﻿@using LearningSystem.Contracts
+@model List<LearningSystem.Contracts.Course>
+
+@{
+    ViewData["Title"] = "Мої Курси";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Курси</h1>
+    <div class="course-container">
+        @{
+            foreach(Course item in @Model)
+            {
+               
+                <div class="course-item"> 
+                <a asp-area="" asp-controller="Course" asp-action="LessonEdit" asp-route-id="@item.Id">
+                
+                    <button class="course-edit" onclick="event.preventDefault(); window.location.href = '/Course/Edit/'+@item.Id;"> 
+                          РЕДАГУВАТИ
+                        <img class="icon" flex-basis: 0" src="~/icon/pensil.png" />
+                     
+                    </button>
+               
+                    <img class="course-image" src="@item.ImagePath" />
+                    <p class="title">@item.CourseName</p>
+                    <div>
+                        <p style="font-family: Courier New, monospace;">@item.Description </p>
+                    </div>
+                 </a>
+                </div>
+               
+            }
+          }
+    </div>
+</div>

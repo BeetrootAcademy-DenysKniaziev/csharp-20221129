@@ -13,8 +13,10 @@ namespace LearningSystem.WEB.ValidationModels
         [Required]
         public string Description { get; set; }
 
-      
+    
+        public int Id { get; set; }
         [Required]
+        
         [StringLength(10000, ErrorMessage ="Нульова сторінка до 10 000 символів")]
         public string Content { get; set; }
 

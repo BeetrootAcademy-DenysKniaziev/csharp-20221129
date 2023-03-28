@@ -9,6 +9,8 @@ namespace LearningSystem.WEB.ValidationModels
         [EmailAddress(ErrorMessage = "Будь ласка, укажіть акутальну електрону адресу")]
         public string Email { get; set; }
 
+        
+
         [Required(ErrorMessage = "Будь ласка, введіть свій логін")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Ім'я повино бути від 3-х до 50-ти символів")]
         public string UserName { get; set; }

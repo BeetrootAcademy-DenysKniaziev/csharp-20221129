@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/LearningSystem.WEB.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/showdown.min.js"></script>
+    
   
 
    
@@ -38,7 +38,22 @@
                             <a class="nav-link text-dark" id="privacy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" id="workshop" asp-area="" asp-controller="Course" asp-action="Workshop">Майстерня</a>
+                           <div class="nav-link text-dark">
+                                             
+                                
+                                  <div class="dropdown" style="display: flex;">
+                                
+                                      <div onclick="myFunction()" class="dropbtn" style="background-color:#56C8DD">Майстерня</div>
+                                
+                                      <div id="myDropdown" class="dropdown-content">
+                                
+                                         <a class="nav-link text-dark" style=" border-bottom: 1px solid #333;"  asp-area="" asp-controller="Course" asp-action="Workshop">Новий Курс</a>
+                                
+                                          <a class="nav-link text-dark" style=" border-bottom: 1px solid #333;" asp-area="" asp-controller="Course" asp-action="MyCourses">Мої курси</a>
+                                       </div>
+                                  </div>                    
+                                </div>
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" id="registration" asp-area="" asp-controller="Account" asp-action="Registration">Регістрація</a>
@@ -95,11 +110,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
-  
-    <script src="~/js/postLike.js" asp-append-version="true"></script>
-
-      
-     <script>
+    <script>
           document.getElementById('@ViewBag.Active').classList.add('myactive');
      </script>
     @await RenderSectionAsync("Scripts", required: false)

@@ -56,7 +56,16 @@
     }
 
 
-
+.course-edit {
+    display: flex;
+    background-color: white;
+    border-radius: 3px;
+}
+    .course-edit:hover {
+        cursor: pointer;
+        border: 2px;
+        border-color: black;
+    }
 @media screen and (max-width: 768px) {
     .course-container {
         flex-direction: column;

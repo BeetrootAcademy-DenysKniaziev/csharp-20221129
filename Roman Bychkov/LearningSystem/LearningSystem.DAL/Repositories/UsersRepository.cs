@@ -12,6 +12,7 @@ namespace LearningSystem.DAL.Repositories
             _context = context;
         }
 
+        
         public async Task<User> GetUserByLoginPasswordAsync(string login, string password)
         {
             return (await _context.Set<User>().ToArrayAsync()).SingleOrDefault(e => e.UserName == login && e.Password == password);

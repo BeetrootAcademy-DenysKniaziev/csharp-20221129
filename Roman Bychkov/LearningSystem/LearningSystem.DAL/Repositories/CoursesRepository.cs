@@ -15,6 +15,7 @@ namespace LearningSystem.DAL.Repositories
                  .Include(c => c.Articles)
                      .ThenInclude(a => a.Comments)
                      .ThenInclude(a => a.User)
+                  .Include(c=>c.User)
                  .SingleOrDefaultAsync(c => c.Id == id);
         }
         public async Task<Course> GetByIdAsync(int id, List<string> includeNodes) //Func<ISet<Course>, Course> del
@@ -29,7 +30,7 @@ namespace LearningSystem.DAL.Repositories
 
         public override async Task<IEnumerable<Course>> GetAsync()
         {
-            return await _context.Courses.Include(c => c.Articles).ToListAsync();
+            return await _context.Courses.Include(c => c.Articles).Include(c=>c.User).ToListAsync();
         }
     }
 }

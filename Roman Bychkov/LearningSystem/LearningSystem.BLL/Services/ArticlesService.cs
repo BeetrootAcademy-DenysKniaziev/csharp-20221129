@@ -14,7 +14,7 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentNullException("item");
             if (string.IsNullOrWhiteSpace(item.ArcticleName) || item.ArcticleName.Length > 50 || item.ArcticleName.Length < 3)
                 throw new ArgumentException("Invalid Name Article");
-            if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length < 10000)
+            if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
             await _context.AddAsync(item);
         }
@@ -47,7 +47,7 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentNullException("item");
             if (string.IsNullOrWhiteSpace(item.ArcticleName) || item.ArcticleName.Length > 50 || item.ArcticleName.Length < 3)
                 throw new ArgumentException("Invalid Name Article");
-            if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length < 10000)
+            if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
             await _context.UpdateAsync(item);
         }

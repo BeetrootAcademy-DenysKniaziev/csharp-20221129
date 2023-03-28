@@ -1,13 +1,18 @@
-﻿@model Course
+﻿@using Microsoft.MarkedNet
+@model Course
 
 @{
 ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArcticleName;
 }
   <script>
         document.getElementById('container').classList.remove('container');</script>
+
+<div style="margin-left: 10%">
+  <a href="/@Model.Id/Lessons"><h3><b>КУРС - @Model.CourseName</b></h3></a>
+</div>
 <div class="lessons-content-container">
+    
     <div class="lessons-container">
-        <p style="margin-left:45%"><b> @Model.CourseName</b></p>
         @foreach (Article item in Model?.Articles.OrderBy(a => a?.Number))
         {
             <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
@@ -21,17 +26,14 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
     <div style="margin-left: 5%">
         @if (ViewBag.Number == null)
         {
-            <script>
-                var showdown  = require('showdown'),
-                converter = new showdown.Converter(),
-                text      = '@Model?.Content',
-                html      = converter.makeHtml(text);
-            </script>   
-           @* <p>@Model?.Content</p>*@
+            var marked = new Marked();
+            var htmlString = marked.Parse(@Model?.Content);
+            @Html.Raw(htmlString);
         }
         else
-        {
-            @Html.Raw(Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content)
+        {    var marked = new Marked();
+            var htmlString = marked.Parse(Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content);
+            @Html.Raw(htmlString);
             var status = ViewBag?.Liked != null ? "liked.png" : "like.png";
             <div class="like-container @ViewBag?.Liked" id="like" onclick="PostLike(@ViewBag.Number,@Model.Id)">
                 <img class="icon" id="like-image" style="background-color: transparent" src="~/icon/@status">
@@ -67,7 +69,8 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
     <script>
        document.getElementById('@ViewBag.Number').classList.add('active-lesson');
     </script>
-    <script src="~/js/comment.js" asp-append-version="true"></script>
+        <script src="~/js/comment.js" asp-append-version="true"></script>
+     <script src="~/js/postLike.js" asp-append-version="true"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
