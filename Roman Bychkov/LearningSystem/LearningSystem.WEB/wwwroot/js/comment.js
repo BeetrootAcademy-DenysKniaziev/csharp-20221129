@@ -16,24 +16,50 @@ form.addEventListener('submit', function (e) {
     xhr.addEventListener('readystatechange', function () {
         if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 201)) {
             var obj = JSON.parse(xhr.responseText);
+            if (obj.image == "")
+                image = "~/icon/anonim.png";
+            else
+                image = obj.image;
 
-            var newDiv = document.createElement("div");
-            var newText = document.createTextNode(obj.userLogin + ' ' + obj.created);
-            newDiv.appendChild(newText);
-
-            var newP = document.createElement("p");
-            newText = document.createTextNode(obj.comment);
-            newP.appendChild(newText);
-
+            const parentDiv = document.createElement("div");
+            const newDiv = document.createElement("div");
+            newDiv.setAttribute('class', 'comment-user-container');
            
+            const a = document.createElement('a');
+
+            a.setAttribute('href', '/Account/Profile?name=' + obj.userLogin);
+         
+
+            const img = document.createElement('img');
+            img.setAttribute('class', 'profile-photo-comment');
+            img.setAttribute('src', obj.image);
+            newDiv.appendChild(img);
+
+            const b = document.createElement('b');
+            b.innerHTML = "&nbsp;&nbsp;" + obj.userLogin;
+            const p1 = document.createElement('p');
+            p1.appendChild(b);
+            newDiv.appendChild(p1);
+
+            const p2 = document.createElement('p');
+            p2.setAttribute('class', 'comment-date');
+            p2.innerHTML = `&nbsp;&nbsp;${obj.createDays} ${obj.createTime}`;
+            newDiv.appendChild(p2);
+
+            a.appendChild(newDiv);
+
+            const p3 = document.createElement('p');
+            p3.setAttribute('class', 'comment-content');
+            p3.innerText = obj?.comment;
+            //a.appendChild(p3);
+            parentDiv.appendChild(a);
+            
+
             var formComment = document.getElementById("form-comment");
-    
-            formComment.parentNode.insertBefore(newP, formComment.nextSibling);
-            formComment.parentNode.insertBefore(newDiv, formComment.nextSibling);
+            formComment.parentNode.insertBefore(p3, formComment.nextSibling);
+            formComment.parentNode.insertBefore(a, formComment.nextSibling);
 
             var myTextarea = document.getElementById("comment");
-
-            
             myTextarea.value = "";
         }
         if (xhr.readyState === 4 && xhr.status === 400) {

@@ -7,6 +7,7 @@ namespace LearningSystem.WEB.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
+   
     public class CommentController : ControllerBase
     {
         private ICommentsService _service;
@@ -44,7 +45,9 @@ namespace LearningSystem.WEB.Controllers
             {
                 userLogin = User.Identity.Name,
                 comment = comment,
-                created = newComment.Created.ToShortDateString()
+                createDays = newComment.Created.ToShortDateString(),
+                createTime = newComment.Created.ToShortTimeString(),
+                image = user.Image
             };
             string jsonString = JsonConvert.SerializeObject(newOb, Formatting.Indented);
             return Content(jsonString);

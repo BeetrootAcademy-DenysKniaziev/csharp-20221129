@@ -29,7 +29,7 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Active = "courses";
             var model = await _coursesService.GetByIdAsync(id);
             if (model == null)
-                return NotFound("Такого курсу не існує");
+                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             else
                 return View(model);
         }
@@ -47,7 +47,8 @@ namespace LearningSystem.WEB.Controllers
             if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)
                 ViewBag.Liked = "liked";
             if (article == null)
-                return NotFound("Такого уроку не існує");
+                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
+               
             return View(await _coursesService.GetByIdAsync(id));
         }
         [Authorize]
@@ -112,7 +113,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             if (!user.Courses.Exists(c => c.Id == id))
-                return NotFound("Такого курсу не існує");
+                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             var course = await _coursesService.GetByIdAsync(id);
             var model = new CourseModel()
             {
@@ -131,7 +132,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             if (!user.Courses.Exists(c => c.Id == model.Id))
-                return NotFound("Курсу не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             var file = model.Uploads;
 
             string path;
@@ -177,7 +178,7 @@ namespace LearningSystem.WEB.Controllers
 
             var course = await _coursesService.GetByIdAsync(id);
             if (course is null || course.User.UserName != User?.Identity?.Name ||  !course.Articles.Exists(a => a.Number == number))
-                return NotFound("Уроку не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
 
             ViewBag.Number = number;
             return View(course);
@@ -189,7 +190,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var model = await _coursesService.GetByIdAsync(id);
             if (model == null)
-                return NotFound("Курсу не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             ViewBag.Active = "courses";
             return View(model);
         }
@@ -200,7 +201,7 @@ namespace LearningSystem.WEB.Controllers
 
             var course = await _coursesService.GetByIdAsync(model.Id);
             if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == model.Number))
-                return NotFound("Уроку не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
             var lesson = await _arcticlesService.GetByNumber(model.Number, model.Id);
             if (ModelState.IsValid)
             {
@@ -218,7 +219,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var course = await _coursesService.GetByIdAsync(id);
             if (course.User.UserName != User?.Identity?.Name)
-                return NotFound("Курсу не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
 
             var article = new Article()
             {
@@ -236,7 +237,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
             if (!user.Courses.Exists(c => c.Id == id))
-                return NotFound("Курсу не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             await _coursesService.DeleteAsync(await _coursesService.GetByIdAsync(id));
             return RedirectToAction("MyCourses", "Course");
         }
@@ -247,7 +248,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var course = await _coursesService.GetByIdAsync(id);
             if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == number))
-                return NotFound("Уроку не знайдено або він не існував взагалі");
+                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
 
             await _arcticlesService.DeleteAsync(course.Articles.SingleOrDefault(a => a.Number == number));
             return RedirectToAction("EditLesson", "Course", new { id = id });

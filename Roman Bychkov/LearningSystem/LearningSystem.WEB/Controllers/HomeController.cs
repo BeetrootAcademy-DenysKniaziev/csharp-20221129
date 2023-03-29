@@ -30,6 +30,11 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Active = "privacy";
             return View();
         }
+        public IActionResult Oops(string message)
+        {
+            ViewBag.Message = message;
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

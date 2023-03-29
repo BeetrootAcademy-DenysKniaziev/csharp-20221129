@@ -25,6 +25,7 @@ namespace LearningSystem.DAL.Repositories
                 .ThenInclude(a => a.Article)
                 .ThenInclude(c => c.Course)
                  .Include(u=>u.Courses)
+                 .ThenInclude(u=>u.Articles)
                 .ToArrayAsync()).SingleOrDefault(e => valueSelector(e).Equals(value));
 
         }

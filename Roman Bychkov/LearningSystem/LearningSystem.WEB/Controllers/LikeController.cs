@@ -18,7 +18,7 @@ namespace LearningSystem.WEB.Controllers
         }
         [HttpPost]
         [Route("PostLike")]
-        [Authorize]
+        
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
 
@@ -40,7 +40,7 @@ namespace LearningSystem.WEB.Controllers
                 {
                     UserId = user.Id,
                     ArticleId = article.Id
-
+                    
                 };
                 await _service.AddAsync(articleLike);
                 return Ok(true);
