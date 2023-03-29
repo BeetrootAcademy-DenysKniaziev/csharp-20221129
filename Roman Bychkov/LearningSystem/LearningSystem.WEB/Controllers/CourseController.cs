@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LearningSystem.WEB.Controllers
 {
+
     public class CourseController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,15 +22,19 @@ namespace LearningSystem.WEB.Controllers
             _arcticlesService = arcticlesService;
         }
 
-        [Route("{id}/Lessons")]
+        [Route("[controller]/{id}/Lessons")]
         [HttpGet]
         public async Task<IActionResult> Lesson(int id)
         {
             ViewBag.Active = "courses";
-            return View(await _coursesService.GetByIdAsync(id));
+            var model = await _coursesService.GetByIdAsync(id);
+            if (model == null)
+                return NotFound("Такого курсу не існує");
+            else
+                return View(model);
         }
 
-        [Route("{id}/Lesson/{number}")]
+        [Route("[controller]/{id}/Lesson/{number}")]
         [HttpGet]
         public async Task<IActionResult> Lesson(int id, int number)
         {
@@ -41,7 +46,8 @@ namespace LearningSystem.WEB.Controllers
 
             if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)
                 ViewBag.Liked = "liked";
-
+            if (article == null)
+                return NotFound("Такого уроку не існує");
             return View(await _coursesService.GetByIdAsync(id));
         }
         [Authorize]
@@ -49,13 +55,6 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> Workshop()
         {
             return View();
-        }
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> MyCourses()
-        {
-
-            return View((await _coursesService.GetAsync()).Where(x => x.User.UserName == User?.Identity?.Name).ToList());
         }
 
         [Authorize]
@@ -96,12 +95,24 @@ namespace LearningSystem.WEB.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
         [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> MyCourses()
+        {
+
+            return View((await _coursesService.GetAsync()).Where(x => x.User.UserName == User?.Identity?.Name).ToList());
+        }
+
+
+
+        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
-            if (!user.Courses.Any(c => c.Id == id))
-                return Unauthorized();
+            if (!user.Courses.Exists(c => c.Id == id))
+                return NotFound("Такого курсу не існує");
             var course = await _coursesService.GetByIdAsync(id);
             var model = new CourseModel()
             {
@@ -113,13 +124,14 @@ namespace LearningSystem.WEB.Controllers
 
             return View(model);
         }
-        [HttpPost]
+
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> Edit(CourseModel model)
         {
             var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
-            if (!user.Courses.Any(c => c.Id == model.Id))
-                return NotFound("Курса не знайдено або він не існував взагалі");
+            if (!user.Courses.Exists(c => c.Id == model.Id))
+                return NotFound("Курсу не знайдено або він не існував взагалі");
             var file = model.Uploads;
 
             string path;
@@ -146,46 +158,49 @@ namespace LearningSystem.WEB.Controllers
             // Якщо не ставити атрибут [Required], то все одно потребує завантажити файл (?)
             var course = await _coursesService.GetByIdAsync(model.Id);
 
-                course.Content = model.Content;
-                course.Description = model.Description;
-                course.CourseName = model.CourseName;
-                course.ImagePath = path ?? course.ImagePath;
+            course.Content = model.Content;
+            course.Description = model.Description;
+            course.CourseName = model.CourseName;
+            course.ImagePath = path ?? course.ImagePath;
 
-                await _coursesService.UpdateAsync(course);
+            await _coursesService.UpdateAsync(course);
             return RedirectToAction("Index", "Home");
-            
+
             //return View(model);
 
         }
-        [Route("{id}/EditLesson/{number}")]
+        [Route("[controller]/{id}/EditLesson/{number}")]
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> EditLesson(int id, int number)
         {
-            ViewBag.Active = "courses";
+
+            var course = await _coursesService.GetByIdAsync(id);
+            if (course is null || course.User.UserName != User?.Identity?.Name ||  !course.Articles.Exists(a => a.Number == number))
+                return NotFound("Уроку не знайдено або він не існував взагалі");
+
             ViewBag.Number = number;
-
-            var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User?.Identity?.Name);
-            var article = await _arcticlesService.GetByNumber(number, id);
-
-            if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)
-                ViewBag.Liked = "liked";
-
-            return View(await _coursesService.GetByIdAsync(id));
+            return View(course);
         }
-        [Route("{id}/EditLesson")]
+        [Route("[controller]/{id}/EditLesson")]
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> EditLesson(int id)
         {
+            var model = await _coursesService.GetByIdAsync(id);
+            if (model == null)
+                return NotFound("Курсу не знайдено або він не існував взагалі");
             ViewBag.Active = "courses";
-            return View(await _coursesService.GetByIdAsync(id));
+            return View(model);
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> EditLesson(LessonModel model)
         {
 
             var course = await _coursesService.GetByIdAsync(model.Id);
-            if (course.User.UserName == User?.Identity?.Name && !course.Articles.Any(a => a.Number == model.Number))
-                return NotFound("Урока не знайдено або він не існував взагалі");
+            if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == model.Number))
+                return NotFound("Уроку не знайдено або він не існував взагалі");
             var lesson = await _arcticlesService.GetByNumber(model.Number, model.Id);
             if (ModelState.IsValid)
             {
@@ -198,24 +213,45 @@ namespace LearningSystem.WEB.Controllers
 
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddLesson(int id)
         {
             var course = await _coursesService.GetByIdAsync(id);
             if (course.User.UserName != User?.Identity?.Name)
                 return NotFound("Курсу не знайдено або він не існував взагалі");
 
-            // --Переніс в BLL
-            //var number = course.Articles.MaxBy(a => a.Number) == null ? 1 : course?.Articles?.MaxBy(a => a.Number)?.Number + 1;
-
             var article = new Article()
             {
                 ArcticleName = "Новий Урок",
-               // Number = (byte)number,
                 Content = "Тут нічого не має",
                 CourseId = id
             };
             await _arcticlesService.AddAsync(article);
             return RedirectToAction("EditLesson", "Course", new { id = id, number = article.Number });
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
+            if (!user.Courses.Exists(c => c.Id == id))
+                return NotFound("Курсу не знайдено або він не існував взагалі");
+            await _coursesService.DeleteAsync(await _coursesService.GetByIdAsync(id));
+            return RedirectToAction("MyCourses", "Course");
+        }
+        [Authorize]
+        [HttpPost]
+        [Route("{id}/DeleteLesson/{number}")]
+        public async Task<IActionResult> DeleteLesson(int id, int number)
+        {
+            var course = await _coursesService.GetByIdAsync(id);
+            if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == number))
+                return NotFound("Уроку не знайдено або він не існував взагалі");
+
+            await _arcticlesService.DeleteAsync(course.Articles.SingleOrDefault(a => a.Number == number));
+            return RedirectToAction("EditLesson", "Course", new { id = id });
+        }
+
     }
 }

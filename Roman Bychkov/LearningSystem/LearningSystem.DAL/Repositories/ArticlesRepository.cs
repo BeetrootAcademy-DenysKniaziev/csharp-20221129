@@ -7,8 +7,14 @@ namespace LearningSystem.DAL.Repositories
     {
         private ApplicationDbContext _context;
         public ArticlesRepository(ApplicationDbContext context) : base(context)
-        { 
+        {
             _context = context;
+        }
+
+        public async Task<IEnumerable<Article>> GetByCourseId(int courseId)
+        {
+            var result = _context?.Articles?.Where(a => a.CourseId == courseId);
+            return await result?.ToListAsync();
         }
 
         public async Task<Article> GetByNumber(int number, int courseId)

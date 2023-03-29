@@ -67,19 +67,32 @@
         margin: 5px auto; 
         width: 50px;
         border-bottom: 2px solid black; 
-    }    
+    }
 
-
+.course-edit-delete {
+    display: flex;
+}
 .course-edit {
     display: flex;
     background-color: white;
     border-radius: 3px;
 }
-    .course-edit:hover {
-        cursor: pointer;
-        border: 2px;
-        border-color: black;
-    }
+.course-delete {
+    display: flex;
+    background-color: palevioletred;
+    color: whitesmoke;
+    border-radius: 3px;
+}
+.course-edit:hover {
+    cursor: pointer;
+    border: 2px;
+    border-color: black;
+}
+.course-delete:hover {
+    cursor: pointer;
+    border: 2px;
+    border-color: black;
+}
 @media screen and (max-width: 768px) {
     .course-container {
         flex-direction: column;

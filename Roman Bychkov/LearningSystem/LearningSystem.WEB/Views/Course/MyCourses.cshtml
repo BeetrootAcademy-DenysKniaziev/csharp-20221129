@@ -16,13 +16,22 @@
                
                 <div class="course-item"> 
                 <a asp-area="" asp-controller="Course" asp-action="EditLesson" asp-route-id="@item.Id">
-                
-                    <button class="course-edit" onclick="event.preventDefault(); window.location.href = '/Course/Edit/'+@item.Id;"> 
-                          РЕДАГУВАТИ
-                        <img class="icon" flex-basis: 0" src="~/icon/pensil.png" />
-                     
-                    </button>
-               
+                    <div class="course-edit-delete">
+                        <form method="get" action="/Course/Edit/@item.Id">
+                            
+                            <button type="submit" class="course-edit">
+                                РЕДАГУВАТИ
+                                <img class="icon icon-transparent" src="~/icon/pensil.png" />
+                            </button>
+                        </form>
+                        <form method="post" action="/Course/Delete/@item.Id">
+                           
+                            <button type="submit" class="course-delete">
+                                ВИДАЛИТИ
+                                <img class="icon icon-transparent" style="background-color: transparent" flex-basis: 0" src="~/icon/basket.png" />
+                            </button>
+                        </form>
+                    </div>
                     <img class="course-image" src="@item.ImagePath" />
                     <p class="title">@item.CourseName</p>
                     <div>

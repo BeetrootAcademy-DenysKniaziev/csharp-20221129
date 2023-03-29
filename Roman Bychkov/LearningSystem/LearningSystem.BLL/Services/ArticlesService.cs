@@ -30,8 +30,13 @@ namespace LearningSystem.BLL.Services
             if (item is null)
                 throw new ArgumentNullException("item");
             await _context.DeleteAsync(item);
+            var articles = (await _context.GetByCourseId(item.CourseId));
+            foreach (var article in articles?.Where(a => a.Number > item.Number).OrderBy(a=>a.Number))
+            {
+                article.Number -= 1;
+                await UpdateAsync(article);
+            }
         }
-
         public async Task<IEnumerable<Article>> GetAsync()
         {
             return await _context.GetAsync();

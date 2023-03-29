@@ -9,7 +9,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
    </script>
 
 <div class="course-title">
-  <a href="/@Model?.Id/LessonsEdit"><h3><b>КУРС - @Model?.CourseName</b></h3></a>
+  <a href="/Course/@Model?.Id/EditLesson"><h3><b>КУРС - @Model?.CourseName</b></h3></a>
 </div>
 <div class="lessons-content-container">
     <div>
@@ -38,15 +38,22 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
         </div>
     </div>
     <div class="course-content">
-      
-        @if (ViewBag.Number == null)
+        
+        @if (ViewBag?.Number == null)
         {
             var marked = new Marked();
             var htmlString = marked.Parse(@Model?.Content);
             @Html.Raw(htmlString);
         }
         else
-        {    <div id="editor" >
+        {   <form method="post" asp-controller="Course" asp-action="DeleteLesson" asp-route-id="@Model.Id" asp-route-number="@ViewBag?.Number">
+                           
+                            <button type="submit" class="course-delete">
+                                ВИДАЛИТИ
+                                <img class="icon icon-transparent" style="background-color: transparent" flex-basis: 0" src="~/icon/basket.png" />
+                            </button>
+            </form>
+            <div id="editor" >
              <form id="FormLesson" action="/Course/EditLesson" method="post">
                   <div>
                         <label name="Name" class="form-label">Назва уроку</label>
