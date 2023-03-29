@@ -7,9 +7,9 @@ namespace BLL.Services
 {
     public class UserService : IUserService<User>
     {
-        private readonly IAdminRepository<User> _userRepository;
+        private readonly IUserRepository<User> _userRepository;
 
-        public UserService(IAdminRepository<User> userRepository)
+        public UserService(IUserRepository<User> userRepository)
         {
             _userRepository = userRepository;
         }

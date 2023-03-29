@@ -7,9 +7,9 @@ namespace BLL.Services
 {
     public class StoregeService : IStoregeService<Storege>
     {
-        private readonly IAdminRepository<Storege> _storegeRepository;
+        private readonly IStoregeRepository<Storege> _storegeRepository;
 
-        public StoregeService(IAdminRepository<Storege> storegeRepository)
+        public StoregeService(IStoregeRepository<Storege> storegeRepository)
         {
             _storegeRepository = storegeRepository;
         }

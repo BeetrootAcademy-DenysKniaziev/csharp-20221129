@@ -7,9 +7,9 @@ namespace BLL.Services
 {
     public class OrderService : IOrderService<Order>
     {
-        private readonly IAdminRepository<Order> _orderRepository;
+        private readonly IOrderRepository<Order> _orderRepository;
 
-        public OrderService(IAdminRepository<Order> orderRepository)
+        public OrderService(IOrderRepository<Order> orderRepository)
         {
             _orderRepository = orderRepository;
         }

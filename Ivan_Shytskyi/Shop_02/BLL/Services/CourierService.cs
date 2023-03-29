@@ -8,10 +8,9 @@ namespace BLL.Services
 {
     public class CourierService : ICourierService<Сourier>
     {
-        //private readonly IRepository<Сourier> _courierRepository;
-        private readonly СourierRepository _courierRepository;
+        private readonly ICourierRepository<Сourier> _courierRepository;
 
-        public CourierService(СourierRepository courierRepository)
+        public CourierService(ICourierRepository<Сourier> courierRepository)
         {
             _courierRepository = courierRepository;
         }
