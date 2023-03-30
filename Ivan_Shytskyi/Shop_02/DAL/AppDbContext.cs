@@ -33,11 +33,11 @@ namespace DAL
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseNpgsql("Server=host.docker.internal;Port=32768;Database=Final_Project;User Id=postgres;Password=postgrespw;")
-                .LogTo(text => File.AppendAllText("log.txt", text));
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder
+        //        .UseNpgsql("Server=host.docker.internal;Port=32768;Database=Final_Project;User Id=postgres;Password=postgrespw;")
+        //        .LogTo(text => File.AppendAllText("log.txt", text));
+        //}
     }
 }

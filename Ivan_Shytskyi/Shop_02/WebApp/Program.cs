@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+var configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDbContext>(options =>
-                          options.UseNpgsql("Server=host.docker.internal;Port=32768;Database=Final_Project;User Id=postgres;Password=postgrespw;"));
+                          options.UseNpgsql(configuration.GetConnectionString("pg_FP")));
 
 builder.Services.AddScoped<IAdminRepository<Admin>, AdminRepository>();
 builder.Services.AddScoped<IAdminService<Admin>, AdminService>();
