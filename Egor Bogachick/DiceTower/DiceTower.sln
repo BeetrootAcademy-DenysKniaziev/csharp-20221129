@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiceTower", "DiceTower\DiceTower.csproj", "{58C48009-E410-4296-A631-B7A877AF3861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceTower.DAL", "DiceTower.DAL\DiceTower.DAL.csproj", "{C48BAA5F-1D95-4E9C-BDC9-51D3E04BD2BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58C48009-E410-4296-A631-B7A877AF3861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58C48009-E410-4296-A631-B7A877AF3861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58C48009-E410-4296-A631-B7A877AF3861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58C48009-E410-4296-A631-B7A877AF3861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48BAA5F-1D95-4E9C-BDC9-51D3E04BD2BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48BAA5F-1D95-4E9C-BDC9-51D3E04BD2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48BAA5F-1D95-4E9C-BDC9-51D3E04BD2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48BAA5F-1D95-4E9C-BDC9-51D3E04BD2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE42BFEB-2DAB-4C4E-AB2D-9909FD3DF79D}
+	EndGlobalSection
+EndGlobal
