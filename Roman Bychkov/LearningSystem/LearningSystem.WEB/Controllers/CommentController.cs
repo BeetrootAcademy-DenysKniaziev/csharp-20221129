@@ -33,7 +33,7 @@ namespace LearningSystem.WEB.Controllers
                 return BadRequest();
 
 
-            var article = await _articlesService.GetByNumber(articleNumber, courseId);
+            var article = await _articlesService.GetByNumberAsync(articleNumber, courseId);
             var newComment = new Comment
             {
                 UserId = user.Id,

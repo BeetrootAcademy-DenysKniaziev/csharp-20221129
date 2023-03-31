@@ -47,9 +47,9 @@ namespace LearningSystem.BLL.Services
             return await _context.GetByIdAsync(id);
         }
 
-        public async Task<Article> GetByNumber(int number, int courseId)
+        public async Task<Article> GetByNumberAsync(int number, int courseId)
         {
-            return await _context.GetByNumber(number, courseId);
+            return await _context.GetByNumberAsync(number, courseId);
         }
 
         public async Task UpdateAsync(Article item)

@@ -20,7 +20,8 @@ namespace LearningSystem.WEB.ValidationModels
         [StringLength(10000, ErrorMessage ="Нульова сторінка до 10 000 символів")]
         public string Content { get; set; }
 
-        //[Required]
+        //[NotMapped]//[Required]
+
         public IFormFile Uploads { get; set; }
 
     }

@@ -17,7 +17,7 @@ namespace LearningSystem.DAL.Repositories
             return await result?.ToListAsync();
         }
 
-        public async Task<Article> GetByNumber(int number, int courseId)
+        public async Task<Article> GetByNumberAsync(int number, int courseId)
         {
             return await _context?.Articles.SingleOrDefaultAsync(a => a.Number == number && a.CourseId == courseId);
         }

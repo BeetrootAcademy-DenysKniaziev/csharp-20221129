@@ -1,9 +1,12 @@
 ﻿
+using Microsoft.MarkedNet;
+
 namespace LearningSystem.Contracts
 {
     [Table("courses", Schema = "public")]
     public class Course : IEntityWithId
     {
+      
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
@@ -35,12 +38,18 @@ namespace LearningSystem.Contracts
         [StringLength(10000)]
         public string Content { get; set; }
 
+        [NotMapped]
+        private static Marked Marked = new Marked();
+        [NotMapped]
+        public string ContentHTML
+        {
+            get => Marked.Parse(Content);
+        }
         [Column("created")]
         [Required]
         public DateTime Created { get; set; } = DateTime.UtcNow;
 
         public virtual List<Article> Articles { get; set; } = new List<Article>();
 
-       
     }
 }

@@ -16,8 +16,9 @@ form.addEventListener('submit', function (e) {
     xhr.addEventListener('readystatechange', function () {
         if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 201)) {
             var obj = JSON.parse(xhr.responseText);
-            if (obj.image == "")
-                image = "~/icon/anonim.png";
+            var image = null;
+            if (obj.image === null)
+                image = "/icon/anonim.png";
             else
                 image = obj.image;
 
@@ -32,7 +33,7 @@ form.addEventListener('submit', function (e) {
 
             const img = document.createElement('img');
             img.setAttribute('class', 'profile-photo-comment');
-            img.setAttribute('src', obj.image);
+            img.setAttribute('src', image);
             newDiv.appendChild(img);
 
             const b = document.createElement('b');

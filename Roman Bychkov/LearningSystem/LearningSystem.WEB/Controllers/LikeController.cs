@@ -23,7 +23,7 @@ namespace LearningSystem.WEB.Controllers
         {
 
             var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
-            var article = await _articlesService.GetByNumber(articleNumber, courseId);
+            var article = await _articlesService.GetByNumberAsync(articleNumber, courseId);
             var articleLike = await _service.LikeExistInArticle(article, user);
 
 

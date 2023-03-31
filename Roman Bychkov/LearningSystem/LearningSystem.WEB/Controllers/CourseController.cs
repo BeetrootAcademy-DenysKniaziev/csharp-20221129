@@ -1,6 +1,6 @@
-﻿using LearningSystem.WEB.ValidationModels;
+﻿using LearningSystem.WEB.Filters;
+using LearningSystem.WEB.ValidationModels;
 using Microsoft.AspNetCore.Authorization;
-
 
 namespace LearningSystem.WEB.Controllers
 {
@@ -22,18 +22,17 @@ namespace LearningSystem.WEB.Controllers
             _arcticlesService = arcticlesService;
         }
 
+        [NonExistentCourseFilter(typeof(ICoursesService))]
         [Route("[controller]/{id}/Lessons")]
         [HttpGet]
         public async Task<IActionResult> Lesson(int id)
         {
             ViewBag.Active = "courses";
             var model = await _coursesService.GetByIdAsync(id);
-            if (model == null)
-                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
-            else
-                return View(model);
+            return View(model);
         }
 
+        [NotExistentArticleFilter(typeof(IArcticlesService))]
         [Route("[controller]/{id}/Lesson/{number}")]
         [HttpGet]
         public async Task<IActionResult> Lesson(int id, int number)
@@ -42,19 +41,20 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Number = number;
 
             var user = await _usersService.GetValueByСonditionAsync(e => e.UserName, User?.Identity?.Name);
-            var article = await _arcticlesService.GetByNumber(number, id);
+            var article = await _arcticlesService.GetByNumberAsync(number, id);
 
             if (await _arcticlesLikeService.LikeExistInArticle(article, user) != null)
                 ViewBag.Liked = "liked";
-            if (article == null)
-                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
-               
+            
+
             return View(await _coursesService.GetByIdAsync(id));
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> Workshop()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
             return View();
         }
 
@@ -97,11 +97,13 @@ namespace LearningSystem.WEB.Controllers
         }
 
 
-        [Authorize]
+        //[Authorize]
         [HttpGet]
         public async Task<IActionResult> MyCourses()
         {
 
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
             return View((await _coursesService.GetAsync()).Where(x => x.User.UserName == User?.Identity?.Name).ToList());
         }
 
@@ -109,11 +111,12 @@ namespace LearningSystem.WEB.Controllers
 
         [Authorize]
         [HttpGet]
+        [NonAccessToChangeCourse(typeof(ICoursesService))]
         public async Task<IActionResult> Edit(int id)
         {
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
-            if (!user.Courses.Exists(c => c.Id == id))
-                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
+            //var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
+            //if (!user.Courses.Exists(c => c.Id == id))
+            //    return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             var course = await _coursesService.GetByIdAsync(id);
             var model = new CourseModel()
             {
@@ -128,11 +131,14 @@ namespace LearningSystem.WEB.Controllers
 
         [Authorize]
         [HttpPost]
+        [NonAccessToChangeCourse(typeof(ICoursesService))]
         public async Task<IActionResult> Edit(CourseModel model)
         {
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
-            if (!user.Courses.Exists(c => c.Id == model.Id))
-                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
+            //var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
+            //if (!user.Courses.Exists(c => c.Id == model.Id))
+            //    return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
+
+
             var file = model.Uploads;
 
             string path;
@@ -173,12 +179,13 @@ namespace LearningSystem.WEB.Controllers
         [Route("[controller]/{id}/EditLesson/{number}")]
         [HttpGet]
         [Authorize]
+        [NonAccessToChangeLesson(typeof(ICoursesService))]
         public async Task<IActionResult> EditLesson(int id, int number)
         {
 
             var course = await _coursesService.GetByIdAsync(id);
-            if (course is null || course.User.UserName != User?.Identity?.Name ||  !course.Articles.Exists(a => a.Number == number))
-                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
+            //if (course is null || course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == number))
+            //    return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
 
             ViewBag.Number = number;
             return View(course);
@@ -186,23 +193,25 @@ namespace LearningSystem.WEB.Controllers
         [Route("[controller]/{id}/EditLesson")]
         [HttpGet]
         [Authorize]
+        [NonAccessToChangeCourse(typeof(ICoursesService))]
         public async Task<IActionResult> EditLesson(int id)
         {
             var model = await _coursesService.GetByIdAsync(id);
-            if (model == null)
-                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
+            //if (model == null)
+            //    return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             ViewBag.Active = "courses";
             return View(model);
         }
         [HttpPost]
         [Authorize]
+        [NonAccessToChangeCourse(typeof(ICoursesService))]
         public async Task<IActionResult> EditLesson(LessonModel model)
         {
 
             var course = await _coursesService.GetByIdAsync(model.Id);
             if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == model.Number))
                 return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
-            var lesson = await _arcticlesService.GetByNumber(model.Number, model.Id);
+            var lesson = await _arcticlesService.GetByNumberAsync(model.Number, model.Id);
             if (ModelState.IsValid)
             {
                 lesson.Content = model.Content;
@@ -215,11 +224,12 @@ namespace LearningSystem.WEB.Controllers
         }
         [HttpPost]
         [Authorize]
+        [NonAccessToChangeCourse(typeof(ICoursesService))]
         public async Task<IActionResult> AddLesson(int id)
         {
-            var course = await _coursesService.GetByIdAsync(id);
-            if (course.User.UserName != User?.Identity?.Name)
-                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
+            //var course = await _coursesService.GetByIdAsync(id);
+            //if (course.User.UserName != User?.Identity?.Name)
+            //    return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
 
             var article = new Article()
             {
@@ -232,23 +242,25 @@ namespace LearningSystem.WEB.Controllers
         }
 
         [Authorize]
+        [NonAccessToChangeCourse(typeof(ICoursesService))]
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
-            if (!user.Courses.Exists(c => c.Id == id))
-                return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
+            //var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name);
+            //if (!user.Courses.Exists(c => c.Id == id))
+            //    return RedirectToAction("Oops", "Home", new { message = "Course does not exist" });
             await _coursesService.DeleteAsync(await _coursesService.GetByIdAsync(id));
             return RedirectToAction("MyCourses", "Course");
         }
         [Authorize]
         [HttpPost]
+        [NonAccessToChangeLesson(typeof(ICoursesService))]
         [Route("{id}/DeleteLesson/{number}")]
         public async Task<IActionResult> DeleteLesson(int id, int number)
         {
             var course = await _coursesService.GetByIdAsync(id);
-            if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == number))
-                return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
+            //if (course.User.UserName != User?.Identity?.Name || !course.Articles.Exists(a => a.Number == number))
+            //    return RedirectToAction("Oops", "Home", new { message = "Lesson does not exist" });
 
             await _arcticlesService.DeleteAsync(course.Articles.SingleOrDefault(a => a.Number == number));
             return RedirectToAction("EditLesson", "Course", new { id = id });

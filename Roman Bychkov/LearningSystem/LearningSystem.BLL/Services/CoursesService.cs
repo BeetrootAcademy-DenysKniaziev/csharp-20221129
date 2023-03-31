@@ -100,5 +100,10 @@ namespace LearningSystem.BLL.Services
 
             await _context.UpdateAsync(item);
         }
+
+        public Task<bool> VerifiyUserCourse(int userId, int courseId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
