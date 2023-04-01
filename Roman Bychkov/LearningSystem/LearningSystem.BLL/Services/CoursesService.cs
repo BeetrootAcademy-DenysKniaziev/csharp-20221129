@@ -21,8 +21,8 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
-            if (await _usersRepository.GetByIdAsync(item.UserId) == null)
-                throw new NullReferenceException(nameof(item.UserId));
+            if (await _usersRepository.GetByIdAsync(item.UserId, new List<string> {"User"}) == null)
+                throw new ArgumentNullException(nameof(item.UserId));
             if (string.IsNullOrWhiteSpace(item.ImagePath))
                 item.ImagePath = "-";
             
@@ -103,15 +103,12 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
-            if (await _usersRepository.GetByIdAsync(item.UserId) == null)
-                throw new NullReferenceException(nameof(item.UserId));
+            if (await _usersRepository.GetByIdAsync(item.UserId, new List<string> { "User" }) == null)
+                throw new ArgumentNullException(nameof(item.UserId));
 
             await _context.UpdateAsync(item);
         }
 
-        public async Task<bool> VerifyUserCourse(int userId, int courseId)
-        {
-            return (await _context.GetByIdAsync(courseId)).UserId == userId;
-        }
+
     }
 }

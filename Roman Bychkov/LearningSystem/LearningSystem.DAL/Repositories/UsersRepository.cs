@@ -36,6 +36,16 @@ namespace LearningSystem.DAL.Repositories
             user.Image = path;
             await UpdateAsync(user);
         }
+
+        public async Task<User> GetByIdAsync(int id, List<string> includeNodes)
+        {
+            var context = _context.Users;
+            foreach (var includeNode in includeNodes)
+            {
+                context.Include(includeNode);
+            }
+            return await _context.Users.SingleOrDefaultAsync(c => c.Id == id);
+        }
     }
 }
 

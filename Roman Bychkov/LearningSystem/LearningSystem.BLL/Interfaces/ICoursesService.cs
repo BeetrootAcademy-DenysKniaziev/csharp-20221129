@@ -11,7 +11,6 @@ namespace LearningSystem.BLL.Interfaces
         public  Task<Course> GetByIdAsync(int id);
         public  Task UpdateAsync(Course item);
         public Task<string> AddImage(int id, IFormFile file);
-        public Task<bool> VerifyUserCourse(int userId, int courseId);
     }
 }
 

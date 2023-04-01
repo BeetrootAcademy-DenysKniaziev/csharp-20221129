@@ -13,6 +13,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("pg_db")));
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressInferBindingSourcesForParameters = true);
 builder.Services.AddSession();
+
+               
 var services = builder.Services;
 var configuration = builder.Configuration;
 services.AddTimeService(configuration);

@@ -6,7 +6,6 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>Створення курсу</p>
-
 <div>
               <form id="FormCourse" action="/Course/Workshop"  enctype="multipart/form-data" method="post" class="create-form-course">
                     <div>
@@ -21,22 +20,10 @@
 
                     </div>
                     <div> 
-                        @if (!ViewData.ModelState.IsValid)
-                        {
-                            <div class="alert alert-danger upload-alert">
-                                <hr>
-                                <ul>
-                                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-                                    {
-                                        <li>@error.ErrorMessage</li>
-                                    }
-                                </ul>
-                            </div>
-                        }
-                      <label for="file-input" class="file-label">Виберіть фото для превью курса</label><br>
-                      <input id="file-input" accept = "image/*" type="file" name="Uploads" class="file-input" /><br>
+                        <label asp-for="Uploads" class="file-label">Виберіть фото для превью курса</label><br>
+                        <input asp-for="Uploads" accept="image/*" type="file" class="file-input" /><br>
+                        <span asp-validation-for="Uploads" class="validation-message"></span>
                     </div>
-                        
                         <div id="editor" >
                           <textarea asp-for="Content" required> </textarea>
                            <span asp-validation-for="Description" class="validation-message"/>

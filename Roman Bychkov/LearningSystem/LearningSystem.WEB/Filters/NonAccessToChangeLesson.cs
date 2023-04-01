@@ -5,18 +5,11 @@ namespace LearningSystem.WEB.Filters
 {
     public class NonAccessToChangeLesson : Attribute, IAsyncActionFilter
     {
-        private Type _serviceType;
-        public NonAccessToChangeLesson(Type serviceType)
-        {
-            _serviceType = serviceType;
-        }
-
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
 
             var user = context.HttpContext.User;
-            var serviceProvider = context.HttpContext.RequestServices;
-            var service = serviceProvider.GetService(_serviceType) as ICoursesService;
+            var service = context.HttpContext.RequestServices.GetService(typeof(ICoursesService)) as ICoursesService;
             string id, number;
 
             if (context.ActionArguments.ContainsKey("id") && context.ActionArguments.ContainsKey("number"))

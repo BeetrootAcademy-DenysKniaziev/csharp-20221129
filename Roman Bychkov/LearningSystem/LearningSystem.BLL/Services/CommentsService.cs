@@ -18,9 +18,9 @@
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 250 || item.Content.Length == 0)
                 throw new ArgumentException("Invalid length of comment");
             if (await _usersRepository.GetByIdAsync(item.UserId) is null)
-                throw new NullReferenceException(nameof(item.UserId));
+                throw new ArgumentNullException(nameof(item.UserId));
             if (await _articlesService.GetByIdAsync(item.ArticleId) is null)
-                throw new NullReferenceException(nameof(item.ArticleId));
+                throw new ArgumentNullException(nameof(item.ArticleId));
             await _context.AddAsync(item);
         }
 
@@ -48,9 +48,9 @@
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 250 || item.Content.Length == 0)
                 throw new ArgumentException("Invalid length of comment");
             if (await _usersRepository.GetByIdAsync(item.UserId) is null)
-                throw new NullReferenceException(nameof(item.UserId));
+                throw new ArgumentNullException(nameof(item.UserId));
             if (await _articlesService.GetByIdAsync(item.ArticleId) is null)
-                throw new NullReferenceException(nameof(item.ArticleId));
+                throw new ArgumentNullException(nameof(item.ArticleId));
             await _context.UpdateAsync(item);
         }
     }

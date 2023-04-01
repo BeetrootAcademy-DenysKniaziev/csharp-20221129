@@ -5,17 +5,10 @@ namespace LearningSystem.WEB.Filters
     public class NotExistentArticleFilter : Attribute, IAsyncActionFilter
     {
 
-        private Type _serviceType;
-        public NotExistentArticleFilter(Type serviceType)
-        {
-            _serviceType = serviceType;
-        }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-
-            var serviceProvider = context.HttpContext.RequestServices;
-            var service = serviceProvider.GetService(_serviceType) as IArticlesService;
+            var service = context.HttpContext.RequestServices.GetService(typeof(IArticlesService)) as IArticlesService;
 
             if (!context.ActionArguments.ContainsKey("id") || !context.ActionArguments.ContainsKey("number"))
             {

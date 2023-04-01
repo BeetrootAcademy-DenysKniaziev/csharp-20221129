@@ -25,6 +25,11 @@ namespace LearningSystem.WEB.DI
             services.AddScoped<ILikeArticleRepository, LikeArcticleRepository>();
             services.AddScoped<ILikeCommentRepository, LikeCommentRepository>();
             services.AddAutoMapper(typeof(MapperCourse), typeof(MapperLesson), typeof(MapperRegistration));
+            //services.AddMvc()
+            //   .AddMvcOptions(options =>
+            //   {
+            //       options.ModelValidatorProviders.Insert(0, new MaxFileSizeAttribute(500 * 1024));
+            //   });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

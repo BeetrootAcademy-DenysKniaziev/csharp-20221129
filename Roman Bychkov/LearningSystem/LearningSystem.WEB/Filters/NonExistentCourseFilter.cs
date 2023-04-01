@@ -4,18 +4,11 @@ namespace LearningSystem.WEB.Filters
 {
     public class NonExistentCourseFilter : Attribute, IAsyncActionFilter
     {
-        private Type _serviceType;
-        public NonExistentCourseFilter(Type serviceType)
-        {
-            _serviceType = serviceType;
-        }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
 
-
-            var serviceProvider = context.HttpContext.RequestServices;
-            var service = serviceProvider.GetService(_serviceType) as ICoursesService;
+            var service = context.HttpContext.RequestServices.GetService(typeof(ICoursesService)) as ICoursesService;
 
             if (!context.ActionArguments.ContainsKey("id"))
             {
@@ -23,11 +16,11 @@ namespace LearningSystem.WEB.Filters
                 return;
             }
             var id = context?.ActionArguments["id"]?.ToString();
-           
 
 
-            if (string.IsNullOrEmpty(id) 
-                || !int.TryParse(id, out int courseId) 
+
+            if (string.IsNullOrEmpty(id)
+                || !int.TryParse(id, out int courseId)
                 || (await service?.GetByIdAsync(courseId)) is null)
                 context.Result = new RedirectToActionResult("Oops", "Home", new { message = "Course does not exist" });
             else

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LearningSystem.WEB.ValidationAttributes;
+using System.ComponentModel.DataAnnotations;
 
 namespace LearningSystem.WEB.ValidationModels
 {
@@ -9,20 +10,20 @@ namespace LearningSystem.WEB.ValidationModels
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Назва курсу повина бути від 3-х до 50-ти символів")]
         public string CourseName { get; set; }
 
-        [StringLength(200, ErrorMessage ="Опис курсу до 200-х символів")]
-        [Required]
+        [StringLength(200, ErrorMessage = "Опис курсу до 200-х символів")]
+        [Required( ErrorMessage = "Введіть опис курсу")]
         public string Description { get; set; }
 
-      
         public int Id { get; set; }
-        [Required]
-        
-        [StringLength(10000, ErrorMessage ="Нульова сторінка до 10 000 символів")]
+
+        [Required(ErrorMessage = "Введіть зміст курсу")]
+        [StringLength(10000, ErrorMessage = "Нульова сторінка до 10 000 символів")]
         public string Content { get; set; }
 
-        //[NotMapped]//[Required]
-
+        [Required(ErrorMessage = "Додайте зображення на превью")]
+        [ImageType(new string[] { "jpg", "png", "jpeg" })]
+        [MaxFileSize(500 * 1024, ErrorMessage = "Максимальний розмір файлу - 500 КБ")]
         public IFormFile Uploads { get; set; }
-
     }
 }
+
