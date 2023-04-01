@@ -14,6 +14,15 @@ namespace BLL.Services
             _adminRepository = adminRepository;
         }
 
+        public async Task<Admin> GetByUserNameAsync(string userName)
+        {
+            return await _adminRepository.GetByUserNameAsync(userName);
+        }
+        public async Task<int> RegisterAsync(Admin user)
+        {
+            return await _adminRepository.RegisterAsync(user);
+        }
+
         public async Task<IEnumerable<Admin>> Find(Expression<Func<Admin, bool>> predicate)
         {
             return await _adminRepository.Find(predicate);

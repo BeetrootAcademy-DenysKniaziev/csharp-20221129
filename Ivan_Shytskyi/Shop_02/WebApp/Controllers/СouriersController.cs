@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Contracts.Models;
 using DAL;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApp.Controllers
 {
+    [Authorize]
     public class СouriersController : Controller
     {
         private readonly AppDbContext _context;

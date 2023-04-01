@@ -27,6 +27,11 @@ namespace Contracts.Models
         [Required]
         public string LastName { get; set; }
 
+        [Column("user_name")]
+        [MaxLength(255)]
+        [Required]
+        public string UserName { get; set; }
+
         [Column("address")]
         public string Address { get; set; }
 
@@ -39,6 +44,9 @@ namespace Contracts.Models
         public string PhoneNumber { get; set; }
 
         public virtual List<Order> Orders { get; set; }
+
+        public byte[] PasswordSalt { get; set; }
+        public byte[] PasswordHash { get; set; }
 
         public override string ToString()
         {

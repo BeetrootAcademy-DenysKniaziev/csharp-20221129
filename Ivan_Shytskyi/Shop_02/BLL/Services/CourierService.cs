@@ -15,6 +15,15 @@ namespace BLL.Services
             _courierRepository = courierRepository;
         }
 
+        public async Task<Сourier> GetByUserNameAsync(string userName)
+        {
+            return await _courierRepository.GetByUserNameAsync(userName);
+        }
+        public async Task<int> RegisterAsync(Сourier user)
+        {
+            return await _courierRepository.RegisterAsync(user);
+        }
+
         public async Task<IEnumerable<Сourier>> Find(Expression<Func<Сourier, bool>> predicate)
         {
             return await _courierRepository.Find(predicate);

@@ -11,6 +11,8 @@ namespace BLL.Services.Interfaces
 {
     public interface IUserService<TEntity> where TEntity : class
     {
+        Task<int> RegisterAsync(TEntity entity);
+        Task<TEntity> GetByUserNameAsync(string userName);
         Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> GetById(int id);

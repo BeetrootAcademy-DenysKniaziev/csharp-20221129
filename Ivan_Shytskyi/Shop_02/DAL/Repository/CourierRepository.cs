@@ -19,6 +19,16 @@ namespace DAL.Repository
             _context = context;
         }
 
+        public async Task<Сourier> GetByUserNameAsync(string userName)
+        {
+            return await _context.Сourier.FirstOrDefaultAsync(u => u.UserName == userName);
+        }
+        public async Task<int> RegisterAsync(Сourier user)
+        {
+            var res = await _context.Сourier.AddAsync(user);
+            await _context.SaveChangesAsync();
+            return res.Entity.Id;
+        }
         public async Task<IEnumerable<Сourier>> Find(Expression<Func<Сourier, bool>> predicate)
         {
             return  _context.Сourier.Where(predicate);

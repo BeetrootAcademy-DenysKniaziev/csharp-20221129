@@ -10,6 +10,8 @@ namespace DAL.Repository.Interface
 {
     public interface IAdminRepository<TEntity> where TEntity : class
     {
+        Task<int> RegisterAsync(TEntity entity);
+        Task<TEntity> GetByUserNameAsync(string userName);
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> GetById(int id);
         Task Add(TEntity entity);

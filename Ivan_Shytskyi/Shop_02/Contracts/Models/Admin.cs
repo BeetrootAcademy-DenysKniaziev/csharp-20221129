@@ -21,10 +21,10 @@ namespace Contracts.Models
         [Required]
         public string LastName { get; set; }
 
-        [Column("full_name")]
+        [Column("user_name")]
         [MaxLength(255)]
         [Required]
-        public string FullName => $"{FirstName} {LastName}";
+        public string UserName { get; set; }
 
         [Column("address")]
         public string Address { get; set; }
@@ -36,6 +36,9 @@ namespace Contracts.Models
         [Column("phone_number")]
         [Required]
         public string PhoneNumber { get; set; }
+
+        //public byte[] PasswordSalt { get; set; }
+        //public byte[] PasswordHash { get; set; }
 
         public virtual List<Admin> ListActor { get; set; }
     }

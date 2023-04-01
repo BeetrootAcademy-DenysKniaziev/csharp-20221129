@@ -16,22 +16,20 @@ namespace DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Order>()
-            //      .HasOne(o => o.Person)
-            //          .WithMany(p => p.Orders)
-            //      .HasForeignKey(o => o.PersonId)
-            //      .OnDelete(DeleteBehavior.NoAction);
-
-            //modelBuilder.Entity<Order>()
-            //      .HasOne(o => o.Product)
-            //          .WithMany(p => p.Orders)
-            //      .HasForeignKey(o => o.ProductId)
-            //      .OnDelete(DeleteBehavior.NoAction);
-
+            modelBuilder.Entity<User>()
+                 .HasIndex(p =>  p.UserName)
+                 .IsUnique();
+            modelBuilder.Entity<Сourier>()
+                 .HasIndex(p => p.UserName)
+                 .IsUnique();
+            modelBuilder.Entity<Admin>()
+                 .HasIndex(p => p.UserName)
+                 .IsUnique();
             base.OnModelCreating(modelBuilder);
         }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
