@@ -15,7 +15,7 @@ namespace LearningSystem.WEB.Filters
         {
 
             var serviceProvider = context.HttpContext.RequestServices;
-            var service = serviceProvider.GetService(_serviceType) as IArcticlesService;
+            var service = serviceProvider.GetService(_serviceType) as IArticlesService;
 
             if (!context.ActionArguments.ContainsKey("id") || !context.ActionArguments.ContainsKey("number"))
             {

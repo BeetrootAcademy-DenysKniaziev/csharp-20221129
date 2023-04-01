@@ -12,8 +12,8 @@ namespace LearningSystem.WEB.Controllers
     {
         private ICommentsService _service;
         private IUsersServices _usersService;
-        private IArcticlesService _articlesService;
-        public CommentController(ICommentsService service, IUsersServices usersService, IArcticlesService articlesService)
+        private IArticlesService _articlesService;
+        public CommentController(ICommentsService service, IUsersServices usersService, IArticlesService articlesService)
         {
             _service = service;
             _usersService = usersService;

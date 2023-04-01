@@ -57,7 +57,7 @@ namespace LearningSystem.WEB.Controllers
             }
             if (ModelState.IsValid)
             {
-              
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
@@ -112,9 +112,9 @@ namespace LearningSystem.WEB.Controllers
             if (ModelState.IsValid)
             {
                 var user = new User();
-                user=_mapper.Map<User>(model);
+                user = _mapper.Map<User>(model);
                 await _service.AddAsync(user);
-                return RedirectToAction("Login", "Account", new LoginModel() { UserName = model.UserName });
+                return await Login(new LoginModel() { UserName = model.UserName, Password = model.Password });
             }
             else
                 return View(model);
@@ -136,7 +136,7 @@ namespace LearningSystem.WEB.Controllers
         [Authorize]
         public async Task<IActionResult> Upload()
         {
-            
+
             var files = Request.Form.Files;
             var file = files[0];
 

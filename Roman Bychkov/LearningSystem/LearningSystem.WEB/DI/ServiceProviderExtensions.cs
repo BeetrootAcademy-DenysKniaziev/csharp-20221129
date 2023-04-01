@@ -12,7 +12,7 @@ namespace LearningSystem.WEB.DI
     {
         public static void AddTimeService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IArcticlesService, ArticlesService>();
+            services.AddScoped<IArticlesService, ArticlesService>();
             services.AddScoped<ICoursesService, CoursesService>();
             services.AddScoped<ICommentsService, CommentsService>();
             services.AddScoped<IUsersServices, UsersService>();

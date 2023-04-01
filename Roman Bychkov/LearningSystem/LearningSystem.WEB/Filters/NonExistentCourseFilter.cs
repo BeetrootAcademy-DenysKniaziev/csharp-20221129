@@ -26,7 +26,9 @@ namespace LearningSystem.WEB.Filters
            
 
 
-            if (string.IsNullOrEmpty(id) || !int.TryParse(id, out int courseId) || (await service?.GetByIdAsync(courseId)) is null)
+            if (string.IsNullOrEmpty(id) 
+                || !int.TryParse(id, out int courseId) 
+                || (await service?.GetByIdAsync(courseId)) is null)
                 context.Result = new RedirectToActionResult("Oops", "Home", new { message = "Course does not exist" });
             else
                 await next();

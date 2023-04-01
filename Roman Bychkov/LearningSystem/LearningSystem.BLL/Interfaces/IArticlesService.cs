@@ -1,7 +1,7 @@
 ﻿
 namespace LearningSystem.BLL.Interfaces
 {
-    public interface IArcticlesService:IServices<Article>
+    public interface IArticlesService:IServices<Article>
     {
         public Task<Article> GetByNumberAsync(int number, int courseId);
        

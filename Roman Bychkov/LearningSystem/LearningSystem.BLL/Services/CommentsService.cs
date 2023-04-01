@@ -3,9 +3,13 @@
     public class CommentsService : ICommentsService
     {
         private ICommentsRepository _context;
-        public CommentsService(ICommentsRepository context)
+        private IUsersRepository _usersRepository;
+        private IArticlesRepository _articlesService;
+        public CommentsService(ICommentsRepository context, IArticlesRepository articlesRepository, IUsersRepository usersRepository)
         {
             _context = context;
+            _usersRepository = usersRepository;
+            _articlesService = articlesRepository;
         }
         public async Task AddAsync(Comment item)
         {
@@ -13,6 +17,10 @@
                 throw new ArgumentNullException("comment");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 250 || item.Content.Length == 0)
                 throw new ArgumentException("Invalid length of comment");
+            if (await _usersRepository.GetByIdAsync(item.UserId) is null)
+                throw new NullReferenceException(nameof(item.UserId));
+            if (await _articlesService.GetByIdAsync(item.ArticleId) is null)
+                throw new NullReferenceException(nameof(item.ArticleId));
             await _context.AddAsync(item);
         }
 
@@ -39,6 +47,10 @@
                 throw new ArgumentNullException("comment");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 250 || item.Content.Length == 0)
                 throw new ArgumentException("Invalid length of comment");
+            if (await _usersRepository.GetByIdAsync(item.UserId) is null)
+                throw new NullReferenceException(nameof(item.UserId));
+            if (await _articlesService.GetByIdAsync(item.ArticleId) is null)
+                throw new NullReferenceException(nameof(item.ArticleId));
             await _context.UpdateAsync(item);
         }
     }

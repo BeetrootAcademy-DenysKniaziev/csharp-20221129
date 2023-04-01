@@ -5,9 +5,11 @@ namespace LearningSystem.BLL.Services
     public class CoursesService : ICoursesService
     {
         private ICoursesRepository _context;
-        public CoursesService(ICoursesRepository context)
+        private IUsersRepository _usersRepository;
+        public CoursesService(ICoursesRepository context, IUsersRepository usersRepository)
         {
             _context = context;
+            _usersRepository = usersRepository;
         }
         public async Task AddAsync(Course item, IFormFile file)
         {
@@ -19,6 +21,8 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
+            if (await _usersRepository.GetByIdAsync(item.UserId) == null)
+                throw new NullReferenceException(nameof(item.UserId));
             if (string.IsNullOrWhiteSpace(item.ImagePath))
                 item.ImagePath = "-";
             
@@ -99,13 +103,15 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
+            if (await _usersRepository.GetByIdAsync(item.UserId) == null)
+                throw new NullReferenceException(nameof(item.UserId));
 
             await _context.UpdateAsync(item);
         }
 
-        public Task<bool> VerifiyUserCourse(int userId, int courseId)
+        public async Task<bool> VerifyUserCourse(int userId, int courseId)
         {
-            throw new NotImplementedException();
+            return (await _context.GetByIdAsync(courseId)).UserId == userId;
         }
     }
 }

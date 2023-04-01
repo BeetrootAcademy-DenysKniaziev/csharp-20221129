@@ -9,8 +9,8 @@ namespace LearningSystem.WEB.Controllers
     {
         private ILikeArticleService _service;
         private IUsersServices _usersService;
-        private IArcticlesService _articlesService;
-        public LikeController(ILikeArticleService service, IUsersServices usersService, IArcticlesService articlesService)
+        private IArticlesService _articlesService;
+        public LikeController(ILikeArticleService service, IUsersServices usersService, IArticlesService articlesService)
         {
             _service = service;
             _usersService = usersService;

@@ -12,10 +12,10 @@ namespace LearningSystem.WEB.Controllers
         private ICoursesService _coursesService;
         private IUsersServices _usersService;
         private ILikeArticleService _arcticlesLikeService;
-        private IArcticlesService _arcticlesService;
+        private IArticlesService _arcticlesService;
         private IMapper _mapper;
         public CourseController(ILogger<HomeController> logger, ICoursesService service, IUsersServices usersServices,
-            ILikeArticleService articleLikeService, IArcticlesService arcticlesService, IMapper mapper)
+            ILikeArticleService articleLikeService, IArticlesService arcticlesService, IMapper mapper)
         {
             _logger = logger;
             _coursesService = service;
@@ -35,7 +35,7 @@ namespace LearningSystem.WEB.Controllers
             return View(model);
         }
 
-        [NotExistentArticleFilter(typeof(IArcticlesService))]
+        [NotExistentArticleFilter(typeof(IArticlesService))]
         [Route("[controller]/{id}/Lesson/{number}")]
         [HttpGet]
         public async Task<IActionResult> Lesson(int id, int number)

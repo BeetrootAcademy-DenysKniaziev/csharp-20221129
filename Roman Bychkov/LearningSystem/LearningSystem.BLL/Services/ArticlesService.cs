@@ -1,12 +1,14 @@
 ﻿
 namespace LearningSystem.BLL.Services
 {
-    public class ArticlesService : IArcticlesService
+    public class ArticlesService : IArticlesService
     {
         private IArticlesRepository _context;
-        public ArticlesService(IArticlesRepository context)
+        private ICoursesRepository _coursesRepository;
+        public ArticlesService(IArticlesRepository context, ICoursesRepository coursesRepository)
         {
             _context = context;
+            _coursesRepository = coursesRepository;
         }
         public async Task AddAsync(Article item)
         {
@@ -16,6 +18,8 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Name Article");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
+            if(await _coursesRepository.GetByIdAsync(item.CourseId) is null)
+                throw new NullReferenceException(nameof(item.CourseId));
 
             var articles = (await _context.GetAsync()).Where(a => a.CourseId == item?.CourseId);
             var number = articles.MaxBy(a => a.Number) == null ? 1 : articles.MaxBy(a => a.Number)?.Number + 1;
@@ -60,6 +64,8 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Name Article");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
+            if (await _coursesRepository.GetByIdAsync(item.CourseId) is null)
+                throw new NullReferenceException(nameof(item.CourseId));
             await _context.UpdateAsync(item);
         }
     }
