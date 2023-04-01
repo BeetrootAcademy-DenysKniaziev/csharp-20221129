@@ -2,7 +2,7 @@
 @model Course
 
 @{
-ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArcticleName;
+ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArticleName;
 }
   <script>
         document.getElementById('container').classList.remove('container');
@@ -19,7 +19,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
 
                 <a asp-area="" asp-controller="Course" asp-action="EditLesson" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
                     <div  class="display-flex">
-                       <p id="@item?.Number" class="number-lesson">@item?.Number</p>  <p>@item?.ArcticleName</p>
+                       <p id="@item?.Number" class="number-lesson">@item?.Number</p>  <p>@item?.ArticleName</p>
                     </div>
                 </a>
             }
@@ -57,14 +57,14 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
              <form id="FormLesson" action="/Course/EditLesson" method="post">
                   <div>
                         <label name="Name" class="form-label">Назва уроку</label>
-                        <input type="text" required name="Name" value="@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArcticleName" class="form-control">
+                        <input type="text" required name="Name" value="@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArticleName" class="form-control">
                   </div>
                  <div>
                      <textarea required  name="Content">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content </textarea>
                      <button type="submit">Обновити</button>
                  </div>
                     <div>
-                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <input type="hidden" name="CourseId" value="@Model.Id" />
                     </div>
                     <div>
                         <input type="hidden" name="Number" value="@ViewBag?.Number">

@@ -12,7 +12,7 @@ namespace LearningSystem.BLL.Services
         {
             if (item is null)
                 throw new ArgumentNullException("item");
-            if (string.IsNullOrWhiteSpace(item.ArcticleName) || item.ArcticleName.Length > 50 || item.ArcticleName.Length < 3)
+            if (string.IsNullOrWhiteSpace(item.ArticleName) || item.ArticleName.Length > 50 || item.ArticleName.Length < 3)
                 throw new ArgumentException("Invalid Name Article");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
@@ -56,7 +56,7 @@ namespace LearningSystem.BLL.Services
         {
             if (item is null)
                 throw new ArgumentNullException("item");
-            if (string.IsNullOrWhiteSpace(item.ArcticleName) || item.ArcticleName.Length > 50 || item.ArcticleName.Length < 3)
+            if (string.IsNullOrWhiteSpace(item.ArticleName) || item.ArticleName.Length > 50 || item.ArticleName.Length < 3)
                 throw new ArgumentException("Invalid Name Article");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");

@@ -1,4 +1,5 @@
-﻿using LearningSystem.WEB.ValidationModels;
+﻿using AutoMapper;
+using LearningSystem.WEB.ValidationModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,10 +13,12 @@ namespace LearningSystem.WEB.Controllers
         private readonly ILogger<AccountController> _logger;
         private IUsersServices _service;
         private IConfiguration _configuration;
+        private IMapper _mapper;
 
-        public AccountController(ILogger<AccountController> logger, IUsersServices service, IConfiguration configuration)
+        public AccountController(ILogger<AccountController> logger, IUsersServices service, IConfiguration configuration, IMapper mapper)
         {
             _logger = logger;
+            _mapper = mapper;
             _service = service;
             _configuration = configuration;
         }
@@ -54,15 +57,7 @@ namespace LearningSystem.WEB.Controllers
             }
             if (ModelState.IsValid)
             {
-                ////var token = GenerateJwtToken(await _service.GetUserByLoginPassword(model.UserName, model.Password));
-                //Response.Cookies.Append("user_login", model.UserName, new CookieOptions
-                //{
-                //    Expires = DateTime.Now.AddDays(7)
-                //});
-                //Response.Cookies.Append("user_pass", model.Password, new CookieOptions
-                //{
-                //    Expires = DateTime.Now.AddDays(7)
-                //});
+              
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new[]
@@ -116,23 +111,8 @@ namespace LearningSystem.WEB.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new User
-                {
-                    Email = model.Email,
-                    UserName = model.UserName,
-                    Password = model.Password,
-                };
-                /*
-                Cookies
-                Response.Cookies.Append("user_login", model.UserName, new CookieOptions
-                {
-                    Expires = DateTime.Now.AddDays(7)
-                });
-                Response.Cookies.Append("user_pass", model.Password, new CookieOptions
-                {
-                    Expires = DateTime.Now.AddDays(7)
-                });*/
-
+                var user = new User();
+                user=_mapper.Map<User>(model);
                 await _service.AddAsync(user);
                 return RedirectToAction("Login", "Account", new LoginModel() { UserName = model.UserName });
             }

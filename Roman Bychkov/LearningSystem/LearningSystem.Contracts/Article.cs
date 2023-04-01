@@ -14,8 +14,8 @@ namespace LearningSystem.Contracts
 
         [StringLength(50, MinimumLength = 3)]
         [Required]
-        [Column("arcticle_name")]
-        public string ArcticleName { get; set; }
+        [Column("article_name")]
+        public string ArticleName { get; set; }
 
         
         [Required]

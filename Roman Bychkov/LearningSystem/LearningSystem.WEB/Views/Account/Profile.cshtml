@@ -32,7 +32,7 @@
     <div id="profile-comments">
         @foreach(var item in Model.Comments)
         {
-            <div><a asp-controller="Course" asp-action="Lesson" asp-route-number="@item.Article.Number" asp-route-id="@item.Article.CourseId"><b>@item.Article.Course.CourseName</b> <span style="color:gray">@item.Article.ArcticleName</span> <span class="comment-date">&nbsp; @item?.Created.ToShortDateString() @item?.Created.ToShortTimeString()</span> </a></div>
+            <div><a asp-controller="Course" asp-action="Lesson" asp-route-number="@item.Article.Number" asp-route-id="@item.Article.CourseId"><b>@item.Article.Course.CourseName</b> <span style="color:gray">@item.Article.ArticleName</span> <span class="comment-date">&nbsp; @item?.Created.ToShortDateString() @item?.Created.ToShortTimeString()</span> </a></div>
             <p style="margin-left: 10%">@item?.Content</p>
         }
     </div>
@@ -40,7 +40,7 @@
         @foreach(var item in Model.LikeArticles)
         {
            <a asp-controller="Course" asp-action="Lesson" asp-route-number="@item.Article.Number" asp-route-id="@item.Article.CourseId">
-               <p><b>@item?.Article.Course.CourseName</b> <span style="color:gray;">@item?.Article.ArcticleName</span></p>
+               <p><b>@item?.Article.Course.CourseName</b> <span style="color:gray;">@item?.Article.ArticleName</span></p>
                </a>
         }
     </div>

@@ -19,7 +19,9 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
-
+            if (string.IsNullOrWhiteSpace(item.ImagePath))
+                item.ImagePath = "-";
+            
             await _context.AddAsync(item);
 
             string uploadPath = "wwwroot/image";

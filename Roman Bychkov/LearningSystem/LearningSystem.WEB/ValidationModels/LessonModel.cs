@@ -6,7 +6,7 @@ namespace LearningSystem.WEB.ValidationModels
     {
 
         [Required]
-        public int Id { get; set; }
+        public int CourseId { get; set; }
 
         [Required]
         public byte Number { get; set; }

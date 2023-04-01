@@ -2,7 +2,7 @@
 @model Course
 
 @{
-ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArcticleName;
+ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArticleName;
 }
   <script>
         document.getElementById('container').classList.remove('container');</script>
@@ -17,7 +17,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
         {
             <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@Model.Id" asp-route-number="@item?.Number">
                 <div class="display-flex">
-                   <p id="@item?.Number" class="number-lesson">@item?.Number</p>  <p>@item?.ArcticleName</p>
+                   <p id="@item?.Number" class="number-lesson">@item?.Number</p>  <p>@item?.ArticleName</p>
                 </div>
             </a>
         }
