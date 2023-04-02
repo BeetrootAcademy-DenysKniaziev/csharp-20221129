@@ -5,6 +5,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using AutoMapper;
 using LearningSystem.WEB.Mapper;
+using LearningSystem.WEB.HealthChecks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace LearningSystem.WEB.DI
 {
@@ -25,11 +27,10 @@ namespace LearningSystem.WEB.DI
             services.AddScoped<ILikeArticleRepository, LikeArcticleRepository>();
             services.AddScoped<ILikeCommentRepository, LikeCommentRepository>();
             services.AddAutoMapper(typeof(MapperCourse), typeof(MapperLesson), typeof(MapperRegistration));
-            //services.AddMvc()
-            //   .AddMvcOptions(options =>
-            //   {
-            //       options.ModelValidatorProviders.Insert(0, new MaxFileSizeAttribute(500 * 1024));
-            //   });
+            services.AddHealthChecks().AddCheck<DBHealthCheck>("database_health_check");
+            services.AddHealthChecks().AddCheck<TimeConnectionToDBHealthCheck>("database_time_connection_health_check");
+
+
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

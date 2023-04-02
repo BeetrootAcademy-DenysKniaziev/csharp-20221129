@@ -3,6 +3,7 @@ using LearningSystem.DAL.Repositories;
 using LearningSystem.WEB.DI;
 using LearningSystem.WEB.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -26,9 +27,10 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseHealthChecks("/health");
 app.UseSession();
 app.UseMiddleware<AuthMiddleware>();
+app.UseMiddleware<LoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
