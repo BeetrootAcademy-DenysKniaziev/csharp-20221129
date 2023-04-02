@@ -40,7 +40,7 @@ namespace Lesson35
             {
                 app.UseDeveloperExceptionPage();
             }
-            //app.UseMiddleware<ThrowException>();
+            app.UseMiddleware<SwaggerNotFoundMiddleware>();
 
             app.UseHttpsRedirection();
 
