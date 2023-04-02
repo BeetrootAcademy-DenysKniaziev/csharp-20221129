@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace BLL.Services
 {
-    public class OrderService : IOrderService<Order>
+    public class OrderService : IOrderService
     {
-        private readonly IOrderRepository<Order> _orderRepository;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderService(IOrderRepository<Order> orderRepository)
+        public OrderService(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
         }

@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace BLL.Services
 {
-    public class ProductService : IProductService<Product>
+    public class ProductService : IProductService
     {
-        private readonly IProductRepository<Product> _productRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductService(IProductRepository<Product> productRepository)
+        public ProductService(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }

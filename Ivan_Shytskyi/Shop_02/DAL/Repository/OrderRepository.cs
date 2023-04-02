@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class OrderRepository : IOrderRepository<Order>
+    public class OrderRepository : IOrderRepository
     {
         private readonly AppDbContext _dbContext;
 
@@ -36,7 +36,7 @@ namespace DAL.Repository
         }
         public async Task<IEnumerable<Order>> Find(Expression<Func<Order, bool>> predicate)
         {
-            return _dbContext.Orders.Where(predicate);
+            return await _dbContext.Orders.Where(predicate).ToArrayAsync();
         }
         public async Task Add(Order order)
         {

@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace BLL.Services
 {
-    public class AdminService : IAdminService<Admin>
+    public class AdminService : IAdminService
     {
-        private readonly IAdminRepository<Admin> _adminRepository;
+        private readonly IAdminRepository _adminRepository;
 
-        public AdminService(IAdminRepository<Admin> adminRepository)
+        public AdminService(IAdminRepository adminRepository)
         {
             _adminRepository = adminRepository;
         }

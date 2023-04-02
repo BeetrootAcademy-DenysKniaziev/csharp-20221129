@@ -8,16 +8,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository.Interface
 {
-    public interface IAdminRepository<TEntity> where TEntity : class
+    public interface IAdminRepository : IRepository<Admin>
     {
-        Task<int> RegisterAsync(TEntity entity);
-        Task<TEntity> GetByUserNameAsync(string userName);
-        Task<IEnumerable<TEntity>> GetAll();
-        Task<TEntity> GetById(int id);
-        Task Add(TEntity entity);
-        Task Update(TEntity entity);
-        Task Delete(TEntity entity);
-        Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
+        Task<int> RegisterAsync(Admin entity);
+        Task<Admin> GetByUserNameAsync(string userName);
     }
 }
 

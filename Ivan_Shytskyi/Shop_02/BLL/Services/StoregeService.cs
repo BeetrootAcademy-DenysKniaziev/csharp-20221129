@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 
 namespace BLL.Services
 {
-    public class StoregeService : IStoregeService<Storege>
+    public class StoregeService : IStoregeService
     {
-        private readonly IStoregeRepository<Storege> _storegeRepository;
+        private readonly IStoregeRepository _storegeRepository;
 
-        public StoregeService(IStoregeRepository<Storege> storegeRepository)
+        public StoregeService(IStoregeRepository storegeRepository)
         {
             _storegeRepository = storegeRepository;
         }

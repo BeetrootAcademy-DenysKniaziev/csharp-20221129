@@ -7,7 +7,7 @@ namespace DAL
     {
         public DbSet<Admin> Admin { get; set; }
         public DbSet<User> User { get; set; }
-        public DbSet<Сourier> Сourier { get; set; }
+        public DbSet<Courier> Сourier { get; set; }
 
         public DbSet<Product> Products { get; set; }
 
@@ -19,7 +19,7 @@ namespace DAL
             modelBuilder.Entity<User>()
                  .HasIndex(p =>  p.UserName)
                  .IsUnique();
-            modelBuilder.Entity<Сourier>()
+            modelBuilder.Entity<Courier>()
                  .HasIndex(p => p.UserName)
                  .IsUnique();
             modelBuilder.Entity<Admin>()

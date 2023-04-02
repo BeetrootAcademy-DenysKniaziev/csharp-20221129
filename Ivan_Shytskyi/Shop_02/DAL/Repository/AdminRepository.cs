@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DAL.Repository
 {
-    public class AdminRepository : IAdminRepository<Admin>
+    public class AdminRepository : IAdminRepository
     {
         private readonly AppDbContext _context;
 
@@ -37,7 +37,7 @@ namespace DAL.Repository
 
         public async Task<IEnumerable<Admin>> Find(Expression<Func<Admin, bool>> predicate)
         {
-            return _context.Admin.Where(predicate);
+            return await _context.Admin.Where(predicate).ToArrayAsync();
         }
 
         public async Task Add(Admin entity)

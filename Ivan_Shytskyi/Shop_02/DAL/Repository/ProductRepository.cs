@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class ProductRepository : IProductRepository<Product>
+    public class ProductRepository : IProductRepository
     {
         private readonly AppDbContext _dbContext;
 
@@ -21,7 +21,7 @@ namespace DAL.Repository
 
         public async Task<IEnumerable<Product>> Find(Expression<Func<Product, bool>> predicate)
         {
-            return _dbContext.Products.Where(predicate);
+            return await _dbContext.Products.Where(predicate).ToArrayAsync();
         }
 
         public async Task<IEnumerable<Product>> GetAll()

@@ -6,11 +6,11 @@ using System.Linq.Expressions;
 
 namespace BLL.Services
 {
-    public class UserService : IUserService<User>
+    public class UserService : IUserService
     {
-        private readonly IUserRepository<User> _userRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository<User> userRepository)
+        public UserService(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }

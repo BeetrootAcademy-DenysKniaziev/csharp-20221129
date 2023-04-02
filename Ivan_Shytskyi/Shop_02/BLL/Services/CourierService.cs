@@ -6,45 +6,45 @@ using System.Linq.Expressions;
 
 namespace BLL.Services
 {
-    public class CourierService : ICourierService<Сourier>
+    public class CourierService : ICourierService
     {
-        private readonly ICourierRepository<Сourier> _courierRepository;
+        private readonly ICourierRepository _courierRepository;
 
-        public CourierService(ICourierRepository<Сourier> courierRepository)
+        public CourierService(ICourierRepository courierRepository)
         {
             _courierRepository = courierRepository;
         }
 
-        public async Task<Сourier> GetByUserNameAsync(string userName)
+        public async Task<Courier> GetByUserNameAsync(string userName)
         {
             return await _courierRepository.GetByUserNameAsync(userName);
         }
-        public async Task<int> RegisterAsync(Сourier user)
+        public async Task<int> RegisterAsync(Courier user)
         {
             return await _courierRepository.RegisterAsync(user);
         }
 
-        public async Task<IEnumerable<Сourier>> Find(Expression<Func<Сourier, bool>> predicate)
+        public async Task<IEnumerable<Courier>> Find(Expression<Func<Courier, bool>> predicate)
         {
             return await _courierRepository.Find(predicate);
         }
 
-        public async Task<IEnumerable<Сourier>> GetAll()
+        public async Task<IEnumerable<Courier>> GetAll()
         {
             return await _courierRepository.GetAll();
         }
 
-        public async Task<Сourier> GetById(int id)
+        public async Task<Courier> GetById(int id)
         {
             return await _courierRepository.GetById(id);
         }
 
-        public async Task Add(Сourier courier)
+        public async Task Add(Courier courier)
         {
             await _courierRepository.Add(courier);
         }
 
-        public async Task Update(Сourier courier)
+        public async Task Update(Courier courier)
         {
             await _courierRepository.Update(courier);
         }

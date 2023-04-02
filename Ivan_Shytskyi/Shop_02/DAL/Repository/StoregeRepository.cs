@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class StoregeRepository : IStoregeRepository<Storege>
+    public class StoregeRepository : IStoregeRepository
     {
         private readonly AppDbContext _context;
 
@@ -21,7 +21,7 @@ namespace DAL.Repository
 
         public async Task<IEnumerable<Storege>> Find(Expression<Func<Storege, bool>> predicate)
         {
-            return _context.Storege.Where(predicate);
+            return await _context.Storege.Where(predicate).ToArrayAsync();
         }
 
         public async Task<IEnumerable<Storege>> GetAll()

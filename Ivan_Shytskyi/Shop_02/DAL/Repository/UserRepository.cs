@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class UserRepository : IUserRepository<User>
+    public class UserRepository : IUserRepository
     {
         private readonly AppDbContext _context;
 
@@ -32,7 +32,7 @@ namespace DAL.Repository
 
         public async Task<IEnumerable<User>> Find(Expression<Func<User, bool>> predicate)
         {
-            return _context.User.Where(predicate);
+            return await _context.User.Where(predicate).ToArrayAsync();
         }
 
         public async Task<IEnumerable<User>> GetAll()

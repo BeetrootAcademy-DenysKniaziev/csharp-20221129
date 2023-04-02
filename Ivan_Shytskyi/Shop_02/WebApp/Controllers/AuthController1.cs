@@ -13,11 +13,11 @@ namespace WebApp.Controllers
 {
     public class AuthController1 : ControllerBase
     {
-        public IUserService<User> UserService { get; }
-        public IAdminService<Admin> AdminService { get; }
-        public ICourierService<Сourier> CourierService { get; }
+        public IUserService UserService { get; }
+        public IAdminService AdminService { get; }
+        public ICourierService CourierService { get; }
         public IConfiguration Configuration { get; }
-        public AuthController1(IUserService<User> userService, IAdminService<Admin> adminService, ICourierService<Сourier> courierService, IConfiguration configuration)
+        public AuthController1(IUserService userService, IAdminService adminService, ICourierService courierService, IConfiguration configuration)
         {
             UserService = userService;
             AdminService = adminService;

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
-    public class СourierRepository : ICourierRepository<Сourier>
+    public class СourierRepository : ICourierRepository
     {
         private readonly AppDbContext _context;
 
@@ -19,63 +19,60 @@ namespace DAL.Repository
             _context = context;
         }
 
-        public async Task<Сourier> GetByUserNameAsync(string userName)
+        public async Task<Courier> GetByUserNameAsync(string userName)
         {
             return await _context.Сourier.FirstOrDefaultAsync(u => u.UserName == userName);
         }
-        public async Task<int> RegisterAsync(Сourier user)
+        public async Task<int> RegisterAsync(Courier user)
         {
             var res = await _context.Сourier.AddAsync(user);
             await _context.SaveChangesAsync();
             return res.Entity.Id;
         }
-        public async Task<IEnumerable<Сourier>> Find(Expression<Func<Сourier, bool>> predicate)
+        public async Task<IEnumerable<Courier>> Find(Expression<Func<Courier, bool>> predicate)
         {
-            return  _context.Сourier.Where(predicate);
+            return  await _context.Сourier.Where(predicate).ToArrayAsync();
         }
 
-        public async Task<IEnumerable<Сourier>> GetAll()
+        public async Task<IEnumerable<Courier>> GetAll()
         {
             return await _context.Сourier.ToListAsync();
         }
 
-        public async Task<Сourier> GetById(int id)
+        public async Task<Courier> GetById(int id)
         {
             return await _context.Сourier.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task Add(Сourier courier)
+        public async Task Add(Courier courier)
         {
             _context.Сourier.Add(courier);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(Сourier courier)
+        public async Task Update(Courier courier)
         {
             _context.Сourier.Update(courier);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Delete(Сourier courier)
+        public async Task Delete(Courier courier)
         {
             _context.Сourier.Remove(courier);
             await _context.SaveChangesAsync();
         }
 
-        public async Task ConfirmOrderReceived(/*int courierId,*/ int orderId)
+        public async Task ConfirmOrderReceived(int orderId)
         {
             var order = _context.Orders.Find(orderId);
             order.IsReceived = true;
-            //order.СourierId = courierId;
             await _context.SaveChangesAsync();
         }
 
-        public async Task ConfirmOrderDelivered(/*int courierId,*/ int orderId/*, int userId*/)
+        public async Task ConfirmOrderDelivered(int orderId)
         {
             var order = _context.Orders.Find(orderId);
             order.IsDelivered = true;
-            //order.СourierId = courierId;
-            //order.UserId = userId;
             await _context.SaveChangesAsync();
         }
     }

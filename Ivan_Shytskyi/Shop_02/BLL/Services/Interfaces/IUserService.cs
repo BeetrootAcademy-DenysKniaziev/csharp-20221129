@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace BLL.Services.Interfaces
 {
-    public interface IUserService<TEntity> where TEntity : class
+    public interface IUserService : IService<User>
     {
-        Task<int> RegisterAsync(TEntity entity);
-        Task<TEntity> GetByUserNameAsync(string userName);
-        Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
-        Task<IEnumerable<TEntity>> GetAll();
-        Task<TEntity> GetById(int id);
-        Task Add(TEntity entity);
-        Task Update(TEntity entity);
-        Task Delete(int id);
+        Task<int> RegisterAsync(User entity);
+        Task<User> GetByUserNameAsync(string userName);
+        //Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
+        //Task<IEnumerable<TEntity>> GetAll();
+        //Task<TEntity> GetById(int id);
+        //Task Add(TEntity entity);
+        //Task Update(TEntity entity);
+        //Task Delete(int id);
     }
 }

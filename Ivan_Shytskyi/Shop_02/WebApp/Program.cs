@@ -1,6 +1,5 @@
 ﻿using BLL.Services;
 using BLL.Services.Interfaces;
-using Contracts.Models;
 using DAL;
 using DAL.Repository;
 using DAL.Repository.Interface;
@@ -16,23 +15,23 @@ var configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDbContext>(options =>
                           options.UseNpgsql(configuration.GetConnectionString("pg_FP")));
 
-builder.Services.AddScoped<IAdminRepository<Admin>, AdminRepository>();
-builder.Services.AddScoped<IAdminService<Admin>, AdminService>();
+builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
-builder.Services.AddScoped<ICourierRepository<Сourier>, СourierRepository>();
-builder.Services.AddScoped<ICourierService<Сourier>, CourierService>();
+builder.Services.AddScoped<ICourierRepository, СourierRepository>();
+builder.Services.AddScoped<ICourierService, CourierService>();
 
-builder.Services.AddScoped<IOrderRepository<Order>, OrderRepository>();
-builder.Services.AddScoped<IOrderService<Order>, OrderService>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
-builder.Services.AddScoped<IProductRepository<Product>, ProductRepository>();
-builder.Services.AddScoped<IProductService<Product>, ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddScoped<IStoregeRepository<Storege>, StoregeRepository>();
-builder.Services.AddScoped<IStoregeService<Storege>, StoregeService>();
+builder.Services.AddScoped<IStoregeRepository, StoregeRepository>();
+builder.Services.AddScoped<IStoregeService, StoregeService>();
 
-builder.Services.AddScoped<IUserRepository<User>, UserRepository>();
-builder.Services.AddScoped<IUserService<User>, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddControllersWithViews();
 
@@ -56,7 +55,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

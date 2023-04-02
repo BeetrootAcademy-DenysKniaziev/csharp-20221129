@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Contracts.Models
 {
     [Table("courier", Schema = "public")]
-    public class Сourier
+    public class Courier
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
