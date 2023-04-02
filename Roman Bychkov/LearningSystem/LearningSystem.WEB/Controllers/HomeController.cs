@@ -22,7 +22,7 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Active = "courses";
-            return View(await _service.GetAsync());
+            return View(await _service.GetAllAsync());
         }
         
         public IActionResult Privacy()

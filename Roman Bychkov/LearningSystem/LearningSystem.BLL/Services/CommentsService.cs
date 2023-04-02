@@ -33,7 +33,7 @@
 
         public async Task<IEnumerable<Comment>> GetAsync()
         {
-            return await _context.GetAsync();
+            return await _context.GetAllAsync();
         }
 
         public async Task<Comment> GetByIdAsync(int id)

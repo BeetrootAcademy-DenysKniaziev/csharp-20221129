@@ -44,7 +44,7 @@ namespace LearningSystem.BLL.Services
 
         public async Task<IEnumerable<User>> GetAsync()
         {
-            return await _context.GetAsync();
+            return await _context.GetAllAsync();
         }
 
         public async Task<User> GetByIdAsync(int id)
@@ -112,6 +112,11 @@ namespace LearningSystem.BLL.Services
             await _context.AddImage("/" + nameFolder + "/" + fileName, name);
 
             return "/" + nameFolder + "/" + fileName;
+        }
+
+        public async Task<User> GetByName(string name)
+        {
+            return await _context.GetByName(name);
         }
     }
 }

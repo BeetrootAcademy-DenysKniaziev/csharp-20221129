@@ -8,7 +8,7 @@ namespace LearningSystem.DAL.Interfaces
         public Task AddAsync(T item);
         public Task UpdateAsync(T item);
         public Task DeleteAsync(T item);
-        public Task<IEnumerable<T>> GetAsync();
+        public Task<IEnumerable<T>> GetAllAsync();
         public Task<T> GetByIdAsync(int id);
     }
 }

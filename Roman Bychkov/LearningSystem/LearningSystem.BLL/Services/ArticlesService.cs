@@ -21,7 +21,7 @@ namespace LearningSystem.BLL.Services
             if(await _coursesRepository.GetByIdAsync(item.CourseId) is null)
                 throw new ArgumentNullException(nameof(item.CourseId));
 
-            var articles = (await _context.GetAsync()).Where(a => a.CourseId == item?.CourseId);
+            var articles = (await _context.GetAllAsync()).Where(a => a.CourseId == item?.CourseId);
             var number = articles.MaxBy(a => a.Number) == null ? 1 : articles.MaxBy(a => a.Number)?.Number + 1;
 
             item.Number = (byte)number;
@@ -43,7 +43,7 @@ namespace LearningSystem.BLL.Services
         }
         public async Task<IEnumerable<Article>> GetAsync()
         {
-            return await _context.GetAsync();
+            return await _context.GetAllAsync();
         }
 
         public async Task<Article> GetByIdAsync(int id)

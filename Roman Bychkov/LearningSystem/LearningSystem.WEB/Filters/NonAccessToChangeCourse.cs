@@ -32,7 +32,7 @@ namespace LearningSystem.WEB.Filters
 
             if (string.IsNullOrEmpty(id)
                   || !int.TryParse(id, out int courseId)
-                  || !((await service?.GetByIdAsync(courseId))?.User.UserName == user?.Identity?.Name)
+                  || !((await service?.GetByIdUserIncludesAsync(courseId))?.User.UserName == user?.Identity?.Name)
                  )
                 context.Result = new RedirectToActionResult("Oops", "Home", new { message = "You have not acces to this course " });
             else

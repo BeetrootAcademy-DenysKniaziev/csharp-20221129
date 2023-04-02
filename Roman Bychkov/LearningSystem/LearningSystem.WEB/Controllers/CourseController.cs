@@ -8,13 +8,13 @@ namespace LearningSystem.WEB.Controllers
 
     public class CourseController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<CourseController> _logger;
         private ICoursesService _coursesService;
         private IUsersServices _usersService;
         private ILikeArticleService _arcticlesLikeService;
         private IArticlesService _arcticlesService;
         private IMapper _mapper;
-        public CourseController(ILogger<HomeController> logger, ICoursesService service, IUsersServices usersServices,
+        public CourseController(ILogger<CourseController> logger, ICoursesService service, IUsersServices usersServices,
             ILikeArticleService articleLikeService, IArticlesService arcticlesService, IMapper mapper)
         {
             _logger = logger;
@@ -31,7 +31,7 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> Lesson(int id)
         {
             ViewBag.Active = "courses";
-            var model = await _coursesService.GetByIdAsync(id);
+            var model = await _coursesService.GetByIdUserArticleIncludesAsync(id);
             return View(model);
         }
 
@@ -50,7 +50,7 @@ namespace LearningSystem.WEB.Controllers
                 ViewBag.Liked = "liked";
 
 
-            return View(await _coursesService.GetByIdAsync(id));
+            return View(await _coursesService.GetByIdAllIncludesAsync(id));
         }
         //[Authorize]
         [HttpGet]
@@ -88,7 +88,7 @@ namespace LearningSystem.WEB.Controllers
 
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Login", "Account");
-            return View((await _coursesService.GetAsync()).Where(x => x.User.UserName == User?.Identity?.Name).ToList());
+            return View((await _coursesService.GetAllWithUserAsync()).Where(x => x.User.UserName == User?.Identity?.Name).ToList());
         }
 
         [Authorize]
@@ -129,7 +129,7 @@ namespace LearningSystem.WEB.Controllers
         [NonAccessToChangeLesson()]
         public async Task<IActionResult> EditLesson(int id, int number)
         {
-            var course = await _coursesService.GetByIdAsync(id);
+            var course = await _coursesService.GetByIdUserArticleIncludesAsync(id);
             ViewBag.Number = number;
             return View(course);
         }
@@ -139,13 +139,14 @@ namespace LearningSystem.WEB.Controllers
         [NonAccessToChangeCourse()]
         public async Task<IActionResult> EditLesson(int id)
         {
-            var model = await _coursesService.GetByIdAsync(id);
+            var model = await _coursesService.GetByIdUserArticleIncludesAsync(id);
             ViewBag.Active = "courses";
             return View(model);
         }
         [HttpPost]
         [Authorize]
         [NonAccessToChangeLesson()]
+      
         public async Task<IActionResult> EditLesson(LessonModel model)
         {
 
@@ -188,7 +189,7 @@ namespace LearningSystem.WEB.Controllers
         [Route("{id}/DeleteLesson/{number}")]
         public async Task<IActionResult> DeleteLesson(int id, int number)
         {
-            var course = await _coursesService.GetByIdAsync(id);
+            var course = await _coursesService.GetByIdUserArticleIncludesAsync(id);
             await _arcticlesService.DeleteAsync(course.Articles.SingleOrDefault(a => a.Number == number));
             return RedirectToAction("EditLesson", "Course", new { id = id });
         }

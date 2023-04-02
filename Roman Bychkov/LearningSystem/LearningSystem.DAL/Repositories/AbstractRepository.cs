@@ -23,7 +23,7 @@ namespace LearningSystem.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async virtual Task<IEnumerable<T>> GetAsync()
+        public async virtual Task<IEnumerable<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }

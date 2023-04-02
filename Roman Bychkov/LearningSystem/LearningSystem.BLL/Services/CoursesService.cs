@@ -21,11 +21,11 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Description");
             if (string.IsNullOrWhiteSpace(item.Content) || item.Content.Length > 10000)
                 throw new ArgumentException("Invalid Content");
-            if (await _usersRepository.GetByIdAsync(item.UserId, new List<string> {"User"}) == null)
+            if (await _usersRepository.GetByIdAsync(item.UserId, new List<string> { "User" }) == null)
                 throw new ArgumentNullException(nameof(item.UserId));
             if (string.IsNullOrWhiteSpace(item.ImagePath))
                 item.ImagePath = "-";
-            
+
             await _context.AddAsync(item);
 
             string uploadPath = "wwwroot/image";
@@ -56,15 +56,6 @@ namespace LearningSystem.BLL.Services
             await _context.DeleteAsync(item);
         }
 
-        public async Task<IEnumerable<Course>> GetAsync()
-        {
-            return await _context.GetAsync();
-        }
-
-        public async Task<Course> GetByIdAsync(int id)
-        {
-            return await _context.GetByIdAsync(id);
-        }
         public async Task<string> AddImage(int id, IFormFile file)
         {
             if (file is null || file.Length > 500000 || file.Length == 0)
@@ -110,5 +101,48 @@ namespace LearningSystem.BLL.Services
         }
 
 
+
+        public async Task<IEnumerable<Course>> GetAllAsync()
+        {
+            return await _context.GetAllAsync();
+        }
+
+        public async Task<Course> GetByIdAsync(int id)
+        {
+            return await _context.GetByIdAsync(id);
+        }
+        public async Task<Course> GetByIdAllIncludesAsync(int id)
+        {
+            return await _context.GetByIdAsync(id, new List<string>()
+            {
+                "User",
+                "Articles.Likes",
+                "Articles.Comments.User"
+            });
+        }
+        public async Task<Course> GetByIdUserArticleIncludesAsync(int id)
+        {
+            return await _context.GetByIdAsync(id, new List<string>()
+            {
+                "User",
+                "Articles",
+            });
+        }
+
+        public async Task<IEnumerable<Course>> GetAllWithUserAsync()
+        {
+            return await _context.GetAllAsync(new List<string>()
+            {
+                "User"
+            });
+        }
+
+        public async Task<Course> GetByIdUserIncludesAsync(int id)
+        {
+            return await _context.GetByIdAsync(id, new List<string>()
+            {
+                "User"
+            });
+        }
     }
 }

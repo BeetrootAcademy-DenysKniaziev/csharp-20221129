@@ -31,16 +31,19 @@ namespace LearningSystem.WEB.Filters
 
                    
 
-            if (string.IsNullOrEmpty(id)
-                  || !int.TryParse(id, out int courseId)
-                  || string.IsNullOrEmpty(number)
-                  || !byte.TryParse(number, out byte articleNumber)
-                  || !((await service?.GetByIdAsync(courseId))?.User.UserName==user?.Identity?.Name)
-                  || !((await service?.GetByIdAsync(courseId)).Articles.Exists(a=>a.Number == articleNumber))
-                    )
-                context.Result = new RedirectToActionResult("Oops", "Home", new { message = "You have not acces to this lesson " });
+            if (!string.IsNullOrEmpty(id)
+                  && int.TryParse(id, out int courseId)
+                  && !string.IsNullOrEmpty(number)
+                  && byte.TryParse(number, out byte articleNumber))
+            {
+                var course = await service?.GetByIdUserArticleIncludesAsync(courseId);
+                if(course.Articles.Exists(a=>a.Number == articleNumber)&&course.User.UserName==user.Identity?.Name)
+                    await next();
+                else
+                    context.Result = new RedirectToActionResult("Oops", "Home", new { message = "You have not acces to this lesson " });
+            }
             else
-                await next();
+                context.Result = new RedirectToActionResult("Oops", "Home", new { message = "Lesson does not exist" });
         }
     }
 }

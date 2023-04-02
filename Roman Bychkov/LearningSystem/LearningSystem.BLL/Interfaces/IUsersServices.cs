@@ -9,5 +9,7 @@ namespace LearningSystem.BLL.Interfaces
         public Task<User> GetUserByLoginPasswordAsync(string login, string password);
         public Task<string> AddImage(string nameFolder, string name, IFormFile file);
 
+        public Task<User> GetByName(string name);
+
     }
 }

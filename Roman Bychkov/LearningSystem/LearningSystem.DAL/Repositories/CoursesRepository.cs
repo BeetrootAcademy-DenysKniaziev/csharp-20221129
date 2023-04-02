@@ -11,19 +11,26 @@ namespace LearningSystem.DAL.Repositories
         {
             return await _context.Courses.SingleOrDefaultAsync(c => c.Id == id);
         }
+
+        public async Task<IEnumerable<Course>> GetAllAsync(List<string> includeNodes)
+        {
+            var context = _context.Courses.Include(includeNodes[0]);
+            for (int i = 1; i < includeNodes.Count; i++)
+            {
+                context = context.Include(includeNodes[i]);
+            }
+            return await context.ToListAsync();
+        }
         public async Task<Course> GetByIdAsync(int id, List<string> includeNodes) 
         {
-            var context = _context.Courses;
-            foreach (var includeNode in includeNodes)
+            var context = _context.Courses.Include(includeNodes[0]);
+            for (int i = 1; i < includeNodes.Count; i++)
             {
-                context.Include(includeNode);
+                context = context.Include(includeNodes[i]);
             }
-            return await _context.Courses.SingleOrDefaultAsync(c => c.Id == id);
+            return await context.SingleOrDefaultAsync(c => c.Id == id);
         }
 
-        public override async Task<IEnumerable<Course>> GetAsync()
-        {
-            return await _context.Courses.Include(c => c.Articles).Include(c=>c.User).ToListAsync();
-        }
+      
     }
 }
