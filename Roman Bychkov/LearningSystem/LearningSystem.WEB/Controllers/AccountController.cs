@@ -1,11 +1,4 @@
-﻿using AutoMapper;
-using LearningSystem.WEB.ValidationModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
+﻿
 namespace LearningSystem.WEB.Controllers
 {
     public class AccountController : Controller
@@ -79,6 +72,8 @@ namespace LearningSystem.WEB.Controllers
                 var jwtToken = tokenHandler.WriteToken(token);
 
                 HttpContext.Session.SetString("Token", jwtToken);
+
+                _logger.LogInformation("{User} is logged. code-{Code}", User.Identity.Name, RepoLogEvents.LoginUser);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -114,6 +109,7 @@ namespace LearningSystem.WEB.Controllers
                 var user = new User();
                 user = _mapper.Map<User>(model);
                 await _service.AddAsync(user);
+                _logger.LogInformation("{User} has registered. code-{Code}", User.Identity.Name, RepoLogEvents.RegistrationUser);
                 return await Login(new LoginModel() { UserName = model.UserName, Password = model.Password });
             }
             else
@@ -136,7 +132,8 @@ namespace LearningSystem.WEB.Controllers
         [Authorize]
         public async Task<IActionResult> Upload()
         {
-
+            MyLogger.CheckFreeSpaceOnDisk(_logger);
+    
             var files = Request.Form.Files;
             var file = files[0];
 
@@ -152,7 +149,7 @@ namespace LearningSystem.WEB.Controllers
             }
 
             var result = await _service.AddImage("imageProfile", User?.Identity?.Name, file);
-
+            _logger.LogInformation("{User} added image to profile. code-{Code}", User.Identity.Name, RepoLogEvents.UploadImageProfile);
             return Ok(result);
         }
 

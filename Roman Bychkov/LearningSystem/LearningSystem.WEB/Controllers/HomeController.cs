@@ -1,9 +1,5 @@
-﻿using LearningSystem.DAL;
-using LearningSystem.DAL.Interfaces;
+﻿
 using LearningSystem.WEB.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
 using System.Diagnostics;
 
 namespace LearningSystem.WEB.Controllers

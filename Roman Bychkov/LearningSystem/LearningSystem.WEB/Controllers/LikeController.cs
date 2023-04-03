@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
 
 namespace LearningSystem.WEB.Controllers
 {
@@ -10,8 +10,10 @@ namespace LearningSystem.WEB.Controllers
         private ILikeArticleService _service;
         private IUsersServices _usersService;
         private IArticlesService _articlesService;
-        public LikeController(ILikeArticleService service, IUsersServices usersService, IArticlesService articlesService)
+        private ILogger _logger;
+        public LikeController(ILikeArticleService service, IUsersServices usersService, IArticlesService articlesService, ILogger<LikeController> logger)
         {
+            _logger = logger;
             _service = service;
             _usersService = usersService;
             _articlesService = articlesService;
@@ -32,6 +34,7 @@ namespace LearningSystem.WEB.Controllers
             if (articleLike != null)
             {
                 await _service.DeleteAsync(articleLike);
+                _logger.LogInformation("{User} deleted like to course {CourseId} lesson {Number}. code-{Code}", User.Identity.Name, courseId, articleNumber, RepoLogEvents.UserUnLike);
                 return NotFound(false);
             }
             else
@@ -43,6 +46,7 @@ namespace LearningSystem.WEB.Controllers
                     
                 };
                 await _service.AddAsync(articleLike);
+                _logger.LogInformation("{User} added like to course {CourseId} lesson {Number}. code-{Code}", User.Identity.Name, courseId, articleNumber, RepoLogEvents.UserLike);
                 return Ok(true);
             }
 

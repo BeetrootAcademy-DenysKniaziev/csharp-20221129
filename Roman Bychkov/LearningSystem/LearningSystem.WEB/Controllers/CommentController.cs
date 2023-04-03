@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
 using Newtonsoft.Json;
 
 
@@ -13,8 +13,10 @@ namespace LearningSystem.WEB.Controllers
         private ICommentsService _service;
         private IUsersServices _usersService;
         private IArticlesService _articlesService;
-        public CommentController(ICommentsService service, IUsersServices usersService, IArticlesService articlesService)
+        private ILogger<CommentController> _logger;
+        public CommentController(ICommentsService service, IUsersServices usersService, IArticlesService articlesService, ILogger<CommentController> logger)
         {
+            _logger = logger;
             _service = service;
             _usersService = usersService;
             _articlesService = articlesService;
@@ -50,6 +52,7 @@ namespace LearningSystem.WEB.Controllers
                 image = user.Image
             };
             string jsonString = JsonConvert.SerializeObject(newOb, Formatting.Indented);
+            _logger.LogInformation("{User} added comment to course {CourseId} lesson {Number}. code-{Code}", User.Identity.Name, courseId, articleNumber, RepoLogEvents.UserAddComment);
             return Content(jsonString);
         }
 

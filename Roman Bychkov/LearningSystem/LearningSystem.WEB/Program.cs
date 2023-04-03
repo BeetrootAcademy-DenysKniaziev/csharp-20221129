@@ -30,7 +30,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHealthChecks("/health");
 app.UseSession();
 app.UseMiddleware<AuthMiddleware>();
-app.UseMiddleware<LoggingMiddleware>();
+//app.UseMiddleware<LoggingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

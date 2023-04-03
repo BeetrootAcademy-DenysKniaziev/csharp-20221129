@@ -74,10 +74,15 @@ namespace LearningSystem.WEB.Controllers
                 course.UserId = (await _usersService.GetValueByСonditionAsync(u => u.UserName, User?.Identity?.Name)).Id;
 
                 await _coursesService.AddAsync(course, file);
+                MyLogger.CheckFreeSpaceOnDisk(_logger);
+                _logger.LogInformation("Course {CourseId} created by {User}. code-{Code}", model.Id, User.Identity.Name,RepoLogEvents.AddCourse);
                 return RedirectToAction("Index", "Home");
             }
             else
+            {
+                _logger.LogError("Model state is invalid: {@ModelStateErrors}", ModelState.Values.SelectMany(v => v.Errors));
                 return View(model);
+            }
 
         }
 
@@ -110,16 +115,18 @@ namespace LearningSystem.WEB.Controllers
             {
 
                 var path = await _coursesService.AddImage(model.Id, model.Uploads);
+                MyLogger.CheckFreeSpaceOnDisk(_logger);
                 var course = await _coursesService.GetByIdAsync(model.Id);
 
                 _mapper.Map<CourseModel, Course>(model, course);
                 course.ImagePath = path ?? course.ImagePath;
 
                 await _coursesService.UpdateAsync(course);
+                _logger.LogInformation("Course {CourseId} updated. Changes: {@CourseChanges}. code-{Code}", model.Id, model, RepoLogEvents.UpdateCourse);
 
-                await _coursesService.UpdateAsync(course);
                 return RedirectToAction("Index", "Home");
             }
+            _logger.LogError("Model state is invalid: {@ModelStateErrors}", ModelState.Values.SelectMany(v => v.Errors));
             return View(model);
 
         }
@@ -155,8 +162,9 @@ namespace LearningSystem.WEB.Controllers
             {
                 lesson = _mapper.Map(model, lesson);
                 await _arcticlesService.UpdateAsync(lesson);
+                _logger.LogInformation("Lesson from course {CourseId} updated by {User}. code-{Code}", model.CourseId, User.Identity.Name, RepoLogEvents.UpdateLesson);
             }
-
+          
             return await EditLesson(model.CourseId, model.Number);
 
         }
@@ -172,6 +180,7 @@ namespace LearningSystem.WEB.Controllers
                 CourseId = id
             };
             await _arcticlesService.AddAsync(article);
+            _logger.LogInformation("Lesson added to course {CourseId} with Number {Number} by {User}. code-{Code}", id, article.Number, User.Identity.Name, RepoLogEvents.AddLesson);
             return RedirectToAction("EditLesson", "Course", new { id = id, number = article.Number });
         }
 
@@ -181,6 +190,7 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _coursesService.DeleteAsync(await _coursesService.GetByIdAsync(id));
+            _logger.LogInformation("Course {CourseId} deleted by {User}. code-{Code}", id, User.Identity.Name, RepoLogEvents.DeleteCourse);
             return RedirectToAction("MyCourses", "Course");
         }
         [Authorize]
@@ -191,6 +201,7 @@ namespace LearningSystem.WEB.Controllers
         {
             var course = await _coursesService.GetByIdUserArticleIncludesAsync(id);
             await _arcticlesService.DeleteAsync(course.Articles.SingleOrDefault(a => a.Number == number));
+            _logger.LogInformation("Lesson from course {CourseId} Number {Number} deleted by {User}. code-{Code}", id, number, User.Identity.Name, RepoLogEvents.DeleteLesson);
             return RedirectToAction("EditLesson", "Course", new { id = id });
         }
 
