@@ -26,7 +26,10 @@ namespace Contracts.Models
 
         [Column("in_stock")]
         [Required]
-        public Boolean InStock { get; set; }
+        public bool InStock { get; set; }
+
+        [Column("image")]
+        public byte[] Image { get; set; }
 
         public virtual List<Order> Orders { get; set; }
 

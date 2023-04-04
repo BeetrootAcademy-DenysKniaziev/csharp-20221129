@@ -32,6 +32,11 @@
                     <input class="form-check-input" asp-for="InStock" /> @Html.DisplayNameFor(model => model.InStock)
                 </label>
             </div>
+            <div>
+                <label asp-for="Image"></label>
+                <input asp-for="Image" type="file" accept="Image"/>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

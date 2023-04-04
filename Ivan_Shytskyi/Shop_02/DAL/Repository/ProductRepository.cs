@@ -51,5 +51,6 @@ namespace DAL.Repository
             _dbContext.Products.Remove(product);
             await _dbContext.SaveChangesAsync();
         }
+
     }
 }

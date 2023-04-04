@@ -4,6 +4,7 @@ using Contracts.Models;
 using Microsoft.AspNetCore.Authorization;
 using BLL.Services.Interfaces;
 using System.Linq.Expressions;
+using System;
 
 namespace WebApp.Controllers
 {
@@ -49,14 +50,33 @@ namespace WebApp.Controllers
         // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,InStock")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,InStock,Image")] Product product, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                _service.Add(product);
+                if (file != null && file.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        await file.CopyToAsync(ms);
+                        product.Image = ms.ToArray();
+                    }
+                }
+
+                await _service.Add(product);
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
+        }
+
+        public async Task<IActionResult> GetImage(int id)
+        {
+            var product = _service.GetById(id);
+            if (product != null && product.Result.Image != null)
+            {
+                return File(product.Result.Image, "image/png");
+            }
+            return NotFound();
         }
 
         // GET: Products/Edit/5
