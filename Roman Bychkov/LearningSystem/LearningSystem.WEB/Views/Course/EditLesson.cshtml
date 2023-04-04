@@ -9,7 +9,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
    </script>
 
 <div class="course-title">
-  <a href="/Course/@Model?.Id/EditLesson"><h3><b>КУРС - @Model?.CourseName</b></h3></a>
+  <a href="/Course/@Model?.Id/EditLesson"><b>КУРС - @Model?.CourseName</b></a>
 </div>
 <div class="lessons-content-container">
     <div>
@@ -41,9 +41,8 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
         
         @if (ViewBag?.Number == null)
         {
-            var marked = new Marked();
-            var htmlString = marked.Parse(@Model?.Content);
-            @Html.Raw(htmlString);
+            
+            @Html.Raw(@Model?.ContentHTML);
         }
         else
         {   <form method="post" asp-controller="Course" asp-action="DeleteLesson" asp-route-id="@Model.Id" asp-route-number="@ViewBag?.Number">
@@ -61,7 +60,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
                   </div>
                  <div>
                      <textarea required  name="Content">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content </textarea>
-                     <button type="submit">Обновити</button>
+                     <button class="btn-comment" type="submit">Обновити</button>
                  </div>
                     <div>
                         <input type="hidden" name="CourseId" value="@Model.Id" />

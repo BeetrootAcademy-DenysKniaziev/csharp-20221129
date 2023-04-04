@@ -13,16 +13,21 @@
         @{
             foreach(Course item in @Model)
             {
-                <div class="course-item"> 
-                <a asp-area="" asp-controller="Course" asp-action="Lesson" asp-route-id="@item.Id">
-                    <img class="course-image" src="@item.ImagePath" />
-                    <p class="title">@item.CourseName</p>
-                    <div>
-                        <p class="course-description">@item.Description </p>
-                    </div>
+              
+                <a asp-area="" class="course-item" asp-controller="Course" asp-action="Lesson" asp-route-id="@item.Id">
+                  
+                         <div style="flex-grow: 2">
+                            <img class="course-image"  src="@item.ImagePath" />
+                        <div style="flex-grow: 2">
+                        </div>
+                            <p class="title">@item.CourseName</p>
+                    
+                            <p class="course-description">@item.Description </p>
+                        </div>
+                  
                   </a>
-                </div>
-               
+              
+
             }
           }
     </div>

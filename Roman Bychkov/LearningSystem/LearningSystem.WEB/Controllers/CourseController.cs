@@ -75,7 +75,7 @@ namespace LearningSystem.WEB.Controllers
 
                 await _coursesService.AddAsync(course, file);
                 MyLogger.CheckFreeSpaceOnDisk(_logger);
-                _logger.LogInformation("Course {CourseId} created by {User}. code-{Code}", model.Id, User.Identity.Name,RepoLogEvents.AddCourse);
+                _logger.LogInformation("Course {CourseId} created by {User}. code-{Code}", course.Id, User.Identity.Name,RepoLogEvents.AddCourse);
                 return RedirectToAction("Index", "Home");
             }
             else

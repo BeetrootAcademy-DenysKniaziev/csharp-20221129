@@ -1,4 +1,3 @@
-
 .course-image {
     width: 100%;
     height: 60%;
@@ -19,88 +18,112 @@
     flex-wrap: wrap;
 }
 
-    .course-container > div {
-        flex-basis: calc(33.33% - 20px); 
-        margin: 10px; 
-    }
+    
+
         .course-container > div > p {
             margin: 0;
             font-size: 1em;
-            padding: 0; 
-            margin-bottom: 5px; 
+            padding: 0;
+            margin-bottom: 5px;
         }
+
 .course-item:hover {
-    border: 5px solid #ccc;
+    background-color: #F0F0F0;
     border-radius: 10px;
     height: auto;
     overflow: hidden;
 }
+
 .course-item {
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
+    max-width: 30%;
     word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    background-color: white; 
+    transition: background-color 0.3s ease; 
 }
+
 .course-title {
     margin-left: 10%;
 }
+
 .course-content {
     margin-left: 5%;
     flex: 1 1 auto;
 }
-    .course-content textarea
-    {
+
+    .course-content textarea {
         width: 500px;
     }
+
 .course-description {
-        font-family: Courier New, monospace;
-    }
-  
-.title {
-    padding-top: 5px;
-    font-size: 20px; 
-    font-weight: bold; 
-    margin-top: 10px; 
-    text-align: center; 
+    font-family: Courier New, monospace;
 }
 
-.title::after {
-        content: ""; 
+.title {
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+    .title::after {
+        content: "";
         display: block;
-        margin: 5px auto; 
+        margin: 5px auto;
         width: 50px;
-        border-bottom: 2px solid black; 
+        border-bottom: 2px solid black;
     }
 
 .course-edit-delete {
     display: flex;
 }
+
 .course-edit {
     display: flex;
     background-color: white;
     border-radius: 3px;
 }
+
 .course-delete {
     display: flex;
     background-color: palevioletred;
     color: whitesmoke;
     border-radius: 3px;
 }
+
 .course-edit:hover {
     cursor: pointer;
     border: 2px;
     border-color: black;
 }
+
 .course-delete:hover {
     cursor: pointer;
     border: 2px;
     border-color: black;
 }
+
 @media screen and (max-width: 768px) {
     .course-container {
         flex-direction: column;
     }
 
-        .course-container > div {
+        .course-item {
             flex-basis: 100%;
+            max-width: 100%;
             margin: 10px 0;
         }
 }
-
+.create-btn {
+    margin-left: auto;
+    border-radius: 8px;
+    border: none;
+    margin-left: 75%;
+    color: #fff;
+    background-color: #00FF00;
+    outline: none;
+}

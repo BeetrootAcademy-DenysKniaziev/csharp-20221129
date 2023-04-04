@@ -1,11 +1,6 @@
-using LearningSystem.BLL.Services;
-using LearningSystem.DAL.Repositories;
 using LearningSystem.WEB.DI;
 using LearningSystem.WEB.Middleware;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
