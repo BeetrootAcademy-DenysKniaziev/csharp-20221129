@@ -49,8 +49,6 @@ td {
 .comment-container {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap;
-    width: 30%;*/
     word-break: break-all;
     overflow-wrap: break-word;
     max-width: 500px;
@@ -166,3 +164,50 @@ pre {
     overflow-x: auto;
     margin: 10px 0;
 }
+@media screen and (max-width: 768px) {
+    .area-comment {
+        min-width: 400px;
+        max-width: 400px;
+    }
+}
+.btn-add-lesson
+{
+    margin: 10px;
+    padding: 8px;
+    border-width: 0px;
+    display:flex;
+    border-radius: 8px;
+    background-color:aquamarine;
+}
+    .btn-add-lesson:hover {
+        background-color: mediumaquamarine;
+    }
+    .btn-update-lesson {
+        margin-left: auto;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        color: #fff;
+        background-color: #00BFFF;
+        outline: none;
+        align-self: end;
+    }
+    .btn-update-lesson:hover {
+        background-color: #1E90FF;
+    }
+.lesson-name
+{
+    margin-bottom: 8px;
+}
+.btn-lesson-delete {
+    display: flex;
+    background-color: palevioletred;
+    color: whitesmoke;
+    border-radius: 3px;
+    border-width: 0px;
+    padding: 5px;
+    margin: 5px;
+}
+    .btn-lesson-delete:hover {
+        background-color: red;
+    }

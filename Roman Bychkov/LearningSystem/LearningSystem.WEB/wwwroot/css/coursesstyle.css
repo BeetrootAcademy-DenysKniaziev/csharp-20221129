@@ -47,11 +47,25 @@
 
 .course-title {
     margin-left: 10%;
+    border-radius: 10px;
+    background-color: #90EE90;
+    display: inline-block;
+    width: auto;
+    margin-left: 5%;
+    margin-bottom: 25px;
+    font-size: 25px;
+    padding: 10px;
+    cursor: pointer;
 }
+    .course-title:hover {
+        background-color: #00FF00;
+    }
 
 .course-content {
     margin-left: 5%;
     flex: 1 1 auto;
+    margin-right: 5%;
+    width: 50%;
 }
 
     .course-content textarea {
@@ -93,23 +107,31 @@
     background-color: palevioletred;
     color: whitesmoke;
     border-radius: 3px;
+  
 }
 
 .course-edit:hover {
     cursor: pointer;
     border: 2px;
     border-color: black;
+    background-color: lightyellow;
 }
 
 .course-delete:hover {
     cursor: pointer;
     border: 2px;
     border-color: black;
+    background-color: red;
 }
 
 @media screen and (max-width: 768px) {
     .course-container {
         flex-direction: column;
+    }
+    .course-content {
+        width: 90%;
+        margin-top: 15px;
+        overflow-wrap: break-word;
     }
 
         .course-item {
@@ -122,8 +144,13 @@
     margin-left: auto;
     border-radius: 8px;
     border: none;
-    margin-left: 75%;
+    padding: 8px;
+    margin-left: auto;
     color: #fff;
     background-color: #00FF00;
     outline: none;
+    align-self: end;
 }
+    .create-btn:hover {
+        background-color: #17a107;
+    }

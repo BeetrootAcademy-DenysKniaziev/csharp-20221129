@@ -7,7 +7,19 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
   <script>
         document.getElementById('container').classList.remove('container');
    </script>
-
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert-window">
+        <div class="alert-error">
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
 <div class="course-title">
   <a href="/Course/@Model?.Id/EditLesson"><b>КУРС - @Model?.CourseName</b></a>
 </div>
@@ -30,7 +42,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
                   <div>
                         <input type="hidden" name="Id" value="@Model.Id" />
                   </div>
-                 <button type="submit" class="display-flex"> 
+                 <button type="submit" class="btn-add-lesson"> 
                            <img class="icon" flex-basis: 0" src="~/icon/plus.png" />
                             Додати урок
                   </button>
@@ -47,27 +59,27 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
         else
         {   <form method="post" asp-controller="Course" asp-action="DeleteLesson" asp-route-id="@Model.Id" asp-route-number="@ViewBag?.Number">
                            
-                            <button type="submit" class="course-delete">
+                            <button type="submit" class="btn-lesson-delete">
                                 ВИДАЛИТИ
                                 <img class="icon icon-transparent" style="background-color: transparent" flex-basis: 0" src="~/icon/basket.png" />
                             </button>
             </form>
             <div id="editor" >
-             <form id="FormLesson" action="/Course/EditLesson" method="post">
-                  <div>
-                        <label name="Name" class="form-label">Назва уроку</label>
-                        <input type="text" required name="Name" value="@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArticleName" class="form-control">
+             <form class="FormLesson" id="FormLesson" action="/Course/EditLesson" method="post">
+                  <div class="lesson-name">
+                    <label name="Name" class="form-label"><b>Назва уроку</b></label>
+                    <input type="text" required name="Name" value="@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.ArticleName" class="form-control">
                   </div>
-                 <div>
-                     <textarea required  name="Content">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content </textarea>
-                     <button class="btn-comment" type="submit">Обновити</button>
-                 </div>
-                    <div>
-                        <input type="hidden" name="CourseId" value="@Model.Id" />
-                    </div>
-                    <div>
-                        <input type="hidden" name="Number" value="@ViewBag?.Number">
-                    </div>
+                  <div>
+                    <textarea required name="Content">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Content</textarea>
+                  </div>
+                  <div>
+                    <input type="hidden" name="CourseId" value="@Model.Id" />
+                  </div>
+                  <div>
+                    <input type="hidden" name="Number" value="@ViewBag?.Number">
+                  </div>
+                  <button class="btn-update-lesson" type="submit">Обновити</button>
              </form>
              </div>
             
@@ -93,6 +105,8 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/deleteAlertWindow.js"></script>
+     <script src="~/js/updateLesson.js"></script>
  </div>
 
 

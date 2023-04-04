@@ -9,7 +9,7 @@
 <p>Оновлення курсу</p>
 
 <div>
-              <form id="FormCourse" action="/Course/Edit"  enctype="multipart/form-data" method="post" class="create-form-course">
+              <form class="FormLesson" action="/Course/Edit"  enctype="multipart/form-data" method="post" class="create-form-course">
                     <div>
                         
                         <label asp-for="CourseName" class="form-label">Назва курсу</label>
@@ -38,7 +38,7 @@
                           <textarea asp-for="Content" required>@Model?.Content</textarea>
                           <span asp-validation-for="Content" class="validation-message"/>
                         </div>
-                      <button class="btn-comment" type="submit">Обновити</button>
+                      <button class="create-btn" type="submit">Обновити</button>
              </form>
 </div>
 
