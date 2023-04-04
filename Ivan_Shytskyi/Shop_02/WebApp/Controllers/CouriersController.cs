@@ -4,103 +4,82 @@ using Contracts.Models;
 using Microsoft.AspNetCore.Authorization;
 using BLL.Services.Interfaces;
 using System.Linq.Expressions;
-using System;
 
 namespace WebApp.Controllers
 {
     [Authorize]
-    public class ProductsController1 : Controller
+    public class СouriersController : Controller
     {
-        private readonly IProductService _service;
+        private readonly ICourierService _service;
 
-        public ProductsController1(IProductService service)
+        public СouriersController(ICourierService service)
         {
             _service = service;
         }
 
-        // GET: Products
+        // GET: Сouriers
         public async Task<IActionResult> Index()
         {
             return View(_service);
         }
 
-        // GET: Products/Details/5
+        // GET: Сouriers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _service == null)
             {
                 return NotFound();
             }
-            Expression<Func<Product, bool>> predicate = product => product.Id == id;
-            var product = await _service.Find(predicate);
-            if (product == null)
+            Expression<Func<Courier, bool>> predicate = admin => admin.Id == id;
+            var сourier = await _service.Find(predicate);
+            if (сourier == null)
             {
                 return NotFound();
             }
-
-            return View(product);
+            return View(сourier);
         }
 
-        // GET: Products/Create
+        // GET: Сouriers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Сouriers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,InStock,Image")] Product product, IFormFile file)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,Email,PhoneNumber")] Courier сourier)
         {
             if (ModelState.IsValid)
             {
-                if (file != null && file.Length > 0)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        await file.CopyToAsync(ms);
-                        product.Image = ms.ToArray();
-                    }
-                }
-
-                await _service.Add(product);
+                _service.Add(сourier);
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(сourier);
         }
 
-        public async Task<IActionResult> GetImage(int id)
-        {
-            var product = _service.GetById(id);
-            if (product != null && product.Result.Image != null)
-            {
-                return File(product.Result.Image, "image/png");
-            }
-            return NotFound();
-        }
-
-        // GET: Products/Edit/5
+        // GET: Сouriers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _service == null)
             {
                 return NotFound();
             }
-            Expression<Func<Product, bool>> predicate = product => product.Id == id;
-            var product = await _service.Find(predicate);
-            if (product == null)
+            Expression<Func<Courier, bool>> predicate = admin => admin.Id == id;
+            var сourier = await _service.Find(predicate);
+            if (сourier == null)
             {
                 return NotFound();
             }
-            return View(product);
+            return View(сourier);
         }
 
-        // POST: Products/Edit/5
+        // POST: Сouriers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,InStock")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,Email,PhoneNumber")] Courier сourier)
         {
-            if (id != product.Id)
+            if (id != сourier.Id)
             {
                 return NotFound();
             }
@@ -109,11 +88,11 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    _service.Update(product);
+                    _service.Update(сourier);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
+                    if (!СourierExists(сourier.Id))
                     {
                         return NotFound();
                     }
@@ -124,43 +103,44 @@ namespace WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(product);
+            return View(сourier);
         }
 
-        // GET: Products/Delete/5
+        // GET: Сouriers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _service == null)
             {
                 return NotFound();
             }
-            Expression<Func<Product, bool>> predicate = product => product.Id == id;
-            var product = await _service.Find(predicate);
-            if (product == null)
+            Expression<Func<Courier, bool>> predicate = admin => admin.Id == id;
+            var сourier = await _service.Find(predicate);
+            if (сourier == null)
             {
                 return NotFound();
             }
-            return View(product);
+
+            return View(сourier);
         }
 
-        // POST: Products/Delete/5
+        // POST: Сouriers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_service == null)
             {
-                return Problem("Entity set 'AppDbContext.Products'  is null.");
+                return Problem("Entity set 'AppDbContext.Сourier'  is null.");
             }
-            var product = await _service.GetById(id);
-            if (product != null)
+            var сourier = await _service.GetById(id);
+            if (сourier != null)
             {
                 _service.Delete(id);
             }
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool СourierExists(int id)
         {
             return _service.GetById(id) != null;
         }
