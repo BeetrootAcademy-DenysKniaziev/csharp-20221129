@@ -16,9 +16,9 @@ namespace LearningSystem.BLL.Services
         {
             if (item is null)
                 throw new ArgumentNullException("item");
-            if (string.IsNullOrWhiteSpace(item.UserName) || item.UserName.Length > 50)
+            if (string.IsNullOrWhiteSpace(item.UserName) || item.UserName.Length < 4 || item.UserName.Length > 50)
                 throw new ArgumentException("Invalid Username");
-            if (string.IsNullOrWhiteSpace(item.Password) || item.UserName.Length < 3 || item.UserName.Length > 50)
+            if (string.IsNullOrWhiteSpace(item.Password) || item.Password.Length < 3 || item.Password.Length > 50)
                 throw new ArgumentException("Invalid Password");
             if (!Regex.IsMatch(item.Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase))
                 throw new ArgumentException("Invalid Email");

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.DAL", "Learn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningSystem.BLL", "LearningSystem.BLL\LearningSystem.BLL.csproj", "{9C59BAC0-B7FD-41EE-AC57-3556129ED837}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.BLL.Tests", "LearningSystem.BLL.Tests\LearningSystem.BLL.Tests.csproj", "{23E092D0-6314-443F-B7D8-7A4AEA60EE01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9C59BAC0-B7FD-41EE-AC57-3556129ED837}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C59BAC0-B7FD-41EE-AC57-3556129ED837}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C59BAC0-B7FD-41EE-AC57-3556129ED837}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23E092D0-6314-443F-B7D8-7A4AEA60EE01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E092D0-6314-443F-B7D8-7A4AEA60EE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E092D0-6314-443F-B7D8-7A4AEA60EE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E092D0-6314-443F-B7D8-7A4AEA60EE01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
