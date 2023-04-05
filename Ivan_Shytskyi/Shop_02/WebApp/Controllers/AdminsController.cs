@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AdminsController : Controller
     {
         private readonly IAdminService _service;
@@ -20,7 +20,8 @@ namespace WebApp.Controllers
         //GET: Admins
         public async Task<IActionResult> Index()
         {
-            return View(_service);
+            var admin = await _service.GetAll();
+            return View(admin);
         }
 
         //GET: Admins/Details/5

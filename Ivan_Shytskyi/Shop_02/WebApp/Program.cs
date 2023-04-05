@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDbContext>(options =>
-                          options.UseNpgsql(configuration.GetConnectionString("pg_FP")));
+                          options.UseNpgsql(configuration.GetConnectionString("pg_FP"), b => b.MigrationsAssembly("WebApp")));
 
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();

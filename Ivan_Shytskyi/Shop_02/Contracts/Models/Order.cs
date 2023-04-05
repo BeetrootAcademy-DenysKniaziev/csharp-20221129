@@ -27,10 +27,6 @@ namespace Contracts.Models
         [Required]
         public DateTime OrderTime { get; set; }
 
-        //[Column("order_status")]
-        //[Required]
-        //public string OrderStatus { get; set; }
-
         [Column("is_delivered")]
         [Required]
         public bool IsDelivered { get; set; } = false;
@@ -38,10 +34,6 @@ namespace Contracts.Models
         [Column("is_received")]
         [Required]
         public bool IsReceived { get; set; } = false;
-
-        //[Column("is_picked_up")]
-        //[Required]
-        //public bool IsPickedUp { get; set; }
 
         public virtual User User { get; set; }
 

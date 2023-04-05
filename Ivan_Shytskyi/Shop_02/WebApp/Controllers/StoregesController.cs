@@ -18,7 +18,8 @@ namespace WebApp.Controllers
         // GET: Storeges
         public async Task<IActionResult> Index()
         {
-            return View(_service);
+            var storege = await _service.GetAll();
+            return View(storege);
         }
 
         // GET: Storeges/Details/5

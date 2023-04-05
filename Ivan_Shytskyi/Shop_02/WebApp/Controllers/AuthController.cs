@@ -11,13 +11,13 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    public class AuthController1 : ControllerBase
+    public class AuthController : ControllerBase
     {
         public IUserService UserService { get; }
         public IAdminService AdminService { get; }
         public ICourierService CourierService { get; }
         public IConfiguration Configuration { get; }
-        public AuthController1(IUserService userService, IAdminService adminService, ICourierService courierService, IConfiguration configuration)
+        public AuthController(IUserService userService, IAdminService adminService, ICourierService courierService, IConfiguration configuration)
         {
             UserService = userService;
             AdminService = adminService;

@@ -20,7 +20,9 @@ namespace WebApp.Controllers
         // GET: Сouriers
         public async Task<IActionResult> Index()
         {
-            return View(_service);
+            var courier = await _service.GetAll();
+            return View(courier);
+
         }
 
         // GET: Сouriers/Details/5

@@ -8,9 +8,7 @@ namespace DAL
         public DbSet<Admin> Admin { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Courier> Сourier { get; set; }
-
         public DbSet<Product> Products { get; set; }
-
         public DbSet<Order> Orders { get; set; }
         public DbSet<Storege> Storege { get; set; }
 

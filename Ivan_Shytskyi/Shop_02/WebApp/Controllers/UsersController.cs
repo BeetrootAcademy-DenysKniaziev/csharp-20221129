@@ -18,7 +18,8 @@ namespace WebApp.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            return View(_service);
+            var user = await _service.GetAll();
+            return View(user);
         }
 
         // GET: Users/Details/5

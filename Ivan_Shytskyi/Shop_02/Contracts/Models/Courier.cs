@@ -37,8 +37,8 @@ namespace Contracts.Models
         [Required]
         public string PhoneNumber { get; set; }
 
-        //public byte[] PasswordSalt { get; set; }
-        //public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+        public byte[] PasswordHash { get; set; }
 
         public virtual List<Order> Orders { get; set; }
     }
