@@ -26,6 +26,15 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Invalid Content");
             if (await _usersRepository.GetByIdAsync(item.UserId, new List<string> { "User" }) == null)
                 throw new ArgumentNullException(nameof(item.UserId));
+            if (file is null || file.Length > 500000 || file.Length == 0)
+            {
+                throw new ArgumentException("Файл повинен бути до 500КБ");
+            }
+            string type = Path.GetExtension(file.FileName);
+            if (!(type==".jpeg"|| type == ".jpg" || type == ".png"))
+            {
+                throw new ArgumentException("Image", "Допустимі формати: png, jpg");
+            }
             if (string.IsNullOrWhiteSpace(item.ImagePath))
                 item.ImagePath = "-";
 

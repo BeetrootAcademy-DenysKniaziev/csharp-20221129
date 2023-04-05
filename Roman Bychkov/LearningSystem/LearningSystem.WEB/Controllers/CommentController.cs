@@ -26,7 +26,7 @@ namespace LearningSystem.WEB.Controllers
         public async Task<ActionResult<Comment>> PostComment(int articleNumber, int courseId, [FromForm] string comment)
         {
 
-            var user = await _usersService.GetValueByСonditionAsync(u => u.UserName, User.Identity.Name);
+            var user = await _usersService.GetByName(User.Identity.Name);
 
             if (user == null)
                 return Unauthorized();
