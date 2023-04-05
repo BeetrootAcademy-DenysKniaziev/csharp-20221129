@@ -74,9 +74,7 @@
                                                         </div>
                                                         <img class="icon" style="background-color: transparent; flex-basis: 0" src="~/icon/authorisation.png" />
                                                     </div>
-                                                  
-                                               
-                                            </div>
+                                               </div>
                                           
                                         }
                                         else
@@ -112,7 +110,10 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
     <script>
-          document.getElementById('@ViewBag.Active').classList.add('myactive');
+           let activeElement = document.getElementById('@ViewBag.Active');
+            if (activeElement) {
+              activeElement.classList.add('myactive');
+            }
      </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

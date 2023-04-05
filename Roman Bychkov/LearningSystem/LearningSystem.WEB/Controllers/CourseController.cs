@@ -162,6 +162,7 @@ namespace LearningSystem.WEB.Controllers
             {
                 lesson = _mapper.Map(model, lesson);
                 await _arcticlesService.UpdateAsync(lesson);
+                ViewBag.Edit = true;
                 _logger.LogInformation("Lesson from course {CourseId} updated by {User}. code-{Code}", model.CourseId, User.Identity.Name, RepoLogEvents.UpdateLesson);
             }
           

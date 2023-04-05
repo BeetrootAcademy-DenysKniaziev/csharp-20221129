@@ -112,7 +112,6 @@ a {
 }
 .alert-error {
     background-color: #ff4040;
-    position: absolute;
     margin-right: 20px;
     border-radius: 8px;
     color: aliceblue;
@@ -121,5 +120,21 @@ a {
 .alert-window {
     display: flex;
     margin-left: 3%;
+    position: absolute;
+}
 
+
+.alert-ok {
+    background-color: #4CAF50;
+    margin-right: 30%;
+    align-self: center;
+    margin-right: auto;
+    border-radius: 8px;
+    color: aliceblue;
+    padding: 10px;
+}
+.alert-lesson {
+    display: flex;
+    justify-content: end;
+    margin-right: 15%;
 }

@@ -1,6 +1,6 @@
-﻿const form = document.querySelector('form');
+﻿const area = document.querySelector('form');
 
 function newLesson() {
-   form.reset();
+    area.reset();
 }
 

@@ -6,8 +6,11 @@ namespace LearningSystem.BLL.Services
     {
         private ICoursesRepository _context;
         private IUsersRepository _usersRepository;
-        public CoursesService(ICoursesRepository context, IUsersRepository usersRepository)
+        private string _folder;
+        public CoursesService(ICoursesRepository context, IUsersRepository usersRepository, string folder = "wwwroot")
         {
+            if (!string.IsNullOrEmpty(folder))
+                _folder = folder;
             _context = context;
             _usersRepository = usersRepository;
         }
@@ -28,7 +31,7 @@ namespace LearningSystem.BLL.Services
 
             await _context.AddAsync(item);
 
-            string uploadPath = "wwwroot/image";
+            string uploadPath = _folder + "/image";
 
             Directory.CreateDirectory(uploadPath);
 
@@ -53,6 +56,10 @@ namespace LearningSystem.BLL.Services
             {
                 throw new ArgumentNullException(nameof(item));
             }
+            if (File.Exists(_folder + item.ImagePath))
+            {
+                File.Delete(_folder + item.ImagePath);
+            }
             await _context.DeleteAsync(item);
         }
 
@@ -67,7 +74,7 @@ namespace LearningSystem.BLL.Services
                 throw new ArgumentException("Image", "Допустимі формати: png, jpg");
             }
 
-            string uploadPath = "wwwroot/image";
+            string uploadPath = _folder + "/image";
 
             Directory.CreateDirectory(uploadPath);
 
