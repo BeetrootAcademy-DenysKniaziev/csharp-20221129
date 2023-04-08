@@ -33,7 +33,7 @@ namespace LearningSystem.BLL.Services
             string type = Path.GetExtension(file.FileName);
             if (!(type==".jpeg"|| type == ".jpg" || type == ".png"))
             {
-                throw new ArgumentException("Image", "Допустимі формати: png, jpg");
+                throw new ArgumentException("Image", "Допустимі формати: png, jpg, jpeg");
             }
             if (string.IsNullOrWhiteSpace(item.ImagePath))
                 item.ImagePath = "-";

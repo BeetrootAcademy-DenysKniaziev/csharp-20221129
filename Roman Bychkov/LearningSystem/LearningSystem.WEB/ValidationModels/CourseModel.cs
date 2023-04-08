@@ -7,7 +7,7 @@ namespace LearningSystem.WEB.ValidationModels
     {
 
         [Required(ErrorMessage = "Введіть назву курса")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Назва курсу повина бути від 3-х до 50-ти символів")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Назва курсу повинна бути від 3-х до 50-ти символів")]
         public string CourseName { get; set; }
 
         [StringLength(200, ErrorMessage = "Опис курсу до 200-х символів")]
@@ -20,7 +20,7 @@ namespace LearningSystem.WEB.ValidationModels
         [StringLength(10000, ErrorMessage = "Нульова сторінка до 10 000 символів")]
         public string Content { get; set; }
 
-        [Required(ErrorMessage = "Додайте зображення на превью")]
+        [Required(ErrorMessage = "Додайте зображення на прев'ю")]
         [ImageType(new string[] { "jpg", "png", "jpeg" })]
         [MaxFileSize(500 * 1024, ErrorMessage = "Максимальний розмір файлу - 500 КБ")]
         public IFormFile Uploads { get; set; }

@@ -50,6 +50,7 @@
     margin-left: 10%;
     border-radius: 10px;
     background-color: #90EE90;
+    color: white;
     display: inline-block;
     width: auto;
     margin-left: 5%;
@@ -84,6 +85,7 @@
     font-weight: bold;
     margin-top: 10px;
     text-align: center;
+   
 }
 
     .title::after {

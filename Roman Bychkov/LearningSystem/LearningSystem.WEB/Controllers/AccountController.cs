@@ -24,6 +24,7 @@ namespace LearningSystem.WEB.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             HttpContext.Session.Clear();
@@ -36,10 +37,9 @@ namespace LearningSystem.WEB.Controllers
 
             ViewBag.Active = "login";
 
-
             if (await _service.GetValueByСonditionAsync(u => u.UserName, model.UserName) is null)
             {
-                ModelState.AddModelError(nameof(model.UserName), "Такого аккаунта не існує");
+                ModelState.AddModelError(nameof(model.UserName), "Такого акаунта не існує");
                 return View(model);
             }
             var user = await _service.GetUserByLoginPasswordAsync(model.UserName, model.Password);
@@ -136,10 +136,10 @@ namespace LearningSystem.WEB.Controllers
     
             var files = Request.Form.Files;
             var file = files[0];
-
-            if (file.ContentType != "image/jpeg" && file.ContentType != "image/png")
-            {
-                return BadRequest("Допустимі формати: png, jpg");
+            string type = Path.GetExtension(file.FileName);
+            if (!(type == ".jpeg" || type == ".jpg" || type == ".png"))
+            { 
+                return BadRequest("Допустимі формати: png, jpg, jpeg");
             }
 
 

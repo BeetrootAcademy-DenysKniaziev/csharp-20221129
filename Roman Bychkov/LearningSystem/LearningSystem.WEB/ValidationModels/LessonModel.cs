@@ -13,8 +13,8 @@ namespace LearningSystem.WEB.ValidationModels
 
 
 
-        [Required(ErrorMessage = "Назва повина бути від 3-х до 50-ти символів")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Назва повина бути від 3-х до 50-ти символів")]
+        [Required(ErrorMessage = "Назва повинна бути від 3-х до 50-ти символів")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Назва повинна бути від 3-х до 50-ти символів")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Наповніть урок змістом")]
