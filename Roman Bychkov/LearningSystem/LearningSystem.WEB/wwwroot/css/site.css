@@ -82,6 +82,7 @@ body {
     vertical-align: middle;
     margin-right: 10px;
     background-color: transparent;
+    margin-left: 5px;
 }
 .myactive {
     background-color: #ded09f;
@@ -137,4 +138,30 @@ a {
     display: flex;
     justify-content: end;
     margin-right: 15%;
+}
+.search-course {
+    display: flex;
+    justify-content: flex-end;
+   
+}
+.search-course-item {
+    position: absolute;
+    background-color: antiquewhite;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border: 3px solid #00b9e138;
+}
+.search-input
+{
+    margin-top: 10px;
+    width: auto;
+}
+.btn-search {
+    border-radius: 5px;
+    border-width: 0px;
+    background-color: #56c8dd;
+    color: white;
 }

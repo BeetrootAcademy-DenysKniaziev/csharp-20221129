@@ -1,15 +1,25 @@
 ﻿@using LearningSystem.Contracts
-@model List<LearningSystem.Contracts.Course>
+@model IEnumerable<LearningSystem.Contracts.Course>
 
 @{
     ViewData["Title"] = "Курси";
+
+    var header = "Курси";
+    if (Model.Count() == 0)
+        header = "Курсів не знайдено";
 }
 
 
 
 <div class="text-center">
-    <h1 class="display-4">Курси</h1>
-    <div class="course-container">
+     <div class="search-course">
+        <form asp-controller="Home" asp-action="SearchCourse" class="search-course-item">
+            <button type="submit" class="btn-search">Пошук  <img class="icon" src="~/icon/search.png"/></button>
+            <input name="Substring" value="@ViewBag?.Search" class="form-control search-input">
+        </form>
+    </div>
+    <h1 class="display-4">@header</h1>
+   <div class="course-container">
         @{
             foreach(Course item in @Model)
             {

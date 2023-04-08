@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace LearningSystem.WEB.Controllers
 {
-    
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,7 +20,18 @@ namespace LearningSystem.WEB.Controllers
             ViewBag.Active = "courses";
             return View(await _service.GetAllAsync());
         }
-        
+
+        [HttpPost]
+        public async Task<IActionResult> SearchCourse(string substring)
+        {
+            if (string.IsNullOrEmpty(substring))
+                return RedirectToAction("Index");
+            else
+            {
+                ViewBag.Search = substring;
+                return View("Index", (await _service.GetAllAsync()).Where(a => a.CourseName.ToLower().Contains(substring.ToLower()) || a.Description.ToLower().Contains(substring.ToLower())));
+            }
+        }
         public IActionResult Privacy()
         {
             ViewBag.Active = "privacy";
