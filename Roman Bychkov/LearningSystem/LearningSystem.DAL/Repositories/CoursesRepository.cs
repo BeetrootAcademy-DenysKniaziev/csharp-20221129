@@ -19,7 +19,7 @@ namespace LearningSystem.DAL.Repositories
             {
                 context = context.Include(includeNodes[i]);
             }
-            return context;
+            return await context.ToListAsync();
         }
         public async Task<Course> GetByIdAsync(int id, List<string> includeNodes) 
         {
