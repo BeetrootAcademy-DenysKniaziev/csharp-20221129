@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
+using Microsoft.AspNetCore.Identity;
 
 namespace Contracts.Models
 {
     [Table("user", Schema = "public")]
-    public class User
+    public class User : IdentityUser
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,12 +14,10 @@ namespace Contracts.Models
 
         [Column("first_name")]
         [MaxLength(100)]
-        [Required]
         public string FirstName { get; set; }
 
         [Column("last_name")]
         [MaxLength(100)]
-        [Required]
         public string LastName { get; set; }
 
         [Column("user_name")]
@@ -40,12 +33,14 @@ namespace Contracts.Models
         public string Email { get; set; }
 
         [Column("phone_number")]
-        [Required]
         public string PhoneNumber { get; set; }
 
         public virtual List<Order> Orders { get; set; }
 
+        [Column("password_salt")]
         public byte[] PasswordSalt { get; set; }
+
+        [Column("password_hash")]
         public byte[] PasswordHash { get; set; }
 
         public override string ToString()

@@ -1,9 +1,10 @@
 ﻿using Contracts.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public DbSet<Admin> Admin { get; set; }
         public DbSet<User> User { get; set; }

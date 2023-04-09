@@ -37,7 +37,10 @@ namespace Contracts.Models
         [Required]
         public string PhoneNumber { get; set; }
 
+        [Column("password_salt")]
         public byte[] PasswordSalt { get; set; }
+
+        [Column("password_hash")]
         public byte[] PasswordHash { get; set; }
 
         public virtual List<Admin> ListActor { get; set; }
