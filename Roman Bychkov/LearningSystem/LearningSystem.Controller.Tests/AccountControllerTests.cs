@@ -77,7 +77,7 @@ namespace LearningSystem.Controller.Tests
             var viewResult = Assert.IsType<ViewResult>(result);
             var modelState = Assert.IsType<ModelStateDictionary>(viewResult.ViewData.ModelState);
             Assert.True(modelState.ContainsKey("UserName"));
-            Assert.Equal("Такого аккаунта не існує", modelState["UserName"].Errors[0].ErrorMessage);
+            Assert.Equal("Такого акаунта не існує", modelState["UserName"].Errors[0].ErrorMessage);
         }
 
         [Fact]
@@ -129,7 +129,7 @@ namespace LearningSystem.Controller.Tests
             var viewResult = Assert.IsType<ViewResult>(result);
 
             Assert.True(_controller.ModelState.ContainsKey(nameof(model.UserName)));
-            Assert.Equal("Такого аккаунта не існує", _controller.ModelState[nameof(model.UserName)].Errors[0].ErrorMessage);
+            Assert.Equal("Такого акаунта не існує", _controller.ModelState[nameof(model.UserName)].Errors[0].ErrorMessage);
         }
 
         [Fact]
