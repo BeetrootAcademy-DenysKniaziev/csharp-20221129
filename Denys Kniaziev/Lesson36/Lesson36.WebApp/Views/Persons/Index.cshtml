@@ -21,27 +21,128 @@
             <th>
                 @Html.DisplayNameFor(model => model.Age)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dob)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Age)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dob)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
+
 </table>
+
+@{
+    Person emptyPerson = new Person();
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form id="fAddNewPerson">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@emptyPerson.FirstName" class="control-label"></label>
+                <input id="inpAddNewPersonFirstName" asp-for="@emptyPerson.FirstName" class="form-control" />
+                <span asp-validation-for="@emptyPerson.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@emptyPerson.LastName" class="control-label"></label>
+                <input id="inpAddNewPersonLastName" asp-for="@emptyPerson.LastName" class="form-control" />
+                <span asp-validation-for="@emptyPerson.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@emptyPerson.Age" class="control-label"></label>
+                <input id="inpAddNewPersonAge" asp-for="@emptyPerson.Age" class="form-control" />
+                <span asp-validation-for="@emptyPerson.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@emptyPerson.Email" class="control-label"></label>
+                <input id="inpAddNewPersonEmail" asp-for="@emptyPerson.Email" class="form-control" />
+                <span asp-validation-for="@emptyPerson.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@emptyPerson.Dob" class="control-label"></label>
+                <input id="inpAddNewPersonDob" asp-for="@emptyPerson.Dob" class="form-control" />
+                <span asp-validation-for="@emptyPerson.Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add New" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            $('#fAddNewPerson').submit(function(e) {
+                e.preventDefault(); // prevent the form from submitting normally
+
+                var form = $(this);
+
+                var firstName = $('#inpAddNewPersonFirstName').val();
+                var lastName = $('#inpAddNewPersonLastName').val();
+                var age = $('#inpAddNewPersonAge').val();
+                var email = $('#inpAddNewPersonEmail').val();
+                var dob = $('#inpAddNewPersonDob').val();
+
+                $.ajax({
+                    url: '@Url.Action("Create", "PersonsApi")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        firstName: firstName,
+                        lastName: lastName,
+                        age: age,
+                        email: email,
+                        dob: dob
+                    }),
+                    success: function(result) {
+                        toastr.success('New person added successfully!');
+
+                        $('#inpAddNewPersonFirstName').val('');
+                        $('#inpAddNewPersonLastName').val('');
+                        $('#inpAddNewPersonAge').val('');
+                        $('#inpAddNewPersonEmail').val('');
+                        $('#inpAddNewPersonDob').val('');
+                        // Reload the table to show the new person
+                        var newRow = '<tr><td>' + result.firstName + '</td><td>' + result.lastName + '</td><td>' + result.age + '</td><td>' + result.email + '</td><td>' + result.dob + '</td><td><a href="/Persons/Edit/' + result.id + '">Edit</a> | <a href="/Persons/Details/' + result.id + '">Details</a> | <a href="/Persons/Delete/' + result.id + '">Delete</a></td></tr>';
+                        $('table tbody').append(newRow);
+                    }
+                });
+            });
+        });
+    </script>
+}

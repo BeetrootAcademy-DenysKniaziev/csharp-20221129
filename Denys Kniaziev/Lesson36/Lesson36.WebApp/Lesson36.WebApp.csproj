@@ -26,4 +26,8 @@
     <ProjectReference Include="..\Lesson36.Dal\Lesson36.Dal.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Lesson36.WebApp.Tests" />
+  </ItemGroup>
+
 </Project>

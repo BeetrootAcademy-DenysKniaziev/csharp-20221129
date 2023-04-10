@@ -1,8 +1,13 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics;
+using System.Net.Mime;
+using System.Security.Claims;
+using AutoMapper;
 using Lesson36.Bll.Services;
 using Lesson36.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lesson36.WebApp.Controllers
 {
@@ -49,71 +54,58 @@ namespace Lesson36.WebApp.Controllers
             return View();
         }
 
-        //// POST: Persons/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
+        // POST: Persons/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Age,Gender,Address")] Person person)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(person);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(person);
-        //}
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Age,Gender,Address")] Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                await _personService.Add(_mapper.Map<Contracts.Person>(person));
+                return RedirectToAction(nameof(Index));
+            }
+            return View(person);
+        }
 
-        //// GET: Persons/Edit/5
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null || _context.Persons == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: Persons/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var person = await _context.Persons.FindAsync(id);
-        //    if (person == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(person);
-        //}
+            var person = await _personService.GetById(id.Value);
 
-        //// POST: Persons/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to.
-        //// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Age,Gender,Address")] Person person)
-        //{
-        //    if (id != person.Id)
-        //    {
-        //        return NotFound();
-        //    }
+            if (person == null)
+            {
+                return NotFound();
+            }
 
-        //    if (!ModelState.IsValid)
-        //        return View(person);
+            return View(_mapper.Map<Person>(person));
+        }
 
-        //    try
-        //    {
-        //        _context.Update(person);
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!PersonExists(person.Id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-        //    return RedirectToAction(nameof(Index));
-        //}
+        // POST: Persons/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Age,Gender,Address")] Person person)
+        {
+            if (id != person.Id)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+                return View(person);
+
+            await _personService.Update(_mapper.Map<Contracts.Person>(person));
+
+            return RedirectToAction(nameof(Index));
+        }
 
         //// GET: Persons/Delete/5
         //public async Task<IActionResult> Delete(int? id)

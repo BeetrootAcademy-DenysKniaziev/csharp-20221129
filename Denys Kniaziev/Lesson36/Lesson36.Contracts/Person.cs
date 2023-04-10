@@ -7,7 +7,7 @@ namespace Lesson36.Contracts
     public class Person
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string FirstName { get; set; }
@@ -22,6 +22,6 @@ namespace Lesson36.Contracts
 
         public byte Age { get; set; }
 
-        public DateTime CreatedAt { get; set; }  
+        public DateTime CreatedAt { get; set; }
     }
 }

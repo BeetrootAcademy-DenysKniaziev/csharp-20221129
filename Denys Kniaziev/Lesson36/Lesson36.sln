@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.WebApp", "Lesson36.WebApp\Lesson36.WebApp.csproj", "{CBE9DAA9-AA35-4436-AA1B-0A9254A556A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson36.WebApp", "Lesson36.WebApp\Lesson36.WebApp.csproj", "{CBE9DAA9-AA35-4436-AA1B-0A9254A556A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.Contracts", "Lesson36.Contracts\Lesson36.Contracts.csproj", "{0D07DBB2-6991-4DB6-ADB0-90F75E06469D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson36.Contracts", "Lesson36.Contracts\Lesson36.Contracts.csproj", "{0D07DBB2-6991-4DB6-ADB0-90F75E06469D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.Dal", "Lesson36.Dal\Lesson36.Dal.csproj", "{4E7596A0-42D0-4D70-A4EA-702DEEA23EC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson36.Dal", "Lesson36.Dal\Lesson36.Dal.csproj", "{4E7596A0-42D0-4D70-A4EA-702DEEA23EC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.Bll", "Lesson36.Bll\Lesson36.Bll.csproj", "{58F4B5BF-268D-408A-A29A-DD13F749D9D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson36.Bll", "Lesson36.Bll\Lesson36.Bll.csproj", "{58F4B5BF-268D-408A-A29A-DD13F749D9D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EEC58E1F-C336-4B52-9E65-794376D99164}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.Bll.Tests", "tests\Lesson36.Bll.Tests\Lesson36.Bll.Tests.csproj", "{4BE736F9-5293-4FC8-911F-9EE904AE69BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson36.WebApp.Tests", "tests\Lesson36.WebApp.Tests\Lesson36.WebApp.Tests.csproj", "{98B51025-C41D-4597-9E5F-AD1B04F950EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,12 +43,17 @@ Global
 		{4BE736F9-5293-4FC8-911F-9EE904AE69BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BE736F9-5293-4FC8-911F-9EE904AE69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BE736F9-5293-4FC8-911F-9EE904AE69BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B51025-C41D-4597-9E5F-AD1B04F950EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B51025-C41D-4597-9E5F-AD1B04F950EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B51025-C41D-4597-9E5F-AD1B04F950EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B51025-C41D-4597-9E5F-AD1B04F950EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4BE736F9-5293-4FC8-911F-9EE904AE69BB} = {EEC58E1F-C336-4B52-9E65-794376D99164}
+		{98B51025-C41D-4597-9E5F-AD1B04F950EC} = {EEC58E1F-C336-4B52-9E65-794376D99164}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {77B92461-CD26-46B5-A5E9-311DDE22BCF4}

@@ -8,6 +8,9 @@ namespace Lesson36.WebApp.Mappings
     {
         public MapperProfile()
         {
+            CreateMap<Lesson36.WebApp.Models.Person, Person>()
+                .ForMember(dist => dist.CreatedAt, opt => opt.Ignore());
+
             CreateMap<CreatePersonRequest, Person>()
                 .ForMember(dist => dist.FirstName, opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dist => dist.CreatedAt, opt => opt.Ignore());

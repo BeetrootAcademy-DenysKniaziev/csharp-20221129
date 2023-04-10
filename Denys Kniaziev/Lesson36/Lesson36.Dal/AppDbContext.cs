@@ -9,7 +9,7 @@ namespace Lesson36.Dal
 
         public DbSet<User> Users { get; set; }
 
-        public AppDbContext() : base()
+        public AppDbContext()
         {  
         }
 
