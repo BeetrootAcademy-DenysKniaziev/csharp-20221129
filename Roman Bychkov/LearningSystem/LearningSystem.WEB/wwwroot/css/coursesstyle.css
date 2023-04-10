@@ -1,0 +1,160 @@
+.course-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.course-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    
+
+        .course-container > div > p {
+            margin: 0;
+            font-size: 1em;
+            padding: 0;
+            margin-bottom: 5px;
+        }
+
+.course-item:hover {
+    background-color: lightyellow;
+    border-radius: 10px;
+    height: auto;
+    overflow: hidden;
+}
+
+.course-item {
+    align-content: stretch;
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
+    max-width: 30%;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+.course-title {
+    margin-left: 10%;
+    border-radius: 10px;
+    background-color: #90EE90;
+    color: white;
+    display: inline-block;
+    width: auto;
+    margin-left: 5%;
+    margin-bottom: 25px;
+    font-size: 25px;
+    padding: 10px;
+    cursor: pointer;
+}
+    .course-title:hover {
+        background-color: #00FF00;
+    }
+
+.course-content {
+    margin-left: 5%;
+    flex: 1 1 auto;
+    margin-right: 5%;
+    width: 50%;
+}
+
+    .course-content textarea {
+        width: 500px;
+    }
+
+.course-description {
+    font-family: Courier New, monospace;
+    flex-grow: 1;
+}
+
+.title {
+    padding-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+   
+}
+
+    .title::after {
+        content: "";
+        display: block;
+        margin: 5px auto;
+        width: 50px;
+        border-bottom: 2px solid black;
+    }
+
+.course-edit-delete {
+    display: flex;
+}
+
+.course-edit {
+    display: flex;
+    background-color: white;
+    border-radius: 3px;
+}
+
+.course-delete {
+    display: flex;
+    background-color: palevioletred;
+    color: whitesmoke;
+    border-radius: 3px;
+  
+}
+
+.course-edit:hover {
+    cursor: pointer;
+    border: 2px;
+    border-color: black;
+    background-color: lightyellow;
+}
+
+.course-delete:hover {
+    cursor: pointer;
+    border: 2px;
+    border-color: black;
+    background-color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .course-container {
+        flex-direction: column;
+    }
+    .course-content {
+        width: 90%;
+        margin-top: 15px;
+        overflow-wrap: break-word;
+    }
+
+        .course-item {
+            flex-basis: 100%;
+            max-width: 100%;
+            margin: 10px 0;
+        }
+}
+.create-btn {
+    margin-left: auto;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    margin-left: auto;
+    color: #fff;
+    background-color: #00FF00;
+    outline: none;
+    align-self: end;
+}
+    .create-btn:hover {
+        background-color: #17a107;
+    }

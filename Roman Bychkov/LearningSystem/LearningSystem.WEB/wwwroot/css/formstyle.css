@@ -1,0 +1,47 @@
+.log-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Verdana, bold;
+}
+.form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    font-family: Verdana, bold;
+    width: 400px;
+}
+
+.btn-login {
+    margin-left: auto;
+}
+.btn {
+    font-family: Verdana, bold;
+    background-color: rgb(0,191,255)
+}
+
+
+.create-form-course {
+    width: 50%;
+}
+.FormLesson {
+    display: flex;
+    flex-direction: column;
+   margin-right: 50px;
+}
+
+.upload-alert {
+    position: absolute;
+    margin-right: 5%;
+}
+.reg-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Verdana, bold;
+}

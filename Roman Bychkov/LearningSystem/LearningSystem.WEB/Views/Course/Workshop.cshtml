@@ -1,0 +1,59 @@
+﻿@using LearningSystem.WEB.ValidationModels
+@model CourseModel
+@{
+    ViewData["Title"] = "Майстерня";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Створення курсу</p>
+<div>
+              <form class="FormLesson" action="/Course/Workshop"  enctype="multipart/form-data" method="post" class="create-form-course">
+                    <div>
+                        <label asp-for="CourseName" class="form-label">Назва курсу</label>
+                        <input type="text" asp-for="CourseName" class="form-control">
+                        <span asp-validation-for="CourseName" class="validation-message"/>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label">Опис курсу</label>
+                        <input asp-for="Description" type="text" minlength="3" required class="form-control">
+                        <span asp-validation-for="Description" class="validation-message"/>
+
+                    </div>
+                    <div> 
+                        <label asp-for="Uploads" class="file-label">Виберіть фото для прев'ю курса</label><br>
+                        <input asp-for="Uploads" accept="image/*" type="file" class="file-input" /><br>
+                        <span asp-validation-for="Uploads" class="validation-message"></span>
+                    </div>
+                        <div id="editor" >
+                          <textarea asp-for="Content" required> </textarea>
+                           <span asp-validation-for="Description" class="validation-message"/>
+                        </div>
+                       
+
+                        <button class="create-btn" type="submit">Створити курс</button>
+             </form>
+</div>
+
+
+
+
+
+
+<script>
+ let articleHtml = '';
+var simplemde = new SimpleMDE({autosave: {
+		enabled: true,
+		uniqueId: "MyUniqueID",
+		delay: 1000,
+	},
+	renderingConfig: {
+		singleLineBreaks: false,
+		codeSyntaxHighlighting: true,
+	},
+	showIcons: ["code", "table"],});
+</script>
+
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.10/jquery.validate.unobtrusive.min.js"></script>

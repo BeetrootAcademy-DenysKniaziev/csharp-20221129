@@ -1,0 +1,213 @@
+﻿.lessons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 5px solid #87CEFA !important;
+    border-radius: 5%;
+    padding: 2%;
+    width: 20%;
+    align-items: stretch;
+    height: auto;
+    width: auto;
+    
+}
+.lessons-container div
+{
+    flex-grow: 1;
+}
+
+.lessons-content-container {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    margin-left: 5%; 
+}
+table {
+    border-collapse: collapse;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
+
+.white {
+    background-color: #fff;
+}
+
+.black {
+    background-color: #000;
+}
+.like-container {
+    display: flex;
+}
+.liked {
+    color: #FFA07A;
+    max-height: 25px;
+    max-width: 25px;
+}
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 500px;
+}
+    .comment-container > * {
+        flex-grow: 1;
+    }
+.btn-comment {
+    margin-left: auto;
+    border-radius: 8px;
+    border: none;
+    margin-left: 75%;
+    color: #fff;
+    background-color: #00BFFF;
+    outline: none;
+}
+.area-comment {
+    border-radius: 10px;
+    resize: none;
+    min-width: 500px;
+    max-width: 500px;
+   
+}
+.profile-photo-comment {
+    background-color: white;
+    padding: 10px;
+    border: 2px solid black;
+    padding: 2px;
+    border-radius: 10px;
+    max-width: 65px;
+    min-width: 65px;
+    max-height: 65px;
+    min-height: 65px;
+}
+.comment-user-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+    .comment-user-container p
+    {
+        margin-bottom: 0px;
+    }
+    @media (max-width: 600px) {
+        .lessons-content-container {
+        flex-direction: column;
+    }
+}
+.number-lesson {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    color: #ADD8E6;
+    border-radius: 50%;
+    color: #E0FFFF;
+    background-color: #00BFFF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+.active-lesson {
+    background-color: #00FA9A;
+    border-radius: 5%;
+}
+.comment-date {
+    color: rgba(128, 128, 128, 0.6);
+}
+.comment-content {
+    margin-top: 25px;
+    margin-left: 15%;
+    color: rgb(27, 24, 24);
+}
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    table th {
+        text-align: left;
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    table td {
+        vertical-align: top;
+    }
+
+pre {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+@media screen and (max-width: 768px) {
+    .area-comment {
+        min-width: 400px;
+        max-width: 400px;
+    }
+}
+.btn-add-lesson
+{
+    margin: 10px;
+    padding: 8px;
+    border-width: 0px;
+    display:flex;
+    border-radius: 8px;
+    background-color:aquamarine;
+}
+    .btn-add-lesson:hover {
+        background-color: mediumaquamarine;
+    }
+    .btn-update-lesson {
+        margin-left: auto;
+        border-radius: 8px;
+        border: none;
+        padding: 8px;
+        color: #fff;
+        background-color: #00BFFF;
+        outline: none;
+        align-self: end;
+    }
+    .btn-update-lesson:hover {
+        background-color: #1E90FF;
+    }
+.lesson-name
+{
+    margin-bottom: 8px;
+}
+.btn-lesson-delete {
+    display: flex;
+    background-color: palevioletred;
+    color: whitesmoke;
+    border-radius: 3px;
+    border-width: 0px;
+    padding: 5px;
+    margin: 5px;
+}
+    .btn-lesson-delete:hover {
+        background-color: red;
+    }

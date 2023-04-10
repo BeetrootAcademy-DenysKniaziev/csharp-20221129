@@ -1,0 +1,14 @@
+﻿global using LearningSystem.BLL.Services;
+global using LearningSystem.Contracts;
+global using LearningSystem.DAL.Interfaces;
+global using Moq;
+global using System;
+global using System.Threading.Tasks;
+global using Xunit;
+global using AutoMapper;
+global using LearningSystem.BLL.Interfaces;
+global using LearningSystem.WEB.Controllers;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Logging;
+global using System.Security.Claims;

@@ -1,0 +1,14 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using LearningSystem.DAL.Interfaces;
+global using LearningSystem.BLL.Interfaces;
+global using LearningSystem.DAL;
+global using LearningSystem.Contracts;
+global using Microsoft.AspNetCore.Mvc;
+global using AutoMapper;
+global using LearningSystem.WEB.ValidationModels;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;
+global using LearningSystem.WEB.Logger;

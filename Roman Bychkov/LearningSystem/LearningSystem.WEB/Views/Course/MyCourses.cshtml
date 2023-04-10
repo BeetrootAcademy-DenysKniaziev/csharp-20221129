@@ -1,0 +1,54 @@
+﻿@using LearningSystem.Contracts
+@model List<LearningSystem.Contracts.Course>
+
+@{
+    ViewData["Title"] = "Мої Курси";
+      var header = "Мої Курси";
+    if (Model.Count() == 0)
+        header = "У Вас не має власних курсів";
+}
+
+
+
+<div class="text-center">
+
+    <h1 class="display-4">@header</h1>
+    <div class="course-container">
+        @{
+            foreach(Course item in Model)
+            {
+               
+              
+                <a asp-area="" class="course-item" asp-controller="Course" asp-action="EditLesson" asp-route-id="@item.Id">
+                     <div class="course-edit-delete">
+                        <form method="get" action="/Course/Edit">
+                               <div>
+                                <input type="hidden" name="Id" value="@item.Id" />
+                               </div>
+                            <button type="submit" class="course-edit">
+                                РЕДАГУВАТИ
+                                <img class="icon icon-transparent" src="~/icon/pensil.png" />
+                            </button>
+                        </form>
+                        <form method="post" action="/Course/Delete">
+                            <div>
+                                <input type="hidden" name="Id" value="@item.Id" />
+                            </div>
+                            <button type="submit" class="course-delete">
+                                ВИДАЛИТИ
+                                <img class="icon icon-transparent" style="background-color: transparent" flex-basis: 0" src="~/icon/basket.png" />
+                            </button>
+                        </form>
+                    </div>
+                     <div style="flex-grow: 2">
+                         <img class="course-image" src="@item.ImagePath" />
+                         <p class="title">@item.CourseName</p>
+                        <p class="course-description">@item.Description </p>
+                   </div>
+                 </a>
+             
+               
+            }
+          }
+    </div>
+</div>

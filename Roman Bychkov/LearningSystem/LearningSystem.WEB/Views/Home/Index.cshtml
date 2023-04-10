@@ -1,0 +1,36 @@
+﻿@using LearningSystem.Contracts
+@model IEnumerable<LearningSystem.Contracts.Course>
+
+@{
+    ViewData["Title"] = "Курси";
+
+    var header = "Курси";
+    if (Model.Count() == 0)
+        header = "Курсів не знайдено";
+}
+
+
+
+<div class="text-center">
+     <div class="search-course">
+        <form asp-controller="Home" asp-action="SearchCourse" class="search-course-item">
+            <button type="submit" class="btn-search">Пошук  <img class="icon" src="~/icon/search.png"/></button>
+            <input name="Substring" value="@ViewBag?.Search" class="form-control search-input">
+        </form>
+    </div>
+    <h1 class="display-4">@header</h1>
+   <div class="course-container">
+        @{
+            foreach(Course item in @Model)
+            {
+                <a asp-area="" class="course-item" asp-controller="Course" asp-action="Lesson" asp-route-id="@item.Id">
+                      
+                            <img class="course-image"  src="@item.ImagePath" />
+                            <p class="title">@item.CourseName</p>
+                            <p class="course-description">@item.Description </p>
+                      
+                </a>
+            }
+          }
+    </div>
+</div>
