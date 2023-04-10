@@ -26,7 +26,7 @@ namespace LearningSystem.IntegrationTests
             _client = factory.CreateClient();
             _client.BaseAddress = new Uri("https://localhost:7163");
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseNpgsql("Server=host.docker.internal;Port=32768;Database=learning_system_test;User Id=postgres;Password=postgrespw;")
+                .UseNpgsql("Server=host.docker.internal;Port=32768;Database=learning_system_TEST;User Id=postgres;Password=postgrespw;")
                 .Options;
             _dbContext = new ApplicationDbContext(options);
             _dbContext.Database.EnsureCreated();
@@ -56,7 +56,7 @@ namespace LearningSystem.IntegrationTests
             _dbContext.LikeArticles.Add(new LikeArticle()
             { 
                 ArticleId = 1,
-                UserId = 1
+                UserId = 51
             });
             await _dbContext.SaveChangesAsync();
 
@@ -77,4 +77,5 @@ namespace LearningSystem.IntegrationTests
         //    dbContext.SaveChanges();
         //}
     }
+    public record Like(int ArticleId, int UserId);
 }
