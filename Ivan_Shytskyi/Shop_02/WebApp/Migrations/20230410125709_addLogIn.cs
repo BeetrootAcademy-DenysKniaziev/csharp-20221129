@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace WebApp.Migrations
 {
-    public partial class Edit : Migration
+    public partial class addLogIn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,15 +60,19 @@ namespace WebApp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    first_name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    last_name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
+                    user_name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    address = table.Column<string>(type: "text", nullable: true),
+                    email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    phone_number = table.Column<string>(type: "text", nullable: true),
+                    password_salt = table.Column<byte[]>(type: "bytea", nullable: true),
+                    password_hash = table.Column<byte[]>(type: "bytea", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: true),
                     SecurityStamp = table.Column<string>(type: "text", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "boolean", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "boolean", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: true),
@@ -99,6 +103,32 @@ namespace WebApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_courier", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Login",
+                columns: table => new
+                {
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Login", x => x.Email);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Register",
+                columns: table => new
+                {
+                    UserName = table.Column<string>(type: "text", nullable: false),
+                    Email = table.Column<string>(type: "text", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false),
+                    ConfirmPassword = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Register", x => x.UserName);
                 });
 
             migrationBuilder.CreateTable(
@@ -222,28 +252,6 @@ namespace WebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "user",
-                schema: "public",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "text", nullable: false),
-                    first_name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    last_name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
-                    address = table.Column<string>(type: "text", nullable: true),
-                    password_salt = table.Column<byte[]>(type: "bytea", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_user", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_user_AspNetUsers_Id",
-                        column: x => x.Id,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "products",
                 schema: "public",
                 columns: table => new
@@ -281,12 +289,18 @@ namespace WebApp.Migrations
                     order_time = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     is_delivered = table.Column<bool>(type: "boolean", nullable: false),
                     is_received = table.Column<bool>(type: "boolean", nullable: false),
-                    UserId1 = table.Column<string>(type: "text", nullable: true),
+                    UserId1 = table.Column<string>(type: "text", nullable: false),
                     CourierId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_orders", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_orders_AspNetUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_orders_courier_CourierId",
                         column: x => x.CourierId,
@@ -300,12 +314,6 @@ namespace WebApp.Migrations
                         principalTable: "products",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_orders_user_UserId1",
-                        column: x => x.UserId1,
-                        principalSchema: "public",
-                        principalTable: "user",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -351,6 +359,12 @@ namespace WebApp.Migrations
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_user_name",
+                table: "AspNetUsers",
+                column: "user_name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -412,11 +426,20 @@ namespace WebApp.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Login");
+
+            migrationBuilder.DropTable(
                 name: "orders",
                 schema: "public");
 
             migrationBuilder.DropTable(
+                name: "Register");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "courier",
@@ -427,15 +450,8 @@ namespace WebApp.Migrations
                 schema: "public");
 
             migrationBuilder.DropTable(
-                name: "user",
-                schema: "public");
-
-            migrationBuilder.DropTable(
                 name: "storege",
                 schema: "public");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
         }
     }
 }

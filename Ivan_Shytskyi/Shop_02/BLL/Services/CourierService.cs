@@ -1,6 +1,5 @@
 ﻿using BLL.Services.Interfaces;
 using Contracts.Models;
-using DAL.Repository;
 using DAL.Repository.Interface;
 using System.Linq.Expressions;
 
@@ -18,10 +17,6 @@ namespace BLL.Services
         public async Task<Courier> GetByUserNameAsync(string userName)
         {
             return await _courierRepository.GetByUserNameAsync(userName);
-        }
-        public async Task<int> RegisterAsync(Courier user)
-        {
-            return await _courierRepository.RegisterAsync(user);
         }
 
         public async Task<IEnumerable<Courier>> Find(Expression<Func<Courier, bool>> predicate)

@@ -20,11 +20,6 @@ namespace Contracts.Models
         [MaxLength(100)]
         public string LastName { get; set; }
 
-        [Column("user_name")]
-        [MaxLength(255)]
-        [Required]
-        public string UserName { get; set; }
-
         [Column("address")]
         public string Address { get; set; }
 

@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Contracts.Models;
-using Microsoft.AspNetCore.Authorization;
 using BLL.Services.Interfaces;
 using System.Linq.Expressions;
 
 namespace WebApp.Controllers
 {
-    //[Authorize]
+
     public class AdminsController : Controller
     {
         private readonly IAdminService _service;
@@ -31,7 +30,7 @@ namespace WebApp.Controllers
             {
                 return NotFound();
             }
-            Expression<Func<Admin, bool>> predicate = admin => admin.Id == id /*&& admin.IsActive*/;
+            Expression<Func<Admin, bool>> predicate = admin => admin.Id == id;
             var admin = await _service.Find(predicate);
             if (admin == null)
             {

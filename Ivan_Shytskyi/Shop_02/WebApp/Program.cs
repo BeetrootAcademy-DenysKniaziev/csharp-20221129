@@ -4,11 +4,8 @@ using Contracts.Models;
 using DAL;
 using DAL.Repository;
 using DAL.Repository.Interface;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +13,19 @@ var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDbContext>(options =>
                           options.UseNpgsql(configuration.GetConnectionString("pg_FP"), b => b.MigrationsAssembly("WebApp")));
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 4;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+});
+
+//builder.Services.AddScoped<MySignInManager>();
+
+builder.Services.AddScoped<IMyAuthenticationService, AuthenticationService>();
 
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
@@ -35,9 +45,10 @@ builder.Services.AddScoped<IStoregeService, StoregeService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-builder.Services.AddIdentity<User, IdentityRole>()
+builder.Services.AddDefaultIdentity<User>()
         .AddEntityFrameworkStores<AppDbContext>()
         .AddSignInManager<SignInManager<User>>();
+
 
 builder.Services.AddControllersWithViews();
 

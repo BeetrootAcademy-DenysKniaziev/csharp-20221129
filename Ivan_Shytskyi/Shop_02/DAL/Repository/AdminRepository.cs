@@ -18,12 +18,6 @@ namespace DAL.Repository
         {
             return await _context.Admin.FirstOrDefaultAsync(u => u.UserName == userName);
         }
-        public async Task<int> RegisterAsync(Admin user)
-        {
-            var res = await _context.Admin.AddAsync(user);
-            await _context.SaveChangesAsync();
-            return res.Entity.Id;
-        }
 
         public async Task<IEnumerable<Admin>> GetAll()
         {

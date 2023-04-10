@@ -1,12 +1,7 @@
 ﻿using Contracts.Models;
 using DAL.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repository
 {
@@ -22,12 +17,6 @@ namespace DAL.Repository
         public async Task<User> GetByUserNameAsync(string userName) 
         {
             return await _context.User.FirstOrDefaultAsync(u =>  u.UserName  == userName);
-        }
-        public async Task<int> RegisterAsync(User user)
-        {
-           var res = await _context.User.AddAsync(user);
-            await _context.SaveChangesAsync();
-            return res.Entity.Id;
         }
 
         public async Task<IEnumerable<User>> Find(Expression<Func<User, bool>> predicate)

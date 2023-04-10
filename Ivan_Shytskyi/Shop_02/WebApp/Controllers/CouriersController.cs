@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Contracts.Models;
-using Microsoft.AspNetCore.Authorization;
 using BLL.Services.Interfaces;
 using System.Linq.Expressions;
 
 namespace WebApp.Controllers
 {
-    [Authorize]
     public class СouriersController : Controller
     {
         private readonly ICourierService _service;

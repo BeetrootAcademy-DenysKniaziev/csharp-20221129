@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DAL
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public DbSet<Admin> Admin { get; set; }
         public DbSet<User> User { get; set; }
@@ -12,6 +12,8 @@ namespace DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Storege> Storege { get; set; }
+        public DbSet<Register> Register { get; set; }
+        public DbSet<Login> Login { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

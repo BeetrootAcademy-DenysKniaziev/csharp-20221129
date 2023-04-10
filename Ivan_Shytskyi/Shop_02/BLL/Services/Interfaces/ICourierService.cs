@@ -6,14 +6,7 @@ namespace BLL.Services.Interfaces
 {
     public interface ICourierService : IService<Courier>
     {
-        Task<int> RegisterAsync(Courier entity);
         Task<Courier> GetByUserNameAsync(string userName);
-        //Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
-        //Task<IEnumerable<TEntity>> GetAll();
-        //Task<TEntity> GetById(int id);
-        //Task Add(TEntity entity);
-        //Task Update(TEntity entity);
-        //Task Delete(int id);
         Task ConfirmOrderReceived( int orderId);
         Task ConfirmOrderDelivered( int orderId);
     }
