@@ -6,18 +6,19 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace LearningSystem.IntegrationTests
 {
-    public class LikeControllerIntegrationTests : IClassFixture<LearningSystemWebApplicationFactory<Program>>
+    public class CommentControllerIntegrationTests : IClassFixture<LearningSystemWebApplicationFactory<Program>>
     {
         private readonly HttpClient _client;
         private readonly ApplicationDbContext _dbContext;
         private IUsersServices _usersServices;
 
-        public LikeControllerIntegrationTests(LearningSystemWebApplicationFactory<Program> factory)
+        public CommentControllerIntegrationTests(LearningSystemWebApplicationFactory<Program> factory)
         {
             using var scope = factory.Services.CreateScope();
             var scopedServices = scope.ServiceProvider;
@@ -38,57 +39,66 @@ namespace LearningSystem.IntegrationTests
         }
 
         [Fact]
-        public async Task PostLike_WhenArticleDoesNotExist_ReturnsBadRequestResult()
+        public async Task PostComment_WhenArticleDoesNotExist_ReturnsBadNotFound()
         {
 
             // Arrange
-          
-            var like = new Like(1, 51);
+
+            var comment = new Comment(1, 51);
 
             // Act
             await Login(_client);
-            var likeResponse = await _client.PostAsJsonAsync("/api/like/PostLike?articleNumber=" + like.articleNumber + "&courseId=" + like.courseId, like);
+
+            var responce = await _client.PostAsJsonAsync("/api/comment/PostComment?articleNumber=" + comment.articleNumber + "&courseId=" + comment.courseId + "&comment=" + "ContentComment", comment);
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, likeResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.NotFound, responce.StatusCode);
         }
         [Fact]
-        public async Task PostLike_WhenLikeDoesNotExist_ReturnsOkResult()
+        public async Task PostComment_WhenLikeDoesNotExist_ReturnsOkResult()
         {
 
             // Arrange
-            var like = new Like(1, 1);
+
+            var comment = new Comment(1, 1);
 
             // Act
             await Login(_client);
-            var likeResponse = await _client.PostAsJsonAsync("/api/like/PostLike?articleNumber=" + like.articleNumber + "&courseId=" + like.courseId, like);
+
+
+            var responce = await _client.PostAsJsonAsync("/api/comment/PostComment?articleNumber=" + comment.articleNumber + "&courseId=" + comment.courseId + "&comment=" + "ContentComment", comment);
             // Assert
-            Assert.Equal(HttpStatusCode.OK, likeResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.OK, responce.StatusCode);
         }
 
         [Fact]
-        public async Task PostLike_WhenLikeAlreadyExists_ReturnsNotFoundResult()
+        public async Task PostComment_WhenCommentLongerThan250characters_ReturnsBadRequestResult()
         {
             // Arrange
-          
-            var like = new Like(1, 1);
+
+            var comment = new Comment(1, 1);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 251; i++)
+                sb.Append("a");
 
             // Act
             await Login(_client);
-            var likeResponse = await _client.PostAsJsonAsync("/api/like/PostLike?articleNumber=" + like.articleNumber + "&courseId=" + like.courseId, like);
-            likeResponse = await _client.PostAsJsonAsync("/api/like/PostLike?articleNumber=" + like.articleNumber + "&courseId=" + like.courseId, like);
+
+            var responce = await _client.PostAsJsonAsync("/api/comment/PostComment?articleNumber=" + comment.articleNumber + "&courseId=" + comment.courseId + "&comment=" + sb.ToString(), comment);
             // Assert
-            Assert.Equal(HttpStatusCode.NotFound, likeResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, responce.StatusCode);
         }
         [Fact]
-        public async Task PostLike_WhenUserIsUntheraized_ReturnsUntheraized()
+        public async Task PostComment_WhenUserIsUntheraized_ReturnsUntheraized()
         {
             // Arrange
-            var like = new Like(1, 1);
+
+            var comment = new Comment(1, 1);
 
             // Act
-            var likeResponse = await _client.PostAsJsonAsync("/api/like/PostLike?articleNumber=" + like.articleNumber + "&courseId=" + like.courseId, like);
+
+            var responce = await _client.PostAsJsonAsync("/api/comment/PostComment?articleNumber=" + comment.articleNumber + "&courseId=" + comment.courseId + "&comment=" + "ContentComment", comment);
             // Assert
-            Assert.Equal(HttpStatusCode.Unauthorized, likeResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.Unauthorized, responce.StatusCode);
         }
 
         private async void SeedTestData(ApplicationDbContext dbContext)
@@ -104,5 +114,6 @@ namespace LearningSystem.IntegrationTests
             dbContext.SaveChanges();
         }
     }
-    public record Like(int courseId, int articleNumber);
+    public record Comment(int courseId, int articleNumber);
+    public record Login(string UserName, string Password);
 }

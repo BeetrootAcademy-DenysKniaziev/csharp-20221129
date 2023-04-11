@@ -23,7 +23,7 @@ namespace LearningSystem.WEB.Controllers
         }
         [HttpPost]
         [Route("PostComment")]
-        public async Task<ActionResult<Comment>> PostComment(int articleNumber, int courseId, [FromForm] string comment)
+        public async Task<ActionResult<Comment>> PostComment(int articleNumber, int courseId, string comment)
         {
 
             var user = await _usersService.GetByName(User.Identity.Name);
