@@ -1,5 +1,4 @@
-﻿using LearningSystem.WEB.ValidationModels;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace LearningSystem.WEB.Filters
 {
@@ -17,7 +16,7 @@ namespace LearningSystem.WEB.Filters
                 id = context?.ActionArguments["id"]?.ToString();
                 number = context?.ActionArguments["number"]?.ToString();
             }
-            else if(context.ActionArguments.ContainsKey("model"))
+            else if (context.ActionArguments.ContainsKey("model"))
             {
                 var model = context?.ActionArguments["model"] as LessonModel;
                 number = model?.Number.ToString();
@@ -29,7 +28,7 @@ namespace LearningSystem.WEB.Filters
                 return;
             }
 
-                   
+
 
             if (!string.IsNullOrEmpty(id)
                   && int.TryParse(id, out int courseId)
@@ -37,7 +36,7 @@ namespace LearningSystem.WEB.Filters
                   && byte.TryParse(number, out byte articleNumber))
             {
                 var course = await service?.GetByIdUserArticleIncludesAsync(courseId);
-                if(course.Articles.Exists(a=>a.Number == articleNumber)&&course.User.UserName==user.Identity?.Name)
+                if (course != null && course.Articles.Exists(a => a.Number == articleNumber) && course.User.UserName == user.Identity?.Name)
                     await next();
                 else
                     context.Result = new RedirectToActionResult("Oops", "Home", new { message = "You have not acces to this lesson " });

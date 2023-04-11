@@ -67,7 +67,7 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
             @Html.Raw(@Model?.ContentHTML);
         }
         else
-        {   <form method="post" asp-controller="Course" asp-action="DeleteLesson" asp-route-id="@Model.Id" asp-route-number="@ViewBag?.Number">
+        {   <form method="post" asp-controller="Course" asp-action="DeleteLesson" asp-route-id="@Model.Id" asp-route-number="@ViewBag?.Number" onsubmit="return confirm('Ви впевнені, що хочете видалити цей урок?');">
                            
                             <button type="submit" class="btn-lesson-delete">
                                 ВИДАЛИТИ
@@ -98,8 +98,8 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
    
     <script>
            var simplemde = new SimpleMDE({autosave: {
-		    enabled: false,
-		    uniqueId: "MyUniqueID",
+		    enabled: true,
+		    uniqueId: "MyUniqueCID"+@Model?.Id+"NUMBER"+@ViewBag?.Number,
 		    delay: 1000,
 	    },
 	    renderingConfig: {

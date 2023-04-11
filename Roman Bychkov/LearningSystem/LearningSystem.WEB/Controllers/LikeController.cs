@@ -20,7 +20,7 @@ namespace LearningSystem.WEB.Controllers
         }
         [HttpPost]
         [Route("PostLike")]
-        
+
         public async Task<ActionResult> PostLike(int articleNumber, int courseId)
         {
 
@@ -31,6 +31,8 @@ namespace LearningSystem.WEB.Controllers
 
             if (user == null)
                 return Unauthorized();
+            if (article is null)
+                return BadRequest();
             if (articleLike != null)
             {
                 await _service.DeleteAsync(articleLike);
@@ -43,7 +45,6 @@ namespace LearningSystem.WEB.Controllers
                 {
                     UserId = user.Id,
                     ArticleId = article.Id
-                    
                 };
                 await _service.AddAsync(articleLike);
                 _logger.LogInformation("{User} added like to course {CourseId} lesson {Number}. code-{Code}", User.Identity.Name, courseId, articleNumber, RepoLogEvents.UserLike);

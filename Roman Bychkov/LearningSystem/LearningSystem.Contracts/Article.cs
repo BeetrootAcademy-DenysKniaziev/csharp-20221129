@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.MarkedNet;
+using System.Text.RegularExpressions;
 
 namespace LearningSystem.Contracts
 {
@@ -40,7 +41,20 @@ namespace LearningSystem.Contracts
         [NotMapped]
         public string ContentHTML
         {
-            get => Marked.Parse(Content);
+            get => RemoveSrcAttributes(RemoveJavascript(Marked.Parse(Content)));
+        }
+        private string RemoveJavascript(string html)
+        {
+            html = Regex.Replace(html, "<script.*?</script>", string.Empty, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            html = Regex.Replace(html, "javascript:", string.Empty, RegexOptions.IgnoreCase);
+
+            return html;
+        }
+        private string RemoveSrcAttributes(string html)
+        {
+            html = Regex.Replace(html, "<[^>]*(src=)[^>]*>", string.Empty, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+
+            return html;
         }
     }
 }

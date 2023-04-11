@@ -30,7 +30,7 @@
                                 <img class="icon icon-transparent" src="~/icon/pensil.png" />
                             </button>
                         </form>
-                        <form method="post" action="/Course/Delete">
+                        <form method="post" action="/Course/Delete" onsubmit="return confirm('Ви впевнені, що хочете видалити цей курс?');">
                             <div>
                                 <input type="hidden" name="Id" value="@item.Id" />
                             </div>

@@ -27,15 +27,16 @@ namespace LearningSystem.WEB.Controllers
         {
 
             var user = await _usersService.GetByName(User.Identity.Name);
+            var article = await _articlesService.GetByNumberAsync(articleNumber, courseId);
 
             if (user == null)
                 return Unauthorized();
-
             if (comment.Length > 250 || comment.Length == 0)
                 return BadRequest();
-
-
-            var article = await _articlesService.GetByNumberAsync(articleNumber, courseId);
+            if(article == null)
+            {
+                return NotFound();
+            }
             var newComment = new Comment
             {
                 UserId = user.Id,

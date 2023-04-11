@@ -17,6 +17,10 @@
             document.getElementById('like-count').innerText = parseInt(countLike) - 1;
             document.getElementById('like-image').src = "/icon/like.png"
         }
+        if (xhr.status === 400) {
+            window.alert("Цієї статті вже не існує");
+            window.location.href = "/Home/Index";
+        }
         if (xhr.readyState === 4 && xhr.status === 401) {
             window.location.href = "/Account/Login";
         }
