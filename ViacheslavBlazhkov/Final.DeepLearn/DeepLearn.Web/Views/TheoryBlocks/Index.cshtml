@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DeepLearn.Contracts.LessonsStructs.TheoryBlock>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Theory Blocks</h1>
+<p>
+    <a asp-action="Create" asp-controller="TheoryBlocks" class="btn btn-success">Create New Theory Block</a>
+</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-deck">
+            @foreach (var item in Model)
+            {
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <p class="card-title">@Html.DisplayFor(modelItem => item.Text)</p>
+
+                        <a href="@Url.Action("Index", "TestBlocks", new { theoryBlockId = item.Id })" class="btn btn-primary">Go to Test Block</a>
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-secondary">Edit</a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-secondary">Details</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<style>
+    .card-deck .card {
+        margin: 10px;
+        box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+        border-radius: 10px;
+    }
+</style>

@@ -1,0 +1,22 @@
+﻿@using DeepLearn.Contracts.LessonsStructs
+@model IEnumerable<DeepLearn.Contracts.LessonsStructs.Course>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Courses</h1>
+
+<div class="container">
+    <div class="row text-center justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <a class="nav-link text-dark" asp-controller="Modules" asp-action="Index" asp-route-courseId="@item.Id">
+                    <img class="img-fluid w-100" style="max-width: 80%; border-radius: 20%;" src="/images/CoursesIcons/@Html.DisplayFor(modelItem => item.PhotoName)"/>
+                </a>
+                <h3 class="text-center">@Html.DisplayFor(modelItem => item.Title)</h3>
+            </div>
+        }
+    </div>
+</div>

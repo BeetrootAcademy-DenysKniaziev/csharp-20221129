@@ -1,0 +1,38 @@
+﻿@model DeepLearn.Contracts.LessonsStructs.TestBlock
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TestBlock</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TheoryBlock)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TheoryBlock.Title)
+        </dd>
+        <dd class="col-sm-10">
+            <a asp-action="Create" asp-controller="TestBlocks" class="btn btn-success">Create New Test Block</a>
+        </dd>
+    </dl>
+</div>
+
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+</p>*@
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
