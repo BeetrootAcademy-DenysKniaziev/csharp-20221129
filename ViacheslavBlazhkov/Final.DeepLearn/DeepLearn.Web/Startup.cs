@@ -42,12 +42,14 @@ namespace DeepLearn.Web
             services.AddScoped<ILessonRepository, LessonRepository>();
             services.AddScoped<ITheoryBlockRepository, TheoryBlockRepository>();
             services.AddScoped<ITestBlockRepository, TestBlockRepository>();
+            services.AddScoped<IAnswerRepository, AnswerRepository>();
 
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IModuleService, ModuleService>();
             services.AddScoped<ILessonService, LessonService>();
             services.AddScoped<ITheoryBlockService, TheoryBlockService>();
             services.AddScoped<ITestBlockService, TestBlockService>();
+            services.AddScoped<IAnswerService, AnswerService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

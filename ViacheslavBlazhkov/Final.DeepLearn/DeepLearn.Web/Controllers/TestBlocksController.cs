@@ -24,7 +24,9 @@ namespace DeepLearn.Web.Controllers
                 return NotFound();
             }
 
-            var testBlock = _context.TestBlocks.FirstOrDefault(tb => tb.TheoryBlockId == theoryBlockId);
+            var testBlock = _context.TestBlocks
+                .Include(tb => tb.Answers)
+                .FirstOrDefault(tb => tb.TheoryBlockId == theoryBlockId);
             //if (testBlock == null)
             //{
             //    return NotFound();
@@ -53,6 +55,26 @@ namespace DeepLearn.Web.Controllers
                 return RedirectToAction("Index", "TestBlocks", new { theoryBlockId = testBlock.TheoryBlockId });
             }
             return View(testBlock);
+        }
+
+        [HttpPost]
+        public IActionResult CheckAnswers(int theoryBlockId, int testBlockId, int selectedAnswerId)
+        {
+            var testBlock = _context.TestBlocks.FirstOrDefault(tb => tb.Id == theoryBlockId);
+            
+            if (testBlock == null)
+            {
+                return NotFound();
+            }
+
+            var selectedAnswer = testBlock.Answers.FirstOrDefault(a => a.Id == selectedAnswerId);
+            if (selectedAnswer == null)
+            {
+                return BadRequest();
+            }
+
+            var isCorrect = selectedAnswer.IsCorrect;
+            return Json(new { isCorrect });
         }
     }
 }

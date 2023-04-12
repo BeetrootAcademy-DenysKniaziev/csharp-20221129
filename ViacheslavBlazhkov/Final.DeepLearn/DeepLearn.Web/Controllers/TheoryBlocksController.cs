@@ -22,13 +22,17 @@ namespace DeepLearn.Web.Controllers
         }
 
         // GET: TheoryBlocks
-        public async Task<IActionResult> Index(int lessonId, int page = 1, int pageSize = 1)
+        public async Task<IActionResult> Index(int lessonId/*, int page = 1, int pageSize = 1*/)
         {
-            var theoryBlocks = await _context.TheoryBlocks
-                .Where(t => t.LessonId == lessonId)
-                .Skip((page - 1) * pageSize)
-                .Take(pageSize)
-                .ToListAsync();
+            //var theoryBlocks = await _context.TheoryBlocks
+            //    .Where(t => t.LessonId == lessonId)
+            //    .Skip((page - 1) * pageSize)
+            //    .Take(pageSize)
+            //    .ToListAsync();
+
+            //return View(theoryBlocks);
+
+            var theoryBlocks = await _context.TheoryBlocks.Where(t => t.LessonId == lessonId).ToListAsync();
 
             return View(theoryBlocks);
         }

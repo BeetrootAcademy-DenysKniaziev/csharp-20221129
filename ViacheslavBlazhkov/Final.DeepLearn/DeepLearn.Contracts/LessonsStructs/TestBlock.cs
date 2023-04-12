@@ -28,5 +28,7 @@ namespace DeepLearn.Contracts.LessonsStructs
         public TheoryBlock TheoryBlock { get; set; }
 
         public ICollection<Answer> Answers { get; set; }
+
+        public int? SelectedAnswerId { get; set; }
     }
 }

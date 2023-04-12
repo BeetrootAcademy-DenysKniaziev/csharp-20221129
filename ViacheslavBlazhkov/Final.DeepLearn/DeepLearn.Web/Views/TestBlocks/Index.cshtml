@@ -4,35 +4,40 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Details</h1>
+<h1>
+    @Html.DisplayFor(model => model.TheoryBlock.Title)
+</h1>
 
 <div>
-    <h4>TestBlock</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Question)
-        </dt>
-        <dd class="col-sm-10">
+        <p style="font-size: 20px;">
             @Html.DisplayFor(model => model.Question)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TheoryBlock)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TheoryBlock.Title)
-        </dd>
-        <dd class="col-sm-10">
-            <a asp-action="Create" asp-controller="TestBlocks" class="btn btn-success">Create New Test Block</a>
-        </dd>
+        </p>
+        
+        
+        
     </dl>
 </div>
+@using (Html.BeginForm("CheckAnswers", "TestBlocks"))
+{
+    <table>
+        <tbody>
+        @foreach (var answer in Model.Answers)
+        {
+            <tr>
+                <td>@answer.Text</td>
+                <td>@Html.RadioButtonFor(model => model.SelectedAnswerId, answer.Id)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
 
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
-</p>*@
+    <div>
+        <input type="submit" value="Check Answers" class="btn btn-primary" />
+    </div>
+}
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<dd class="col-sm-10">
+    <a asp-action="Create" asp-controller="TestBlocks" class="btn btn-success">Create New Test Block</a>
+</dd>

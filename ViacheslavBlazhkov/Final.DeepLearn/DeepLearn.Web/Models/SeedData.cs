@@ -40,7 +40,25 @@ namespace DeepLearn.Web.Models
                                                 Text = "C# is an elegant object-oriented language that enables developers to build a variety of secure and robust applications that run on the .NET Framework.\r\nYou can use C# to create Windows applications, Web services, mobile applications, client-server applications, database applications, and much, much more.",
                                                 TestBlock = new TestBlock
                                                 {
-                                                    Question = "C# applications run"
+                                                    Question = "C# applications run",
+                                                    Answers = new List<Answer>
+                                                    {
+                                                        new Answer
+                                                        {
+                                                            Text = "using Java",
+                                                            IsCorrect = false
+                                                        },
+                                                        new Answer
+                                                        {
+                                                            Text = "only on Linux",
+                                                            IsCorrect = false
+                                                        },
+                                                        new Answer
+                                                        {
+                                                            Text = "on the .NET Framework",
+                                                            IsCorrect = true
+                                                        }
+                                                    }
                                                 }
 
                                             },
