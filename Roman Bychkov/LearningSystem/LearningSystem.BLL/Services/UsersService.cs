@@ -8,9 +8,11 @@ namespace LearningSystem.BLL.Services
     public class UsersService : IUsersServices
     {
         private IUsersRepository _context;
-        public UsersService(IUsersRepository context)
+        private string _folder;
+        public UsersService(IUsersRepository context, string folder = "wwwroot")
         {
             _context = context;
+            _folder = folder;
         }
         public async Task AddAsync(User item)
         {
@@ -87,6 +89,10 @@ namespace LearningSystem.BLL.Services
 
         public async Task<string> AddImage(string nameFolder, string name, IFormFile file)
         {
+            if (File.Exists(_folder + (await _context.GetByName(name)).Image))
+            {
+                File.Delete(_folder + (await _context.GetByName(name)).Image);
+            }
             if (string.IsNullOrWhiteSpace(nameFolder))
                 throw new ArgumentNullException(nameof(nameFolder));
             if (string.IsNullOrWhiteSpace(name))
@@ -94,7 +100,7 @@ namespace LearningSystem.BLL.Services
             if (file is null)
                 throw new ArgumentNullException(nameof(file));
 
-            string uploadPath = "wwwroot/" + nameFolder;
+            string uploadPath = _folder + "/" + nameFolder;
 
             Directory.CreateDirectory(uploadPath);
 

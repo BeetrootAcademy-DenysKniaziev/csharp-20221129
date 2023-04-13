@@ -133,7 +133,8 @@ namespace LearningSystem.WEB.Controllers
         public async Task<IActionResult> Upload()
         {
             MyLogger.CheckFreeSpaceOnDisk(_logger);
-    
+              
+          
             var files = Request.Form.Files;
             var file = files[0];
             string type = Path.GetExtension(file.FileName);

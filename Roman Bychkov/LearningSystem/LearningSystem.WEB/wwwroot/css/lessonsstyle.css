@@ -6,6 +6,7 @@
     border-radius: 5%;
     padding: 2%;
     width: 20%;
+    max-width: 250px;
     align-items: stretch;
     height: auto;
     width: auto;
@@ -43,8 +44,7 @@ td {
 }
 .liked {
     color: #FFA07A;
-    max-height: 25px;
-    max-width: 25px;
+   
 }
 .comment-container {
     display: flex;
@@ -57,7 +57,7 @@ td {
         flex-grow: 1;
     }
 .btn-comment {
-    margin-left: auto;
+   align-self:end;
     border-radius: 8px;
     border: none;
     margin-left: 75%;
@@ -65,13 +65,15 @@ td {
     background-color: #00BFFF;
     outline: none;
 }
-.area-comment {
-    border-radius: 10px;
-    resize: none;
-    min-width: 500px;
-    max-width: 500px;
-   
-}
+    .btn-comment:hover {
+        background-color: #576be6;
+    }
+    .area-comment {
+        border-radius: 10px;
+        resize: none;
+        min-width: 500px;
+        max-width: 500px;
+    }
 .profile-photo-comment {
     background-color: white;
     padding: 10px;
@@ -100,6 +102,17 @@ td {
         .lessons-content-container {
         flex-direction: column;
     }
+}
+.form-comment {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+    .form-comment > * {
+        margin-bottom: 9px;
+    }
+.title-comment {
+    align-self: start;
 }
 .number-lesson {
     min-width: 40px;

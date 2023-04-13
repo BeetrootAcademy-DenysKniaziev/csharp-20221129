@@ -27,35 +27,33 @@ const fileInput = document.querySelector('#file-input');
 const photo = document.querySelector('#photo');
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault(); // перехоплюємо стандартну поведінку форми
-
-    const file = fileInput.files[0]; // отримуємо вибраний файл
-
+    event.preventDefault(); 
+    const file = fileInput.files[0]; 
     if (!file) {
         alert('Виберіть файл для завантаження');
         return;
     }
 
-    const formData = new FormData(); // створюємо об'єкт FormData для відправки файлу
+    const formData = new FormData(); 
     formData.append('uploads', file);
 
-    fetch('upload', { // відправляємо файл на сервер за допомогою fetch
+    fetch('upload', { 
         method: 'POST',
         body: formData
     })
         .then(response => {
-            if (!response.ok) { // якщо відповідь сервера не OK, повідомляємо про помилку
+            if (!response.ok) { 
                 return response.text().then(text => {
                     throw new Error(text);
                 });
             }
-            return response.text(); // отримуємо дані відповіді у вигляді тексту
+            return response.text(); 
         })
         .then(text => {
-            photo.src = text; // очищаємо src перед вставкою тексту
+            photo.src = text; 
         })
         .catch(error => {
-            console.error(error); // логуємо помилку у консоль
-            alert(error.message); // повідомляємо користувача про помилку
+            console.error(error); 
+            alert(error.message);
         });
 });

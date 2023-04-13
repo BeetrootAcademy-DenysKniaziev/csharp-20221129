@@ -5,7 +5,6 @@
     xhr.onload = function () {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
-            console.log(response);
             document.getElementById('like').classList.add('liked');
             var countLike = document.getElementById('like-count').innerText;
             document.getElementById('like-count').innerText = parseInt(countLike) + 1;

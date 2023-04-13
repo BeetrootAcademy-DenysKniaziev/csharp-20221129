@@ -37,9 +37,9 @@ ViewData["Title"] = Model?.CourseName + " - " + Model?.Articles.SingleOrDefault(
                 <div id="like-count">@Model?.Articles.SingleOrDefault(a => a?.Number == ViewBag.Number)?.Likes?.Count</div>
             </div>
             <div class="comment-container">
-                <form id="form-comment" action="/api/Comment/PostComment?articleNumber=@ViewBag?.Number&courseId=@Model?.Id" method="POST">
-                    <label for="comment">Comment:</label><br>
-                    <textarea class="area-comment" id="comment" maxlength="250" name="comment" rows="5" cols="50" required></textarea><br><br>
+                <form id="form-comment" class="form-comment" action="/api/Comment/PostComment?articleNumber=@ViewBag?.Number&courseId=@Model?.Id" method="POST">
+                    <label for="comment" class="title-comment">Коментар:</label>
+                    <textarea class="area-comment" id="comment" maxlength="250" name="comment" rows="5" cols="50" required></textarea>
                     <input class="btn-comment" id="comment-submit" type="submit" value="Відправити">
                 </form>
                     @foreach (Comment item in Model?.Articles?.SingleOrDefault(a => a.Number == ViewBag?.Number && a.CourseId == Model?.Id).Comments?.OrderByDescending(c=>c.Created))

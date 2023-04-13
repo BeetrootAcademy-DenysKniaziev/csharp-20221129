@@ -44,7 +44,7 @@ namespace LearningSystem.Contracts
         [NotMapped]
         public string ContentHTML
         {
-            get => RemoveSrcAttributes(RemoveJavascript(Marked.Parse(Content)));
+            get => Marked.Parse(RemoveUnsafeTags(Content));
         }
         [Column("created")]
         [Required]
@@ -58,9 +58,9 @@ namespace LearningSystem.Contracts
 
             return html;
         }
-        private string RemoveSrcAttributes(string html)
+        private string RemoveUnsafeTags(string html)
         {
-            html = Regex.Replace(html, "<[^>]*(src=)[^>]*>", string.Empty, RegexOptions.IgnoreCase | RegexOptions.Singleline);
+            html = Regex.Replace(html, @"<(img|script|iframe|object|embed)(?:(?!\b```\b)[^>])*>", string.Empty, RegexOptions.IgnoreCase | RegexOptions.Singleline);
 
             return html;
         }
